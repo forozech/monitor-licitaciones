@@ -2,15 +2,12 @@
 # GENERADOR DASHBOARD 10.0 - ULTIMATE UI (PUSH SIDEBAR + COMPACT HEADER)
 # ==============================================================================
 
-!pip install requests beautifulsoup4 pandas
-
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
 import json
 from datetime import datetime
-from google.colab import files
 import sys
 
 # --- 1. CONFIGURACIÓN ---
@@ -517,4 +514,5 @@ with open(nombre_archivo, "w", encoding="utf-8") as f:
     f.write(html_final)
 
 print(f"✅ Archivo {nombre_archivo} generado correctamente.")
+
 # Eliminamos la línea de files.download porque en el servidor automático daría error
