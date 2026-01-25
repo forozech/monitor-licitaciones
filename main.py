@@ -3,7 +3,7 @@
 # ==============================================================================
 
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup lxml
 import json
 import re
 import time
@@ -467,3 +467,4 @@ with open("index.html", "w", encoding="utf-8") as file:
     file.write(html_content)
 
 print("✅ Archivo 'index.html' generado con éxito.")
+
