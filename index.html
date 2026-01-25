@@ -12,54 +12,91 @@
         :root { --primary: #2563eb; --bg: #f8fafc; --text-main: #0f172a; --grid-layout: 1fr 110px 110px 140px 120px 60px; }
         * { box-sizing: border-box; }
         body { background-color: var(--bg); font-family: 'Inter', sans-serif; margin: 0; padding: 0; color: var(--text-main); overflow: hidden; }
-        .app-header { height: 60px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 50; }
+        
+        /* HEADER */
+        .app-header { height: 60px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 50; position:relative; }
         .app-brand { font-weight: 800; font-size: 1.2rem; color: #1e293b; display: flex; align-items: center; gap: 10px; }
         .nav-pills { display: flex; gap: 5px; background: #f1f5f9; padding: 4px; border-radius: 8px; }
-        .nav-item { padding: 6px 15px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: #64748b; transition: all 0.2s; }
+        .nav-item { padding: 6px 15px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: #64748b; transition: all 0.2s; white-space: nowrap; }
         .nav-item:hover { color: #0f172a; background: rgba(255,255,255,0.5); }
         .nav-item.active { background: white; color: var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         .nav-item.dashboard-tab { color: #7c3aed; }
         .nav-item.dashboard-tab.active { background: #7c3aed; color: white; }
+        
         .header-actions { display: flex; gap: 10px; }
         .action-btn { padding: 6px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; background: white; color: #475569; transition: 0.2s; }
         .action-btn:hover { border-color: #cbd5e1; color: #0f172a; }
         .action-btn.active { background: #eff6ff; border-color: var(--primary); color: var(--primary); }
-        .btn-pdf { background: #1e293b; color: white; border: none; }
-        .btn-pdf:hover { background: #334155; }
+        
+        /* LAYOUT */
         .app-container { display: flex; height: calc(100vh - 60px); width: 100vw; }
         .sidebar { width: 280px; background: #ffffff; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; padding: 20px 0; }
         .main-content { flex: 1; display: flex; flex-direction: column; background: #f1f5f9; position: relative; overflow: hidden; }
+        
+        .mobile-toggle { display: none; font-size: 1.2rem; color: #64748b; cursor: pointer; padding: 5px; }
+
+        /* SIDEBAR COMPONENTS */
         .filter-list { flex:1; overflow-y: auto; padding: 0 15px; }
         .sb-title { font-size: 0.7rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin: 15px 0 8px 10px; }
-        .ent-card { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 6px; cursor: pointer; margin-bottom: 2px; transition: 0.2s; border: 1px solid transparent; }
-        .ent-card:hover { background: #f8fafc; border-color: #e2e8f0; }
+        .ent-card { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 6px; cursor: pointer; margin-bottom: 2px; border: 1px solid transparent; }
         .ent-card.active { background: #eff6ff; border-color: #bfdbfe; }
         .ent-img { width: 20px; height: 20px; object-fit: contain; mix-blend-mode: multiply; opacity: 0.8; }
-        .ent-name { font-size: 0.8rem; font-weight: 500; color: #334155; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .ent-name { font-size: 0.8rem; font-weight: 500; color: #334155; flex: 1; overflow: hidden; text-overflow: ellipsis; }
         .ent-badge { background: #e2e8f0; color: #475569; font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; }
         .ent-card.active .ent-name { color: var(--primary); font-weight: 700; }
         .ent-card.active .ent-badge { background: #dbeafe; color: var(--primary); }
-        .range-card { background: white; border: 1px solid #e2e8f0; border-left-width: 4px; border-radius: 8px; padding: 12px 15px; margin-bottom: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-weight: 700; color: #334155; transition: 0.2s; }
-        .range-card:hover { transform: translateX(3px); border-color: #cbd5e1; }
+        .range-card { background: white; border: 1px solid #e2e8f0; border-left-width: 4px; border-radius: 8px; padding: 12px 15px; margin-bottom: 8px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-weight: 700; color: #334155; }
         .range-card.active { background: #f8fafc; border-color: currentColor; color: #1e293b; }
-        .rc-green { border-left-color: #10b981; }
-        .rc-blue { border-left-color: #3b82f6; }
-        .rc-orange { border-left-color: #f59e0b; }
-        .rc-purple { border-left-color: #7c3aed; }
-        .range-icon { color: #cbd5e1; }
-        .range-card:hover .range-icon, .range-card.active .range-icon { color: var(--primary); }
-        .ver-todo { background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe; border-radius: 6px; padding: 10px; margin-bottom: 15px; text-align: center; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .filter-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 12px; font-size: 0.85rem; color: #475569; font-weight: 500; cursor: pointer; border-radius: 6px; border-left: 3px solid transparent; transition: 0.15s; }
-        .filter-row:hover { background: #f8fafc; }
+        .rc-green { border-left-color: #10b981; } .rc-blue { border-left-color: #3b82f6; } .rc-orange { border-left-color: #f59e0b; } .rc-purple { border-left-color: #7c3aed; }
+        .ver-todo { background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe; border-radius: 6px; padding: 10px; margin-bottom: 15px; text-align: center; font-weight: 700; cursor: pointer; }
+        .filter-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 12px; font-size: 0.85rem; color: #475569; font-weight: 500; cursor: pointer; border-radius: 6px; border-left: 3px solid transparent; }
         .filter-row.active { background: #eff6ff; color: var(--primary); font-weight: 600; border-left-color: var(--primary); }
+
+        /* LIST & TABLE */
+        .top-deck { background: white; padding: 15px 30px; border-bottom: 1px solid #e2e8f0; flex-shrink: 0; }
+        .kpi-row { display: flex; gap: 15px; margin-bottom: 15px; }
+        .kpi-box { flex: 1; padding: 15px; border-radius: 10px; background: #f8fafc; border: 1px solid transparent; cursor: pointer; }
+        .kpi-box.active { background: white; border-color: currentColor; }
+        .k-blue { color: #1e40af; border-color: #dbeafe; background: #eff6ff; }
+        .k-green { color: #065f46; border-color: #d1fae5; background: #ecfdf5; }
+        .kpi-val { font-size: 1.5rem; font-weight: 800; }
+        .kpi-lbl { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; opacity: 0.8; }
+        .toolbar { display: flex; gap: 20px; align-items: center; justify-content: space-between; }
+        .control-group { display: flex; gap: 10px; align-items: center; color: #64748b; font-weight: 600; font-size: 0.85rem; }
+        .control-btn { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px 10px; cursor: pointer; color: #475569; }
+        .search-box { flex: 1; max-width: 400px; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; }
+        .search-box:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1); }
+        
+        #table-wrapper { display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+        .grid-header { display: grid; grid-template-columns: var(--grid-layout); gap: 10px; padding: 10px 30px; background: #e2e8f0; font-size: 0.7rem; font-weight: 800; color: #475569; user-select: none; flex-shrink: 0; }
+        .gh-cell { cursor: pointer; display: flex; align-items: center; gap: 5px; }
+        .gh-cell.active { color: var(--primary); }
+        .list-container { flex: 1; overflow-y: auto; padding: 0; }
+        .list-inner { padding: 20px 30px; }
+        
+        .entity-group { margin-bottom: 15px; background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; }
+        .eg-title-row { background: #f8fafc; padding: 8px 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .eg-info { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 0.95rem; }
+        .eg-logo { height: 30px; width: 30px; object-fit: contain; mix-blend-mode: multiply; }
+        .eg-chevron { transition: transform 0.3s; color: #94a3b8; }
+        .entity-group.collapsed .eg-chevron { transform: rotate(-90deg); }
+        .entity-group.collapsed .group-rows { display: none; }
+        
+        .row-item { display: grid; grid-template-columns: var(--grid-layout); gap: 10px; align-items: flex-start; padding: 12px 20px; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; }
+        .ri-title { font-weight: 600; color: #1e293b; }
+        .ri-exp { font-size: 0.7rem; color: #64748b; margin-bottom: 3px; }
+        .badge { text-align: center; font-size: 0.7rem; font-weight: 700; padding: 3px 6px; border-radius: 4px; }
+        .b-red { background: #fee2e2; color: #991b1b; }
+        .b-orange { background: #ffedd5; color: #9a3412; }
+        .b-green { background: #dcfce7; color: #166534; }
+
+        /* DASHBOARD */
         #dashboard-view { display: none; height: 100%; padding: 20px; overflow: hidden; background: #f1f5f9; }
         .dashboard-container { display: grid; grid-template-rows: auto 1fr; gap: 20px; height: 100%; }
         .dash-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .kpi-modern { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; justify-content: center; border: 1px solid #f8fafc; position: relative; overflow: hidden; }
         .kpi-modern::before { content: ''; position: absolute; top:0; left:0; width: 4px; height: 100%; }
-        .km-1::before { background: #3b82f6; }
-        .km-2::before { background: #10b981; }
-        .km-3::before { background: #8b5cf6; }
+        .km-1::before { background: #3b82f6; } .km-2::before { background: #10b981; } .km-3::before { background: #8b5cf6; }
         .kpi-m-label { font-size: 0.85rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
         .kpi-m-val { font-size: 2rem; font-weight: 800; color: #1e293b; margin-top: 5px; }
         .kpi-m-sub { font-size: 0.75rem; color: #94a3b8; margin-top: 5px; }
@@ -76,64 +113,65 @@
         .ti-ent { font-weight: 700; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .ti-val { font-weight: 600; color: var(--primary); text-align: right; white-space: nowrap; }
         .ti-desc { font-size: 0.75rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .top-deck { background: white; padding: 15px 30px; border-bottom: 1px solid #e2e8f0; flex-shrink: 0; }
-        .kpi-row { display: flex; gap: 15px; margin-bottom: 15px; }
-        .kpi-box { flex: 1; padding: 15px; border-radius: 10px; background: #f8fafc; border: 1px solid transparent; cursor: pointer; transition: 0.2s; }
-        .kpi-box:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .kpi-box.active { background: white; border-color: currentColor; }
-        .k-blue { color: #1e40af; border-color: #dbeafe; background: #eff6ff; }
-        .k-green { color: #065f46; border-color: #d1fae5; background: #ecfdf5; }
-        .kpi-val { font-size: 1.5rem; font-weight: 800; }
-        .kpi-lbl { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; opacity: 0.8; }
-        .toolbar { display: flex; gap: 20px; align-items: center; justify-content: space-between; }
-        .control-group { display: flex; gap: 10px; align-items: center; color: #64748b; font-weight: 600; font-size: 0.85rem; }
-        .control-btn { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px 10px; cursor: pointer; color: #475569; transition: 0.2s; }
-        .control-btn:hover { background: #e2e8f0; color: #1e293b; }
-        .search-box { flex: 1; max-width: 400px; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; transition: 0.2s; }
-        .search-box:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1); }
-        #table-wrapper { display: flex; flex-direction: column; height: 100%; overflow: hidden; }
-        .grid-header { display: grid; grid-template-columns: var(--grid-layout); gap: 10px; padding: 10px 30px; background: #e2e8f0; font-size: 0.7rem; font-weight: 800; color: #475569; user-select: none; flex-shrink: 0; }
-        .gh-cell { cursor: pointer; display: flex; align-items: center; gap: 5px; }
-        .gh-cell.active { color: var(--primary); }
-        .list-container { flex: 1; overflow-y: auto; padding: 0; }
-        .list-inner { padding: 20px 30px; }
-        .entity-group { margin-bottom: 15px; background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; transition: all 0.3s; }
-        .eg-title-row { background: #f8fafc; padding: 8px 20px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .eg-title-row:hover { background: #f1f5f9; }
-        .eg-info { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 0.95rem; }
-        .eg-logo { height: 30px; width: 30px; object-fit: contain; mix-blend-mode: multiply; }
-        .eg-chevron { transition: transform 0.3s; color: #94a3b8; }
-        .entity-group.collapsed .eg-chevron { transform: rotate(-90deg); }
-        .entity-group.collapsed .group-rows { display: none; }
-        .entity-group.collapsed { border-bottom: 1px solid #e2e8f0; }
-        .row-item { display: grid; grid-template-columns: var(--grid-layout); gap: 10px; align-items: flex-start; padding: 12px 20px; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; }
-        .row-item:hover { background: #f8fafc; }
-        .ri-title { font-weight: 600; color: #1e293b; }
-        .ri-exp { font-size: 0.7rem; color: #64748b; margin-bottom: 3px; }
-        .badge { text-align: center; font-size: 0.7rem; font-weight: 700; padding: 3px 6px; border-radius: 4px; }
-        .b-red { background: #fee2e2; color: #991b1b; }
-        .b-orange { background: #ffedd5; color: #9a3412; }
-        .b-green { background: #dcfce7; color: #166534; }
+
+        /* --- MOBILE STYLES (RESPONSIVE) --- */
+        @media (max-width: 768px) {
+            body { overflow: auto; }
+            .app-container { flex-direction: column; height: auto; }
+            .sidebar { display: none; width: 100%; border-right: none; border-bottom: 1px solid #e2e8f0; height: auto; max-height: 400px; }
+            .sidebar.active { display: flex; }
+            .main-content { height: auto; overflow: visible; }
+            .app-header { padding: 0 15px; }
+            .nav-pills { overflow-x: auto; max-width: 200px; -webkit-overflow-scrolling: touch; }
+            .header-actions { gap: 5px; }
+            .action-btn { padding: 6px 8px; font-size: 0.75rem; }
+            .mobile-toggle { display: block; }
+            .top-deck { padding: 15px; }
+            .kpi-row { flex-wrap: wrap; }
+            .kpi-box { min-width: 140px; }
+            .toolbar { flex-direction: column; align-items: stretch; gap: 10px; }
+            .control-group { justify-content: space-between; }
+            .grid-header { display: none; }
+            .list-inner { padding: 10px; }
+            
+            /* Cards for rows */
+            .row-item { display: flex; flex-direction: column; gap: 5px; padding: 15px; position: relative; }
+            .row-item > div { width: 100%; text-align: left !important; }
+            .row-item > div:last-child { position: absolute; top: 15px; right: 15px; width: auto; }
+            .ri-title { font-size: 0.95rem; margin-bottom: 5px; padding-right: 30px; }
+            
+            /* Dashboard Mobile */
+            #dashboard-view { height: auto; padding: 15px; overflow: visible; }
+            .dashboard-container { display: flex; flex-direction: column; }
+            .dash-kpis { grid-template-columns: 1fr; }
+            .dash-content { display: flex; flex-direction: column; }
+            .d-card { min-height: 300px; }
+            .chart-box { height: 250px; }
+        }
+
         @media print { .app-header, .sidebar, .top-deck, .noprint { display: none !important; } .app-container { height: auto; width: 100%; display: block; } .main-content { background: white; overflow: visible; } .list-container { overflow: visible; } body { overflow: visible; font-size: 10pt; } .grid-header { background: #ddd !important; -webkit-print-color-adjust: exact; } .entity-group { break-inside: avoid; border: 1px solid #ccc; } .group-rows { display: block !important; } a { text-decoration: none; color: black; } }
     </style>
 </head>
 <body>
 <div class="app-header">
-    <div class="app-brand"><i class="fa-solid fa-layer-group"></i> LICITACIONES</div>
+    <div style="display:flex; align-items:center; gap:10px">
+        <div class="mobile-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></div>
+        <div class="app-brand"><i class="fa-solid fa-layer-group"></i> <span style="display:none; sm:display:block">LICIT.</span></div>
+    </div>
     <div class="nav-pills">
         <div class="nav-item active" onclick="switchDataset('obras', this)">OBRAS</div>
-        <div class="nav-item" onclick="switchDataset('servicios', this)">SERVICIOS</div>
-        <div class="nav-item" onclick="switchDataset('ingenieria', this)">INGENIERÍA</div>
-        <div class="nav-item dashboard-tab" onclick="toggleDashboard(this)"><i class="fa-solid fa-chart-pie"></i> RESUMEN</div>
+        <div class="nav-item" onclick="switchDataset('servicios', this)">SERV.</div>
+        <div class="nav-item" onclick="switchDataset('ingenieria', this)">ING.</div>
+        <div class="nav-item dashboard-tab" onclick="toggleDashboard(this)"><i class="fa-solid fa-chart-pie"></i></div>
     </div>
     <div class="header-actions">
-        <div class="action-btn" id="btn-24h" onclick="toggle24hFilter()"><i class="fa-regular fa-clock"></i> 24 h</div>
-        <div class="action-btn" id="btn-week" onclick="toggleWeekFilter()"><i class="fa-regular fa-calendar"></i> Última Semana</div>
-        <button class="action-btn btn-pdf" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i> PDF</button>
+        <div class="action-btn" id="btn-reload" onclick="reloadData()"><i class="fa-solid fa-rotate"></i></div>
+        <div class="action-btn" id="btn-24h" onclick="toggle24hFilter()">24h</div>
+        <div class="action-btn" id="btn-week" onclick="toggleWeekFilter()">Sem.</div>
     </div>
 </div>
 <div class="app-container">
-    <div class="sidebar">
+    <div class="sidebar" id="main-sidebar">
         <div id="sidebar-content" class="filter-list"></div>
     </div>
     <div class="main-content">
@@ -142,7 +180,7 @@
                 <div class="kpi-row">
                     <div class="kpi-box k-blue active" onclick="setMode('ads', this)">
                         <div class="kpi-val" id="k-count">0</div>
-                        <div class="kpi-lbl">Anuncios Activos</div>
+                        <div class="kpi-lbl">Activos</div>
                     </div>
                     <div class="kpi-box k-green" onclick="setMode('entities', this)">
                         <div class="kpi-val" id="k-ent">0</div>
@@ -150,18 +188,18 @@
                     </div>
                     <div class="kpi-box" style="background:#f3f4f6; color:#4b5563" onclick="setMode('money', this)">
                         <div class="kpi-val" id="k-money">0 €</div>
-                        <div class="kpi-lbl">Volumen Total</div>
+                        <div class="kpi-lbl">Total</div>
                     </div>
                 </div>
                 <div class="toolbar">
                     <div class="control-group">
-                        <span style="font-weight:800; color:#1e293b">Vista General</span>
-                        <span style="color:#cbd5e1">|</span>
-                        <span>25/01/2026 21:56</span>
-                        <button class="control-btn" onclick="toggleAll(false)" title="Contraer todo"><i class="fa-solid fa-angles-up"></i></button>
-                        <button class="control-btn" onclick="toggleAll(true)" title="Expandir todo"><i class="fa-solid fa-angles-down"></i></button>
+                        <span>25/01/2026 22:10</span>
+                        <div>
+                            <button class="control-btn" onclick="toggleAll(false)"><i class="fa-solid fa-angles-up"></i></button>
+                            <button class="control-btn" onclick="toggleAll(true)"><i class="fa-solid fa-angles-down"></i></button>
+                        </div>
                     </div>
-                    <input type="text" class="search-box" id="search" placeholder="Buscar texto..." onkeyup="renderTable()">
+                    <input type="text" class="search-box" id="search" placeholder="Buscar..." onkeyup="renderTable()">
                 </div>
             </div>
             <div class="grid-header">
@@ -202,8 +240,12 @@
         else if (filterWeek) { let weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7); d = d.filter(x => new Date(x.publicado) >= weekAgo); }
         return d;
     }
-    function switchDataset(cat, el) { currentCategory = cat; document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active')); if(el) el.classList.add('active'); document.getElementById('dashboard-view').style.display = 'none'; document.getElementById('table-wrapper').style.display = 'flex'; document.querySelector('.sidebar').style.display = 'flex'; resetFilters(); updateKPIs(); setMode('ads', document.querySelector('.k-blue')); }
+    function switchDataset(cat, el) { currentCategory = cat; document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active')); if(el) el.classList.add('active'); document.getElementById('dashboard-view').style.display = 'none'; document.getElementById('table-wrapper').style.display = 'flex'; if(window.innerWidth > 768) document.querySelector('.sidebar').style.display = 'flex'; resetFilters(); updateKPIs(); setMode('ads', document.querySelector('.k-blue')); }
     function toggleDashboard(el) { document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active')); el.classList.add('active'); document.getElementById('table-wrapper').style.display = 'none'; document.querySelector('.sidebar').style.display = 'none'; document.getElementById('dashboard-view').style.display = 'block'; renderDashboard(); }
+    function reloadData() {
+        const btn = document.getElementById('btn-reload'); btn.querySelector('i').classList.add('fa-spin');
+        setTimeout(() => { window.location.href = window.location.href; }, 500);
+    }
     function toggle24hFilter() { filter24h = !filter24h; if(filter24h) filterWeek = false; updateButtons(); updateKPIs(); renderSidebar(); renderTable(); if(document.getElementById('dashboard-view').style.display === 'block') renderDashboard(); }
     function toggleWeekFilter() { filterWeek = !filterWeek; if(filterWeek) filter24h = false; updateButtons(); updateKPIs(); renderSidebar(); renderTable(); if(document.getElementById('dashboard-view').style.display === 'block') renderDashboard(); }
     function updateButtons() { const btn24 = document.getElementById('btn-24h'); const btnWeek = document.getElementById('btn-week'); filter24h ? btn24.classList.add('active') : btn24.classList.remove('active'); filterWeek ? btnWeek.classList.add('active') : btnWeek.classList.remove('active'); }
@@ -212,6 +254,7 @@
     function setSort(field) { if(sortField === field) sortDir = sortDir === 'asc' ? 'desc' : 'asc'; else { sortField = field; sortDir = 'desc'; } renderTable(); }
     function toggleGroup(header) { header.parentElement.classList.toggle('collapsed'); }
     function toggleAll(expand) { document.querySelectorAll('.entity-group').forEach(el => { expand ? el.classList.remove('collapsed') : el.classList.add('collapsed'); }); }
+    function toggleSidebar() { document.getElementById('main-sidebar').classList.toggle('active'); }
     function updateKPIs() { const data = getData(); document.getElementById('k-count').innerText = data.length; document.getElementById('k-ent').innerText = [...new Set(data.map(d=>d.entidad))].length; const total = data.reduce((a,b)=>a+b.presupuesto_num,0); document.getElementById('k-money').innerText = formatMoney(total); }
     function formatMoney(amount) { return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(amount); }
     function renderSidebar() {
@@ -229,7 +272,7 @@
              ranges.forEach(r => { let active = (activeFilter.type === 'price' && activeFilter.value === r.v) ? 'active' : ''; sb.innerHTML += `<div class="range-card ${r.style} ${active}" onclick="applyFilter('price', '${r.v}')"><span>${r.l}</span><i class="fa-solid fa-chevron-right range-icon"></i></div>`; });
         }
     }
-    function applyFilter(type, val) { activeFilter = { type: type, value: val }; renderSidebar(); renderTable(); }
+    function applyFilter(type, val) { activeFilter = { type: type, value: val }; renderSidebar(); renderTable(); if(window.innerWidth <= 768) toggleSidebar(); }
     function renderTable() {
         const container = document.getElementById('list-inner'); container.innerHTML = ""; const search = document.getElementById('search').value.toLowerCase();
         let data = getData().filter(d => { let matchText = d.objeto.toLowerCase().includes(search); let matchFilter = true; if (activeFilter.type === 'entity') matchFilter = d.entidad === activeFilter.value; if (activeFilter.type === 'price') { if(activeFilter.value === 'u50') matchFilter = d.presupuesto_num < 50000; else if(activeFilter.value === 'u100') matchFilter = d.presupuesto_num < 100000; else if(activeFilter.value === 'u200') matchFilter = d.presupuesto_num < 200000; else if(activeFilter.value === 'u400') matchFilter = d.presupuesto_num < 400000; else if(activeFilter.value === 'u600') matchFilter = d.presupuesto_num < 600000; else if(activeFilter.value === 'u1m') matchFilter = d.presupuesto_num < 1000000; else if(activeFilter.value === 'u2m') matchFilter = d.presupuesto_num < 2000000; else if(activeFilter.value === 'o2m') matchFilter = d.presupuesto_num >= 2000000; } return matchText && matchFilter; });
@@ -249,23 +292,9 @@
             let rows = grouped[ent]; rows.sort((a,b) => { let va = a[sortField], vb = b[sortField]; if (typeof va === 'string') { if(va < vb) return sortDir === 'asc' ? -1 : 1; if(va > vb) return sortDir === 'asc' ? 1 : -1; return 0; } return sortDir === 'asc' ? va - vb : vb - va; });
             let total = rows.reduce((s,x)=>s+x.presupuesto_num,0); let totalTxt = formatMoney(total); let logo = rows[0].logo;
             let html = `<div class="entity-group"><div class="eg-title-row" onclick="toggleGroup(this)"><div class="eg-info"><i class="fa-solid fa-chevron-down eg-chevron"></i><img src="${logo}" class="eg-logo"> ${ent.replace('Ayuntamiento','Ayto')}</div><div style="font-size:0.8rem; font-weight:700; color:#64748b">${rows.length} licit. | ${totalTxt}</div></div><div class="group-rows">`;
-            rows.forEach(r => { let bg = r.dias_restantes < 7 ? 'b-red' : (r.dias_restantes < 15 ? 'b-orange' : 'b-green'); html += `<div class="row-item"><div><div class="ri-exp">${r.expediente}</div><div class="ri-title">${r.objeto}</div></div><div>${r.publicado_fmt}</div><div style="font-weight:600; color:${r.dias_restantes<7?'#ef4444':'#334155'}">${r.limite_fmt}</div><div style="text-align:right; font-weight:700">${r.presupuesto_txt}</div><div style="display:flex; justify-content:center"><span class="badge ${bg}">${r.dias_restantes} días</span></div><div style="text-align:center"><a href="${r.link}" target="_blank" style="color:var(--primary)"><i class="fa-solid fa-arrow-right"></i></a></div></div>`; });
+            rows.forEach(r => { let bg = r.dias_restantes < 7 ? 'b-red' : (r.dias_restantes < 15 ? 'b-orange' : 'b-green'); html += `<div class="row-item"><div><div class="ri-exp">${r.expediente}</div><div class="ri-title">${r.objeto}</div></div><div class="m-hide">${r.publicado_fmt}</div><div style="font-weight:600; color:${r.dias_restantes<7?'#ef4444':'#334155'}">${r.limite_fmt}</div><div style="text-align:right; font-weight:700">${r.presupuesto_txt}</div><div style="display:flex; justify-content:center"><span class="badge ${bg}">${r.dias_restantes} días</span></div><div style="text-align:center"><a href="${r.link}" target="_blank" style="color:var(--primary)"><i class="fa-solid fa-arrow-right"></i></a></div></div>`; });
             html += `</div></div>`; container.innerHTML += html;
         });
-    }
-    function renderDashboard() {
-        chartInstances.forEach(c => c.destroy()); chartInstances = []; const data = getData();
-        const totalVol = data.reduce((s,x)=>s+x.presupuesto_num, 0); const count = data.length; const avg = count > 0 ? totalVol / count : 0;
-        document.getElementById('dm-vol').innerText = formatMoney(totalVol); document.getElementById('dm-num').innerText = count; document.getElementById('dm-avg').innerText = formatMoney(avg);
-        const zoneCounts = {}; data.forEach(d => { zoneCounts[d.grupo_fav] = (zoneCounts[d.grupo_fav]||0) + d.presupuesto_num });
-        chartInstances.push(new Chart(document.getElementById('chartZone'), { type: 'doughnut', data: { labels: Object.keys(zoneCounts), datasets: [{ data: Object.values(zoneCounts), backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#64748b'], borderWidth: 0 }] }, options: { maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 10 } } } } } }));
-        const entCounts = {}; data.forEach(d => { entCounts[d.entidad] = (entCounts[d.entidad]||0) + d.presupuesto_num });
-        const sortedEnts = Object.entries(entCounts).sort((a,b)=>b[1]-a[1]).slice(0,5);
-        chartInstances.push(new Chart(document.getElementById('chartEnt'), { type: 'bar', data: { labels: sortedEnts.map(x=>x[0].replace('Ayuntamiento', 'Ayto').substring(0,18)+'...'), datasets: [{ label: 'Volumen (€)', data: sortedEnts.map(x=>x[1]), backgroundColor: '#3b82f6', borderRadius: 4, barThickness: 20 }] }, options: { indexAxis: 'y', maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { grid: { display: false } } } } }));
-        let ranges = { '< 100k':0, '100k-500k':0, '500k-1M':0, '> 1M':0 }; data.forEach(d => { let p = d.presupuesto_num; if(p < 100000) ranges['< 100k']++; else if(p < 500000) ranges['100k-500k']++; else if(p < 1000000) ranges['500k-1M']++; else ranges['> 1M']++; });
-        chartInstances.push(new Chart(document.getElementById('chartRanges'), { type: 'bar', data: { labels: Object.keys(ranges), datasets: [{ label: 'Cantidad', data: Object.values(ranges), backgroundColor: ['#94a3b8', '#60a5fa', '#3b82f6', '#1e40af'], borderRadius: 6, barThickness: 30 }] }, options: { maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: '#f1f5f9' } }, x: { grid: { display: false } } } } }));
-        const topList = document.getElementById('top-opps-list'); topList.innerHTML = ''; let sortedAds = [...data].sort((a,b) => b.presupuesto_num - a.presupuesto_num).slice(0, 10);
-        sortedAds.forEach((item, idx) => { topList.innerHTML += `<div class="top-item"><div class="ti-idx">${idx+1}</div><div class="ti-info"><div class="ti-ent">${item.entidad.replace('Ayuntamiento', 'Ayto')}</div><div class="ti-desc">${item.objeto}</div></div><div class="ti-val">${item.presupuesto_txt}</div></div>`; });
     }
     updateKPIs(); setMode('ads', document.querySelector('.k-blue')); renderTable();
 </script>
