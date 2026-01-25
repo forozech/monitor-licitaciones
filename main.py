@@ -1,5 +1,5 @@
 # ==============================================================================
-# LICITACIONES EUSKADI - V48 (MOBILE NAV FIX - DOBLE FILA)
+# LICITACIONES EUSKADI - V49 (RESUMEN FIX & MOBILE LAYOUT)
 # ==============================================================================
 
 import requests
@@ -71,7 +71,7 @@ def es_ingenieria(titulo):
 datos_finales = []
 fecha_actual_str = datetime.now().strftime("%d/%m/%Y %H:%M")
 
-print(f"🚀 INICIANDO V48 MOBILE FIX ({fecha_actual_str})")
+print(f"🚀 INICIANDO V49 ({fecha_actual_str})")
 
 for source in SOURCES:
     tipo_origen = source["type"]
@@ -184,7 +184,7 @@ for source in SOURCES:
 
 datos_json = json.dumps(datos_finales)
 
-# --- HTML TEMPLATE (V48 - HEADER MOBILE FIX) ---
+# --- HTML TEMPLATE (V49 - FIX FINAL) ---
 html_content = f"""
 <!DOCTYPE html>
 <html lang="es">
@@ -225,7 +225,7 @@ html_content = f"""
         
         .mobile-toggle {{ display: none; font-size: 1.2rem; color: #64748b; cursor: pointer; padding: 5px; }}
 
-        /* SIDEBAR COMPONENTS */
+        /* SIDEBAR */
         .filter-list {{ flex:1; overflow-y: auto; padding: 0 15px; }}
         .sb-title {{ font-size: 0.7rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin: 15px 0 8px 10px; }}
         .ent-card {{ display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 6px; cursor: pointer; margin-bottom: 2px; border: 1px solid transparent; }}
@@ -304,7 +304,7 @@ html_content = f"""
         .ti-val {{ font-weight: 600; color: var(--primary); text-align: right; white-space: nowrap; }}
         .ti-desc {{ font-size: 0.75rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }}
 
-        /* --- MOBILE STYLES (RESPONSIVE FIX V48) --- */
+        /* --- MOBILE STYLES (RESPONSIVE FIX V49) --- */
         @media (max-width: 768px) {{
             body {{ overflow: auto; }}
             .app-container {{ flex-direction: column; height: auto; }}
@@ -316,7 +316,7 @@ html_content = f"""
                 padding: 10px 15px; 
                 gap: 10px;
             }}
-            .app-brand {{ flex: 1; }} /* Logo ocupa espacio sobrante */
+            .app-brand {{ flex: 1; }} 
             .header-actions {{ flex: 0 0 auto; gap: 5px; }}
             
             /* NAVIGATION - SECOND ROW */
@@ -333,6 +333,7 @@ html_content = f"""
 
             .action-btn {{ padding: 6px 8px; font-size: 0.75rem; }}
             .btn-pdf span {{ display: none; }}
+            .dashboard-tab span {{ display: none; }}
             
             /* SIDEBAR & CONTENT */
             .sidebar {{ display: none; width: 100%; border-right: none; border-bottom: 1px solid #e2e8f0; height: auto; max-height: 400px; }}
@@ -381,7 +382,7 @@ html_content = f"""
         <div class="nav-item active" onclick="switchDataset('obras', this)">OBRAS</div>
         <div class="nav-item" onclick="switchDataset('servicios', this)">SERV.</div>
         <div class="nav-item" onclick="switchDataset('ingenieria', this)">ING.</div>
-        <div class="nav-item dashboard-tab" onclick="toggleDashboard(this)"><i class="fa-solid fa-chart-pie"></i></div>
+        <div class="nav-item dashboard-tab" onclick="toggleDashboard(this)"><i class="fa-solid fa-chart-pie"></i> <span>RESUMEN</span></div>
     </div>
 </div>
 <div class="app-container">
@@ -448,14 +449,30 @@ html_content = f"""
 <script>
     const allData = {datos_json};
     let currentCategory = 'obras'; let filterWeek = false; let filter24h = false; let sidebarMode = 'ads'; let activeFilter = {{ type: 'none', value: null }}; let sortField = 'publicado'; let sortDir = 'desc'; let chartInstances = [];
+    
     function getData() {{
         let d = allData.filter(x => x.categoria === currentCategory);
         if (filter24h) {{ let oneDayAgo = new Date(); oneDayAgo.setDate(oneDayAgo.getDate() - 1); d = d.filter(x => new Date(x.publicado) >= oneDayAgo); }}
         else if (filterWeek) {{ let weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7); d = d.filter(x => new Date(x.publicado) >= weekAgo); }}
         return d;
     }}
-    function switchDataset(cat, el) {{ currentCategory = cat; document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active')); if(el) el.classList.add('active'); document.getElementById('dashboard-view').style.display = 'none'; document.getElementById('table-wrapper').style.display = 'flex'; if(window.innerWidth > 768) document.querySelector('.sidebar').style.display = 'flex'; resetFilters(); updateKPIs(); setMode('ads', document.querySelector('.k-blue')); }}
-    function toggleDashboard(el) {{ document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active')); el.classList.add('active'); document.getElementById('table-wrapper').style.display = 'none'; document.querySelector('.sidebar').style.display = 'none'; document.getElementById('dashboard-view').style.display = 'block'; renderDashboard(); }}
+    function switchDataset(cat, el) {{ 
+        currentCategory = cat; 
+        document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active')); 
+        if(el) el.classList.add('active'); 
+        document.getElementById('dashboard-view').style.display = 'none'; 
+        document.getElementById('table-wrapper').style.display = 'flex'; 
+        if(window.innerWidth > 768) document.querySelector('.sidebar').style.display = 'flex'; 
+        resetFilters(); updateKPIs(); setMode('ads', document.querySelector('.k-blue')); 
+    }}
+    function toggleDashboard(el) {{ 
+        document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active')); 
+        el.classList.add('active'); 
+        document.getElementById('table-wrapper').style.display = 'none'; 
+        document.querySelector('.sidebar').style.display = 'none'; 
+        document.getElementById('dashboard-view').style.display = 'block'; 
+        setTimeout(() => renderDashboard(), 50);
+    }}
     function reloadData() {{
         const btn = document.getElementById('btn-reload'); btn.querySelector('i').classList.add('fa-spin');
         setTimeout(() => {{ window.location.href = window.location.href; }}, 500);
@@ -469,8 +486,16 @@ html_content = f"""
     function toggleGroup(header) {{ header.parentElement.classList.toggle('collapsed'); }}
     function toggleAll(expand) {{ document.querySelectorAll('.entity-group').forEach(el => {{ expand ? el.classList.remove('collapsed') : el.classList.add('collapsed'); }}); }}
     function toggleSidebar() {{ document.getElementById('main-sidebar').classList.toggle('active'); }}
-    function updateKPIs() {{ const data = getData(); document.getElementById('k-count').innerText = data.length; document.getElementById('k-ent').innerText = [...new Set(data.map(d=>d.entidad))].length; const total = data.reduce((a,b)=>a+b.presupuesto_num,0); document.getElementById('k-money').innerText = formatMoney(total); }}
+    
+    function updateKPIs() {{ 
+        const data = getData(); 
+        document.getElementById('k-count').innerText = data.length; 
+        document.getElementById('k-ent').innerText = [...new Set(data.map(d=>d.entidad))].length; 
+        const total = data.reduce((a,b)=>a+b.presupuesto_num,0); 
+        document.getElementById('k-money').innerText = formatMoney(total); 
+    }}
     function formatMoney(amount) {{ return new Intl.NumberFormat('de-DE', {{ style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }}).format(amount); }}
+    
     function renderSidebar() {{
         const sb = document.getElementById('sidebar-content'); sb.innerHTML = ''; const data = getData();
         if (sidebarMode === 'ads') {{ sb.innerHTML = `<div class="sb-title">VISTA GENERAL</div><div class="filter-row active"><span>Todos los Anuncios</span></div>`; }} 
@@ -510,6 +535,21 @@ html_content = f"""
             html += `</div></div>`; container.innerHTML += html;
         }});
     }}
+    
+    function renderDashboard() {{
+        chartInstances.forEach(c => c.destroy()); chartInstances = []; const data = getData();
+        const totalVol = data.reduce((s,x)=>s+x.presupuesto_num, 0); const count = data.length; const avg = count > 0 ? totalVol / count : 0;
+        document.getElementById('dm-vol').innerText = formatMoney(totalVol); document.getElementById('dm-num').innerText = count; document.getElementById('dm-avg').innerText = formatMoney(avg);
+        const zoneCounts = {{}}; data.forEach(d => {{ zoneCounts[d.grupo_fav] = (zoneCounts[d.grupo_fav]||0) + d.presupuesto_num }});
+        chartInstances.push(new Chart(document.getElementById('chartZone'), {{ type: 'doughnut', data: {{ labels: Object.keys(zoneCounts), datasets: [{{ data: Object.values(zoneCounts), backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#64748b'], borderWidth: 0 }}] }}, options: {{ maintainAspectRatio: false, plugins: {{ legend: {{ position: window.innerWidth<768?'bottom':'right', labels: {{ boxWidth: 12, font: {{ size: 10 }} }} }} }} }} }}));
+        const entCounts = {{}}; data.forEach(d => {{ entCounts[d.entidad] = (entCounts[d.entidad]||0) + d.presupuesto_num }});
+        const sortedEnts = Object.entries(entCounts).sort((a,b)=>b[1]-a[1]).slice(0,5);
+        chartInstances.push(new Chart(document.getElementById('chartEnt'), {{ type: 'bar', data: {{ labels: sortedEnts.map(x=>x[0].replace('Ayuntamiento', 'Ayto').substring(0,18)+'...'), datasets: [{{ label: 'Volumen (€)', data: sortedEnts.map(x=>x[1]), backgroundColor: '#3b82f6', borderRadius: 4, barThickness: 20 }}] }}, options: {{ indexAxis: 'y', maintainAspectRatio: false, plugins: {{ legend: {{ display: false }} }}, scales: {{ x: {{ grid: {{ display: false }} }}, y: {{ grid: {{ display: false }} }} }} }} }}));
+        let ranges = {{ '< 100k':0, '100k-500k':0, '500k-1M':0, '> 1M':0 }}; data.forEach(d => {{ let p = d.presupuesto_num; if(p < 100000) ranges['< 100k']++; else if(p < 500000) ranges['100k-500k']++; else if(p < 1000000) ranges['500k-1M']++; else ranges['> 1M']++; }});
+        chartInstances.push(new Chart(document.getElementById('chartRanges'), {{ type: 'bar', data: {{ labels: Object.keys(ranges), datasets: [{{ label: 'Cantidad', data: Object.values(ranges), backgroundColor: ['#94a3b8', '#60a5fa', '#3b82f6', '#1e40af'], borderRadius: 6, barThickness: 30 }}] }}, options: {{ maintainAspectRatio: false, plugins: {{ legend: {{ display: false }} }}, scales: {{ y: {{ beginAtZero: true, grid: {{ color: '#f1f5f9' }} }}, x: {{ grid: {{ display: false }} }} }} }} }}));
+        const topList = document.getElementById('top-opps-list'); topList.innerHTML = ''; let sortedAds = [...data].sort((a,b) => b.presupuesto_num - a.presupuesto_num).slice(0, 10);
+        sortedAds.forEach((item, idx) => {{ topList.innerHTML += `<div class="top-item"><div class="ti-idx">${{idx+1}}</div><div class="ti-info"><div class="ti-ent">${{item.entidad.replace('Ayuntamiento', 'Ayto')}}</div><div class="ti-desc">${{item.objeto}}</div></div><div class="ti-val">${{item.presupuesto_txt}}</div></div>`; }});
+    }}
     updateKPIs(); setMode('ads', document.querySelector('.k-blue')); renderTable();
 </script>
 </body>
@@ -519,4 +559,4 @@ html_content = f"""
 with open("index.html", "w", encoding="utf-8") as file:
     file.write(html_content)
 
-print("✅ Archivo 'index.html' generado con éxito (V48 Mobile Nav Fixed).")
+print("✅ Archivo 'index.html' generado con éxito (V49 - Dashboard Resurrected).")
