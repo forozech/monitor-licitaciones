@@ -1,5 +1,5 @@
 # ==============================================================================
-# LICITACIONES EUSKADI - V46 (CON BOTÓN DE RECARGA VISUAL)
+# LICITACIONES EUSKADI - V47 (RESTAURACIÓN PDF Y TÍTULO + RECARGA)
 # ==============================================================================
 
 import requests
@@ -71,7 +71,7 @@ def es_ingenieria(titulo):
 datos_finales = []
 fecha_actual_str = datetime.now().strftime("%d/%m/%Y %H:%M")
 
-print(f"🚀 INICIANDO V46 REFRESH ({fecha_actual_str})")
+print(f"🚀 INICIANDO V47 ({fecha_actual_str})")
 
 for source in SOURCES:
     tipo_origen = source["type"]
@@ -184,7 +184,7 @@ for source in SOURCES:
 
 datos_json = json.dumps(datos_finales)
 
-# --- HTML TEMPLATE (V46 - CON BOTÓN RECARGA) ---
+# --- HTML TEMPLATE (V47 - RESTAURADO) ---
 html_content = f"""
 <!DOCTYPE html>
 <html lang="es">
@@ -202,7 +202,7 @@ html_content = f"""
         
         /* HEADER */
         .app-header {{ height: 60px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 50; position:relative; }}
-        .app-brand {{ font-weight: 800; font-size: 1.2rem; color: #1e293b; display: flex; align-items: center; gap: 10px; }}
+        .app-brand {{ font-weight: 800; font-size: 1.2rem; color: #1e293b; display: flex; align-items: center; gap: 10px; white-space: nowrap; }}
         .nav-pills {{ display: flex; gap: 5px; background: #f1f5f9; padding: 4px; border-radius: 8px; }}
         .nav-item {{ padding: 6px 15px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: #64748b; transition: all 0.2s; white-space: nowrap; }}
         .nav-item:hover {{ color: #0f172a; background: rgba(255,255,255,0.5); }}
@@ -210,11 +210,14 @@ html_content = f"""
         .nav-item.dashboard-tab {{ color: #7c3aed; }}
         .nav-item.dashboard-tab.active {{ background: #7c3aed; color: white; }}
         
-        .header-actions {{ display: flex; gap: 10px; }}
+        .header-actions {{ display: flex; gap: 10px; align-items: center; }}
         .action-btn {{ padding: 6px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; background: white; color: #475569; transition: 0.2s; }}
         .action-btn:hover {{ border-color: #cbd5e1; color: #0f172a; }}
         .action-btn.active {{ background: #eff6ff; border-color: var(--primary); color: var(--primary); }}
         
+        .btn-pdf {{ background: #1e293b; color: white; border: none; }}
+        .btn-pdf:hover {{ background: #334155; }}
+
         /* LAYOUT */
         .app-container {{ display: flex; height: calc(100vh - 60px); width: 100vw; }}
         .sidebar {{ width: 280px; background: #ffffff; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; padding: 20px 0; }}
@@ -310,8 +313,11 @@ html_content = f"""
             .main-content {{ height: auto; overflow: visible; }}
             .app-header {{ padding: 0 15px; }}
             .nav-pills {{ overflow-x: auto; max-width: 200px; -webkit-overflow-scrolling: touch; }}
+            
             .header-actions {{ gap: 5px; }}
             .action-btn {{ padding: 6px 8px; font-size: 0.75rem; }}
+            .btn-pdf span {{ display: none; }} /* Oculta texto PDF solo en móvil */
+            
             .mobile-toggle {{ display: block; }}
             .top-deck {{ padding: 15px; }}
             .kpi-row {{ flex-wrap: wrap; }}
@@ -343,7 +349,7 @@ html_content = f"""
 <div class="app-header">
     <div style="display:flex; align-items:center; gap:10px">
         <div class="mobile-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></div>
-        <div class="app-brand"><i class="fa-solid fa-layer-group"></i> <span style="display:none; sm:display:block">LICIT.</span></div>
+        <div class="app-brand"><i class="fa-solid fa-layer-group"></i> LICITACIONES</div>
     </div>
     <div class="nav-pills">
         <div class="nav-item active" onclick="switchDataset('obras', this)">OBRAS</div>
@@ -355,6 +361,7 @@ html_content = f"""
         <div class="action-btn" id="btn-reload" onclick="reloadData()"><i class="fa-solid fa-rotate"></i></div>
         <div class="action-btn" id="btn-24h" onclick="toggle24hFilter()">24h</div>
         <div class="action-btn" id="btn-week" onclick="toggleWeekFilter()">Sem.</div>
+        <button class="action-btn btn-pdf" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i> <span>PDF</span></button>
     </div>
 </div>
 <div class="app-container">
@@ -492,4 +499,4 @@ html_content = f"""
 with open("index.html", "w", encoding="utf-8") as file:
     file.write(html_content)
 
-print("✅ Archivo 'index.html' generado con éxito (V46).")
+print("✅ Archivo 'index.html' generado con éxito (V47 Restaurado).")
