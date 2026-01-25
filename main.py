@@ -1,5 +1,5 @@
 # ==============================================================================
-# LICITACIONES EUSKADI - V47 (RESTAURACIÓN PDF Y TÍTULO + RECARGA)
+# LICITACIONES EUSKADI - V48 (MOBILE NAV FIX - DOBLE FILA)
 # ==============================================================================
 
 import requests
@@ -71,7 +71,7 @@ def es_ingenieria(titulo):
 datos_finales = []
 fecha_actual_str = datetime.now().strftime("%d/%m/%Y %H:%M")
 
-print(f"🚀 INICIANDO V47 ({fecha_actual_str})")
+print(f"🚀 INICIANDO V48 MOBILE FIX ({fecha_actual_str})")
 
 for source in SOURCES:
     tipo_origen = source["type"]
@@ -184,7 +184,7 @@ for source in SOURCES:
 
 datos_json = json.dumps(datos_finales)
 
-# --- HTML TEMPLATE (V47 - RESTAURADO) ---
+# --- HTML TEMPLATE (V48 - HEADER MOBILE FIX) ---
 html_content = f"""
 <!DOCTYPE html>
 <html lang="es">
@@ -304,21 +304,43 @@ html_content = f"""
         .ti-val {{ font-weight: 600; color: var(--primary); text-align: right; white-space: nowrap; }}
         .ti-desc {{ font-size: 0.75rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }}
 
-        /* --- MOBILE STYLES (RESPONSIVE) --- */
+        /* --- MOBILE STYLES (RESPONSIVE FIX V48) --- */
         @media (max-width: 768px) {{
             body {{ overflow: auto; }}
             .app-container {{ flex-direction: column; height: auto; }}
+            
+            /* HEADER RESTRUCTURE */
+            .app-header {{ 
+                height: auto; 
+                flex-wrap: wrap; 
+                padding: 10px 15px; 
+                gap: 10px;
+            }}
+            .app-brand {{ flex: 1; }} /* Logo ocupa espacio sobrante */
+            .header-actions {{ flex: 0 0 auto; gap: 5px; }}
+            
+            /* NAVIGATION - SECOND ROW */
+            .nav-pills {{ 
+                order: 3; 
+                width: 100%; 
+                max-width: none;
+                justify-content: space-between;
+                overflow-x: auto;
+                padding-top: 5px;
+                border-top: 1px solid #f1f5f9;
+            }}
+            .nav-item {{ flex: 1; text-align: center; padding: 8px 5px; }}
+
+            .action-btn {{ padding: 6px 8px; font-size: 0.75rem; }}
+            .btn-pdf span {{ display: none; }}
+            
+            /* SIDEBAR & CONTENT */
             .sidebar {{ display: none; width: 100%; border-right: none; border-bottom: 1px solid #e2e8f0; height: auto; max-height: 400px; }}
             .sidebar.active {{ display: flex; }}
             .main-content {{ height: auto; overflow: visible; }}
-            .app-header {{ padding: 0 15px; }}
-            .nav-pills {{ overflow-x: auto; max-width: 200px; -webkit-overflow-scrolling: touch; }}
-            
-            .header-actions {{ gap: 5px; }}
-            .action-btn {{ padding: 6px 8px; font-size: 0.75rem; }}
-            .btn-pdf span {{ display: none; }} /* Oculta texto PDF solo en móvil */
-            
             .mobile-toggle {{ display: block; }}
+            
+            /* INNER ELEMENTS */
             .top-deck {{ padding: 15px; }}
             .kpi-row {{ flex-wrap: wrap; }}
             .kpi-box {{ min-width: 140px; }}
@@ -327,13 +349,11 @@ html_content = f"""
             .grid-header {{ display: none; }}
             .list-inner {{ padding: 10px; }}
             
-            /* Cards for rows */
             .row-item {{ display: flex; flex-direction: column; gap: 5px; padding: 15px; position: relative; }}
             .row-item > div {{ width: 100%; text-align: left !important; }}
             .row-item > div:last-child {{ position: absolute; top: 15px; right: 15px; width: auto; }}
             .ri-title {{ font-size: 0.95rem; margin-bottom: 5px; padding-right: 30px; }}
             
-            /* Dashboard Mobile */
             #dashboard-view {{ height: auto; padding: 15px; overflow: visible; }}
             .dashboard-container {{ display: flex; flex-direction: column; }}
             .dash-kpis {{ grid-template-columns: 1fr; }}
@@ -351,17 +371,17 @@ html_content = f"""
         <div class="mobile-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></div>
         <div class="app-brand"><i class="fa-solid fa-layer-group"></i> LICITACIONES</div>
     </div>
-    <div class="nav-pills">
-        <div class="nav-item active" onclick="switchDataset('obras', this)">OBRAS</div>
-        <div class="nav-item" onclick="switchDataset('servicios', this)">SERV.</div>
-        <div class="nav-item" onclick="switchDataset('ingenieria', this)">ING.</div>
-        <div class="nav-item dashboard-tab" onclick="toggleDashboard(this)"><i class="fa-solid fa-chart-pie"></i></div>
-    </div>
     <div class="header-actions">
         <div class="action-btn" id="btn-reload" onclick="reloadData()"><i class="fa-solid fa-rotate"></i></div>
         <div class="action-btn" id="btn-24h" onclick="toggle24hFilter()">24h</div>
         <div class="action-btn" id="btn-week" onclick="toggleWeekFilter()">Sem.</div>
         <button class="action-btn btn-pdf" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i> <span>PDF</span></button>
+    </div>
+    <div class="nav-pills">
+        <div class="nav-item active" onclick="switchDataset('obras', this)">OBRAS</div>
+        <div class="nav-item" onclick="switchDataset('servicios', this)">SERV.</div>
+        <div class="nav-item" onclick="switchDataset('ingenieria', this)">ING.</div>
+        <div class="nav-item dashboard-tab" onclick="toggleDashboard(this)"><i class="fa-solid fa-chart-pie"></i></div>
     </div>
 </div>
 <div class="app-container">
@@ -499,4 +519,4 @@ html_content = f"""
 with open("index.html", "w", encoding="utf-8") as file:
     file.write(html_content)
 
-print("✅ Archivo 'index.html' generado con éxito (V47 Restaurado).")
+print("✅ Archivo 'index.html' generado con éxito (V48 Mobile Nav Fixed).")
