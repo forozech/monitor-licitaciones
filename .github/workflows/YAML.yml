@@ -2,11 +2,10 @@ name: Actualizar Licitaciones
 
 on:
   schedule:
-    # Horas UTC correspondientes aprox a 9, 11, 14, 17 hora España (CET/CEST)
-    # En invierno España es UTC+1, en verano UTC+2. 
-    # Aquí ponemos horas UTC: 8:00, 10:00, 13:00, 16:00
-    - cron: '0 8,10,13,16 * * *'
-  workflow_dispatch: # Permite darle al botón "Run" manualmente para probar
+    # 8-17 UTC equivale a 9-18 Hora España Invierno
+    # Se ejecutará cada hora en el minuto 0
+    - cron: '0 8-17 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -28,7 +27,7 @@ jobs:
       - name: Ejecutar el script (main.py)
         run: python main.py
 
-      - name: Guardar y publicar cambios (index.html)
+      - name: Guardar y publicar cambios
         run: |
           git config --global user.name "Actualizador Automático"
           git config --global user.email "actions@github.com"
