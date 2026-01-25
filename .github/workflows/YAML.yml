@@ -23,7 +23,7 @@ jobs:
 
       - name: Instalar librerías necesarias
         run: |
-          pip install requests beautifulsoup4
+          pip install requests beautifulsoup4 lxml
 
       - name: Ejecutar el script (main.py)
         run: python main.py
