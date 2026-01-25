@@ -1,5 +1,5 @@
 # ==============================================================================
-# LICITACIONES EUSKADI - V43 (VERSIÓN WEB AUTOMÁTICA)
+# LICITACIONES EUSKADI - V44 (ANTI-BLOQUEO & SSL IGNORE)
 # ==============================================================================
 
 import requests
@@ -9,7 +9,10 @@ import re
 import time
 from datetime import datetime
 from email.utils import parsedate_to_datetime
-import os
+import urllib3
+
+# Desactivar advertencias de certificado SSL (necesario para GitHub Actions a veces)
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # --- CONFIGURACIÓN DE URLS ---
 RSS_OBRAS = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=3&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
@@ -22,13 +25,16 @@ SOURCES = [
 
 KEYWORDS_ING = ["redacción", "proyecto", "dirección de obra", "asistencia técnica", "ingeniería", "consultoría", "estudio", "control de calidad", "geotécnico", "coordinación", "redaccion"]
 
+# Cabeceras mejoradas para evitar bloqueo
 HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Connection': 'keep-alive'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+    'Accept-Language': 'es-ES,es;q=0.9',
+    'Connection': 'keep-alive',
+    'Upgrade-Insecure-Requests': '1'
 }
 
-LIMIT_PER_SOURCE = 60 # Subido ligeramente para asegurar
+LIMIT_PER_SOURCE = 60 
 
 # --- FUNCIONES ---
 def detectar_zona(texto):
@@ -66,22 +72,25 @@ def es_ingenieria(titulo):
 datos_finales = []
 fecha_actual_str = datetime.now().strftime("%d/%m/%Y %H:%M")
 
-print(f"🚀 INICIANDO ACTUALIZACIÓN WEB ({fecha_actual_str})")
+print(f"🚀 INICIANDO V44 ({fecha_actual_str})")
 
 for source in SOURCES:
     tipo_origen = source["type"]
     print(f"   > Procesando {tipo_origen.upper()}...")
-    time.sleep(2) 
+    time.sleep(3) # Pausa un poco más larga para evitar bloqueos
 
     try:
-        response = requests.get(source["url"], headers=HEADERS, timeout=30)
+        # verify=False es clave para que no falle en servidores cloud
+        response = requests.get(source["url"], headers=HEADERS, timeout=45, verify=False)
+        
         if response.status_code != 200:
             print(f"   ⚠️ Error HTTP {response.status_code}")
             continue
 
         soup_rss = BeautifulSoup(response.content, 'xml')
         items = soup_rss.find_all('item')[:LIMIT_PER_SOURCE]
-        
+        print(f"     ✅ {len(items)} items encontrados.")
+
         for i, item in enumerate(items):
             link = item.link.text
             titulo = item.title.text
@@ -105,7 +114,8 @@ for source in SOURCES:
             logo_url = "https://cdn-icons-png.flaticon.com/512/4300/4300058.png"
 
             try:
-                r_det = requests.get(link, headers=HEADERS, timeout=10)
+                # verify=False también aquí para el detalle
+                r_det = requests.get(link, headers=HEADERS, timeout=15, verify=False)
                 if r_det.status_code == 200:
                     s_det = BeautifulSoup(r_det.content, 'html.parser')
                     div_titulo = s_det.find('div', class_='barraTitulo')
@@ -177,7 +187,7 @@ for source in SOURCES:
 
 datos_json = json.dumps(datos_finales)
 
-# --- HTML TEMPLATE (V43) ---
+# --- HTML TEMPLATE (V43/44) ---
 html_content = f"""
 <!DOCTYPE html>
 <html lang="es">
