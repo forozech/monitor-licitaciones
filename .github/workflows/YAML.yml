@@ -1,15 +1,24 @@
 name: Actualizar Licitaciones
 
 on:
-  schedule:
-    # 8-17 UTC equivale a 9-18 Hora España Invierno
-    # Se ejecutará cada hora en el minuto 0
-    - cron: '0 8-17 * * *'
+  # 1. Se ejecuta al guardar cambios (para probar que funciona)
+  push:
+    branches:
+      - main
+  
+  # 2. Se ejecuta manualmente (botón)
   workflow_dispatch:
+  
+  # 3. Se ejecuta automáticamente (Horario)
+  # Minuto 0, de 8:00 UTC a 17:00 UTC (9:00 a 18:00 España)
+  schedule:
+    - cron: '0 8-17 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
       - name: Descargar código del repositorio
