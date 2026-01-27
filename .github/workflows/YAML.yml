@@ -43,3 +43,4 @@ jobs:
           git add index.html
           git commit -m "Actualización automática de datos" || echo "No hubo cambios nuevos"
           git push
+        run: python analisis.py
