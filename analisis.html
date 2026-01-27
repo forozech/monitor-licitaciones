@@ -4,44 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitor de Licitaciones Euskadi</title>
+    <title>Monitor Licitaciones Euskadi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
-        .badge-obra { background-color: #6f42c1; color: white; }
-        .badge-servicio { background-color: #0d6efd; color: white; }
-        .badge-eu { background-color: #ffc107; color: black; font-weight: bold; }
-        .card { margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; }
-        .price { font-size: 1.2em; font-weight: bold; color: #2c3e50; }
-        .ganador { color: #198754; font-weight: 600; }
+        body { font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; background: #f8f9fa; }
+        .container-fluid { padding: 25px; }
+        
+        /* ESTILOS TABLA V49 (CLEAN) */
+        .table { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        thead { background: #2c3e50; color: white; }
+        th { font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; vertical-align: middle; }
+        td { vertical-align: middle; padding: 10px 10px; }
+        
+        /* COLORES Y BADGES */
+        .badge-baja { font-size: 0.85rem; padding: 5px 8px; width: 55px; display: inline-block; }
+        .baja-alta { background-color: #d63384; color: white; } /* > 20% */
+        .baja-media { background-color: #20c997; color: white; } /* > 10% */
+        .baja-baja { background-color: #e9ecef; color: #495057; } /* < 10% */
+        
+        /* ESTADOS */
+        .est-adjudicado { color: #fd7e14; font-weight: 800; font-size: 0.75rem; }
+        .est-formalizado { color: #0d6efd; font-weight: 800; font-size: 0.75rem; }
+        .est-cerrado { color: #198754; font-weight: 800; font-size: 0.75rem; }
+        
+        /* TEXTO */
+        .ganador { font-weight: 600; color: #2c3e50; max-width: 250px; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .entidad { font-size: 0.85rem; color: #6c757d; font-weight: 500; }
+        .objeto-link { text-decoration: none; color: #212529; font-weight: 600; }
+        .objeto-link:hover { color: #0d6efd; text-decoration: underline; }
+        
+        .monto { font-family: 'Consolas', monospace; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-    <div class="container py-4">
-        <h1 class="mb-4 text-center">ðŸ“Š Radar de ContrataciÃ³n PÃºblica Euskadi</h1>
-        <p class="text-center text-muted">Ãšltima actualizaciÃ³n: 27/01/2026 18:42</p>
-        
-        <div class="row">
-
-    <div class="col-md-6 col-lg-4">
-        <div class="card h-100">
-            <div class="card-header text-white d-flex justify-content-between align-items-center" style="background-color: #fd7e14">
-                <span class="badge badge-obra">OBRA</span>
-                <span class="small fw-bold">ADJUDICADO</span>
-            </div>
-            <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted">Desconocido</h6>
-                <h5 class="card-title"><a href="" target="_blank" class="text-decoration-none text-dark">ERROR...</a></h5>
-                <hr>
-                <p class="card-text">
-                    <strong>Ganador:</strong> <span class="ganador">---</span><br>
-                    <strong>Importe:</strong> <span class="price">0,00 â‚¬</span>
-                </p>
-                
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="mb-0 fw-bold text-secondary">📊 Monitor de Contratación Pública</h3>
+            <div class="text-end">
+                <span class="badge bg-secondary">Actualizado: 27/01/2026 19:23</span>
             </div>
         </div>
-    </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th width="5%">Tipo</th>
+                        <th width="8%">Estado</th>
+                        <th width="15%">Entidad</th>
+                        <th width="30%">Objeto</th>
+                        <th width="18%">Adjudicatario</th>
+                        <th width="8%" class="text-end">Base (s/IVA)</th>
+                        <th width="8%" class="text-end">Adj. (s/IVA)</th>
+                        <th width="8%" class="text-center">Baja</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td class="text-center"><span class="badge bg-warning text-dark">OBRA</span></td>
+                        <td class="est-adjudicado">ADJUDICADO</td>
+                        <td class="entidad">Desconocido</td>
+                        <td><a href="" target="_blank" class="objeto-link">ERROR</a></td>
+                        <td><span class="ganador" title="---">---</span></td>
+                        <td class="text-end text-muted monto">0</td>
+                        <td class="text-end fw-bold monto">-</td>
+                        <td class="text-center">
+                            <span class="badge badge-baja baja-baja">0.0%</span>
+                        </td>
+                    </tr>
     
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
