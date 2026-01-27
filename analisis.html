@@ -4,765 +4,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANÁLISIS ADJUDICACIONES</title>
+    <title>ANÁLISIS DE ADJUDICACIONES</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root { --primary: #2563eb; --bg: #f8fafc; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; padding: 20px; }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; }
-        th { text-align: left; padding: 12px; border-bottom: 2px solid #f1f5f9; color: #64748b; font-size: 0.8rem; text-transform: uppercase; }
-        td { padding: 12px; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; }
-        .baja-pill { padding: 4px 8px; border-radius: 6px; font-weight: 700; font-size: 0.8rem; }
+        :root { --primary: #2563eb; --bg: #f8fafc; --text-main: #0f172a; --grid-layout: 1fr 140px 140px 100px 60px; }
+        * { box-sizing: border-box; }
+        body { background-color: var(--bg); font-family: 'Inter', sans-serif; margin: 0; padding: 0; color: var(--text-main); overflow: hidden; }
+        
+        .app-header { height: 60px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; z-index: 50; position:relative; }
+        .app-brand { font-weight: 800; font-size: 1.2rem; color: #1e293b; display: flex; align-items: center; gap: 10px; }
+        .nav-pills { display: flex; gap: 5px; background: #f1f5f9; padding: 4px; border-radius: 8px; }
+        .nav-item { padding: 6px 15px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: #64748b; transition: all 0.2s; }
+        .nav-item.active { background: white; color: var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        
+        .app-container { display: flex; height: calc(100vh - 60px); width: 100vw; }
+        .sidebar { width: 280px; background: #ffffff; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; padding: 20px 0; overflow-y: auto; }
+        .main-content { flex: 1; display: flex; flex-direction: column; background: #f1f5f9; overflow: hidden; }
+        
+        .sb-title { font-size: 0.7rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin: 15px 25px 8px; }
+        .filter-row { display: flex; justify-content: space-between; padding: 10px 25px; font-size: 0.85rem; cursor: pointer; font-weight: 500; }
+        .filter-row.active { background: #eff6ff; color: var(--primary); border-left: 3px solid var(--primary); }
+        
+        .top-deck { background: white; padding: 15px 30px; border-bottom: 1px solid #e2e8f0; }
+        .kpi-row { display: flex; gap: 15px; margin-bottom: 15px; }
+        .kpi-box { flex: 1; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; }
+        .k-blue { background: #eff6ff; color: #1e40af; border-color: #dbeafe; }
+        .k-green { background: #ecfdf5; color: #065f46; border-color: #d1fae5; }
+        .kpi-val { font-size: 1.5rem; font-weight: 800; }
+        
+        .grid-header { display: grid; grid-template-columns: var(--grid-layout); gap: 10px; padding: 10px 30px; background: #e2e8f0; font-size: 0.7rem; font-weight: 800; color: #475569; }
+        .list-container { flex: 1; overflow-y: auto; padding: 20px 30px; }
+        .row-item { display: grid; grid-template-columns: var(--grid-layout); gap: 10px; padding: 15px 20px; background: white; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; align-items: center; }
+        .ri-win { font-weight: 700; color: var(--primary); }
+        .baja-pill { padding: 4px 8px; border-radius: 6px; font-weight: 800; text-align: center; }
         .b-verde { background: #dcfce7; color: #166534; }
         .b-naranja { background: #ffedd5; color: #9a3412; }
         .b-roja { background: #fee2e2; color: #991b1b; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🏆 Monitor de Adjudicaciones</h1>
-        <a href="index.html" style="text-decoration:none; color:var(--primary); font-weight:700;">← Volver a Licitaciones</a>
+<div class="app-header">
+    <div class="app-brand"><i class="fa-solid fa-trophy"></i> ANÁLISIS</div>
+    <div class="nav-pills">
+        <div class="nav-item active" onclick="switchCat('obras', this)">OBRAS</div>
+        <div class="nav-item" onclick="switchCat('servicios', this)">SERVICIOS</div>
     </div>
-    
-    <div class="card">
-        <table>
-            <thead>
-                <tr>
-                    <th>Entidad</th>
-                    <th>Objeto</th>
-                    <th>Ganador (WIN)</th>
-                    <th>P. Base</th>
-                    <th>P. Adjudicado</th>
-                    <th>Baja %</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                <tr>
-                    <td>Ayuntamiento de Zumaia...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso665562/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025IKIE0037 - Ejecución del Proyecto de habilitación de ser...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>201,318€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Irun...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645869/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2024ZAUN0072 - Reurbanización de la plaza situada en la call...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>258,525€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>SPRILUR, S.A....</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso653616/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">SPRILUR18/2025 - Obras de Electrificación de la A.U. “ZU.08 ...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>796,376€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Euskal Trenbide Sarea...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645650/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">P20027075 - Obra de señalización y comunicaciones de la Vari...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>2,117,228€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Sociedad Pública de Vivienda de Irun, S....</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso634988/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025PAOB01 - Procedimiento abierto ordinario mediante tramit...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>24,815,261€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Gipuzkoako Urak...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expek_guk8483/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">06002001 - Proyecto para la construcción de la etap ataun...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>387,076€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Consultar...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso655736/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">537K - Servicio de dirección facultativa completa y ejecució...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>47,132€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Euskal Trenbide Sarea...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso641992/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">Emergencia Zudigarai 2025 - Obra de emergencia por abombamie...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>1,044,925€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Zizurkil...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso663522/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025IKIE0006 - Obras para la rehabilitación energética integ...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>323,539€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Gipuzkoako Urak...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expek_guk8019/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">90201046 - Mejora abastecimiento avenida bizkaia - ermua...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>231,431€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Euskal Trenbide Sarea...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso665890/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">P20027453 - Obra de reparación y aseguramiento de la trinche...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>542,499€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Diputación Foral de Gipuzkoa...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso652639/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025082CO330 - Ejecución de las obras correspondientes al pr...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>1,920,378€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>DEBEGESA-Sociedad para el Desarrollo Eco...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso634374/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">PA06-2025 -  “Adecuación y mejora de accesos peatonales y zo...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>166,996€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Consultar...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645142/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">524K - Servicio de dirección facultativa completa (dirección...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>228,790€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Alegia...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso514932/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2024-3 - Reforma del suelo urbano del barrio de Larraitz Eki...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>1,867,905€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Euskal Trenbide Sarea...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso660364/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">P20027279 - Obra de señalización del paso a nivel entre ande...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>108,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Urnieta...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso633916/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025ZOBR0003 - Adjudicación de las obras para la construcció...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>1,079,036€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Arrasate/Mondragón...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645871/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025CPOB0003 - Obras correspondientes al proyecto de activid...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>147,057€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Aretxabaleta...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso644447/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025IKIB0008 - Transformación del terreno en frente del poli...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>474,220€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Ikaztegieta...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso655899/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">204-2025 - Trabajos de demolición de las instalaciones de la...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>78,225€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Diputación Foral de Gipuzkoa...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso644434/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025080CO310 - Ejecución de las obras correspondientes al Pr...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>79,125€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Soraluze...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645491/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOSI0003 - Demolición de Kalebarren 24 y construcción de...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>366,719€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Aia...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso457970/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2023/3 - Obras de construcción del edificio auxiliar de las ...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>495,856€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Beizama...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645078/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KPOL0032 - Obras de reparación del camino del barrio de ...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>79,790€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Gipuzkoako Hondakinen Kudeaketa, S.A.U....</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso635393/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025_04 - Contrato de obras para la Instalación de Protecció...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>424,115€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Urretxu...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso533983/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">12/2024 - Obras para el abastecimiento de agua potable al en...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>94,043€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Gobierno Vasco...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645604/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">DER-CIV-GIP-15-2025 - Reparaciones en el firme del vial de a...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>32,983€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Consultar...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso630157/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">511K - Obras de reparación de caminos rurales en Azpeitia 20...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>187,581€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Antzuola...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso642678/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">KONT-004-2025 - Ejecución de la obra medioambientalmente sos...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>244,306€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Arama...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso639240/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">ARAMA2025/01 - Contratación de las obras del proyecto de urb...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>233,954€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Soraluze...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso635516/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOSI0001 - Reposición de adoquines entre SAPA y Baltegie...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>86,219€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Gipuzkoako Urak...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expek_guk7889/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">90159084 - Renovacion cruces abastecimiento carretera gi-263...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>124,735€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Diputación Foral de Gipuzkoa...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso627348/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">FA 384/2025 - Ejecución de las obras del proyecto de ampliac...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>222,624€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Segura...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso631682/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">4-2025 - Adecuación del edificio del Ambulatorio e instalaci...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>259,519€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Ataun...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso620572/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025/IKIE/0004 - Adjudicacion de los trabajos de rehabilitac...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>1,313,367€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Getaria...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso624278/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025IKIM0006 - Obra de construcción de un cobertizo en la pi...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>626,446€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Errenteria...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso642817/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025OLAN0007 - Obras de Asfaltado de calles. Contrato deriva...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>95,832€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Gipuzkoako Urak...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expek_guk7844/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">91174020 - San. bulandegi 7 cruce carretera - zizurkil...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>36,938€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Gipuzkoako Urak...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expek_guk8353/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">90202018 - Renovación rebose y bajadas deposito areitio - ma...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>129,988€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Orio...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso619232/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2/2025 NEGOZ OBRAK - Obras de construcción de nuevas aulas e...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>126,536€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>IZFE - Sociedad Foral de Servicios Infor...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso665829/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOER0073 - Mantenimiento modelo Bigdata Relaciones 2026...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>35,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>IZFE - Sociedad Foral de Servicios Infor...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso665832/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOER0072 - Mantenimiento DataWareHouse IKUS 2026...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>85,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>IZFE - Sociedad Foral de Servicios Infor...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664855/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOER0071 - ANS de mantenimiento y desarrollo web en Life...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>220,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>IZFE - Sociedad Foral de Servicios Infor...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664853/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOER0070 - ANS para las áreas de Cultura, Movilidad, Ord...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>220,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>IZFE - Sociedad Foral de Servicios Infor...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso663391/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOER0066 - Mantenimiento, desarrollo y soporte de las in...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>220,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>IZFE - Sociedad Foral de Servicios Infor...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664852/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOER0069 - ANS de mantenimiento y desarrollo en sistemas...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>220,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>IZFE - Sociedad Foral de Servicios Infor...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664851/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOER0068 - ANS de mantenimiento y desarrollo en sistemas...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>220,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Azkoitia...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso376226/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2022FORU0006 - Prevención de riesgos laborales (lote 6) y pr...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>8,984€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Consultar...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso662205/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">34/25 - Servicio de transporte en automóviles de turismo par...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>0€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Hernani...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso661984/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025PRIZ0020 - Contratación del servicio de consolidación y ...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>342,689€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Autoridad Territorial del Transporte de ...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso662082/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">E4-2025-02 - Asesoramiento fiscal, económico-financiero, con...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>30,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Oñati...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso624022/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025HG0002 - Servicio de gestión de la ludoteca municipal Tx...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>125,655€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Aretxabaleta...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso655368/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025IKIB0011 - Servicio limpieza viaria de Aretxabaleta...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>541,806€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Eibar...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso675384/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2024053EI LOTE 1-2026-01 - Adjudicación contratos derivados ...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>3,330€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Pasaia...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso575502/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2024IBPP0002 - Prestación del servicio de oficina técnica y ...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>122,982€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Fundación Ficoba...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso657849/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025-FF-005 - Contratación de los servicios de diseño y crea...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>31,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Beasain...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645840/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025ZEBO0055 - Contratación del servicio de limpieza de edif...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>500,526€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Centro de Investigación Cooperativa en N...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso661967/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025014 - Servicios de asesoría, gabinete de prensa y comuni...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>37,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Gobierno Vasco...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expgeura211959/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">URA/022A/2025 - Perfeccionamiento del régimen de caudales ec...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>210,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Irun...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso655844/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2024ZAUN0111 - Programa de Mediación Intercultural....</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>160,878€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Asociación Centro de Investigación Coope...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664312/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">BMG_2025-12-SERV - Maintenance service of Versaprobe III AD ...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>33,374€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Diputación Foral de Gipuzkoa...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664510/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">FA 692/2025 - Servicio de acogimiento residencial para 28 pe...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>889,344€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Euskal Trenbide Sarea...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso655795/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">P20027228 - Servicio de diseño, producción, gestión, montaje...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>43,200€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>SPRILUR, S.A....</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso653255/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">SPRILUR16/2025 - Redacción de proyecto y dirección de las ob...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>240,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Ordizia...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso663232/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025SCON0009 - Servicios para el diseño, organización y ejec...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>51,968€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Asociación Centro de Investigación Coope...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso651083/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">BMG_2025-13-SERV - Servicio de asesoramiento veterinario ext...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>116,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Ikaztegieta...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664939/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">226-2025 - Contrato de servicios del alojamiento, tienda y b...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>600€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>UPV/EHU - Universidad del País Vasco...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso640127/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">40/24 PA - Redacción del proyecto, construcción y posterior ...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>1€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>IZFE - Sociedad Foral de Servicios Infor...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso663390/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOER0064 - Contratación de servicios para el desarrollo,...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>220,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>IZFE - Sociedad Foral de Servicios Infor...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso661804/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOER0063 - Desarrollo de iniciativas para la Consola de ...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>200,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>IZFE - Sociedad Foral de Servicios Infor...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664689/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025KOER0060 - Contratación de servicios para desarrollo, ma...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>220,000€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>TXINZER...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso641118/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025SERV005 - Servicios de asesoramiento jurídico a Servicio...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>137,600€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Diputación Foral de Gipuzkoa...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso653421/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">X25023 - Acuerdo marco para la contratación de servicios de ...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>118,800€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Oiartzun...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso540072/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2024KO150001 - Contrato del servicio de recogida y cuidado d...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>73,600€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>BIDEGI Agencia Guipuzcoana de Infraestru...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso647746/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025JKIR0026 - Prestación de servicios para la redacción del...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>192,899€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Tolosaldea Garatzen, S.A....</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645002/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025TG0004 - Servicio de limpieza de las instalaciones de To...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>10,735€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Donostia Kultura...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645568/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025/14 - Servicio de mantenimiento del conjunto escultórico...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>34,060€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>VISESA - Vivienda y Suelo de Euskadi, S....</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso646077/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">CON-250471 - Servicios de redacción del proyecto edificatori...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>366,176€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Mancomunidad Comarcal de Debabarrena...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso668142/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">16/25-D - Seguro de Responsabilidad Civil Patronal de la act...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>14,909€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-                <tr>
-                    <td>Ayuntamiento de Errenteria...</td>
-                    <td><a href="https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso640994/es_doc/index.html" target="_blank" style="color:#0f172a; text-decoration:none;">2025OZER0012 - Servicio de mantenimiento de hidrantes, extin...</a></td>
-                    <td style="font-weight:700; color:var(--primary);">Desconocido</td>
-                    <td>55,820€</td>
-                    <td>0€</td>
-                    <td><span class="baja-pill b-verde">0.0%</span></td>
-                </tr>
-                
-            </tbody>
-        </table>
+    <div class="header-actions">
+        <a href="index.html" class="nav-item" style="text-decoration:none">← LICITACIONES</a>
     </div>
+</div>
+<div class="app-container">
+    <div class="sidebar">
+        <div class="sb-title">VISTA DE DATOS</div>
+        <div class="filter-row active" onclick="setMode('entities', this)"><i class="fa-solid fa-building"></i> ENTIDADES</div>
+        <div class="filter-row" onclick="setMode('winners', this)"><i class="fa-solid fa-crown"></i> WIN (GANADORES)</div>
+        <div id="sidebar-items"></div>
+    </div>
+    <div class="main-content">
+        <div class="top-deck">
+            <div class="kpi-row">
+                <div class="kpi-box k-blue">
+                    <div class="kpi-val" id="k-total">0 €</div>
+                    <div style="font-size:0.7rem; font-weight:700">VOLUMEN TOTAL</div>
+                </div>
+                <div class="kpi-box k-green">
+                    <div class="kpi-val" id="k-baja">0 %</div>
+                    <div style="font-size:0.7rem; font-weight:700">BAJA MEDIA</div>
+                </div>
+            </div>
+            <input type="text" id="search" placeholder="Buscar por ganador u objeto..." style="width:100%; padding:10px; border-radius:8px; border:1px solid #cbd5e1;" onkeyup="render()">
+        </div>
+        <div class="grid-header">
+            <div>DESCRIPCIÓN / GANADOR</div>
+            <div>P. BASE</div>
+            <div>P. ADJUDICADO</div>
+            <div style="text-align:center">BAJA %</div>
+            <div style="text-align:center">LINK</div>
+        </div>
+        <div class="list-container" id="list"></div>
+    </div>
+</div>
+<script>
+    const data = [{"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2025IKIE0037 - Ejecuci\u00f3n del Proyecto de habilitaci\u00f3n de servicios p\u00fablicos en la playa de Santiago, Fase 1, financiado por la Uni\u00f3n Europea NextGenerationEU", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso665562/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2024ZAUN0072 - Reurbanizaci\u00f3n de la plaza situada en la calle Lapurdi", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645869/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "SPRILUR18/2025 - Obras de Electrificaci\u00f3n de la A.U. \u201cZU.08 Eskuzaitzeta\u201d de Donostia (Fase 3)", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso653616/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "P20027075 - Obra de se\u00f1alizaci\u00f3n y comunicaciones de la Variante de Altzola", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645650/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2025PAOB01 - Procedimiento abierto ordinario mediante tramitaci\u00f3n ordinaria para la adjudicaci\u00f3n del contrato para la ejecuci\u00f3n de las obras previstas en el Proyecto de Urbanizaci\u00f3n del \u00e1mbito 3.1.01. San Miguel-A", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso634988/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "06002001 - Proyecto para la construcci\u00f3n de la etap ataun", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expek_guk8483/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "537K - Servicio de direcci\u00f3n facultativa completa y ejecuci\u00f3n de la obra de urbanizaci\u00f3n de la zona de las paradas de autob\u00fas del barrio de Sanjuandegi", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso655736/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "Emergencia Zudigarai 2025 - Obra de emergencia por abombamiento del hastial en el PK 88/500 del t\u00fanel de Zudigarai", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso641992/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2025IKIE0006 - Obras para la rehabilitaci\u00f3n energ\u00e9tica integral de la envolvente de la casa de cultura Atxulondo de Zizurkil, financiado por NEXT GENERATION", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso663522/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "90201046 - Mejora abastecimiento avenida bizkaia - ermua", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expek_guk8019/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "P20027453 - Obra de reparaci\u00f3n y aseguramiento de la trinchera entre los Pks 81+450 y 81+600 de la l\u00ednea Bilbao-Donostia", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso665890/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2025082CO330 - Ejecuci\u00f3n de las obras correspondientes al proyecto de Rehabilitaci\u00f3n de la Universidad Sancti Spiritus de O\u00f1ati \u2013 fase 1\u00aa: Restauraci\u00f3n de las fachadas exteriores y las fachadas del claustro, en el m", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso652639/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "PA06-2025 -  \u201cAdecuaci\u00f3n y mejora de accesos peatonales y zonas de interpretaci\u00f3n de las cuevas de Praileaitz y Ermittia en Deba\u201d enmarcado en el Plan de Recuperaci\u00f3n, Transformaci\u00f3n y Resiliencia financiado por", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso634374/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "524K - Servicio de direcci\u00f3n facultativa completa (direcci\u00f3n de obra, direcci\u00f3n de ejecuci\u00f3n y coordinaci\u00f3n de seguridad y salud) y ejecuci\u00f3n del proyecto de la obra de ampliaci\u00f3n de la marquesina  frente al", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645142/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2024-3 - Reforma del suelo urbano del barrio de Larraitz Ekialde, con un proyecto de mejora y regeneraci\u00f3n de la accesibilidad.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso514932/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "P20027279 - Obra de se\u00f1alizaci\u00f3n del paso a nivel entre andenes y adaptaci\u00f3n de circuitos de v\u00eda en la estaci\u00f3n de Errenteria", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso660364/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2025ZOBR0003 - Adjudicaci\u00f3n de las obras para la construcci\u00f3n de rampas mec\u00e1nicas en la calle Aranzubi", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso633916/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2025CPOB0003 - Obras correspondientes al proyecto de actividad y acondicionamiento del Gaztetxoko del barrio de San Andres", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645871/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2025IKIB0008 - Transformaci\u00f3n del terreno en frente del polideportivo de Aretxabaleta en parque construyendo un parque acu\u00e1tico sin profundidad y un aseo autolimpiable", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso644447/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "204-2025 - Trabajos de demolici\u00f3n de las instalaciones de la empresa EPAK SA de Ikaztegieta", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso655899/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2025080CO310 - Ejecuci\u00f3n de las obras correspondientes al Proyecto de Demolici\u00f3n de la Casa de Camineros de Arroa (Zestoa) y sus anejos.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso644434/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2025KOSI0003 - Demolici\u00f3n de Kalebarren 24 y construcci\u00f3n de gradas", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645491/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2023/3 - Obras de construcci\u00f3n del edificio auxiliar de las piscinas municipales", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso457970/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2025KPOL0032 - Obras de reparaci\u00f3n del camino del barrio de Agi\u00f1amendi de Beizama.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645078/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "2025_04 - Contrato de obras para la Instalaci\u00f3n de Protecci\u00f3n Contraincendios de la planta de separaci\u00f3n y clasificaci\u00f3n de envases ligeros en Legazpi", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso635393/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "12/2024 - Obras para el abastecimiento de agua potable al entorno de Santa Barbara.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso533983/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "DER-CIV-GIP-15-2025 - Reparaciones en el firme del vial de acceso al puerto de Zumaia", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645604/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "511K - Obras de reparaci\u00f3n de caminos rurales en Azpeitia 2025.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso630157/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "KONT-004-2025 - Ejecuci\u00f3n de la obra medioambientalmente sostenible para la renovaci\u00f3n del c\u00e9sped artificial del campo de f\u00fatbol 11 Eztala en Antzuola.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso642678/es_doc/index.html"}, {"categoria": "obras", "entidad": "Gobierno Vasco", "objeto": "ARAMA2025/01 - Contrataci\u00f3n de las obras del proyecto de urbanizaci\u00f3n: mejora de la accesibilidad del n\u00facleo urbano de Arama mediante la creaci\u00f3n de una plataforma \u00fanica.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso639240/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025KOER0073 - Mantenimiento modelo Bigdata Relaciones 2026", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso665829/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025KOER0072 - Mantenimiento DataWareHouse IKUS 2026", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso665832/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025KOER0071 - ANS de mantenimiento y desarrollo web en Liferay para las \u00e1reas de DFG, Ayuntamientos y Entidades Forales", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664855/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025KOER0070 - ANS para las \u00e1reas de Cultura, Movilidad, Ordenaci\u00f3n del Territorio, Bidegi y Servicios", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664853/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025KOER0066 - Mantenimiento, desarrollo y soporte de las interfaces comunes de las aplicaciones corporativas", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso663391/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025KOER0069 - ANS de mantenimiento y desarrollo en sistemas de Bomberos", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664852/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025KOER0068 - ANS de mantenimiento y desarrollo en sistemas de Funci\u00f3n P\u00fablica", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664851/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2022FORU0006 - Prevenci\u00f3n de riesgos laborales (lote 6) y preparaci\u00f3n y mantenimiento de planes de autoprotecci\u00f3n (lote 7) mediante la Central de Contrataci\u00f3n Foral derivado de acuerdo marco.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso376226/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "34/25 - Servicio de transporte en autom\u00f3viles de turismo para determinados empleados de CTSS", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso662205/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025PRIZ0020 - Contrataci\u00f3n del servicio de consolidaci\u00f3n y ampliaci\u00f3n de auzozaintza, red p\u00fablica-comunitaria de cuidados.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso661984/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "E4-2025-02 - Asesoramiento fiscal, econ\u00f3mico-financiero, contable y laboral de la ATTG", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso662082/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025HG0002 - Servicio de gesti\u00f3n de la ludoteca municipal Txaloka y coordinaci\u00f3n de las colonias abiertas de O\u00f1ati", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso624022/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025IKIB0011 - Servicio limpieza viaria de Aretxabaleta", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso655368/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2024053EI LOTE 1-2026-01 - Adjudicaci\u00f3n contratos derivados del Acuerdo Marco para determinar las empresas a las que se podr\u00e1n adjudicar contratos para la prestaci\u00f3n de servicios de asesoramiento jur\u00eddico y direcci\u00f3n letrada de", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso675384/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2024IBPP0002 - Prestaci\u00f3n del servicio de oficina t\u00e9cnica y de gesti\u00f3n de proximidad de Andonaegi. Plan de Recuperaci\u00f3n, Transformaci\u00f3n y Resilencia-financiado por la Uni\u00f3n Europea-Next GenerationEU.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso575502/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025-FF-005 - Contrataci\u00f3n de los servicios de dise\u00f1o y creatividad, adaptaciones, maquetaci\u00f3n, realizaci\u00f3n y ejecuci\u00f3n de elementos de comunicaci\u00f3n corporativa y de los distintos productos que comercializa FUNDACI", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso657849/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025ZEBO0055 - Contrataci\u00f3n del servicio de limpieza de edificios y locales municipales de Beasain", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso645840/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025014 - Servicios de asesor\u00eda, gabinete de prensa y comunicaci\u00f3n", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso661967/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "URA/022A/2025 - Perfeccionamiento del r\u00e9gimen de caudales ecol\u00f3gicos en la Comunidad Aut\u00f3noma del Pa\u00eds Vasco", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expgeura211959/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2024ZAUN0111 - Programa de Mediaci\u00f3n Intercultural.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso655844/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "BMG_2025-12-SERV - Maintenance service of Versaprobe III AD (XPS)", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664312/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "FA 692/2025 - Servicio de acogimiento residencial para 28 personas menores extranjeras no acompa\u00f1adas", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664510/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "P20027228 - Servicio de dise\u00f1o, producci\u00f3n, gesti\u00f3n, montaje y desmontaje de un stand en Mubil Mobility expo 2026", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso655795/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "SPRILUR16/2025 - Redacci\u00f3n de proyecto y direcci\u00f3n de las obras de reurbanizaci\u00f3n del Pol\u00edgono Industrial Xey en Oikia (Zumaia)", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso653255/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025SCON0009 - Servicios para el dise\u00f1o, organizaci\u00f3n y ejecuci\u00f3n de actividades de Oiantu Natur Eskola en el parque Oianguren", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso663232/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "BMG_2025-13-SERV - Servicio de asesoramiento veterinario externo para CIC biomaGUNE", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso651083/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "226-2025 - Contrato de servicios del alojamiento, tienda y bar de Ikaztegieta, siguiendo los criterios ling\u00fc\u00edsticos del Ayuntamiento de Ikaztegieta", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso664939/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "40/24 PA - Redacci\u00f3n del proyecto, construcci\u00f3n y posterior explotaci\u00f3n de una nueva residencia universitaria en el Campus de Gipuzkoa de la UPV/EHU.", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso640127/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025KOER0064 - Contrataci\u00f3n de servicios para el desarrollo, mantenimiento y asistencia t\u00e9cnica de aplicaciones para la Subdirecci\u00f3n de Estrategia Tecnol\u00f3gica, Atenci\u00f3n Ciudadana, Tribunal Econ\u00f3mico-Administrativo F", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso663390/es_doc/index.html"}, {"categoria": "servicios", "entidad": "Gobierno Vasco", "objeto": "2025KOER0063 - Desarrollo de iniciativas para la Consola de Automatizaci\u00f3n", "ganador": "Desconocido", "presupuesto_num": 0.0, "adjudicado_num": 0.0, "baja": 0.0, "logo": "https://www.contratacion.euskadi.eus/images/webkpe00-euskadieus-logotipoa.gif", "link": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso661804/es_doc/index.html"}];
+    let currentCat = 'obras'; let sidebarMode = 'entities'; let activeFilter = null;
+
+    function switchCat(cat, el) {
+        currentCat = cat;
+        document.querySelectorAll('.nav-pills .nav-item').forEach(x => x.classList.remove('active'));
+        el.classList.add('active');
+        activeFilter = null;
+        renderSidebar(); render();
+    }
+
+    function setMode(mode, el) {
+        sidebarMode = mode;
+        document.querySelectorAll('.filter-row').forEach(x => x.classList.remove('active'));
+        el.classList.add('active');
+        activeFilter = null;
+        renderSidebar(); render();
+    }
+
+    function renderSidebar() {
+        const container = document.getElementById('sidebar-items');
+        container.innerHTML = '';
+        const filtered = data.filter(d => d.categoria === currentCat);
+        const counts = {};
+        const field = sidebarMode === 'entities' ? 'entidad' : 'ganador';
+        
+        filtered.forEach(d => { counts[d[field]] = (counts[d[field]] || 0) + 1; });
+        
+        Object.entries(counts).sort((a,b)=>b[1]-a[1]).forEach(([name, count]) => {
+            const div = document.createElement('div');
+            div.className = 'filter-row' + (activeFilter === name ? ' active' : '');
+            div.innerHTML = `<span>${name.substring(0,25)}...</span><strong>${count}</strong>`;
+            div.onclick = () => { activeFilter = name; renderSidebar(); render(); };
+            container.appendChild(div);
+        });
+    }
+
+    function render() {
+        const list = document.getElementById('list');
+        const search = document.getElementById('search').value.toLowerCase();
+        let filtered = data.filter(d => d.categoria === currentCat);
+        
+        if(activeFilter) filtered = filtered.filter(d => (sidebarMode === 'entities' ? d.entidad : d.ganador) === activeFilter);
+        if(search) filtered = filtered.filter(d => d.objeto.toLowerCase().includes(search) || d.ganador.toLowerCase().includes(search));
+
+        list.innerHTML = '';
+        let total = 0; let totalBaja = 0;
+
+        filtered.forEach(d => {
+            total += d.adjudicado_num;
+            totalBaja += d.baja;
+            const bCls = d.baja > 15 ? 'b-roja' : (d.baja > 5 ? 'b-naranja' : 'b-verde');
+            list.innerHTML += `
+                <div class="row-item">
+                    <div>
+                        <div style="font-size:0.7rem; color:#64748b">${d.entidad}</div>
+                        <div style="font-weight:600; margin-bottom:4px">${d.objeto}</div>
+                        <div class="ri-win"><i class="fa-solid fa-crown"></i> ${d.ganador}</div>
+                    </div>
+                    <div style="font-weight:600">${d.presupuesto_num.toLocaleString()}€</div>
+                    <div style="font-weight:800; color:var(--primary)">${d.adjudicado_num.toLocaleString()}€</div>
+                    <div style="display:flex; justify-content:center"><span class="baja-pill ${bCls}">${d.baja}%</span></div>
+                    <div style="text-align:center"><a href="${d.link}" target="_blank" style="color:var(--primary)"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+                </div>`;
+        });
+
+        document.getElementById('k-total').innerText = total.toLocaleString() + ' €';
+        document.getElementById('k-baja').innerText = (filtered.length ? (totalBaja/filtered.length).toFixed(2) : 0) + ' %';
+    }
+
+    renderSidebar(); render();
+</script>
 </body>
 </html>
