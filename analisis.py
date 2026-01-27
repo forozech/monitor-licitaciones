@@ -1,5 +1,5 @@
 # ==============================================================================
-# MONITOR DE CONTRATACIÓN EUSKADI - V49 "VITAMINADA" (TABLA + BAJAS + SERVICIOS)
+# MONITOR EUSKADI - V49 ULTIMATE (ESTÉTICA TABLA + MOTOR COMPLETO)
 # ==============================================================================
 
 import requests
@@ -12,21 +12,20 @@ import urllib3
 # Evitar advertencias de certificados en webs antiguas
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# --- 1. CONFIGURACIÓN DE FUENTES (OBRAS Y SERVICIOS) ---
-# Incluimos Adjudicados (p02=5), Formalizados (p02=8) y Cerrados (p02=14)
+# --- 1. FUENTES DE DATOS (EL MOTOR COMPLETO) ---
 SOURCES = [
-    # OBRAS
+    # OBRAS (p01=1)
     {"tipo": "OBRA", "estado": "ADJUDICADO",  "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=5&idioma=es"},
     {"tipo": "OBRA", "estado": "FORMALIZADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=8&p11=01/01/2025&idioma=es"},
     {"tipo": "OBRA", "estado": "CERRADO",     "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=14&p11=01/01/2025&idioma=es"},
     
-    # SERVICIOS
+    # SERVICIOS (p01=2)
     {"tipo": "SERV", "estado": "ADJUDICADO",  "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=5&idioma=es"},
     {"tipo": "SERV", "estado": "FORMALIZADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=8&p11=01/01/2025&idioma=es"},
     {"tipo": "SERV", "estado": "CERRADO",     "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=14&p11=01/01/2025&idioma=es"}
 ]
 
-HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
 
 def limpiar_precio(texto):
     """Convierte texto sucio '1.500,00 €' a float 1500.00"""
@@ -37,7 +36,7 @@ def limpiar_precio(texto):
     except: return 0.0
 
 def extraer_datos_contrato(url):
-    """Scraping profundo: Saca Entidad, Ganador y Precios"""
+    """Entra en la ficha y saca: Entidad, Ganador y Precios"""
     res = {
         "entidad": "Desconocido",
         "ganador": "---",
@@ -46,7 +45,7 @@ def extraer_datos_contrato(url):
     }
     try:
         r = requests.get(url, headers=HEADERS, verify=False, timeout=10)
-        r.encoding = r.apparent_encoding # Forzar UTF-8 real
+        r.encoding = r.apparent_encoding # Forzar UTF-8
         soup = BeautifulSoup(r.content, 'html.parser')
         
         # Búsqueda en tablas
@@ -70,7 +69,7 @@ def extraer_datos_contrato(url):
                 if "presupuesto base de licitaci" in lab and "sin iva" in lab:
                     res["base"] = limpiar_precio(val)
 
-                # 4. PRECIO ADJUDICADO (El precio real final sin IVA)
+                # 4. PRECIO FINAL (Adjudicación / Formalización / Liquidación)
                 if any(x in lab for x in ["importe de adjudicaci", "importe de formalizaci", "importe de liquidaci"]):
                     if "sin iva" in lab:
                         res["final"] = limpiar_precio(val)
@@ -82,13 +81,13 @@ def extraer_datos_contrato(url):
 resultados = []
 links_procesados = set()
 
-print(f"🚀 INICIANDO ESCANEO TIPO V49... {datetime.now().strftime('%H:%M:%S')}")
+print(f"🚀 INICIANDO ANÁLISIS V49 (COMPLETO) - {datetime.now().strftime('%H:%M:%S')}")
 
 for src in SOURCES:
     try:
         r = requests.get(src['url'], headers=HEADERS, verify=False, timeout=15)
         soup = BeautifulSoup(r.content, 'xml')
-        items = soup.find_all('item')[:15] # Top 15 de cada fuente
+        items = soup.find_all('item')[:15] # 15 últimos de cada fuente
 
         for item in items:
             link = item.link.text
@@ -138,7 +137,7 @@ html = f"""
         body {{ font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; background: #f8f9fa; }}
         .container-fluid {{ padding: 25px; }}
         
-        /* ESTILOS TABLA V49 */
+        /* ESTILOS TABLA V49 (CLEAN) */
         .table {{ background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }}
         thead {{ background: #2c3e50; color: white; }}
         th {{ font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; vertical-align: middle; }}
@@ -150,10 +149,12 @@ html = f"""
         .baja-media {{ background-color: #20c997; color: white; }} /* > 10% */
         .baja-baja {{ background-color: #e9ecef; color: #495057; }} /* < 10% */
         
+        /* ESTADOS */
         .est-adjudicado {{ color: #fd7e14; font-weight: 800; font-size: 0.75rem; }}
         .est-formalizado {{ color: #0d6efd; font-weight: 800; font-size: 0.75rem; }}
         .est-cerrado {{ color: #198754; font-weight: 800; font-size: 0.75rem; }}
         
+        /* TEXTO */
         .ganador {{ font-weight: 600; color: #2c3e50; max-width: 250px; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }}
         .entidad {{ font-size: 0.85rem; color: #6c757d; font-weight: 500; }}
         .objeto-link {{ text-decoration: none; color: #212529; font-weight: 600; }}
@@ -234,4 +235,4 @@ html += """
 with open("analisis.html", "w", encoding="utf-8") as f:
     f.write(html)
 
-print(f"✅ ANÁLISIS COMPLETADO: {len(resultados)} registros procesados.")
+print(f"✅ ANÁLISIS COMPLETADO: {len(resultados)} registros procesados en 'analisis.html'.")
