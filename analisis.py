@@ -1,191 +1,230 @@
 # ==============================================================================
-# MONITOR DE LICITACIONES EUSKADI - V6 (OBRAS + SERVICIOS + FONDOS UE)
+# MONITOR DE ADJUDICACIONES EUSKADI - V8 (FINALIZADOS + ADJUDICATARIOS)
 # ==============================================================================
 
 import requests
 from bs4 import BeautifulSoup
-import json
 import re
 import time
 from datetime import datetime
 import urllib3
-import os
 
-# Desactivar advertencias de certificados SSL (comÃºn en webs gubernamentales antiguas)
+# Evitar errores de certificado en webs antiguas
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# --- CONFIGURACIÃ“N DE FUENTES (OBRAS Y SERVICIOS) ---
-# p01=1 (Obras), p01=2 (Servicios)
-# p02=5 (AdjudicaciÃ³n), p02=8 (Formalizado), p02=14 (Finalizado)
+# --- 1. CONFIGURACIÓN DE FUENTES (OBRAS Y SERVICIOS) ---
+# Hemos recuperado los FINALIZADOS (p02=14)
 SOURCES = [
-    # --- OBRAS ---
-    {"tipo": "OBRA", "estado": "ADJUDICADO",  "color": "orange", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=5&idioma=es"},
-    {"tipo": "OBRA", "estado": "FORMALIZADO", "color": "blue",   "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=8&p11=01/01/2025&idioma=es"},
-    {"tipo": "OBRA", "estado": "FINALIZADO",  "color": "green",  "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=14&p11=01/01/2025&idioma=es"},
+    # OBRAS (p01=1)
+    {"tipo": "OBRA", "estado": "ADJUDICADO",  "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=5&idioma=es"},
+    {"tipo": "OBRA", "estado": "FORMALIZADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=8&p11=01/01/2025&idioma=es"},
+    {"tipo": "OBRA", "estado": "FINALIZADO",  "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=14&p11=01/01/2025&idioma=es"},
     
-    # --- SERVICIOS ---
-    {"tipo": "SERVICIO", "estado": "ADJUDICADO",  "color": "orange", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=5&idioma=es"},
-    {"tipo": "SERVICIO", "estado": "FORMALIZADO", "color": "blue",   "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=8&p11=01/01/2025&idioma=es"},
-    {"tipo": "SERVICIO", "estado": "FINALIZADO",  "color": "green",  "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=14&p11=01/01/2025&idioma=es"}
+    # SERVICIOS (p01=2)
+    {"tipo": "SERV", "estado": "ADJUDICADO",  "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=5&idioma=es"},
+    {"tipo": "SERV", "estado": "FORMALIZADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=8&p11=01/01/2025&idioma=es"},
+    {"tipo": "SERV", "estado": "FINALIZADO",  "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=14&p11=01/01/2025&idioma=es"}
 ]
 
-HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
 
 def limpiar_precio(texto):
+    """Convierte '1.200,50 €' a float 1200.50"""
     if not texto: return 0.0
     try:
-        clean = re.sub(r'[^\d,]', '', texto)
+        clean = re.sub(r'[^\d,]', '', texto) # Quitar todo menos números y comas
         return float(clean.replace(',', '.')) if clean else 0.0
     except: return 0.0
 
-def extraer_detalles(url):
-    """Extrae ganador, importe final, plazos y si tiene fondos europeos"""
+def extraer_datos_financieros(url):
+    """Entra en la ficha y saca: Ganador, Presupuesto Base y Precio Adjudicado"""
     res = {
-        "ganador": "---", 
-        "importe": 0.0, 
-        "entidad": "Desconocido", 
-        "plazo": "",
-        "europeo": False
+        "entidad": "Desconocido",
+        "ganador": "---",
+        "base": 0.0,
+        "adjudicado": 0.0
     }
     try:
         r = requests.get(url, headers=HEADERS, verify=False, timeout=10)
+        r.encoding = r.apparent_encoding
         soup = BeautifulSoup(r.content, 'html.parser')
-        texto_pag = soup.get_text().upper()
-
-        # DetecciÃ³n de Fondos Europeos
-        if any(x in texto_pag for x in ["NEXTGENERATION", "PRTR", "FONDO EUROPEO", "FINANCIADO POR LA UN"]):
-            res["europeo"] = True
-
+        
+        # Recorremos la tabla de datos
         for row in soup.find_all('tr'):
             th = row.find('th')
             td = row.find('td')
             if th and td:
-                lab = th.get_text().lower()
+                lab = th.get_text().lower().strip()
                 val = td.get_text().strip()
                 
-                # Entidad
-                if "poder adjudicador" in lab: res["entidad"] = val
-                # Ganador
-                if any(x in lab for x in ["adjudicatario", "contratista", "empresa"]): 
-                    res["ganador"] = val.split('\n')[0]
-                # Importe (prioriza el de adjudicaciÃ³n/formalizaciÃ³n sin IVA)
-                if any(x in lab for x in ["importe de adjudicaci", "importe de formalizaci", "precio de adjudicaci"]):
-                    if "sin iva" in lab and res["importe"] == 0.0:
-                        res["importe"] = limpiar_precio(val)
-                # Plazo
-                if "plazo de ejecuci" in lab: res["plazo"] = val
+                # 1. ENTIDAD
+                if "poder adjudicador" in lab:
+                    res["entidad"] = val
 
+                # 2. GANADOR (Adjudicatario / Contratista / Empresa)
+                # Buscamos variantes para asegurar que lo pilla
+                if any(x in lab for x in ["adjudicatario", "contratista", "empresa adjudicataria", "identidad"]):
+                    # Cogemos solo la primera línea (el nombre) y quitamos el CIF si sale debajo
+                    if len(val) > 2: res["ganador"] = val.split('\n')[0]
+
+                # 3. PRESUPUESTO BASE (Sin IVA)
+                if "presupuesto base de licitaci" in lab and "sin iva" in lab:
+                    res["base"] = limpiar_precio(val)
+
+                # 4. PRECIO FINAL (Adjudicación o Liquidación)
+                # En finalizados a veces se llama "Importe de liquidación"
+                if any(x in lab for x in ["importe de adjudicaci", "importe de formalizaci", "importe de liquidaci"]):
+                    if "sin iva" in lab:
+                        res["adjudicado"] = limpiar_precio(val)
+        
         return res
     except: return res
 
-# --- PROCESO PRINCIPAL ---
+# --- PROCESAMIENTO ---
 resultados = []
-links_procesados = set()
+links_vistos = set()
 
-print("ðŸš€ INICIANDO ESCANEO DE EUSKADI...")
+print("🔄 ESCANEANDO TODO EL CICLO (ADJUDICADO -> FORMALIZADO -> FINALIZADO)...")
 
 for src in SOURCES:
     try:
-        print(f"ðŸ”Ž Leyendo: {src['tipo']} - {src['estado']}...")
         r = requests.get(src['url'], headers=HEADERS, verify=False, timeout=20)
         soup = BeautifulSoup(r.content, 'xml')
-        items = soup.find_all('item')[:15] # Leemos los 15 mÃ¡s recientes de cada tipo
+        items = soup.find_all('item')[:15] # 15 de cada tipo
 
         for item in items:
             link = item.link.text
-            if link in links_procesados: continue
-            links_procesados.add(link)
-
-            titulo = item.title.text
-            data = extraer_detalles(link)
+            if link in links_vistos: continue
+            links_vistos.add(link)
             
-            # PequeÃ±a pausa para no saturar el servidor
-            time.sleep(0.3)
+            titulo = item.title.text
+            
+            # Extraemos los datos duros
+            data = extraer_datos_financieros(link)
+            time.sleep(0.2) # Pausa cortés
+
+            # Cálculo de la BAJA (%)
+            baja = 0.0
+            if data["base"] > 0 and data["adjudicado"] > 0:
+                baja = ((data["base"] - data["adjudicado"]) / data["base"]) * 100
+            
+            # Filtro visual para ganadores vacíos
+            ganador_final = data["ganador"] if len(data["ganador"]) > 3 else "Consultar Ficha"
 
             resultados.append({
                 "tipo": src['tipo'],
                 "estado": src['estado'],
-                "color_estado": src['color'],
-                "titulo": titulo,
                 "entidad": data["entidad"],
-                "ganador": data["ganador"],
-                "importe": data["importe"],
-                "europeo": data["europeo"],
+                "objeto": titulo,
+                "ganador": ganador_final,
+                "base": data["base"],
+                "adjudicado": data["adjudicado"],
+                "baja": round(baja, 2),
                 "link": link
             })
+            
     except Exception as e:
-        print(f"Error en fuente: {e}")
+        print(f"Error en {src['url']}: {e}")
 
-# --- GENERACIÃ“N DEL HTML ---
-html_content = f"""
+# --- GENERACIÓN DEL HTML (TABLA V4) ---
+html = f"""
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitor de Licitaciones Euskadi</title>
+    <title>Monitor de Contratación Euskadi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {{ background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }}
-        .badge-obra {{ background-color: #6f42c1; color: white; }}
-        .badge-servicio {{ background-color: #0d6efd; color: white; }}
-        .badge-eu {{ background-color: #ffc107; color: black; font-weight: bold; }}
-        .card {{ margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; }}
-        .price {{ font-size: 1.2em; font-weight: bold; color: #2c3e50; }}
-        .ganador {{ color: #198754; font-weight: 600; }}
+        body {{ font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; background: #f4f6f9; }}
+        .container-fluid {{ padding: 20px; }}
+        h1 {{ color: #2c3e50; font-weight: 700; }}
+        .table {{ background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }}
+        thead {{ background: #343a40; color: white; }}
+        th {{ font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; }}
+        td {{ vertical-align: middle; }}
+        
+        .badge-baja {{ font-size: 0.85rem; padding: 5px 8px; }}
+        .baja-alta {{ background-color: #d63384; color: white; }} /* > 20% */
+        .baja-media {{ background-color: #20c997; color: white; }} /* > 10% */
+        .baja-baja {{ background-color: #6c757d; color: white; }} /* < 10% */
+        
+        /* Colores de Estado */
+        .est-adjudicado {{ color: #fd7e14; font-weight: bold; }}
+        .est-formalizado {{ color: #0d6efd; font-weight: bold; }}
+        .est-finalizado {{ color: #198754; font-weight: bold; }}
+
+        .entidad {{ font-weight: bold; color: #495057; }}
+        .ganador {{ color: #0d6efd; font-weight: 600; }}
+        tr:hover {{ background-color: #f1f3f5; }}
     </style>
 </head>
 <body>
-    <div class="container py-4">
-        <h1 class="mb-4 text-center">ðŸ“Š Radar de ContrataciÃ³n PÃºblica Euskadi</h1>
-        <p class="text-center text-muted">Ãšltima actualizaciÃ³n: {datetime.now().strftime('%d/%m/%Y %H:%M')}</p>
-        
-        <div class="row">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>📊 Monitor de Bajas y Adjudicatarios</h1>
+            <span class="text-muted">Actualizado: {datetime.now().strftime('%d/%m/%Y %H:%M')}</span>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th width="5%">Tipo</th>
+                        <th width="8%">Estado</th>
+                        <th width="15%">Entidad</th>
+                        <th width="30%">Objeto</th>
+                        <th width="20%">Ganador (Adjudicatario)</th>
+                        <th width="8%" class="text-end">P. Base</th>
+                        <th width="8%" class="text-end">P. Final</th>
+                        <th width="6%" class="text-center">Baja</th>
+                    </tr>
+                </thead>
+                <tbody>
 """
 
-for item in resultados:
-    # Formateo de moneda
-    importe_str = "{:,.2f} â‚¬".format(item['importe']).replace(",", "X").replace(".", ",").replace("X", ".")
+for r in resultados:
+    # Formato de moneda
+    base_str = "{:,.0f} €".format(r['base']).replace(",", ".")
+    adj_str = "{:,.0f} €".format(r['adjudicado']).replace(",", ".") if r['adjudicado'] > 0 else "---"
     
-    badge_tipo = "badge-obra" if item['tipo'] == "OBRA" else "badge-servicio"
-    badge_ue = '<span class="badge badge-eu">ðŸ‡ªðŸ‡º FONDOS UE</span>' if item['europeo'] else ""
+    # Color de la baja
+    clase_baja = "baja-baja"
+    if r['baja'] > 10: clase_baja = "baja-media"
+    if r['baja'] > 20: clase_baja = "baja-alta"
     
-    # Colores para el estado
-    bg_header = "#6c757d" # Gris por defecto
-    if item['estado'] == "ADJUDICADO": bg_header = "#fd7e14" # Naranja
-    if item['estado'] == "FORMALIZADO": bg_header = "#0d6efd" # Azul
-    if item['estado'] == "FINALIZADO": bg_header = "#198754" # Verde
+    # Color tipo y estado
+    badge_tipo = "bg-warning text-dark" if r['tipo'] == "OBRA" else "bg-info text-white"
+    
+    clase_estado = "est-adjudicado"
+    if r['estado'] == "FORMALIZADO": clase_estado = "est-formalizado"
+    if r['estado'] == "FINALIZADO": clase_estado = "est-finalizado"
 
-    html_content += f"""
-    <div class="col-md-6 col-lg-4">
-        <div class="card h-100">
-            <div class="card-header text-white d-flex justify-content-between align-items-center" style="background-color: {bg_header}">
-                <span class="badge {badge_tipo}">{item['tipo']}</span>
-                <span class="small fw-bold">{item['estado']}</span>
-            </div>
-            <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted">{item['entidad']}</h6>
-                <h5 class="card-title"><a href="{item['link']}" target="_blank" class="text-decoration-none text-dark">{item['titulo'][:100]}...</a></h5>
-                <hr>
-                <p class="card-text">
-                    <strong>Ganador:</strong> <span class="ganador">{item['ganador']}</span><br>
-                    <strong>Importe:</strong> <span class="price">{importe_str}</span>
-                </p>
-                {badge_ue}
-            </div>
-        </div>
-    </div>
+    html += f"""
+                    <tr>
+                        <td><span class="badge {badge_tipo}">{r['tipo']}</span></td>
+                        <td class="{clase_estado}">{r['estado']}</td>
+                        <td class="entidad">{r['entidad'][:40]}...</td>
+                        <td><a href="{r['link']}" target="_blank" class="text-decoration-none text-dark fw-bold">{r['objeto'][:90]}...</a></td>
+                        <td class="ganador">{r['ganador']}</td>
+                        <td class="text-end text-muted">{base_str}</td>
+                        <td class="text-end fw-bold">{adj_str}</td>
+                        <td class="text-center">
+                            <span class="badge badge-baja {clase_baja}">{r['baja']}%</span>
+                        </td>
+                    </tr>
     """
 
-html_content += """
+html += """
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
 </html>
 """
 
-# Guardar archivo
 with open("analisis.html", "w", encoding="utf-8") as f:
-    f.write(html_content)
+    f.write(html)
 
-print(f"âœ… Hecho. {len(resultados)} licitaciones procesadas en 'analisis.html'.")
+print(f"✅ Completado. Se han procesado {len(resultados)} registros en 'analisis.html'.")
