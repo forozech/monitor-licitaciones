@@ -1,0 +1,38 @@
+name: Actualizar Licitaciones (Horario)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    # Ejecuta en el minuto 0 de cada hora, de 8 a 17 UTC
+    - cron: '0 8-17 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' # Recomiendo 3.10 para scripts modernos
+
+      - name: Instalar librerías
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Ejecutar Licitaciones
+        run: python main.py
+
+      - name: Guardar cambios
+        run: |
+          git config --global user.name "Bot Licitaciones"
+          git config --global user.email "actions@github.com"
+          git add index.html
+          # Hacemos commit solo si hay cambios
+          git commit -m "Update: Licitaciones horarias" || exit 0
+          git push
