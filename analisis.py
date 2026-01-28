@@ -5,12 +5,14 @@ import re
 import json
 import time
 import hashlib
+import os
 from datetime import datetime, timedelta, timezone
 
 # --- CONFIGURACIÓN ---
-OUTPUT_FILE = "analisis.html"
+HTML_FILE = "monitor_licitaciones.html"
+DB_FILE = "base_datos.json" # Archivo donde se guardará el historial
 
-# --- PLANTILLA HTML (INTERACCIÓN AVANZADA v3.0) ---
+# --- PLANTILLA HTML (INTERACCIÓN AVANZADA v3.1) ---
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="light">
@@ -31,7 +33,6 @@ HTML_TEMPLATE = """
         :root { --bs-primary-rgb: 13, 110, 253; --bg-color: #f0f2f5; --card-radius: 12px; }
         body { background-color: var(--bg-color); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 0.85rem; }
         
-        /* KPIs Interactivos */
         .kpi-card { 
             background: white; border: none; border-radius: var(--card-radius); padding: 15px 20px; 
             box-shadow: 0 2px 4px rgba(0,0,0,0.05); height: 100%; position: relative; overflow: hidden; 
@@ -44,7 +45,6 @@ HTML_TEMPLATE = """
         .kpi-label { font-size: 0.7rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.5px; }
         .kpi-icon { position: absolute; right: -5px; top: -5px; font-size: 4rem; opacity: 0.05; transform: rotate(10deg); color: #000; }
 
-        /* Filtros Superiores */
         .filters-bar { background: white; padding: 15px; border-radius: var(--card-radius); margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
         .btn-filter { font-weight: 600; font-size: 0.85rem; border-radius: 20px; padding: 6px 16px; border: 1px solid #e2e8f0; color: #64748b; background: white; transition: all 0.2s; }
         .btn-filter.active, .btn-filter:hover { background-color: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
@@ -52,13 +52,11 @@ HTML_TEMPLATE = """
         .date-input { border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 12px; font-size: 0.85rem; width: 110px; }
         .date-select { border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 25px 6px 10px; font-size: 0.85rem; background-color: #fff; cursor: pointer; }
 
-        /* Tabla */
         .dashboard-card { background: white; border-radius: var(--card-radius); box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 20px; margin-bottom: 20px; }
         
         table.dataTable thead th { background-color: #f8fafc; color: #475569; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; border-bottom: 2px solid #e2e8f0 !important; vertical-align: middle; }
         table.dataTable tbody td { vertical-align: middle; color: #334155; padding: 8px 10px; }
         
-        /* Badges */
         .badge-baja { font-weight: 700; padding: 3px 8px; border-radius: 6px; min-width: 45px; display: inline-block; text-align: center; }
         .baja-alta { background-color: #dcfce7; color: #166534; }
         .baja-media { background-color: #fef9c3; color: #854d0e; }
@@ -66,15 +64,13 @@ HTML_TEMPLATE = """
         .badge-tipo { font-size: 0.65rem; padding: 3px 6px; border-radius: 4px; border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; text-transform: uppercase; }
         .badge-estado { font-size: 0.65rem; padding: 3px 6px; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* Sidebar Custom */
         .sidebar-option { display: block; width: 100%; text-align: left; padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 8px; background: white; color: #475569; transition: all 0.2s; font-size: 0.9rem; }
         .sidebar-option:hover { background: #f8fafc; border-color: #cbd5e1; color: #0f172a; }
         .sidebar-option.active { background: #eff6ff; border-color: #3b82f6; color: #1d4ed8; font-weight: 600; }
         .sidebar-count { float: right; background: #e2e8f0; color: #475569; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; }
-
+        
         .winner-link { cursor: pointer; color: #0f172a; font-weight: 700; text-decoration: none; transition: color 0.2s; }
         .winner-link:hover { color: #2563eb; text-decoration: underline; }
-        
         .filter-active-info { display: none; background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; padding: 8px 15px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9rem; align-items: center; justify-content: space-between; }
     </style>
 </head>
@@ -97,7 +93,7 @@ HTML_TEMPLATE = """
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
                 <h3 class="fw-bold text-dark mb-0"><i class="bi bi-layers-half text-primary me-2"></i>Monitor Licitaciones</h3>
-                <p class="text-muted mb-0 small">Gipuzkoa | Actualizado: <span id="lastUpdate">__FECHA__</span></p>
+                <p class="text-muted mb-0 small">Gipuzkoa | Total Registros: <span id="totalRecords">0</span> | Actualizado: <span id="lastUpdate">__FECHA__</span></p>
             </div>
         </div>
 
@@ -108,22 +104,17 @@ HTML_TEMPLATE = """
                 <button class="btn-filter" onclick="setGlobalFilter('tipo', 'SERV', this)">Servicios</button>
                 <button class="btn-filter" onclick="setGlobalFilter('tipo', 'ING', this)">Ingeniería</button>
             </div>
-            
             <div class="d-flex gap-2 align-items-center bg-light p-2 rounded border">
                 <i class="bi bi-calendar3 text-muted"></i>
-                <select id="filterYear" class="form-select form-select-sm date-select" style="width:80px;" onchange="table.draw()">
-                    <option value="">Año</option>
-                </select>
+                <select id="filterYear" class="form-select form-select-sm date-select" style="width:80px;" onchange="table.draw()"><option value="">Año</option></select>
                 <select id="filterMonth" class="form-select form-select-sm date-select" style="width:100px;" onchange="table.draw()">
                     <option value="">Mes</option>
-                    <option value="01">Enero</option><option value="02">Febrero</option><option value="03">Marzo</option>
-                    <option value="04">Abril</option><option value="05">Mayo</option><option value="06">Junio</option>
-                    <option value="07">Julio</option><option value="08">Agosto</option><option value="09">Septiembre</option>
-                    <option value="10">Octubre</option><option value="11">Noviembre</option><option value="12">Diciembre</option>
+                    <option value="01">Ene</option><option value="02">Feb</option><option value="03">Mar</option>
+                    <option value="04">Abr</option><option value="05">May</option><option value="06">Jun</option>
+                    <option value="07">Jul</option><option value="08">Ago</option><option value="09">Sep</option>
+                    <option value="10">Oct</option><option value="11">Nov</option><option value="12">Dic</option>
                 </select>
-                
                 <span class="text-muted small mx-1">|</span>
-                
                 <input type="text" class="date-input flatpickr" id="dateFrom" placeholder="Desde...">
                 <input type="text" class="date-input flatpickr" id="dateTo" placeholder="Hasta...">
             </div>
@@ -135,33 +126,10 @@ HTML_TEMPLATE = """
         </div>
 
         <div class="row g-3 mb-4">
-            <div class="col-xl-3 col-md-6">
-                <div class="kpi-card" onclick="openSidebar('volumen', this)">
-                    <i class="bi bi-cash-coin kpi-icon"></i>
-                    <div class="kpi-label">Volumen Total</div>
-                    <div class="kpi-value" id="kpi-volumen">0 €</div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="kpi-card" onclick="openSidebar('baja', this)">
-                    <i class="bi bi-graph-down-arrow kpi-icon"></i>
-                    <div class="kpi-label">Baja Media</div>
-                    <div class="kpi-value text-primary" id="kpi-baja">0%</div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="kpi-card" onclick="openSidebar('licitadores', this)">
-                    <i class="bi bi-people kpi-icon"></i>
-                    <div class="kpi-label">Media Lic.</div>
-                    <div class="kpi-value" id="kpi-licitadores">0</div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="kpi-card" onclick="openSidebar('contratistas', this)">
-                    <i class="bi bi-briefcase kpi-icon"></i>
-                    <div class="kpi-label">Contratistas</div> <div class="kpi-value" id="kpi-contratistas">0</div>
-                </div>
-            </div>
+            <div class="col-xl-3 col-md-6"><div class="kpi-card" onclick="openSidebar('volumen', this)"><i class="bi bi-cash-coin kpi-icon"></i><div class="kpi-label">Volumen Total</div><div class="kpi-value" id="kpi-volumen">0 €</div></div></div>
+            <div class="col-xl-3 col-md-6"><div class="kpi-card" onclick="openSidebar('baja', this)"><i class="bi bi-graph-down-arrow kpi-icon"></i><div class="kpi-label">Baja Media</div><div class="kpi-value text-primary" id="kpi-baja">0%</div></div></div>
+            <div class="col-xl-3 col-md-6"><div class="kpi-card" onclick="openSidebar('licitadores', this)"><i class="bi bi-people kpi-icon"></i><div class="kpi-label">Media Lic.</div><div class="kpi-value" id="kpi-licitadores">0</div></div></div>
+            <div class="col-xl-3 col-md-6"><div class="kpi-card" onclick="openSidebar('contratistas', this)"><i class="bi bi-briefcase kpi-icon"></i><div class="kpi-label">Contratistas</div><div class="kpi-value" id="kpi-contratistas">0</div></div></div>
         </div>
 
         <div class="dashboard-card">
@@ -169,7 +137,8 @@ HTML_TEMPLATE = """
                 <thead>
                     <tr>
                         <th width="8%">Fecha Adj.</th>
-                        <th width="8%">Estado</th> <th width="8%">Tipo</th>
+                        <th width="8%">Estado</th>
+                        <th width="8%">Tipo</th>
                         <th width="20%">Entidad / Objeto</th>
                         <th width="15%">Ganador</th>
                         <th width="10%" class="text-end">Presupuesto</th>
@@ -199,15 +168,10 @@ HTML_TEMPLATE = """
         const datos = __DATOS_JSON__;
         const eur = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
         let table;
-        
-        // Estado Global de Filtros
-        let currentFilters = {
-            tipo: 'all',
-            sidebarCategory: null, // 'volumen', 'baja', 'licitadores', 'contratistas'
-            sidebarValue: null     // El valor seleccionado
-        };
+        let currentFilters = { tipo: 'all', sidebarCategory: null, sidebarValue: null };
 
         $(document).ready(function() {
+            $('#totalRecords').text(datos.length);
             initDateControls();
             initTable();
             updateKPIs(datos);
@@ -215,37 +179,32 @@ HTML_TEMPLATE = """
 
         function initDateControls() {
             flatpickr(".date-input", { dateFormat: "d/m/Y", locale: "es", onChange: function() { table.draw(); } });
-            
-            // Rellenar Años dinámicamente
             const years = [...new Set(datos.map(d => d.fecha_adjudicacion.split('/')[2]))].sort().reverse();
             years.forEach(y => $('#filterYear').append(`<option value="${y}">${y}</option>`));
         }
 
         function initTable() {
-            // --- MOTOR DE FILTRADO UNIFICADO ---
             $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
-                const rowData = datos[dataIndex]; // Acceso directo al objeto JSON original para tener tipos correctos
+                const rowData = datos[dataIndex];
                 
-                // 1. Filtro Tipo (Botones Superiores)
+                // 1. Tipo
                 if (currentFilters.tipo !== 'all' && rowData.tipo_licitacion !== currentFilters.tipo) return false;
 
-                // 2. Filtros de Fecha (Rango Manual o Selectores)
+                // 2. Fechas
                 const dateParts = rowData.fecha_adjudicacion.split('/');
                 const dateObj = new Date(dateParts[2], dateParts[1]-1, dateParts[0]);
                 
-                // Selectores Año/Mes
                 const selYear = $('#filterYear').val();
                 const selMonth = $('#filterMonth').val();
                 if (selYear && dateParts[2] !== selYear) return false;
                 if (selMonth && dateParts[1] !== selMonth) return false;
 
-                // Datepickers
                 const min = $('#dateFrom').val() ? parseDate($('#dateFrom').val()) : null;
                 const max = $('#dateTo').val() ? parseDate($('#dateTo').val()) : null;
                 if (min && dateObj < min) return false;
                 if (max && dateObj > max) return false;
 
-                // 3. Filtros Sidebar (Lógica Compleja)
+                // 3. Sidebar
                 if (currentFilters.sidebarCategory) {
                     const val = currentFilters.sidebarValue;
                     const imp = rowData.importe_adjudicacion;
@@ -285,13 +244,10 @@ HTML_TEMPLATE = """
             table = $('#tablaContratos').DataTable({
                 data: datos,
                 language: { url: "//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json" },
-                paging: false, // TABLA COMPLETA EN UNA PÁGINA
+                paging: false,
                 order: [[ 0, "desc" ]],
                 columns: [
-                    { data: 'fecha_adjudicacion', render: (d) => {
-                        const p = d.split('/'); return `<span class="d-none">${p[2]}${p[1]}${p[0]}</span><span class="small fw-bold">${d}</span>`;
-                    }},
-                    // NUEVA COLUMNA ESTADO
+                    { data: 'fecha_adjudicacion', render: (d) => { const p=d.split('/'); return `<span class="d-none">${p[2]}${p[1]}${p[0]}</span><span class="small fw-bold">${d}</span>`; }},
                     { data: 'estado_fase', className: 'text-center', render: d => {
                         let color = d.includes('ADJ') ? 'bg-primary' : (d.includes('FORM') ? 'bg-success' : 'bg-secondary');
                         return `<span class="badge text-white ${color} badge-estado">${d.substring(0,10)}</span>`;
@@ -319,15 +275,10 @@ HTML_TEMPLATE = """
             });
         }
 
-        // --- GESTIÓN DE SIDEBAR Y FILTROS LATERALES ---
         function openSidebar(category, el) {
             $('.kpi-card').removeClass('active-kpi');
             $(el).addClass('active-kpi');
-            
-            let html = '';
-            let title = '';
-
-            // Obtener datos ACTUALES filtrados (para los contadores de las opciones)
+            let html = ''; let title = '';
             const currentData = table.rows({ filter: 'applied' }).data().toArray();
 
             if (category === 'volumen') {
@@ -336,21 +287,13 @@ HTML_TEMPLATE = """
                     {k: '<50k', l: 'Menor de 50.000 €'}, {k: '<100k', l: '< 100.000 €'}, 
                     {k: '<200k', l: '< 200.000 €'}, {k: '<500k', l: '< 500.000 €'},
                     {k: '<800k', l: '< 800.000 €'}, {k: '<1M', l: '< 1.000.000 €'},
-                    {k: '<2M', l: '< 2.000.000 €'}, {k: '<5M', l: '< 5.000.000 €'},
-                    {k: '>5M', l: 'Mayor de 5.000.000 €'}
+                    {k: '<2M', l: '< 2.000.000 €'}, {k: '<5M', l: '< 5.000.000 €'}, {k: '>5M', l: '> 5.000.000 €'}
                 ];
-                ranges.forEach(r => {
-                    // Contar cuántos hay (simplificado para UI rápida)
-                    html += `<button class="sidebar-option" onclick="applySidebar('${category}', '${r.k}')">${r.l}</button>`;
-                });
+                ranges.forEach(r => html += `<button class="sidebar-option" onclick="applySidebar('${category}', '${r.k}')">${r.l}</button>`);
             } 
             else if (category === 'baja') {
                 title = 'Filtrar por Baja';
-                const ranges = [
-                    {k: '<3', l: 'Menor del 3%'}, {k: '<5', l: 'Menor del 5%'},
-                    {k: '<10', l: 'Menor del 10%'}, {k: '<15', l: 'Menor del 15%'},
-                    {k: '>15', l: 'Mayor del 15%'}
-                ];
+                const ranges = [{k: '<3', l: '< 3%'}, {k: '<5', l: '< 5%'}, {k: '<10', l: '< 10%'}, {k: '<15', l: '< 15%'}, {k: '>15', l: '> 15%'}];
                 ranges.forEach(r => html += `<button class="sidebar-option" onclick="applySidebar('${category}', '${r.k}')">${r.l}</button>`);
             }
             else if (category === 'licitadores') {
@@ -360,110 +303,58 @@ HTML_TEMPLATE = """
             }
             else if (category === 'contratistas') {
                 title = 'Contratistas (En vista actual)';
-                // Calcular contratistas presentes en la tabla filtrada
                 const counts = {};
                 currentData.forEach(d => { if(d.ganador !== 'Desconocido') counts[d.ganador] = (counts[d.ganador] || 0) + 1; });
-                
-                // Ordenar por número de contratos
                 const sorted = Object.entries(counts).sort((a,b) => b[1] - a[1]);
-                
                 if (sorted.length === 0) html = '<p class="text-muted text-center">No hay datos</p>';
-                else {
-                    sorted.forEach(([name, count]) => {
-                        html += `<button class="sidebar-option" onclick="applySidebar('${category}', '${name.replace(/'/g, "\\'")}')">
-                            <span class="text-truncate d-inline-block" style="max-width: 220px;">${name}</span>
-                            <span class="sidebar-count">${count}</span>
-                        </button>`;
-                    });
-                }
+                else sorted.forEach(([n, c]) => html += `<button class="sidebar-option" onclick="applySidebar('${category}', '${n.replace(/'/g, "\\'")}')"><span class="text-truncate d-inline-block" style="max-width:220px;">${n}</span><span class="sidebar-count">${c}</span></button>`);
             }
-
-            $('#sidebarTitle').text(title);
-            $('#sidebarContent').html(html);
+            $('#sidebarTitle').text(title); $('#sidebarContent').html(html);
             new bootstrap.Offcanvas('#offcanvasFiltros').show();
         }
 
         function applySidebar(cat, val) {
-            currentFilters.sidebarCategory = cat;
-            currentFilters.sidebarValue = val;
-            
-            let label = val;
-            if(cat === 'contratistas') label = val; // Nombre empresa
-            else if(cat === 'licitadores') label = val + ' licitadores';
-            else label = val; // Rangos
-
-            $('#filterName').text(label);
-            $('#activeFilterAlert').css('display', 'flex');
-            
-            // Cerrar sidebar y redibujar
-            bootstrap.Offcanvas.getInstance('#offcanvasFiltros').hide();
-            table.draw();
+            currentFilters.sidebarCategory = cat; currentFilters.sidebarValue = val;
+            let label = val; 
+            if(cat==='licitadores') label = val + ' licitadores';
+            $('#filterName').text(label); $('#activeFilterAlert').css('display', 'flex');
+            bootstrap.Offcanvas.getInstance('#offcanvasFiltros').hide(); table.draw();
         }
 
         function resetSidebarFilter() {
-            currentFilters.sidebarCategory = null;
-            currentFilters.sidebarValue = null;
-            $('#activeFilterAlert').hide();
-            $('.kpi-card').removeClass('active-kpi');
-            bootstrap.Offcanvas.getInstance('#offcanvasFiltros').hide();
-            table.draw();
+            currentFilters.sidebarCategory = null; currentFilters.sidebarValue = null;
+            $('#activeFilterAlert').hide(); $('.kpi-card').removeClass('active-kpi');
+            bootstrap.Offcanvas.getInstance('#offcanvasFiltros').hide(); table.draw();
         }
 
         function setGlobalFilter(key, val, btn) {
-            if(key === 'tipo') {
-                $('.btn-filter').removeClass('active');
-                $(btn).addClass('active');
-                currentFilters.tipo = val;
-            }
+            if(key === 'tipo') { $('.btn-filter').removeClass('active'); $(btn).addClass('active'); currentFilters.tipo = val; }
             table.draw();
         }
-
-        function limpiarTodo() {
-            resetSidebarFilter();
-        }
-
-        // --- ACTUALIZAR KPIs ---
+        function limpiarTodo() { resetSidebarFilter(); }
         function updateKPIs(data) {
-            let vol = 0, sumBaja = 0, countBaja = 0, sumLic = 0;
-            const contratistasUnicos = new Set();
-            
+            let vol = 0, sumBaja = 0, countBaja = 0, sumLic = 0; const contratistasUnicos = new Set();
             data.forEach(d => {
                 vol += d.importe_adjudicacion;
                 if(d.baja_pct > 0) { sumBaja += d.baja_pct; countBaja++; }
                 sumLic += d.num_licitadores;
                 if(d.ganador !== "Desconocido") contratistasUnicos.add(d.ganador);
             });
-
             $('#kpi-volumen').text(eur.format(vol));
             $('#kpi-baja').text((countBaja ? (sumBaja / countBaja) : 0).toFixed(2) + '%');
             $('#kpi-licitadores').text((data.length ? (sumLic / data.length) : 0).toFixed(1));
-            $('#kpi-contratistas').text(contratistasUnicos.size); // MUESTRA CANTIDAD DE EMPRESAS ÚNICAS
+            $('#kpi-contratistas').text(contratistasUnicos.size);
         }
-
-        // Utils
         function parseDate(d) { if(!d) return null; const p = d.split('/'); return new Date(p[2], p[1]-1, p[0]); }
-        
         window.verDetalle = function(idx) {
             const d = table.row(idx).data();
-            $('#modalTipo').text(d.tipo_licitacion);
-            $('#modalObjeto').text(d.objeto);
-            $('#modalEntidad').text(d.entidad);
-            $('#modalExp').text(d.expediente);
-            $('#modalBase').text(eur.format(d.presupuesto_base));
-            $('#modalAdj').text(eur.format(d.importe_adjudicacion));
-            $('#modalNumLic').text(d.num_licitadores);
-            $('#linkFicha').attr('href', d.url_ficha);
-            let htmlRiv = '';
-            d.rivales.forEach(r => {
-               const isWin = r === d.ganador;
-               htmlRiv += `<div class="p-2 border rounded mb-1 d-flex justify-content-between align-items-center ${isWin?'bg-success bg-opacity-10 border-success':''}">
-                   <span class="small ${isWin?'fw-bold text-success':''}">${r}</span>${isWin?'<i class="bi bi-trophy-fill text-success"></i>':''}</div>`; 
-            });
+            $('#modalTipo').text(d.tipo_licitacion); $('#modalObjeto').text(d.objeto);
+            $('#modalEntidad').text(d.entidad); $('#modalExp').text(d.expediente);
+            $('#modalBase').text(eur.format(d.presupuesto_base)); $('#modalAdj').text(eur.format(d.importe_adjudicacion));
+            $('#modalNumLic').text(d.num_licitadores); $('#linkFicha').attr('href', d.url_ficha);
+            let htmlRiv = ''; d.rivales.forEach(r => { const isWin = r === d.ganador; htmlRiv += `<div class="p-2 border rounded mb-1 d-flex justify-content-between align-items-center ${isWin?'bg-success bg-opacity-10 border-success':''}"><span class="small ${isWin?'fw-bold text-success':''}">${r}</span>${isWin?'<i class="bi bi-trophy-fill text-success"></i>':''}</div>`; });
             $('#modalRivales').html(htmlRiv || '<span class="text-muted fst-italic">Sin datos</span>');
-            let htmlDocs = '';
-            d.documentos.forEach(doc => {
-                htmlDocs += `<a href="${doc.url}" target="_blank" class="btn btn-outline-secondary btn-sm text-start text-truncate"><i class="bi bi-file-earmark-pdf text-danger me-2"></i>${doc.nombre}</a>`;
-            });
+            let htmlDocs = ''; d.documentos.forEach(doc => htmlDocs += `<a href="${doc.url}" target="_blank" class="btn btn-outline-secondary btn-sm text-start text-truncate"><i class="bi bi-file-earmark-pdf text-danger me-2"></i>${doc.nombre}</a>`);
             $('#modalDocs').html(htmlDocs);
             new bootstrap.Modal('#modalDetalle').show();
         };
@@ -472,21 +363,31 @@ HTML_TEMPLATE = """
 </html>
 """
 
-# --- MOTOR DE EXTRACCIÓN (RSS URLs LARGAS) ---
+# --- MOTOR DE EXTRACCIÓN CON PERSISTENCIA ---
 class MonitorEngine:
     def __init__(self):
-        # Mismas URLs que antes (No cambiadas)
+        # 1. FUENTES RSS (URLs Largas Correctas)
         self.sources = [
             {"tipo": "OBRA", "estado": "ADJUDICADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=5&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/01/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"},
             {"tipo": "OBRA", "estado": "FORMALIZADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=8&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/01/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"},
             {"tipo": "OBRA", "estado": "CERRADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=14&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/01/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"},
-            
             {"tipo": "SERV", "estado": "ADJUDICADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=5&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/01/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"},
             {"tipo": "SERV", "estado": "FORMALIZADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=8&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/01/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"},
             {"tipo": "SERV", "estado": "CERRADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=14&p03=&p04=&p05=&p06=FALSE&p07=&p08=&p09=&p10=&p11=&p12=01/01/2025&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"}
         ]
         self.headers = {'User-Agent': 'Mozilla/5.0'}
         self.processed_ids = set()
+        
+        # 2. CARGAR BASE DE DATOS EXISTENTE
+        self.db = []
+        if os.path.exists(DB_FILE):
+            try:
+                with open(DB_FILE, 'r', encoding='utf-8') as f:
+                    self.db = json.load(f)
+                    self.processed_ids = {d['id'] for d in self.db}
+                print(f"📂 Base de datos cargada: {len(self.db)} registros previos.")
+            except:
+                print("⚠️ Error leyendo base de datos, iniciando nueva.")
 
     def clean_money(self, txt):
         if not txt: return 0.0
@@ -511,11 +412,9 @@ class MonitorEngine:
             
             data = {'id': hashlib.md5(url.encode()).hexdigest(), 'url_ficha': url, 'tipo_licitacion': tipo, 'estado_fase': estado}
 
-            # 1. Cabecera (Objeto)
             head = soup.find('div', class_='cabeceraDetalle')
             data['objeto'] = head.find('dd').get_text(strip=True) if head and head.find('dd') else "Sin descripción"
 
-            # Detección Ingeniería
             keywords_ing = ['redacción', 'proyecto', 'dirección de obra', 'asistencia técnica', 'consultoría', 'estudio', 'coordinación', 'ingeniería', 'arquitectura']
             if tipo == "SERV":
                 obj_lower = data['objeto'].lower()
@@ -524,7 +423,6 @@ class MonitorEngine:
                         data['tipo_licitacion'] = "ING"
                         break
 
-            # 2. Fechas y Entidades
             fecha_adj = self.get_tab_value(soup, 'tabs-9', 'Fecha adjudicación')
             if not fecha_adj:
                 dt_headers = soup.find_all('dt')
@@ -538,21 +436,18 @@ class MonitorEngine:
             data['entidad'] = self.get_tab_value(soup, 'tabs-2', 'Poder adjudicador') or "Desconocido"
             data['expediente'] = self.get_tab_value(soup, 'tabs-1', 'Expediente') or "N/A"
 
-            # 3. Económicos
             base_str = self.get_tab_value(soup, 'tabs-4', 'Presupuesto del contrato sin IVA') or self.get_tab_value(soup, 'tabs-4', 'Valor estimado')
             adj_str = self.get_tab_value(soup, 'tabs-9', 'Precio sin IVA')
             data['presupuesto_base'] = self.clean_money(base_str)
             data['importe_adjudicacion'] = self.clean_money(adj_str)
             data['ganador'] = self.get_tab_value(soup, 'tabs-9', 'Razón social') or "Desconocido"
 
-            # 4. Baja
             if data['presupuesto_base'] > 0 and data['importe_adjudicacion'] > 0:
                 ahorro = data['presupuesto_base'] - data['importe_adjudicacion']
                 data['baja_pct'] = round((ahorro / data['presupuesto_base']) * 100, 2)
             else:
                 data['baja_pct'] = 0.0
 
-            # 5. Rivales
             rivales = []
             tab8 = soup.find('div', id='tabs-8')
             if tab8:
@@ -563,7 +458,6 @@ class MonitorEngine:
             data['rivales'] = list(set(rivales))
             data['num_licitadores'] = len(data['rivales'])
 
-            # 6. Docs
             docs = []
             for l in soup.find_all('a', onclick=re.compile(r"descargarFichero")):
                 fid = re.search(r"\(+'(\d+)'", l.get('onclick'))
@@ -579,34 +473,48 @@ class MonitorEngine:
             return None
 
     def run(self):
-        print("🚀 INICIANDO MONITOR 3.0 (FILTROS AVANZADOS)...")
-        results = []
+        print("🚀 INICIANDO MONITOR 3.1 (SIN LÍMITES + BASE DE DATOS)...")
+        new_items_count = 0
+        
         for s in self.sources:
             try:
                 r = requests.get(s['url'], headers=self.headers, timeout=20)
                 if r.status_code != 200: continue
                 root = ET.fromstring(r.content)
                 items = root.findall('.//item')
-                print(f"📡 {s['tipo']} ({s['estado']}): {len(items)} items")
-                for item in items[:15]:
+                print(f"📡 {s['tipo']} ({s['estado']}): {len(items)} items encontrados.")
+                
+                # --- CAMBIO CLAVE: Quitamos el [:15] para leer todo el RSS ---
+                for item in items: 
                     link = item.find('link').text
                     if link not in self.processed_ids:
                         data = self.process_url(link, s['tipo'], s['estado'])
                         if data:
-                            self.processed_ids.add(link)
-                            results.append(data)
-                            time.sleep(0.2)
+                            self.processed_ids.add(link) # Añadir ID al set de control
+                            self.db.append(data)         # Añadir a la base de datos
+                            new_items_count += 1
+                            time.sleep(0.1)
             except Exception as e:
                 print(f"   Error RSS: {e}")
-        return results
+        
+        # Guardar Base de Datos actualizada
+        with open(DB_FILE, 'w', encoding='utf-8') as f:
+            json.dump(self.db, f, ensure_ascii=False, indent=2)
+            
+        print(f"💾 Base de datos guardada con {new_items_count} nuevos registros.")
+        return self.db
 
 if __name__ == "__main__":
     engine = MonitorEngine()
     data = engine.run()
+    
     tz = timezone(timedelta(hours=1))
     now_str = datetime.now(tz).strftime("%d/%m/%Y %H:%M")
+    
     json_str = json.dumps(data, ensure_ascii=False)
     final_html = HTML_TEMPLATE.replace('__DATOS_JSON__', json_str).replace('__FECHA__', now_str)
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    
+    with open(HTML_FILE, "w", encoding="utf-8") as f:
         f.write(final_html)
-    print(f"\n✅ REPORTE GENERADO: {OUTPUT_FILE} con {len(data)} licitaciones.")
+        
+    print(f"\n✅ REPORTE GENERADO: {HTML_FILE} con {len(data)} licitaciones totales.")
