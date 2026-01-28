@@ -26,7 +26,6 @@ jobs:
       - name: Ejecutar Análisis (Script v6.0)
         run: python analisis.py
 
-    
       - name: Guardar Base de Datos y HTML
         run: |
           git config --global user.name "Bot Analisis"
@@ -34,13 +33,15 @@ jobs:
           
           git add licitaciones_db.json
           git add backups/
-          git add monitor_licitaciones.html
+          # Asegúrate que el nombre aquí es correcto (analisis.html o monitor_licitaciones.html)
+          git add analisis.html 
           
-          git commit -m "Update: Análisis diario y base de datos" || exit 0
+          git commit -m "Update: Análisis diario" || exit 0
           
-          # --- LÍNEA MÁGICA ANTICONFLICTOS ---
-          git pull --rebase origin main
-          # -----------------------------------
+          # --- ESTRATEGIA: EL BOT GANA ---
+          git pull origin main --no-rebase -s recursive -X ours
+          # -------------------------------
           
           git push
+    
      
