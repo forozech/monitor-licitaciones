@@ -325,4 +325,119 @@ class MonitorEngine:
         except: return 0.0
 
     def get_tab_value(self, soup, tab_id, label):
-        tab = soup.find('div
+        tab = soup.find('div', id=tab_id)
+        if not tab: return None
+        for row in tab.find_all('div', class_='row'):
+            cols = row.find_all('div', recursive=False)
+            if len(cols) >= 2:
+                if label.lower() in cols[0].get_text(strip=True).lower():
+                    return cols[1].get_text(strip=True)
+        return None
+
+    def process_url(self, url, tipo, estado):
+        print(f"      Procesando: {url}")
+        try:
+            r = requests.get(url, headers=self.headers, timeout=15)
+            soup = BeautifulSoup(r.content, 'html.parser')
+            
+            data = {'id': hashlib.md5(url.encode()).hexdigest(), 'url_ficha': url, 'tipo_licitacion': tipo, 'estado_fase': estado}
+
+            # 1. Cabecera (Objeto)
+            head = soup.find('div', class_='cabeceraDetalle')
+            data['objeto'] = head.find('dd').get_text(strip=True) if head and head.find('dd') else "Sin descripción"
+
+            # *** NUEVO: DETECCIÓN DE INGENIERÍA ***
+            keywords_ing = ['redacción', 'proyecto', 'dirección de obra', 'asistencia técnica', 'consultoría', 'estudio', 'coordinación', 'ingeniería', 'arquitectura']
+            if tipo == "SERV":
+                obj_lower = data['objeto'].lower()
+                for kw in keywords_ing:
+                    if kw in obj_lower:
+                        data['tipo_licitacion'] = "ING"
+                        break
+
+            # 2. Fechas y Entidades
+            fecha_adj = self.get_tab_value(soup, 'tabs-9', 'Fecha adjudicación')
+            if not fecha_adj:
+                dt_headers = soup.find_all('dt')
+                for dt in dt_headers:
+                    if "última publicación" in dt.get_text():
+                        dd = dt.find_next_sibling('dd')
+                        if dd: fecha_adj = dd.get_text(strip=True).split(' ')[0]
+                        break
+            data['fecha_adjudicacion'] = fecha_adj or "Pendiente"
+            
+            data['entidad'] = self.get_tab_value(soup, 'tabs-2', 'Poder adjudicador') or "Desconocido"
+            data['expediente'] = self.get_tab_value(soup, 'tabs-1', 'Expediente') or "N/A"
+
+            # 3. Económicos
+            base_str = self.get_tab_value(soup, 'tabs-4', 'Presupuesto del contrato sin IVA') or self.get_tab_value(soup, 'tabs-4', 'Valor estimado')
+            adj_str = self.get_tab_value(soup, 'tabs-9', 'Precio sin IVA')
+            data['presupuesto_base'] = self.clean_money(base_str)
+            data['importe_adjudicacion'] = self.clean_money(adj_str)
+            data['ganador'] = self.get_tab_value(soup, 'tabs-9', 'Razón social') or "Desconocido"
+
+            # 4. Baja
+            if data['presupuesto_base'] > 0 and data['importe_adjudicacion'] > 0:
+                ahorro = data['presupuesto_base'] - data['importe_adjudicacion']
+                data['baja_pct'] = round((ahorro / data['presupuesto_base']) * 100, 2)
+            else:
+                data['baja_pct'] = 0.0
+
+            # 5. Rivales
+            rivales = []
+            tab8 = soup.find('div', id='tabs-8')
+            if tab8:
+                for row in tab8.find_all('div', class_='row'):
+                    cols = row.find_all('div', recursive=False)
+                    if len(cols) >= 2 and "Razón Social" in cols[0].get_text(strip=True):
+                        rivales.append(cols[1].get_text(strip=True))
+            data['rivales'] = list(set(rivales))
+            data['num_licitadores'] = len(data['rivales'])
+
+            # 6. Docs
+            docs = []
+            for l in soup.find_all('a', onclick=re.compile(r"descargarFichero")):
+                fid = re.search(r"\(+'(\d+)'", l.get('onclick'))
+                if fid:
+                    ep = "descargaFicheroContratoPorIdFichero" if "Contrato" in l.get('onclick') else "descargaFicheroPorIdFichero"
+                    docs.append({'nombre': l.get_text(strip=True), 'url': f"https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/{ep}?idFichero={fid.group(1)}&R01HNoPortal=true"})
+            data['documentos'] = docs
+
+            return data
+
+        except Exception as e:
+            print(f"      Error: {e}")
+            return None
+
+    def run(self):
+        print("🚀 INICIANDO MONITOR 2.0 (MODO LIGERO)...")
+        results = []
+        for s in self.sources:
+            try:
+                r = requests.get(s['url'], headers=self.headers, timeout=20)
+                if r.status_code != 200: continue
+                root = ET.fromstring(r.content)
+                items = root.findall('.//item')
+                print(f"📡 {s['tipo']} ({s['estado']}): {len(items)} items")
+                for item in items[:15]:
+                    link = item.find('link').text
+                    if link not in self.processed_ids:
+                        data = self.process_url(link, s['tipo'], s['estado'])
+                        if data:
+                            self.processed_ids.add(link)
+                            results.append(data)
+                            time.sleep(0.2)
+            except Exception as e:
+                print(f"   Error RSS: {e}")
+        return results
+
+if __name__ == "__main__":
+    engine = MonitorEngine()
+    data = engine.run()
+    tz = timezone(timedelta(hours=1))
+    now_str = datetime.now(tz).strftime("%d/%m/%Y %H:%M")
+    json_str = json.dumps(data, ensure_ascii=False)
+    final_html = HTML_TEMPLATE.replace('__DATOS_JSON__', json_str).replace('__FECHA__', now_str)
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        f.write(final_html)
+    print(f"\n✅ REPORTE GENERADO: {OUTPUT_FILE} con {len(data)} licitaciones.")
