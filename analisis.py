@@ -10,7 +10,7 @@ from datetime import datetime, timedelta, timezone
 # --- CONFIGURACIÓN ---
 OUTPUT_FILE = "analisis.html"
 
-# --- PLANTILLA HTML (LIGERA, SIN GRÁFICOS, CON FILTRO INGENIERÍA) ---
+# --- PLANTILLA HTML (INTERACCIÓN AVANZADA v3.0) ---
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="light">
@@ -31,22 +31,26 @@ HTML_TEMPLATE = """
         :root { --bs-primary-rgb: 13, 110, 253; --bg-color: #f0f2f5; --card-radius: 12px; }
         body { background-color: var(--bg-color); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 0.85rem; }
         
-        /* KPIs Compactos */
+        /* KPIs Interactivos */
         .kpi-card { 
             background: white; border: none; border-radius: var(--card-radius); padding: 15px 20px; 
             box-shadow: 0 2px 4px rgba(0,0,0,0.05); height: 100%; position: relative; overflow: hidden; 
-            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid transparent;
         }
-        .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-left: 4px solid #0d6efd; }
+        .kpi-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: #bfdbfe; }
+        .kpi-card.active-kpi { border-color: #0d6efd; background-color: #eff6ff; }
+        
         .kpi-value { font-size: 1.6rem; font-weight: 800; color: #1e293b; margin-bottom: 0; line-height: 1.2; }
         .kpi-label { font-size: 0.7rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.5px; }
         .kpi-icon { position: absolute; right: -5px; top: -5px; font-size: 4rem; opacity: 0.05; transform: rotate(10deg); color: #000; }
 
         /* Filtros Superiores */
-        .filters-bar { background: white; padding: 15px; border-radius: var(--card-radius); margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: space-between; }
+        .filters-bar { background: white; padding: 15px; border-radius: var(--card-radius); margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
         .btn-filter { font-weight: 600; font-size: 0.85rem; border-radius: 20px; padding: 6px 16px; border: 1px solid #e2e8f0; color: #64748b; background: white; transition: all 0.2s; }
         .btn-filter.active, .btn-filter:hover { background-color: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
-        .date-input { border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 12px; font-size: 0.85rem; width: 130px; }
+        
+        .date-input { border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 12px; font-size: 0.85rem; width: 110px; }
+        .date-select { border: 1px solid #e2e8f0; border-radius: 8px; padding: 6px 25px 6px 10px; font-size: 0.85rem; background-color: #fff; cursor: pointer; }
 
         /* Tabla */
         .dashboard-card { background: white; border-radius: var(--card-radius); box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 20px; margin-bottom: 20px; }
@@ -60,41 +64,31 @@ HTML_TEMPLATE = """
         .baja-media { background-color: #fef9c3; color: #854d0e; }
         .baja-baja { background-color: #fee2e2; color: #991b1b; }
         .badge-tipo { font-size: 0.65rem; padding: 3px 6px; border-radius: 4px; border: 1px solid #e2e8f0; background: #f8fafc; color: #475569; text-transform: uppercase; }
-        
-        /* Interacción Ganador */
+        .badge-estado { font-size: 0.65rem; padding: 3px 6px; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Sidebar Custom */
+        .sidebar-option { display: block; width: 100%; text-align: left; padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 8px; background: white; color: #475569; transition: all 0.2s; font-size: 0.9rem; }
+        .sidebar-option:hover { background: #f8fafc; border-color: #cbd5e1; color: #0f172a; }
+        .sidebar-option.active { background: #eff6ff; border-color: #3b82f6; color: #1d4ed8; font-weight: 600; }
+        .sidebar-count { float: right; background: #e2e8f0; color: #475569; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; }
+
         .winner-link { cursor: pointer; color: #0f172a; font-weight: 700; text-decoration: none; transition: color 0.2s; }
         .winner-link:hover { color: #2563eb; text-decoration: underline; }
+        
         .filter-active-info { display: none; background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; padding: 8px 15px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9rem; align-items: center; justify-content: space-between; }
     </style>
 </head>
 <body>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasFiltros">
         <div class="offcanvas-header bg-light">
-            <h5 class="offcanvas-title fw-bold text-primary"><i class="bi bi-sliders me-2"></i>Filtros Avanzados</h5>
+            <h5 class="offcanvas-title fw-bold text-primary" id="sidebarTitle">Filtros</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
-            <p class="small text-muted mb-4">Segmentar datos de la tabla.</p>
-            <div class="mb-4">
-                <label class="form-label fw-bold small text-uppercase text-secondary">Estado</label>
-                <select class="form-select form-select-sm" id="filtroEstado">
-                    <option value="">Todos</option>
-                    <option value="ADJUDICADO">Adjudicados</option>
-                    <option value="FORMALIZADO">Formalizados</option>
-                    <option value="CERRADO">Cerrados</option>
-                </select>
-            </div>
-            <div class="mb-4">
-                <label class="form-label fw-bold small text-uppercase text-secondary">Baja (%)</label>
-                <div class="input-group input-group-sm">
-                    <input type="number" class="form-control" placeholder="Min" id="bajaMin">
-                    <span class="input-group-text">-</span>
-                    <input type="number" class="form-control" placeholder="Max" id="bajaMax">
-                </div>
-            </div>
-            <div class="d-grid">
-                <button class="btn btn-primary btn-sm" onclick="aplicarFiltrosSidebar()">Aplicar</button>
-                <button class="btn btn-link btn-sm text-muted mt-2" onclick="limpiarFiltros()">Limpiar</button>
+            <p class="small text-muted mb-3" id="sidebarDesc">Seleccione una opción para filtrar:</p>
+            <div id="sidebarContent"></div>
+            <div class="mt-4 pt-3 border-top">
+                <button class="btn btn-outline-danger btn-sm w-100" onclick="resetSidebarFilter()">Quitar este filtro</button>
             </div>
         </div>
     </div>
@@ -109,28 +103,65 @@ HTML_TEMPLATE = """
 
         <div class="filters-bar">
             <div class="d-flex gap-2">
-                <button class="btn-filter active" onclick="filterType('all', this)">Todos</button>
-                <button class="btn-filter" onclick="filterType('OBRA', this)">Obras</button>
-                <button class="btn-filter" onclick="filterType('SERV', this)">Servicios</button>
-                <button class="btn-filter" onclick="filterType('ING', this)">Ingeniería</button>
+                <button class="btn-filter active" onclick="setGlobalFilter('tipo', 'all', this)">Todos</button>
+                <button class="btn-filter" onclick="setGlobalFilter('tipo', 'OBRA', this)">Obras</button>
+                <button class="btn-filter" onclick="setGlobalFilter('tipo', 'SERV', this)">Servicios</button>
+                <button class="btn-filter" onclick="setGlobalFilter('tipo', 'ING', this)">Ingeniería</button>
             </div>
-            <div class="d-flex gap-2 align-items-center">
-                <span class="small fw-bold text-muted text-uppercase me-2"><i class="bi bi-calendar-event me-1"></i>Fecha Adj:</span>
+            
+            <div class="d-flex gap-2 align-items-center bg-light p-2 rounded border">
+                <i class="bi bi-calendar3 text-muted"></i>
+                <select id="filterYear" class="form-select form-select-sm date-select" style="width:80px;" onchange="table.draw()">
+                    <option value="">Año</option>
+                </select>
+                <select id="filterMonth" class="form-select form-select-sm date-select" style="width:100px;" onchange="table.draw()">
+                    <option value="">Mes</option>
+                    <option value="01">Enero</option><option value="02">Febrero</option><option value="03">Marzo</option>
+                    <option value="04">Abril</option><option value="05">Mayo</option><option value="06">Junio</option>
+                    <option value="07">Julio</option><option value="08">Agosto</option><option value="09">Septiembre</option>
+                    <option value="10">Octubre</option><option value="11">Noviembre</option><option value="12">Diciembre</option>
+                </select>
+                
+                <span class="text-muted small mx-1">|</span>
+                
                 <input type="text" class="date-input flatpickr" id="dateFrom" placeholder="Desde...">
                 <input type="text" class="date-input flatpickr" id="dateTo" placeholder="Hasta...">
             </div>
         </div>
 
         <div id="activeFilterAlert" class="filter-active-info">
-            <span><i class="bi bi-funnel-fill me-2"></i>Empresa: <strong id="filterName">...</strong></span>
-            <button class="btn btn-sm btn-close" onclick="limpiarBusqueda()"></button>
+            <span><i class="bi bi-funnel-fill me-2"></i>Filtro activo: <strong id="filterName">...</strong></span>
+            <button class="btn btn-sm btn-close" onclick="limpiarTodo()"></button>
         </div>
 
         <div class="row g-3 mb-4">
-            <div class="col-xl-3 col-md-6"><div class="kpi-card" onclick="openSidebar()"><i class="bi bi-cash-coin kpi-icon"></i><div class="kpi-label">Volumen Total</div><div class="kpi-value" id="kpi-volumen">0 €</div></div></div>
-            <div class="col-xl-3 col-md-6"><div class="kpi-card" onclick="openSidebar()"><i class="bi bi-graph-down-arrow kpi-icon"></i><div class="kpi-label">Baja Media</div><div class="kpi-value text-primary" id="kpi-baja">0%</div></div></div>
-            <div class="col-xl-3 col-md-6"><div class="kpi-card" onclick="openSidebar()"><i class="bi bi-people kpi-icon"></i><div class="kpi-label">Media Lic.</div><div class="kpi-value" id="kpi-licitadores">0</div></div></div>
-            <div class="col-xl-3 col-md-6"><div class="kpi-card" onclick="openSidebar()"><i class="bi bi-files kpi-icon"></i><div class="kpi-label">Contratos</div><div class="kpi-value" id="kpi-contratos">0</div></div></div>
+            <div class="col-xl-3 col-md-6">
+                <div class="kpi-card" onclick="openSidebar('volumen', this)">
+                    <i class="bi bi-cash-coin kpi-icon"></i>
+                    <div class="kpi-label">Volumen Total</div>
+                    <div class="kpi-value" id="kpi-volumen">0 €</div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="kpi-card" onclick="openSidebar('baja', this)">
+                    <i class="bi bi-graph-down-arrow kpi-icon"></i>
+                    <div class="kpi-label">Baja Media</div>
+                    <div class="kpi-value text-primary" id="kpi-baja">0%</div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="kpi-card" onclick="openSidebar('licitadores', this)">
+                    <i class="bi bi-people kpi-icon"></i>
+                    <div class="kpi-label">Media Lic.</div>
+                    <div class="kpi-value" id="kpi-licitadores">0</div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="kpi-card" onclick="openSidebar('contratistas', this)">
+                    <i class="bi bi-briefcase kpi-icon"></i>
+                    <div class="kpi-label">Contratistas</div> <div class="kpi-value" id="kpi-contratistas">0</div>
+                </div>
+            </div>
         </div>
 
         <div class="dashboard-card">
@@ -138,8 +169,8 @@ HTML_TEMPLATE = """
                 <thead>
                     <tr>
                         <th width="8%">Fecha Adj.</th>
-                        <th width="8%">Tipo</th>
-                        <th width="22%">Entidad / Objeto</th>
+                        <th width="8%">Estado</th> <th width="8%">Tipo</th>
+                        <th width="20%">Entidad / Objeto</th>
                         <th width="15%">Ganador</th>
                         <th width="10%" class="text-end">Presupuesto</th>
                         <th width="10%" class="text-end">Adjudicación</th>
@@ -168,58 +199,109 @@ HTML_TEMPLATE = """
         const datos = __DATOS_JSON__;
         const eur = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
         let table;
+        
+        // Estado Global de Filtros
+        let currentFilters = {
+            tipo: 'all',
+            sidebarCategory: null, // 'volumen', 'baja', 'licitadores', 'contratistas'
+            sidebarValue: null     // El valor seleccionado
+        };
 
         $(document).ready(function() {
-            initDatePickers();
+            initDateControls();
             initTable();
             updateKPIs(datos);
         });
 
-        function initDatePickers() {
+        function initDateControls() {
             flatpickr(".date-input", { dateFormat: "d/m/Y", locale: "es", onChange: function() { table.draw(); } });
+            
+            // Rellenar Años dinámicamente
+            const years = [...new Set(datos.map(d => d.fecha_adjudicacion.split('/')[2]))].sort().reverse();
+            years.forEach(y => $('#filterYear').append(`<option value="${y}">${y}</option>`));
         }
 
         function initTable() {
-            // Filtro Fecha
+            // --- MOTOR DE FILTRADO UNIFICADO ---
             $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+                const rowData = datos[dataIndex]; // Acceso directo al objeto JSON original para tener tipos correctos
+                
+                // 1. Filtro Tipo (Botones Superiores)
+                if (currentFilters.tipo !== 'all' && rowData.tipo_licitacion !== currentFilters.tipo) return false;
+
+                // 2. Filtros de Fecha (Rango Manual o Selectores)
+                const dateParts = rowData.fecha_adjudicacion.split('/');
+                const dateObj = new Date(dateParts[2], dateParts[1]-1, dateParts[0]);
+                
+                // Selectores Año/Mes
+                const selYear = $('#filterYear').val();
+                const selMonth = $('#filterMonth').val();
+                if (selYear && dateParts[2] !== selYear) return false;
+                if (selMonth && dateParts[1] !== selMonth) return false;
+
+                // Datepickers
                 const min = $('#dateFrom').val() ? parseDate($('#dateFrom').val()) : null;
                 const max = $('#dateTo').val() ? parseDate($('#dateTo').val()) : null;
-                const dateData = parseDate(data[0]); 
-                if ( (min === null && max === null) || (min === null && dateData <= max) || (min <= dateData && max === null) || (min <= dateData && dateData <= max) ) return true;
-                return false;
-            });
-            
-            // Filtros Sidebar
-            $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
-               const estadoFilter = $('#filtroEstado').val();
-               const minBaja = parseFloat($('#bajaMin').val());
-               const maxBaja = parseFloat($('#bajaMax').val());
-               const estado = data[9]; // Columna oculta estado
-               const baja = parseFloat(data[6].replace('%','').replace(',','.'));
-               
-               if(estadoFilter && !estado.includes(estadoFilter)) return false;
-               if(!isNaN(minBaja) && baja < minBaja) return false;
-               if(!isNaN(maxBaja) && baja > maxBaja) return false;
-               return true;
+                if (min && dateObj < min) return false;
+                if (max && dateObj > max) return false;
+
+                // 3. Filtros Sidebar (Lógica Compleja)
+                if (currentFilters.sidebarCategory) {
+                    const val = currentFilters.sidebarValue;
+                    const imp = rowData.importe_adjudicacion;
+                    const baja = rowData.baja_pct;
+                    const lic = rowData.num_licitadores;
+                    const gan = rowData.ganador;
+
+                    if (currentFilters.sidebarCategory === 'volumen') {
+                        if (val === '<50k' && imp >= 50000) return false;
+                        if (val === '<100k' && imp >= 100000) return false;
+                        if (val === '<200k' && imp >= 200000) return false;
+                        if (val === '<500k' && imp >= 500000) return false;
+                        if (val === '<800k' && imp >= 800000) return false;
+                        if (val === '<1M' && imp >= 1000000) return false;
+                        if (val === '<2M' && imp >= 2000000) return false;
+                        if (val === '<5M' && imp >= 5000000) return false;
+                        if (val === '>5M' && imp < 5000000) return false;
+                    }
+                    else if (currentFilters.sidebarCategory === 'baja') {
+                        if (val === '<3' && baja >= 3) return false;
+                        if (val === '<5' && baja >= 5) return false;
+                        if (val === '<10' && baja >= 10) return false;
+                        if (val === '<15' && baja >= 15) return false;
+                        if (val === '>15' && baja <= 15) return false;
+                    }
+                    else if (currentFilters.sidebarCategory === 'licitadores') {
+                        if (val === '>5') { if(lic <= 5) return false; }
+                        else { if (lic != val) return false; }
+                    }
+                    else if (currentFilters.sidebarCategory === 'contratistas') {
+                        if (gan !== val) return false;
+                    }
+                }
+                return true;
             });
 
             table = $('#tablaContratos').DataTable({
                 data: datos,
                 language: { url: "//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json" },
-                pageLength: 20,
+                paging: false, // TABLA COMPLETA EN UNA PÁGINA
                 order: [[ 0, "desc" ]],
                 columns: [
-                    { data: 'fecha_adjudicacion', render: (d,t,r) => {
-                        const parts = d.split('/');
-                        const sortVal = parts.length===3 ? parts[2]+parts[1]+parts[0] : 0;
-                        return `<span class="d-none">${sortVal}</span><span class="small fw-bold text-nowrap">${d}</span>`;
+                    { data: 'fecha_adjudicacion', render: (d) => {
+                        const p = d.split('/'); return `<span class="d-none">${p[2]}${p[1]}${p[0]}</span><span class="small fw-bold">${d}</span>`;
+                    }},
+                    // NUEVA COLUMNA ESTADO
+                    { data: 'estado_fase', className: 'text-center', render: d => {
+                        let color = d.includes('ADJ') ? 'bg-primary' : (d.includes('FORM') ? 'bg-success' : 'bg-secondary');
+                        return `<span class="badge text-white ${color} badge-estado">${d.substring(0,10)}</span>`;
                     }},
                     { data: 'tipo_licitacion', className: 'text-center', render: d => {
-                        let color = d==='ING' ? '#8b5cf6' : (d==='OBRA' ? '#ef4444' : '#3b82f6');
-                        return `<span class="badge-tipo" style="color:${color};border-color:${color}40;background:${color}10">${d}</span>`;
+                        let c = d==='ING'?'#8b5cf6':(d==='OBRA'?'#ef4444':'#3b82f6');
+                        return `<span class="badge-tipo" style="color:${c};border-color:${c}40;background:${c}10">${d}</span>`;
                     }},
                     { data: null, render: d => `<div style="line-height:1.2"><span class="d-block text-truncate small fw-bold text-dark" style="max-width:280px" title="${d.entidad}">${d.entidad}</span><span class="d-block text-muted text-truncate small" style="max-width:280px" title="${d.objeto}">${d.objeto}</span></div>` },
-                    { data: 'ganador', render: d => `<a onclick="filtrarPorGanador('${d}')" class="winner-link text-truncate d-block small" style="max-width:180px" title="Ver todo de ${d}">${d}</a>` },
+                    { data: 'ganador', render: d => `<span class="text-truncate d-block small" style="max-width:180px" title="${d}">${d}</span>` },
                     { data: 'presupuesto_base', className: 'text-end', render: d => `<span class="text-secondary small text-nowrap">${eur.format(d)}</span>` },
                     { data: 'importe_adjudicacion', className: 'text-end', render: d => `<span class="fw-bold small text-dark text-nowrap">${eur.format(d)}</span>` },
                     { data: 'baja_pct', className: 'text-center', render: d => {
@@ -227,8 +309,7 @@ HTML_TEMPLATE = """
                         return `<span class="badge-baja ${cls}">${d}%</span>`;
                     }},
                     { data: 'num_licitadores', className: 'text-center', render: d => `<span class="badge bg-white border text-dark shadow-sm">${d}</span>` },
-                    { data: null, orderable: false, className: 'text-end', render: (d,t,r,m) => `<button class="btn btn-sm btn-light border" onclick='verDetalle(${m.row})'><i class="bi bi-eye"></i></button>` },
-                    { data: 'estado_fase', visible: false }
+                    { data: null, orderable: false, className: 'text-end', render: (d,t,r,m) => `<button class="btn btn-sm btn-light border" onclick='verDetalle(${m.row})'><i class="bi bi-eye"></i></button>` }
                 ]
             });
 
@@ -238,40 +319,128 @@ HTML_TEMPLATE = """
             });
         }
 
+        // --- GESTIÓN DE SIDEBAR Y FILTROS LATERALES ---
+        function openSidebar(category, el) {
+            $('.kpi-card').removeClass('active-kpi');
+            $(el).addClass('active-kpi');
+            
+            let html = '';
+            let title = '';
+
+            // Obtener datos ACTUALES filtrados (para los contadores de las opciones)
+            const currentData = table.rows({ filter: 'applied' }).data().toArray();
+
+            if (category === 'volumen') {
+                title = 'Filtrar por Importe';
+                const ranges = [
+                    {k: '<50k', l: 'Menor de 50.000 €'}, {k: '<100k', l: '< 100.000 €'}, 
+                    {k: '<200k', l: '< 200.000 €'}, {k: '<500k', l: '< 500.000 €'},
+                    {k: '<800k', l: '< 800.000 €'}, {k: '<1M', l: '< 1.000.000 €'},
+                    {k: '<2M', l: '< 2.000.000 €'}, {k: '<5M', l: '< 5.000.000 €'},
+                    {k: '>5M', l: 'Mayor de 5.000.000 €'}
+                ];
+                ranges.forEach(r => {
+                    // Contar cuántos hay (simplificado para UI rápida)
+                    html += `<button class="sidebar-option" onclick="applySidebar('${category}', '${r.k}')">${r.l}</button>`;
+                });
+            } 
+            else if (category === 'baja') {
+                title = 'Filtrar por Baja';
+                const ranges = [
+                    {k: '<3', l: 'Menor del 3%'}, {k: '<5', l: 'Menor del 5%'},
+                    {k: '<10', l: 'Menor del 10%'}, {k: '<15', l: 'Menor del 15%'},
+                    {k: '>15', l: 'Mayor del 15%'}
+                ];
+                ranges.forEach(r => html += `<button class="sidebar-option" onclick="applySidebar('${category}', '${r.k}')">${r.l}</button>`);
+            }
+            else if (category === 'licitadores') {
+                title = 'Filtrar por Competencia';
+                [1,2,3,4,5].forEach(n => html += `<button class="sidebar-option" onclick="applySidebar('${category}', ${n})">${n} Licitador(es)</button>`);
+                html += `<button class="sidebar-option" onclick="applySidebar('${category}', '>5')">Más de 5</button>`;
+            }
+            else if (category === 'contratistas') {
+                title = 'Contratistas (En vista actual)';
+                // Calcular contratistas presentes en la tabla filtrada
+                const counts = {};
+                currentData.forEach(d => { if(d.ganador !== 'Desconocido') counts[d.ganador] = (counts[d.ganador] || 0) + 1; });
+                
+                // Ordenar por número de contratos
+                const sorted = Object.entries(counts).sort((a,b) => b[1] - a[1]);
+                
+                if (sorted.length === 0) html = '<p class="text-muted text-center">No hay datos</p>';
+                else {
+                    sorted.forEach(([name, count]) => {
+                        html += `<button class="sidebar-option" onclick="applySidebar('${category}', '${name.replace(/'/g, "\\'")}')">
+                            <span class="text-truncate d-inline-block" style="max-width: 220px;">${name}</span>
+                            <span class="sidebar-count">${count}</span>
+                        </button>`;
+                    });
+                }
+            }
+
+            $('#sidebarTitle').text(title);
+            $('#sidebarContent').html(html);
+            new bootstrap.Offcanvas('#offcanvasFiltros').show();
+        }
+
+        function applySidebar(cat, val) {
+            currentFilters.sidebarCategory = cat;
+            currentFilters.sidebarValue = val;
+            
+            let label = val;
+            if(cat === 'contratistas') label = val; // Nombre empresa
+            else if(cat === 'licitadores') label = val + ' licitadores';
+            else label = val; // Rangos
+
+            $('#filterName').text(label);
+            $('#activeFilterAlert').css('display', 'flex');
+            
+            // Cerrar sidebar y redibujar
+            bootstrap.Offcanvas.getInstance('#offcanvasFiltros').hide();
+            table.draw();
+        }
+
+        function resetSidebarFilter() {
+            currentFilters.sidebarCategory = null;
+            currentFilters.sidebarValue = null;
+            $('#activeFilterAlert').hide();
+            $('.kpi-card').removeClass('active-kpi');
+            bootstrap.Offcanvas.getInstance('#offcanvasFiltros').hide();
+            table.draw();
+        }
+
+        function setGlobalFilter(key, val, btn) {
+            if(key === 'tipo') {
+                $('.btn-filter').removeClass('active');
+                $(btn).addClass('active');
+                currentFilters.tipo = val;
+            }
+            table.draw();
+        }
+
+        function limpiarTodo() {
+            resetSidebarFilter();
+        }
+
+        // --- ACTUALIZAR KPIs ---
         function updateKPIs(data) {
             let vol = 0, sumBaja = 0, countBaja = 0, sumLic = 0;
+            const contratistasUnicos = new Set();
+            
             data.forEach(d => {
                 vol += d.importe_adjudicacion;
                 if(d.baja_pct > 0) { sumBaja += d.baja_pct; countBaja++; }
                 sumLic += d.num_licitadores;
+                if(d.ganador !== "Desconocido") contratistasUnicos.add(d.ganador);
             });
+
             $('#kpi-volumen').text(eur.format(vol));
             $('#kpi-baja').text((countBaja ? (sumBaja / countBaja) : 0).toFixed(2) + '%');
             $('#kpi-licitadores').text((data.length ? (sumLic / data.length) : 0).toFixed(1));
-            $('#kpi-contratos').text(data.length);
+            $('#kpi-contratistas').text(contratistasUnicos.size); // MUESTRA CANTIDAD DE EMPRESAS ÚNICAS
         }
 
-        function filterType(type, btn) {
-            $('.btn-filter').removeClass('active');
-            $(btn).addClass('active');
-            if(type === 'all') table.column(1).search('').draw();
-            else table.column(1).search(type).draw();
-        }
-
-        function filtrarPorGanador(nombre) {
-            table.search(nombre).draw();
-            $('#filterName').text(nombre);
-            $('#activeFilterAlert').css('display', 'flex');
-        }
-
-        function limpiarBusqueda() {
-            table.search('').draw();
-            $('#activeFilterAlert').hide();
-        }
-        
-        function aplicarFiltrosSidebar() { table.draw(); bootstrap.Offcanvas.getInstance('#offcanvasFiltros').hide(); }
-        function limpiarFiltros() { $('#filtroEstado').val(''); $('#bajaMin').val(''); $('#bajaMax').val(''); table.draw(); }
-        function openSidebar() { new bootstrap.Offcanvas('#offcanvasFiltros').show(); }
+        // Utils
         function parseDate(d) { if(!d) return null; const p = d.split('/'); return new Date(p[2], p[1]-1, p[0]); }
         
         window.verDetalle = function(idx) {
@@ -303,10 +472,10 @@ HTML_TEMPLATE = """
 </html>
 """
 
-# --- MOTOR DE EXTRACCIÓN (PYTHON) ---
+# --- MOTOR DE EXTRACCIÓN (RSS URLs LARGAS) ---
 class MonitorEngine:
     def __init__(self):
-        # FUENTES RSS: URLs largas intactas
+        # Mismas URLs que antes (No cambiadas)
         self.sources = [
             {"tipo": "OBRA", "estado": "ADJUDICADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=5&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/01/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"},
             {"tipo": "OBRA", "estado": "FORMALIZADO", "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=8&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/01/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"},
@@ -346,7 +515,7 @@ class MonitorEngine:
             head = soup.find('div', class_='cabeceraDetalle')
             data['objeto'] = head.find('dd').get_text(strip=True) if head and head.find('dd') else "Sin descripción"
 
-            # *** NUEVO: DETECCIÓN DE INGENIERÍA ***
+            # Detección Ingeniería
             keywords_ing = ['redacción', 'proyecto', 'dirección de obra', 'asistencia técnica', 'consultoría', 'estudio', 'coordinación', 'ingeniería', 'arquitectura']
             if tipo == "SERV":
                 obj_lower = data['objeto'].lower()
@@ -410,7 +579,7 @@ class MonitorEngine:
             return None
 
     def run(self):
-        print("🚀 INICIANDO MONITOR 2.0 (MODO LIGERO)...")
+        print("🚀 INICIANDO MONITOR 3.0 (FILTROS AVANZADOS)...")
         results = []
         for s in self.sources:
             try:
