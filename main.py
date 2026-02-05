@@ -1,5 +1,5 @@
 # ==============================================================================
-# LICITACIONES EUSKADI - V50 (MULTI-STATUS & DATE FILTERING)
+# LICITACIONES EUSKADI - V51 (COMPACT HEADER + FULL DASHBOARD RESTORED)
 # ==============================================================================
 
 import requests
@@ -14,27 +14,22 @@ import urllib3
 # Desactivar advertencias SSL
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# --- CONFIGURACIÓN DE URLS ---
-
-# OBRAS
+# --- CONFIGURACIÓN DE URLS (MISMAS QUE V50) ---
 RSS_OBRAS_ACTIVO = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=3&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
 RSS_OBRAS_CERRADO = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=4&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
 RSS_OBRAS_REDACCION = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=12&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
 RSS_OBRAS_SUSPENDIDO = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=10&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
 
-# SERVICIOS
 RSS_SERV_ACTIVO = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=3&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
 RSS_SERV_CERRADO = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=4&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
 RSS_SERV_REDACCION = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=12&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
 RSS_SERV_SUSPENDIDO = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=10&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
 
 SOURCES = [
-    # OBRAS
     {"type": "obras", "status": "activo", "url": RSS_OBRAS_ACTIVO},
     {"type": "obras", "status": "cerrado", "url": RSS_OBRAS_CERRADO},
     {"type": "obras", "status": "redaccion", "url": RSS_OBRAS_REDACCION},
     {"type": "obras", "status": "suspendido", "url": RSS_OBRAS_SUSPENDIDO},
-    # SERVICIOS
     {"type": "servicios", "status": "activo", "url": RSS_SERV_ACTIVO},
     {"type": "servicios", "status": "cerrado", "url": RSS_SERV_CERRADO},
     {"type": "servicios", "status": "redaccion", "url": RSS_SERV_REDACCION},
@@ -71,7 +66,6 @@ def limpiar_precio(texto):
     except: return 0.0
 
 def calcular_dias_restantes(fecha_limite_str, status):
-    # Si está cerrado o suspendido, no hay días restantes lógicos
     if status in ["cerrado", "suspendido"]: return -1
     if not fecha_limite_str or fecha_limite_str == "Consultar": return 999
     try:
@@ -91,7 +85,7 @@ def es_ingenieria(titulo):
 datos_finales = []
 fecha_actual_str = datetime.now().strftime("%d/%m/%Y %H:%M")
 
-print(f"🚀 INICIANDO V50 ({fecha_actual_str})")
+print(f"🚀 INICIANDO V51 ({fecha_actual_str})")
 
 for source in SOURCES:
     tipo_origen = source["type"]
@@ -118,7 +112,6 @@ for source in SOURCES:
             if tipo_origen == "servicios" and es_ingenieria(titulo):
                 categoria = "ingenieria"
 
-            # Fecha RSS (Última actualización/Publicación en RSS)
             try:
                 pub_dt = parsedate_to_datetime(item.pubDate.text)
                 fecha_rss = pub_dt.strftime("%d/%m/%Y")
@@ -133,7 +126,6 @@ for source in SOURCES:
             expediente = "---"
             logo_url = "https://cdn-icons-png.flaticon.com/512/4300/4300058.png"
             
-            # Nueva variable para fecha primera pub
             fecha_primera_pub = fecha_rss
             fecha_primera_pub_iso = fecha_rss_iso
 
@@ -142,7 +134,6 @@ for source in SOURCES:
                 if r_det.status_code == 200:
                     s_det = BeautifulSoup(r_det.content, 'html.parser')
                     
-                    # 1. Logo
                     div_titulo = s_det.find('div', class_='barraTitulo')
                     if div_titulo:
                         img = div_titulo.find('img')
@@ -150,36 +141,30 @@ for source in SOURCES:
                             src = img.get('src')
                             logo_url = "https://www.contratacion.euskadi.eus" + src if src.startswith('/') else src
 
-                    # 2. Fecha Límite
                     target_fecha = s_det.find(string=re.compile(r"Fecha l.mite de presentaci.n", re.IGNORECASE))
                     if target_fecha:
                         parent = target_fecha.parent
                         next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
                         if next_el: fecha_limite = next_el.text.strip().split(' ')[0]
 
-                    # 3. Presupuesto
                     target_presu = s_det.find(string=re.compile(r"Presupuesto del contrato sin IVA", re.IGNORECASE))
                     if target_presu:
                         parent = target_presu.parent
                         next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
                         if next_el: presupuesto = limpiar_precio(next_el.text)
 
-                    # 4. Entidad
                     target_entidad = s_det.find(string=re.compile(r"Poder adjudicador", re.IGNORECASE))
                     if target_entidad:
                         parent = target_entidad.parent
                         next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
                         if next_el: entidad = next_el.text.strip()
                         
-                    # 5. Expediente
                     target_exp = s_det.find(string=re.compile(r"Expediente", re.IGNORECASE))
                     if target_exp:
                         parent = target_exp.parent
                         next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
                         if next_el: expediente = next_el.text.strip()
 
-                    # 6. FECHA PRIMERA PUBLICACIÓN (Intento de scraping específico)
-                    # Buscamos "Fecha de publicación" en tabla o lista
                     target_fpub = s_det.find(string=re.compile(r"Fecha de publicaci.n del anuncio", re.IGNORECASE))
                     if target_fpub:
                          parent = target_fpub.parent
@@ -198,7 +183,6 @@ for source in SOURCES:
                 entidad = titulo.split(" - ")[0]
 
             zona = detectar_zona(entidad)
-            
             dias = calcular_dias_restantes(fecha_limite, estado_rss)
             
             if fecha_limite:
@@ -212,16 +196,16 @@ for source in SOURCES:
             obj = {
                 "id": len(datos_finales),
                 "categoria": categoria,
-                "estado": estado_rss, # activo, cerrado, redaccion, suspendido
+                "estado": estado_rss,
                 "entidad": entidad,
                 "objeto": titulo.replace('"', "'"),
                 "presupuesto_num": presupuesto,
                 "presupuesto_txt": presu_txt,
                 "limite": limite_iso,
                 "limite_fmt": fecha_limite,
-                "publicado": fecha_rss_iso,      # Fecha RSS (Última)
+                "publicado": fecha_rss_iso,
                 "publicado_fmt": fecha_rss,
-                "primera_pub": fecha_primera_pub_iso, # Fecha Primera (Scraped)
+                "primera_pub": fecha_primera_pub_iso,
                 "primera_pub_fmt": fecha_primera_pub,
                 "dias_restantes": dias,
                 "expediente": expediente,
@@ -236,14 +220,14 @@ for source in SOURCES:
 
 datos_json = json.dumps(datos_finales)
 
-# --- HTML TEMPLATE (V50 - ENHANCED FILTERING) ---
+# --- HTML TEMPLATE (V51 - COMPACT HEADER + RESTORED DASHBOARD) ---
 html_content = f"""
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LICITACIONES V50</title>
+    <title>LICITACIONES V51</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -252,40 +236,52 @@ html_content = f"""
         * {{ box-sizing: border-box; }}
         body {{ background-color: var(--bg); font-family: 'Inter', sans-serif; margin: 0; padding: 0; color: var(--text-main); overflow: hidden; }}
         
-        /* HEADER AVANZADO */
-        .app-header {{ background: white; border-bottom: 1px solid #e2e8f0; display: flex; flex-direction: column; z-index: 50; position:relative; }}
-        .header-top {{ height: 60px; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }}
-        .header-controls {{ background: #f8fafc; border-top: 1px solid #f1f5f9; padding: 8px 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }}
+        /* HEADER ULTRA-COMPACTO */
+        .app-header {{ height: 60px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; z-index: 50; }}
+        .header-left {{ display: flex; align-items: center; gap: 15px; }}
+        .header-right {{ display: flex; align-items: center; gap: 10px; }}
         
-        .app-brand {{ font-weight: 800; font-size: 1.2rem; color: #1e293b; display: flex; align-items: center; gap: 10px; white-space: nowrap; }}
-        .nav-pills {{ display: flex; gap: 5px; background: #f1f5f9; padding: 4px; border-radius: 8px; }}
-        .nav-item {{ padding: 6px 15px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; color: #64748b; transition: all 0.2s; white-space: nowrap; }}
+        .app-brand {{ font-weight: 800; font-size: 1.1rem; color: #1e293b; display: flex; align-items: center; gap: 8px; white-space: nowrap; margin-right: 10px; }}
+        
+        /* NAVIGATION */
+        .nav-pills {{ display: flex; gap: 4px; background: #f1f5f9; padding: 3px; border-radius: 6px; margin-right: 10px; }}
+        .nav-item {{ padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: 600; cursor: pointer; color: #64748b; transition: all 0.2s; white-space: nowrap; }}
         .nav-item:hover {{ color: #0f172a; background: rgba(255,255,255,0.5); }}
-        .nav-item.active {{ background: white; color: var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }}
-        
-        /* GRUPOS DE CONTROL */
-        .ctrl-group {{ display: flex; align-items: center; gap: 5px; padding-right: 15px; border-right: 1px solid #e2e8f0; }}
-        .ctrl-group:last-child {{ border: none; }}
-        .ctrl-label {{ font-size: 0.7rem; font-weight: 800; color: #94a3b8; margin-right: 5px; text-transform: uppercase; }}
-        
-        .chip-btn {{ padding: 4px 10px; border: 1px solid #e2e8f0; border-radius: 20px; font-size: 0.75rem; font-weight: 600; cursor: pointer; background: white; color: #64748b; transition: 0.2s; display: flex; align-items: center; gap: 5px; }}
-        .chip-btn:hover {{ border-color: #cbd5e1; color: #0f172a; }}
-        .chip-btn.active {{ background: #eff6ff; border-color: var(--primary); color: var(--primary); }}
-        .chip-btn.c-red.active {{ background: #fef2f2; border-color: #ef4444; color: #ef4444; }}
-        .chip-btn.c-org.active {{ background: #fff7ed; border-color: #f97316; color: #f97316; }}
-        .chip-btn.c-gry.active {{ background: #f1f5f9; border-color: #64748b; color: #334155; }}
+        .nav-item.active {{ background: white; color: var(--primary); box-shadow: 0 1px 2px rgba(0,0,0,0.1); }}
+        .nav-item.dashboard-tab {{ color: #7c3aed; }}
+        .nav-item.dashboard-tab.active {{ background: #7c3aed; color: white; }}
 
-        .toggle-switch {{ display: flex; background: #e2e8f0; border-radius: 4px; padding: 2px; }}
-        .ts-opt {{ padding: 3px 8px; font-size: 0.7rem; font-weight: 700; color: #64748b; cursor: pointer; border-radius: 3px; }}
-        .ts-opt.active {{ background: white; color: #0f172a; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }}
+        /* COMPACT FILTERS */
+        .filters-container {{ display: flex; align-items: center; gap: 8px; border-left: 1px solid #e2e8f0; padding-left: 15px; height: 36px; }}
+        .f-divider {{ width: 1px; height: 20px; background: #e2e8f0; margin: 0 2px; }}
 
-        /* LAYOUT */
-        .app-container {{ display: flex; height: calc(100vh - 105px); width: 100vw; }}
+        .tiny-chip {{ padding: 3px 8px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 0.7rem; font-weight: 700; cursor: pointer; background: white; color: #64748b; transition: 0.2s; white-space: nowrap; }}
+        .tiny-chip:hover {{ border-color: #cbd5e1; color: #0f172a; }}
+        .tiny-chip.active {{ background: #eff6ff; border-color: var(--primary); color: var(--primary); }}
+        
+        /* Colores Específicos Chips */
+        .tc-red.active {{ background: #fef2f2; border-color: #ef4444; color: #ef4444; }}
+        .tc-org.active {{ background: #fff7ed; border-color: #f97316; color: #f97316; }}
+        .tc-gry.active {{ background: #f1f5f9; border-color: #64748b; color: #334155; }}
+
+        /* Switch Fechas */
+        .date-switch {{ display: flex; background: #e2e8f0; border-radius: 4px; padding: 2px; }}
+        .ds-opt {{ padding: 2px 6px; font-size: 0.65rem; font-weight: 700; color: #64748b; cursor: pointer; border-radius: 3px; }}
+        .ds-opt.active {{ background: white; color: #0f172a; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }}
+
+        /* Utility Buttons */
+        .util-btn {{ width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; border-radius: 6px; cursor: pointer; color: #475569; background: white; font-size: 0.9rem; }}
+        .util-btn:hover {{ color: #0f172a; border-color: #cbd5e1; }}
+        .btn-pdf {{ background: #1e293b; color: white; border: none; }}
+        .btn-pdf:hover {{ background: #334155; }}
+
+        /* LAYOUT GENERAL */
+        .app-container {{ display: flex; height: calc(100vh - 60px); width: 100vw; }}
         .sidebar {{ width: 280px; background: #ffffff; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; padding: 20px 0; }}
         .main-content {{ flex: 1; display: flex; flex-direction: column; background: #f1f5f9; position: relative; overflow: hidden; }}
         .mobile-toggle {{ display: none; font-size: 1.2rem; color: #64748b; cursor: pointer; padding: 5px; }}
 
-        /* SIDEBAR STYLES (Igual que antes) */
+        /* SIDEBAR (Igual V50) */
         .filter-list {{ flex:1; overflow-y: auto; padding: 0 15px; }}
         .sb-title {{ font-size: 0.7rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin: 15px 0 8px 10px; }}
         .ent-card {{ display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-radius: 6px; cursor: pointer; margin-bottom: 2px; border: 1px solid transparent; }}
@@ -331,6 +327,7 @@ html_content = f"""
         .row-item {{ display: grid; grid-template-columns: var(--grid-layout); gap: 10px; align-items: flex-start; padding: 12px 20px; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; }}
         .ri-title {{ font-weight: 600; color: #1e293b; }}
         .ri-exp {{ font-size: 0.7rem; color: #64748b; margin-bottom: 3px; display:flex; gap:10px; align-items:center; }}
+        
         .st-badge {{ font-size: 0.65rem; font-weight:800; padding:2px 5px; border-radius:3px; text-transform:uppercase; }}
         .st-activo {{ background:#dbeafe; color:#1e40af; }}
         .st-cerrado {{ background:#fee2e2; color:#991b1b; }}
@@ -343,7 +340,7 @@ html_content = f"""
         .b-green {{ background: #dcfce7; color: #166534; }}
         .b-gray {{ background: #e2e8f0; color: #64748b; }}
 
-        /* DASHBOARD (Simplificado para V50) */
+        /* DASHBOARD RESTAURADO (Full Layout V49) */
         #dashboard-view {{ display: none; height: 100%; padding: 20px; overflow: hidden; background: #f1f5f9; }}
         .dashboard-container {{ display: grid; grid-template-rows: auto 1fr; gap: 20px; height: 100%; }}
         .dash-kpis {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }}
@@ -353,30 +350,43 @@ html_content = f"""
         .kpi-m-label {{ font-size: 0.85rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }}
         .kpi-m-val {{ font-size: 2rem; font-weight: 800; color: #1e293b; margin-top: 5px; }}
         .kpi-m-sub {{ font-size: 0.75rem; color: #94a3b8; margin-top: 5px; }}
-        .dash-content {{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }}
+        
+        .dash-content {{ display: grid; grid-template-columns: 1fr 1fr 320px; grid-template-rows: 1fr 1fr; gap: 20px; min-height: 0; }}
         .d-card {{ background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; position: relative; min-height: 0; }}
         .dc-title {{ font-size: 0.95rem; font-weight: 700; color: #334155; margin-bottom: 15px; }}
-        .chart-box {{ flex: 1; min-height: 0; position:relative; }}
+        .chart-box {{ flex: 1; min-height: 0; position:relative; display: flex; align-items: center; justify-content: center; }}
+        .c-span-v {{ grid-row: span 2; }}
+        .top-list-container {{ overflow-y: auto; padding-right: 5px; }}
+        .top-item {{ display: flex; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.85rem; }}
+        .top-item:last-child {{ border: none; }}
+        .ti-idx {{ background: #f1f5f9; color: #64748b; font-weight: 700; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }}
+        .ti-info {{ flex: 1; overflow: hidden; }}
+        .ti-ent {{ font-weight: 700; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }}
+        .ti-val {{ font-weight: 600; color: var(--primary); text-align: right; white-space: nowrap; }}
+        .ti-desc {{ font-size: 0.75rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }}
 
-        @media (max-width: 900px) {{
+        @media (max-width: 1100px) {{
             .app-container {{ flex-direction: column; height: auto; }}
-            .app-header {{ height: auto; padding-bottom: 5px; }}
-            .header-top {{ padding: 10px 15px; }}
-            .header-controls {{ flex-direction: column; align-items: flex-start; gap: 10px; padding: 10px 15px; }}
-            .ctrl-group {{ border-right: none; border-bottom: 1px solid #e2e8f0; width: 100%; padding-bottom: 8px; padding-right: 0; }}
-            .ctrl-group:last-child {{ border-bottom: none; }}
+            .app-header {{ height: auto; flex-direction: column; align-items: flex-start; padding: 10px; gap: 10px; }}
+            .header-left {{ width: 100%; justify-content: space-between; }}
+            .header-right {{ width: 100%; justify-content: space-between; flex-wrap: wrap; }}
+            .filters-container {{ border-left: none; padding-left: 0; overflow-x: auto; width: 100%; padding-bottom: 5px; }}
+            
             .sidebar {{ display: none; width: 100%; height: auto; max-height: 400px; }}
             .sidebar.active {{ display: flex; }}
             .mobile-toggle {{ display: block; }}
             .grid-header {{ display: none; }}
             .row-item {{ display: flex; flex-direction: column; gap: 5px; padding: 15px; position: relative; }}
             .row-item > div:last-child {{ position: absolute; top: 15px; right: 15px; }}
+            
+            .dash-content {{ display: flex; flex-direction: column; }}
+            .d-card {{ min-height: 300px; }}
         }}
     </style>
 </head>
 <body>
 <div class="app-header">
-    <div class="header-top">
+    <div class="header-left">
         <div style="display:flex; align-items:center; gap:10px">
             <div class="mobile-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></div>
             <div class="app-brand"><i class="fa-solid fa-layer-group"></i> LICITACIONES</div>
@@ -385,30 +395,31 @@ html_content = f"""
             <div class="nav-item active" onclick="switchDataset('obras', this)">OBRAS</div>
             <div class="nav-item" onclick="switchDataset('servicios', this)">SERV.</div>
             <div class="nav-item" onclick="switchDataset('ingenieria', this)">ING.</div>
-            <div class="nav-item" onclick="toggleDashboard(this)"><i class="fa-solid fa-chart-pie"></i></div>
+            <div class="nav-item dashboard-tab" onclick="toggleDashboard(this)"><i class="fa-solid fa-chart-pie"></i></div>
         </div>
     </div>
-    <div class="header-controls">
-        <div class="ctrl-group">
-            <span class="ctrl-label">Estado</span>
-            <div class="chip-btn active" id="f-st-act" onclick="toggleStatus('activo')">ACTIVOS</div>
-            <div class="chip-btn c-red" id="f-st-cer" onclick="toggleStatus('cerrado')">CERRADOS</div>
-            <div class="chip-btn c-org" id="f-st-red" onclick="toggleStatus('redaccion')">REDACCIÓN</div>
-            <div class="chip-btn c-gry" id="f-st-sus" onclick="toggleStatus('suspendido')">SUSP.</div>
+    
+    <div class="header-right">
+        <div class="filters-container">
+            <div class="tiny-chip active" id="f-st-act" onclick="toggleStatus('activo')">ACT</div>
+            <div class="tiny-chip tc-red" id="f-st-cer" onclick="toggleStatus('cerrado')">CER</div>
+            <div class="tiny-chip tc-org" id="f-st-red" onclick="toggleStatus('redaccion')">RED</div>
+            <div class="tiny-chip tc-gry" id="f-st-sus" onclick="toggleStatus('suspendido')">SUS</div>
+            
+            <div class="f-divider"></div>
+            
+            <div class="date-switch">
+                <div class="ds-opt active" id="ts-pub" onclick="setDateRef('primera')">1ª PUB</div>
+                <div class="ds-opt" id="ts-upd" onclick="setDateRef('ultima')">ÚLT</div>
+            </div>
+            
+            <div class="tiny-chip" id="btn-24h" onclick="toggleTimeFilter('24h')">24H</div>
+            <div class="tiny-chip" id="btn-week" onclick="toggleTimeFilter('week')">SEM</div>
         </div>
         
-        <div class="ctrl-group">
-            <span class="ctrl-label">Ref. Fecha</span>
-            <div class="toggle-switch">
-                <div class="ts-opt active" id="ts-pub" onclick="setDateRef('primera')">1ª PUB</div>
-                <div class="ts-opt" id="ts-upd" onclick="setDateRef('ultima')">ÚLTIMA</div>
-            </div>
-        </div>
-
-        <div class="ctrl-group">
-            <span class="ctrl-label">Filtro</span>
-            <div class="chip-btn" id="btn-24h" onclick="toggleTimeFilter('24h')">24H</div>
-            <div class="chip-btn" id="btn-week" onclick="toggleTimeFilter('week')">SEM.</div>
+        <div style="display:flex; gap:5px; margin-left:5px">
+             <div class="util-btn" id="btn-reload" onclick="reloadData()"><i class="fa-solid fa-rotate"></i></div>
+             <button class="util-btn btn-pdf" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i></button>
         </div>
     </div>
 </div>
@@ -463,6 +474,8 @@ html_content = f"""
                 <div class="dash-content">
                     <div class="d-card"><div class="dc-title">Por Zona</div><div class="chart-box"><canvas id="chartZone"></canvas></div></div>
                     <div class="d-card"><div class="dc-title">Top Entidades</div><div class="chart-box"><canvas id="chartEnt"></canvas></div></div>
+                    <div class="d-card c-span-v"><div class="dc-title">Top Oportunidades</div><div class="top-list-container" id="top-opps-list"></div></div>
+                    <div class="d-card" style="grid-column: span 2"><div class="dc-title">Rangos de Presupuesto</div><div class="chart-box"><canvas id="chartRanges" style="max-height:100%"></canvas></div></div>
                 </div>
             </div>
         </div>
@@ -474,9 +487,9 @@ html_content = f"""
     
     // ESTADO DE LA APP
     let currentCategory = 'obras';
-    let activeStatuses = ['activo']; // Por defecto solo activos
-    let dateRef = 'primera'; // 'primera' o 'ultima'
-    let timeFilter = null; // '24h', 'week', null
+    let activeStatuses = ['activo']; 
+    let dateRef = 'primera'; 
+    let timeFilter = null; 
     
     let sidebarMode = 'ads'; 
     let activeFilter = {{ type: 'none', value: null }}; 
@@ -486,13 +499,9 @@ html_content = f"""
     
     // --- LÓGICA DE DATOS ---
     function getData() {{
-        // 1. Categoría
         let d = allData.filter(x => x.categoria === currentCategory);
-        
-        // 2. Estado (Array de estados permitidos)
         d = d.filter(x => activeStatuses.includes(x.estado));
         
-        // 3. Filtro de Tiempo (24h / Semana) sobre la Ref. de Fecha elegida
         if (timeFilter) {{
             let now = new Date();
             let limit = new Date();
@@ -518,8 +527,6 @@ html_content = f"""
     
     function toggleStatus(st) {{
         const btn = document.getElementById('f-st-'+st.substring(0,3));
-        
-        // Lógica: Si clicas uno inactivo, se añade. Si clicas uno activo, se quita (salvo que sea el último)
         if(activeStatuses.includes(st)) {{
             if(activeStatuses.length > 1) {{
                 activeStatuses = activeStatuses.filter(x => x !== st);
@@ -536,17 +543,21 @@ html_content = f"""
         dateRef = ref;
         document.getElementById('ts-pub').classList.toggle('active', ref === 'primera');
         document.getElementById('ts-upd').classList.toggle('active', ref === 'ultima');
-        // Si hay filtro de tiempo activo, refrescar
         if(timeFilter) {{ updateKPIs(); renderSidebar(); renderTable(); }}
     }}
     
     function toggleTimeFilter(tf) {{
-        if(timeFilter === tf) timeFilter = null; // Desactivar
+        if(timeFilter === tf) timeFilter = null; 
         else timeFilter = tf;
         
         document.getElementById('btn-24h').classList.toggle('active', timeFilter === '24h');
         document.getElementById('btn-week').classList.toggle('active', timeFilter === 'week');
         updateKPIs(); renderSidebar(); renderTable();
+    }}
+    
+    function reloadData() {{
+        const btn = document.getElementById('btn-reload'); btn.querySelector('i').classList.add('fa-spin');
+        setTimeout(() => {{ window.location.href = window.location.href; }}, 500);
     }}
 
     function resetView() {{
@@ -561,7 +572,7 @@ html_content = f"""
         el.classList.add('active');
         document.getElementById('table-wrapper').style.display = 'none';
         document.getElementById('dashboard-view').style.display = 'block';
-        if(window.innerWidth <= 900) document.querySelector('.sidebar').style.display = 'none';
+        if(window.innerWidth <= 1100) document.querySelector('.sidebar').style.display = 'none';
         renderDashboard();
     }}
     
@@ -573,7 +584,7 @@ html_content = f"""
         renderSidebar(); renderTable(); 
     }}
     
-    function applyFilter(type, val) {{ activeFilter = {{ type: type, value: val }}; renderSidebar(); renderTable(); if(window.innerWidth <= 900) toggleSidebar(); }}
+    function applyFilter(type, val) {{ activeFilter = {{ type: type, value: val }}; renderSidebar(); renderTable(); if(window.innerWidth <= 1100) toggleSidebar(); }}
     function toggleSidebar() {{ document.getElementById('main-sidebar').classList.toggle('active'); }}
     function setSort(field) {{ if(sortField === field) sortDir = sortDir === 'asc' ? 'desc' : 'asc'; else {{ sortField = field; sortDir = 'desc'; }} renderTable(); }}
     function toggleGroup(header) {{ header.parentElement.classList.toggle('collapsed'); }}
@@ -623,25 +634,20 @@ html_content = f"""
         
         if(data.length === 0) {{ container.innerHTML = "<div style='text-align:center; padding:40px; color:#94a3b8'>No hay datos con los filtros actuales</div>"; return; }}
         
-        // Agrupación y Ordenación
         let grouped = {{}}; data.forEach(d => {{ if(!grouped[d.entidad]) grouped[d.entidad]=[]; grouped[d.entidad].push(d); }});
         let ents = Object.keys(grouped).sort((a, b) => {{
             let rowsA = grouped[a], rowsB = grouped[b]; 
-            // Simple sorting logic based on active field
             let valA, valB;
             if (sortField === 'presupuesto_num') {{ valA = rowsA.reduce((s, x) => s + x.presupuesto_num, 0); valB = rowsB.reduce((s, x) => s + x.presupuesto_num, 0); }} 
             else {{ valA = a.toLowerCase(); valB = b.toLowerCase(); }} 
             
-            // Default entity sort
-            if(sortField === 'publicado' || sortField === 'primera_pub') return 0; // Don't sort entities by date usually, just content
-            
+            if(sortField === 'publicado' || sortField === 'primera_pub') return 0; 
             if (typeof valA === 'string') {{ if (valA < valB) return sortDir === 'asc' ? -1 : 1; if (valA > valB) return sortDir === 'asc' ? 1 : -1; return 0; }}
             return sortDir === 'asc' ? valA - valB : valB - valA;
         }});
 
         ents.forEach(ent => {{
             let rows = grouped[ent]; 
-            // Sort rows inside group
             rows.sort((a,b) => {{ 
                 let va = a[sortField], vb = b[sortField]; 
                 if (typeof va === 'string') {{ if(va < vb) return sortDir === 'asc' ? -1 : 1; if(va > vb) return sortDir === 'asc' ? 1 : -1; return 0; }} 
@@ -652,13 +658,11 @@ html_content = f"""
             let html = `<div class="entity-group"><div class="eg-title-row" onclick="toggleGroup(this)"><div class="eg-info"><i class="fa-solid fa-chevron-down eg-chevron"></i><img src="${{logo}}" class="eg-logo"> ${{ent.replace('Ayuntamiento', 'Ayto')}}</div><div style="font-size:0.8rem; font-weight:700; color:#64748b">${{rows.length}} exp. | ${{formatMoney(total)}}</div></div><div class="group-rows">`;
             
             rows.forEach(r => {{
-                // Badge de estado
                 let badgeClass = 'st-activo';
                 if(r.estado === 'cerrado') badgeClass = 'st-cerrado';
                 else if(r.estado === 'redaccion') badgeClass = 'st-redaccion';
                 else if(r.estado === 'suspendido') badgeClass = 'st-suspendido';
                 
-                // Badge de Días
                 let diasBadge = '';
                 if(r.dias_restantes > -1) {{
                     let bg = r.dias_restantes < 7 ? 'b-red' : (r.dias_restantes < 15 ? 'b-orange' : 'b-green');
@@ -695,6 +699,12 @@ html_content = f"""
         const entCounts = {{}}; data.forEach(d => {{ entCounts[d.entidad] = (entCounts[d.entidad]||0) + d.presupuesto_num }});
         const sortedEnts = Object.entries(entCounts).sort((a,b)=>b[1]-a[1]).slice(0,5);
         chartInstances.push(new Chart(document.getElementById('chartEnt'), {{ type: 'bar', data: {{ labels: sortedEnts.map(x=>x[0].replace('Ayuntamiento', 'Ayto').substring(0,15)+'...'), datasets: [{{ label: 'Volumen (€)', data: sortedEnts.map(x=>x[1]), backgroundColor: '#3b82f6', borderRadius: 4, barThickness: 20 }}] }}, options: {{ indexAxis: 'y', maintainAspectRatio: false, plugins: {{ legend: {{ display: false }} }}, scales: {{ x: {{ grid: {{ display: false }} }}, y: {{ grid: {{ display: false }} }} }} }} }}));
+        
+        let ranges = {{ '< 100k':0, '100k-500k':0, '500k-1M':0, '> 1M':0 }}; data.forEach(d => {{ let p = d.presupuesto_num; if(p < 100000) ranges['< 100k']++; else if(p < 500000) ranges['100k-500k']++; else if(p < 1000000) ranges['500k-1M']++; else ranges['> 1M']++; }});
+        chartInstances.push(new Chart(document.getElementById('chartRanges'), {{ type: 'bar', data: {{ labels: Object.keys(ranges), datasets: [{{ label: 'Cantidad', data: Object.values(ranges), backgroundColor: ['#94a3b8', '#60a5fa', '#3b82f6', '#1e40af'], borderRadius: 6, barThickness: 30 }}] }}, options: {{ maintainAspectRatio: false, plugins: {{ legend: {{ display: false }} }}, scales: {{ y: {{ beginAtZero: true, grid: {{ color: '#f1f5f9' }} }}, x: {{ grid: {{ display: false }} }} }} }} }}));
+
+        const topList = document.getElementById('top-opps-list'); topList.innerHTML = ''; let sortedAds = [...data].sort((a,b) => b.presupuesto_num - a.presupuesto_num).slice(0, 10);
+        sortedAds.forEach((item, idx) => {{ topList.innerHTML += `<div class="top-item"><div class="ti-idx">${{idx+1}}</div><div class="ti-info"><div class="ti-ent">${{item.entidad.replace('Ayuntamiento', 'Ayto')}}</div><div class="ti-desc">${{item.objeto}}</div></div><div class="ti-val">${{item.presupuesto_txt}}</div></div>`; }});
     }}
     
     updateKPIs(); renderSidebar(); renderTable();
@@ -706,4 +716,4 @@ html_content = f"""
 with open("index.html", "w", encoding="utf-8") as file:
     file.write(html_content)
 
-print("✅ Archivo 'index.html' generado con éxito (V50 - Multi-Status & Fechas).")
+print("✅ Archivo 'index.html' generado con éxito (V51 - Compact Header + Full Dashboard).")
