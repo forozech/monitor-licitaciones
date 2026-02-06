@@ -1,5 +1,5 @@
 # ==============================================================================
-# LICITACIONES EUSKADI - V52 (SINGLE-LINE HEADER CONTROL)
+# LICITACIONES EUSKADI - V53 (SCROLL FIX & DATE SCRAPING IMPROVED)
 # ==============================================================================
 
 import requests
@@ -85,19 +85,28 @@ def es_ingenieria(titulo):
 datos_finales = []
 fecha_actual_str = datetime.now().strftime("%d/%m/%Y %H:%M")
 
+print(f"🚀 INICIANDO V53 ({fecha_actual_str})")
+
 for source in SOURCES:
     tipo_origen = source["type"]
     estado_rss = source["status"]
+    
     try:
         response = requests.get(source["url"], headers=HEADERS, timeout=45, verify=False)
         if response.status_code != 200: continue
+        
         soup_rss = BeautifulSoup(response.content, 'xml')
         items = soup_rss.find_all('item')[:LIMIT_PER_SOURCE]
+        
         for i, item in enumerate(items):
             link = item.link.text
             titulo = item.title.text
+            
+            # Categoría
             categoria = tipo_origen
             if tipo_origen == "servicios" and es_ingenieria(titulo): categoria = "ingenieria"
+
+            # Fecha RSS (Suele ser la última actualización o cierre)
             try:
                 pub_dt = parsedate_to_datetime(item.pubDate.text)
                 f_rss_iso = pub_dt.strftime("%Y-%m-%d")
@@ -105,78 +114,133 @@ for source in SOURCES:
             except:
                 f_rss_iso = datetime.now().strftime("%Y-%m-%d")
                 f_rss_fmt = datetime.now().strftime("%d/%m/%Y")
-            entidad, presupuesto, fecha_limite, expediente, logo_url = "Consultar detalle", 0.0, None, "---", "https://cdn-icons-png.flaticon.com/512/4300/4300058.png"
-            f_primera_iso, f_primera_fmt = f_rss_iso, f_rss_fmt
+
+            entidad = "Consultar detalle"
+            presupuesto = 0.0
+            fecha_limite = None
+            expediente = "---"
+            logo_url = "https://cdn-icons-png.flaticon.com/512/4300/4300058.png"
+            
+            # Por defecto usamos la RSS, pero si encontramos una en HTML, la sobreescribimos
+            f_primera_iso = f_rss_iso
+            f_primera_fmt = f_rss_fmt
+            found_html_date = False
+
             try:
                 r_det = requests.get(link, headers=HEADERS, timeout=15, verify=False)
                 if r_det.status_code == 200:
                     s_det = BeautifulSoup(r_det.content, 'html.parser')
+                    
+                    # LOGO
                     div_titulo = s_det.find('div', class_='barraTitulo')
                     if div_titulo:
                         img = div_titulo.find('img')
                         if img and img.get('src'):
                             src = img.get('src')
                             logo_url = "https://www.contratacion.euskadi.eus" + src if src.startswith('/') else src
+
+                    # DATOS BÁSICOS
                     target_fecha = s_det.find(string=re.compile(r"Fecha l.mite de presentaci.n", re.IGNORECASE))
                     if target_fecha:
                         next_el = target_fecha.parent.find_next_sibling('div') or target_fecha.parent.find_next_sibling('dd')
                         if next_el: fecha_limite = next_el.text.strip().split(' ')[0]
+
                     target_presu = s_det.find(string=re.compile(r"Presupuesto del contrato sin IVA", re.IGNORECASE))
                     if target_presu:
                         next_el = target_presu.parent.find_next_sibling('div') or target_presu.parent.find_next_sibling('dd')
                         if next_el: presupuesto = limpiar_precio(next_el.text)
+
                     target_entidad = s_det.find(string=re.compile(r"Poder adjudicador", re.IGNORECASE))
                     if target_entidad:
                         next_el = target_entidad.parent.find_next_sibling('div') or target_entidad.parent.find_next_sibling('dd')
                         if next_el: entidad = next_el.text.strip()
+                        
                     target_exp = s_det.find(string=re.compile(r"Expediente", re.IGNORECASE))
                     if target_exp:
                         next_el = target_exp.parent.find_next_sibling('div') or target_exp.parent.find_next_sibling('dd')
                         if next_el: expediente = next_el.text.strip()
-                    target_fpub = s_det.find(string=re.compile(r"Fecha de publicaci.n del anuncio", re.IGNORECASE))
-                    if target_fpub:
-                        next_el = target_fpub.parent.find_next_sibling('div') or target_fpub.parent.find_next_sibling('dd')
-                        if next_el:
-                            raw_date = next_el.text.strip().split(' ')[0]
-                            try:
-                                dt_p = datetime.strptime(raw_date, "%d/%m/%Y")
-                                f_primera_iso, f_primera_fmt = dt_p.strftime("%Y-%m-%d"), dt_p.strftime("%d/%m/%Y")
-                            except: pass
+
+                    # MEJORA: BÚSQUEDA AGRESIVA DE FECHA PRIMERA PUBLICACIÓN
+                    # Buscamos varias etiquetas posibles
+                    patterns_fecha = [
+                        r"Fecha de publicaci.n del anuncio",
+                        r"Fecha de env.o del anuncio",
+                        r"Fecha de primera publicaci.n"
+                    ]
+                    
+                    for pat in patterns_fecha:
+                        if found_html_date: break
+                        target_fpub = s_det.find(string=re.compile(pat, re.IGNORECASE))
+                        if target_fpub:
+                             next_el = target_fpub.parent.find_next_sibling('div') or target_fpub.parent.find_next_sibling('dd')
+                             if next_el:
+                                 raw_date = next_el.text.strip().split(' ')[0]
+                                 try:
+                                     dt_p = datetime.strptime(raw_date, "%d/%m/%Y")
+                                     f_primera_iso = dt_p.strftime("%Y-%m-%d")
+                                     f_primera_fmt = dt_p.strftime("%d/%m/%Y")
+                                     found_html_date = True
+                                 except: pass
+
             except: pass
-            if entidad == "Consultar detalle" and " - " in titulo: entidad = titulo.split(" - ")[0]
+
+            if entidad == "Consultar detalle" and " - " in titulo:
+                entidad = titulo.split(" - ")[0]
+
             zona = detectar_zona(entidad)
             dias = calcular_dias_restantes(fecha_limite, estado_rss)
-            l_iso = datetime.strptime(fecha_limite, "%d/%m/%Y").strftime("%Y-%m-%d") if fecha_limite else "2999-12-31"
+            
+            if fecha_limite:
+                try: limite_iso = datetime.strptime(fecha_limite, "%d/%m/%Y").strftime("%Y-%m-%d")
+                except: limite_iso = "2999-12-31"
+            else:
+                fecha_limite = "---"; limite_iso = "2999-12-31"
+
             presu_txt = "{:,.2f} €".format(presupuesto).replace(",", "X").replace(".", ",").replace("X", ".")
+
             datos_finales.append({
-                "id": len(datos_finales), "categoria": categoria, "estado": estado_rss, "entidad": entidad,
-                "objeto": titulo.replace('"', "'"), "presupuesto_num": presupuesto, "presupuesto_txt": presu_txt,
-                "limite": l_iso, "limite_fmt": fecha_limite or "---", "publicado": f_rss_iso, "publicado_fmt": f_rss_fmt,
-                "primera_pub": f_primera_iso, "primera_pub_fmt": f_primera_fmt, "dias_restantes": dias,
-                "expediente": expediente, "grupo_fav": zona, "logo": logo_url, "link": link
+                "id": len(datos_finales),
+                "categoria": categoria,
+                "estado": estado_rss,
+                "entidad": entidad,
+                "objeto": titulo.replace('"', "'"),
+                "presupuesto_num": presupuesto,
+                "presupuesto_txt": presu_txt,
+                "limite": limite_iso,
+                "limite_fmt": fecha_limite,
+                "publicado": f_rss_iso,
+                "publicado_fmt": f_rss_fmt,
+                "primera_pub": f_primera_iso,
+                "primera_pub_fmt": f_primera_fmt,
+                "dias_restantes": dias,
+                "expediente": expediente,
+                "grupo_fav": zona,
+                "logo": logo_url,
+                "link": link
             })
     except: pass
 
 datos_json = json.dumps(datos_finales)
 
-# --- HTML TEMPLATE V52 ---
+# --- HTML TEMPLATE V53 (SCROLL FIX & FILTER FIX) ---
 html_content = f"""
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LICITACIONES V52</title>
+    <title>LICITACIONES V53</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {{ --primary: #2563eb; --bg: #f8fafc; --text-main: #0f172a; --grid-layout: 1fr 90px 90px 90px 130px 110px 50px; }}
         * {{ box-sizing: border-box; }}
-        body {{ background-color: var(--bg); font-family: 'Inter', sans-serif; margin: 0; padding: 0; color: var(--text-main); overflow: hidden; }}
+        html, body {{ height: 100%; width: 100%; overflow: hidden; margin: 0; padding: 0; }}
+        body {{ background-color: var(--bg); font-family: 'Inter', sans-serif; color: var(--text-main); display: flex; flex-direction: column; }}
         
-        /* HEADER V52 - SINGLE ROW */
-        .app-header {{ height: 60px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; padding: 0 15px; z-index: 100; gap: 10px; }}
+        /* HEADER (Fila Única) */
+        .app-header {{ height: 60px; flex-shrink: 0; background: white; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; padding: 0 15px; z-index: 100; gap: 10px; }}
         .app-brand {{ font-weight: 800; font-size: 1rem; color: #1e293b; display: flex; align-items: center; gap: 6px; white-space: nowrap; }}
         
         .nav-pills {{ display: flex; gap: 4px; background: #f1f5f9; padding: 3px; border-radius: 6px; }}
@@ -206,9 +270,10 @@ html_content = f"""
         .util-btn {{ width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; border-radius: 6px; cursor: pointer; color: #64748b; background: white; }}
         .btn-pdf {{ background: #1e293b; color: white; border: none; }}
 
-        /* LAYOUT */
-        .app-container {{ display: flex; height: calc(100vh - 60px); width: 100vw; }}
-        .sidebar {{ width: 260px; background: white; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; overflow: hidden; }}
+        /* MAIN LAYOUT (Scroll Fix) */
+        .app-container {{ display: flex; flex: 1; height: calc(100vh - 60px); width: 100vw; overflow: hidden; }}
+        
+        .sidebar {{ width: 260px; background: white; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; }}
         .main-content {{ flex: 1; display: flex; flex-direction: column; background: #f1f5f9; position: relative; overflow: hidden; }}
         
         .filter-list {{ flex:1; overflow-y: auto; padding: 15px; }}
@@ -221,16 +286,21 @@ html_content = f"""
         .range-card {{ background: white; border: 1px solid #e2e8f0; border-left: 4px solid #ccc; border-radius: 6px; padding: 10px; margin-bottom: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 700; display: flex; justify-content: space-between; }}
         .range-card.active {{ background: #f8fafc; }}
 
-        /* TABLE */
-        .top-deck {{ background: white; padding: 12px 20px; border-bottom: 1px solid #e2e8f0; }}
+        /* TABLE WRAPPER & SCROLLING */
+        #table-wrapper {{ display: flex; flex-direction: column; height: 100%; overflow: hidden; }}
+        
+        .top-deck {{ background: white; padding: 12px 20px; border-bottom: 1px solid #e2e8f0; flex-shrink: 0; }}
         .kpi-row {{ display: flex; gap: 10px; }}
         .kpi-box {{ flex: 1; padding: 10px; border-radius: 8px; background: #f8fafc; border: 1px solid transparent; cursor: pointer; }}
         .kpi-box.active {{ background: white; border-color: #dbeafe; }}
         .kpi-val {{ font-size: 1.2rem; font-weight: 800; }}
         .kpi-lbl {{ font-size: 0.6rem; font-weight: 800; text-transform: uppercase; color: #64748b; }}
         
-        .grid-header {{ display: grid; grid-template-columns: var(--grid-layout); gap: 10px; padding: 10px 20px; background: #e2e8f0; font-size: 0.65rem; font-weight: 800; color: #475569; }}
-        .list-container {{ flex: 1; overflow-y: auto; padding: 15px 20px; }}
+        .grid-header {{ display: grid; grid-template-columns: var(--grid-layout); gap: 10px; padding: 10px 20px; background: #e2e8f0; font-size: 0.65rem; font-weight: 800; color: #475569; flex-shrink: 0; }}
+        
+        /* THIS IS THE KEY FIX FOR SCROLLING */
+        .list-container {{ flex: 1; overflow-y: auto; padding: 15px 20px; min-height: 0; }}
+        
         .entity-group {{ background: white; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 12px; overflow: hidden; }}
         .eg-title-row {{ background: #f8fafc; padding: 8px 15px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }}
         .row-item {{ display: grid; grid-template-columns: var(--grid-layout); gap: 10px; padding: 10px 15px; border-bottom: 1px solid #f1f5f9; font-size: 0.8rem; align-items: start; }}
@@ -238,6 +308,8 @@ html_content = f"""
         .st-badge {{ font-size: 0.6rem; font-weight: 800; padding: 2px 4px; border-radius: 3px; text-transform: uppercase; }}
         .st-activo {{ background:#dbeafe; color:#1e40af; }}
         .st-cerrado {{ background:#fee2e2; color:#991b1b; }}
+        .st-redaccion {{ background:#ffedd5; color:#9a3412; }}
+        .st-suspendido {{ background:#f1f5f9; color:#475569; }}
 
         /* DASHBOARD */
         #dashboard-view {{ display: none; height: 100%; padding: 20px; overflow-y: auto; background: #f1f5f9; }}
@@ -248,10 +320,11 @@ html_content = f"""
         @media (max-width: 1000px) {{
             .app-header {{ height: auto; flex-wrap: wrap; padding: 10px; }}
             .search-container {{ order: 10; max-width: none; min-width: 100%; }}
-            .app-container {{ height: auto; }}
+            .app-container {{ height: auto; flex-direction: column; display: block; overflow: visible; }}
             .sidebar {{ display: none; }}
             .grid-header {{ display: none; }}
             .row-item {{ display: flex; flex-direction: column; }}
+            .list-container {{ overflow: visible; height: auto; }}
         }}
     </style>
 </head>
@@ -418,27 +491,45 @@ html_content = f"""
             [ ['< 100k', 'u100'], ['100k-500k', 'u500'], ['> 500k', 'o500'] ].forEach(r => {{
                 sb.innerHTML += `<div class="range-card" onclick="applyFilter('price', '${{r[1]}}')">${{r[0]}}</div>`;
             }});
-        }} else {{ sb.innerHTML = '<div class="sb-title">Filtros activos</div><div class="ent-card active">Todos los anuncios</div>'; }}
+        }} else {{ sb.innerHTML = '<div class="sb-title">Filtros activos</div><div class="ent-card active" onclick="applyFilter(null, null)">Todos los anuncios</div>'; }}
     }}
 
     function applyFilter(t, v) {{ activeFilter = {{type:t, value:v}}; renderTable(); }}
 
     function renderTable() {{
-        const container = document.getElementById('list-inner'); container.innerHTML = "";
+        const container = document.getElementById('list-inner'); 
+        container.innerHTML = ""; // Limpieza crítica
         const search = document.getElementById('search').value.toLowerCase();
+        
         let data = getData().filter(x => x.objeto.toLowerCase().includes(search) || x.entidad.toLowerCase().includes(search));
+        
         if(activeFilter.type === 'entity') data = data.filter(x => x.entidad === activeFilter.value);
+        if(activeFilter.type === 'price') {{
+             if(activeFilter.value==='u100') data = data.filter(x=>x.presupuesto_num < 100000);
+             else if(activeFilter.value==='u500') data = data.filter(x=>x.presupuesto_num >= 100000 && x.presupuesto_num < 500000);
+             else if(activeFilter.value==='o500') data = data.filter(x=>x.presupuesto_num >= 500000);
+        }}
         
         let grouped = {{}}; data.forEach(x => {{ if(!grouped[x.entidad]) grouped[x.entidad]=[]; grouped[x.entidad].push(x); }});
+        
+        if(Object.keys(grouped).length === 0) {{
+            container.innerHTML = '<div style="text-align:center; padding:20px; color:#94a3b8">No hay resultados</div>';
+            return;
+        }}
+
         Object.entries(grouped).forEach(([ent, rows]) => {{
-            let html = `<div class="entity-group"><div class="eg-title-row" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'"><strong>${{ent}}</strong> <span>${{rows.length}} licitaciones</span></div><div>`;
+            let html = `<div class="entity-group"><div class="eg-title-row" onclick="let gr=this.nextElementSibling; gr.style.display=gr.style.display==='none'?'block':'none'"><strong>${{ent}}</strong> <span>${{rows.length}} licit.</span></div><div style="display:block">`;
             rows.forEach(r => {{
-                let stCls = r.estado === 'activo' ? 'st-activo' : 'st-cerrado';
+                let stCls = 'st-activo';
+                if(r.estado === 'cerrado') stCls = 'st-cerrado';
+                else if(r.estado === 'redaccion') stCls = 'st-redaccion';
+                else if(r.estado === 'suspendido') stCls = 'st-suspendido';
+
                 html += `<div class="row-item">
                     <div><div style="margin-bottom:4px"><span class="st-badge ${{stCls}}">${{r.estado}}</span> <small style="color:#94a3b8">${{r.expediente}}</small></div><div class="ri-title">${{r.objeto}}</div></div>
                     <div>${{r.primera_pub_fmt}}</div><div>${{r.publicado_fmt}}</div><div>${{r.limite_fmt}}</div>
                     <div style="text-align:right; font-weight:700">${{r.presupuesto_txt}}</div>
-                    <div style="text-align:center">${{r.dias_restantes}} d</div>
+                    <div style="text-align:center">${{r.dias_restantes > -1 ? r.dias_restantes + ' d' : '-'}}</div>
                     <div style="text-align:center"><a href="${{r.link}}" target="_blank"><i class="fa-solid fa-eye"></i></a></div>
                 </div>`;
             }});
@@ -459,7 +550,7 @@ html_content = f"""
         chartInstances.push(new Chart(document.getElementById('chartEnt'), {{ type:'bar', data:{{ labels:topEnts.map(x=>x[0].substring(0,10)), datasets:[{{label:'€', data:topEnts.map(x=>x[1]), backgroundColor:'#3b82f6'}}] }}, options:{{indexAxis:'y'}} }}));
 
         const list = document.getElementById('top-opps-list'); list.innerHTML = '';
-        [...d].sort((a,b)=>b[presupuesto_num]-a[presupuesto_num]).slice(0,5).forEach(x=> {{
+        [...d].sort((a,b)=>b.presupuesto_num-a.presupuesto_num).slice(0,5).forEach(x=> {{
             list.innerHTML += `<div class="top-item"><div><strong>${{x.entidad}}</strong><br><small>${{x.objeto.substring(0,40)}}...</small></div><div style="margin-left:auto">${{x.presupuesto_txt}}</div></div>`;
         }});
     }}
@@ -471,4 +562,4 @@ html_content = f"""
 """
 
 with open("index.html", "w", encoding="utf-8") as f: f.write(html_content)
-print("✅ Generado V52 con Header de línea única.")
+print("✅ Generado V53 con corrección de scroll, fechas y filtros.")
