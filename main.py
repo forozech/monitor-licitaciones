@@ -1,5 +1,5 @@
 # ==============================================================================
-# LICITACIONES EUSKADI - V53 (SCROLL FIX & DATE SCRAPING IMPROVED)
+# LICITACIONES EUSKADI - V54 (CLEAN UI & ROBUST LOGIC REWRITE)
 # ==============================================================================
 
 import requests
@@ -11,7 +11,6 @@ from datetime import datetime
 from email.utils import parsedate_to_datetime
 import urllib3
 
-# Desactivar advertencias SSL
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # --- CONFIGURACIÓN DE URLS ---
@@ -46,7 +45,7 @@ HEADERS = {
     'Upgrade-Insecure-Requests': '1'
 }
 
-LIMIT_PER_SOURCE = 60 
+LIMIT_PER_SOURCE = 60
 
 # --- FUNCIONES ---
 def detectar_zona(texto):
@@ -85,7 +84,7 @@ def es_ingenieria(titulo):
 datos_finales = []
 fecha_actual_str = datetime.now().strftime("%d/%m/%Y %H:%M")
 
-print(f"🚀 INICIANDO V53 ({fecha_actual_str})")
+print(f"🚀 INICIANDO V54 ({fecha_actual_str})")
 
 for source in SOURCES:
     tipo_origen = source["type"]
@@ -106,7 +105,7 @@ for source in SOURCES:
             categoria = tipo_origen
             if tipo_origen == "servicios" and es_ingenieria(titulo): categoria = "ingenieria"
 
-            # Fecha RSS (Suele ser la última actualización o cierre)
+            # Fecha RSS
             try:
                 pub_dt = parsedate_to_datetime(item.pubDate.text)
                 f_rss_iso = pub_dt.strftime("%Y-%m-%d")
@@ -121,7 +120,6 @@ for source in SOURCES:
             expediente = "---"
             logo_url = "https://cdn-icons-png.flaticon.com/512/4300/4300058.png"
             
-            # Por defecto usamos la RSS, pero si encontramos una en HTML, la sobreescribimos
             f_primera_iso = f_rss_iso
             f_primera_fmt = f_rss_fmt
             found_html_date = False
@@ -131,7 +129,6 @@ for source in SOURCES:
                 if r_det.status_code == 200:
                     s_det = BeautifulSoup(r_det.content, 'html.parser')
                     
-                    # LOGO
                     div_titulo = s_det.find('div', class_='barraTitulo')
                     if div_titulo:
                         img = div_titulo.find('img')
@@ -139,7 +136,6 @@ for source in SOURCES:
                             src = img.get('src')
                             logo_url = "https://www.contratacion.euskadi.eus" + src if src.startswith('/') else src
 
-                    # DATOS BÁSICOS
                     target_fecha = s_det.find(string=re.compile(r"Fecha l.mite de presentaci.n", re.IGNORECASE))
                     if target_fecha:
                         next_el = target_fecha.parent.find_next_sibling('div') or target_fecha.parent.find_next_sibling('dd')
@@ -160,14 +156,12 @@ for source in SOURCES:
                         next_el = target_exp.parent.find_next_sibling('div') or target_exp.parent.find_next_sibling('dd')
                         if next_el: expediente = next_el.text.strip()
 
-                    # MEJORA: BÚSQUEDA AGRESIVA DE FECHA PRIMERA PUBLICACIÓN
-                    # Buscamos varias etiquetas posibles
+                    # Búsqueda agresiva fecha
                     patterns_fecha = [
                         r"Fecha de publicaci.n del anuncio",
                         r"Fecha de env.o del anuncio",
                         r"Fecha de primera publicaci.n"
                     ]
-                    
                     for pat in patterns_fecha:
                         if found_html_date: break
                         target_fpub = s_det.find(string=re.compile(pat, re.IGNORECASE))
@@ -222,339 +216,451 @@ for source in SOURCES:
 
 datos_json = json.dumps(datos_finales)
 
-# --- HTML TEMPLATE V53 (SCROLL FIX & FILTER FIX) ---
+# --- HTML TEMPLATE V54 (CLEAN LAYOUT) ---
 html_content = f"""
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LICITACIONES V53</title>
+    <title>LICITACIONES V54</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root {{ --primary: #2563eb; --bg: #f8fafc; --text-main: #0f172a; --grid-layout: 1fr 90px 90px 90px 130px 110px 50px; }}
+        :root {{ 
+            --primary: #3b82f6; 
+            --bg: #f3f4f6; 
+            --text: #111827; 
+            --border: #e5e7eb;
+            --header-h: 55px;
+            --toolbar-h: 45px;
+            --total-top: 100px;
+            --grid-cols: 1fr 90px 90px 90px 120px 100px 50px;
+        }}
         * {{ box-sizing: border-box; }}
-        html, body {{ height: 100%; width: 100%; overflow: hidden; margin: 0; padding: 0; }}
-        body {{ background-color: var(--bg); font-family: 'Inter', sans-serif; color: var(--text-main); display: flex; flex-direction: column; }}
+        html, body {{ height: 100%; width: 100%; margin: 0; padding: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); }}
         
-        /* HEADER (Fila Única) */
-        .app-header {{ height: 60px; flex-shrink: 0; background: white; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; padding: 0 15px; z-index: 100; gap: 10px; }}
-        .app-brand {{ font-weight: 800; font-size: 1rem; color: #1e293b; display: flex; align-items: center; gap: 6px; white-space: nowrap; }}
+        /* 1. TOP HEADER */
+        .app-header {{ height: var(--header-h); background: white; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 50; }}
+        .brand {{ font-weight: 800; font-size: 1.1rem; color: #1e293b; display: flex; align-items: center; gap: 8px; }}
+        .brand i {{ color: var(--primary); }}
         
-        .nav-pills {{ display: flex; gap: 4px; background: #f1f5f9; padding: 3px; border-radius: 6px; }}
-        .nav-item {{ padding: 5px 10px; border-radius: 5px; font-size: 0.75rem; font-weight: 700; cursor: pointer; color: #64748b; transition: 0.2s; white-space: nowrap; }}
-        .nav-item.active {{ background: white; color: var(--primary); box-shadow: 0 1px 2px rgba(0,0,0,0.1); }}
-        .nav-item.dashboard-tab {{ color: #7c3aed; }}
-        .nav-item.dashboard-tab.active {{ background: #7c3aed; color: white; }}
-
-        .filters-container {{ display: flex; align-items: center; gap: 5px; border-left: 1px solid #e2e8f0; padding-left: 10px; }}
-        .tiny-chip {{ padding: 4px 8px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 0.65rem; font-weight: 800; cursor: pointer; background: white; color: #64748b; }}
-        .tiny-chip.active {{ background: #eff6ff; border-color: var(--primary); color: var(--primary); }}
-        .tc-red.active {{ background: #fef2f2; border-color: #ef4444; color: #ef4444; }}
-        .tc-org.active {{ background: #fff7ed; border-color: #f97316; color: #f97316; }}
-        .tc-gry.active {{ background: #f1f5f9; border-color: #64748b; color: #334155; }}
-
-        .date-switch {{ display: flex; background: #f1f5f9; border-radius: 4px; padding: 2px; border: 1px solid #e2e8f0; }}
-        .ds-opt {{ padding: 2px 6px; font-size: 0.6rem; font-weight: 800; color: #64748b; cursor: pointer; border-radius: 2px; }}
-        .ds-opt.active {{ background: white; color: #0f172a; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }}
-
-        .search-container {{ flex: 1; min-width: 150px; max-width: 300px; position: relative; }}
-        .header-search {{ width: 100%; padding: 6px 10px 6px 30px; border-radius: 6px; border: 1px solid #e2e8f0; font-size: 0.8rem; outline: none; background: #f8fafc; }}
-        .search-icon {{ position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.8rem; }}
-
-        .update-time {{ font-size: 0.65rem; color: #94a3b8; font-weight: 700; white-space: nowrap; margin-left: auto; padding-left: 10px; }}
-
-        .header-utils {{ display: flex; gap: 5px; }}
-        .util-btn {{ width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; border-radius: 6px; cursor: pointer; color: #64748b; background: white; }}
-        .btn-pdf {{ background: #1e293b; color: white; border: none; }}
-
-        /* MAIN LAYOUT (Scroll Fix) */
-        .app-container {{ display: flex; flex: 1; height: calc(100vh - 60px); width: 100vw; overflow: hidden; }}
+        .main-nav {{ display: flex; gap: 10px; background: #f9fafb; padding: 4px; border-radius: 8px; border: 1px solid var(--border); }}
+        .nav-btn {{ padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; color: #6b7280; transition: 0.2s; }}
+        .nav-btn:hover {{ color: #111827; background: #e5e7eb; }}
+        .nav-btn.active {{ background: white; color: var(--primary); box-shadow: 0 1px 2px rgba(0,0,0,0.05); border: 1px solid #f3f4f6; }}
+        .nav-btn.dash-btn.active {{ color: #7c3aed; }}
         
-        .sidebar {{ width: 260px; background: white; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; }}
-        .main-content {{ flex: 1; display: flex; flex-direction: column; background: #f1f5f9; position: relative; overflow: hidden; }}
-        
-        .filter-list {{ flex:1; overflow-y: auto; padding: 15px; }}
-        .sb-title {{ font-size: 0.65rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin: 15px 0 8px 5px; }}
-        .ent-card {{ display: flex; align-items: center; gap: 10px; padding: 6px 8px; border-radius: 6px; cursor: pointer; margin-bottom: 2px; }}
-        .ent-card.active {{ background: #eff6ff; color: var(--primary); font-weight: 700; }}
-        .ent-img {{ width: 18px; height: 18px; object-fit: contain; mix-blend-mode: multiply; }}
-        .ent-name {{ font-size: 0.75rem; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }}
-        .ent-badge {{ background: #e2e8f0; color: #475569; font-size: 0.65rem; font-weight: 800; padding: 2px 5px; border-radius: 4px; }}
-        .range-card {{ background: white; border: 1px solid #e2e8f0; border-left: 4px solid #ccc; border-radius: 6px; padding: 10px; margin-bottom: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 700; display: flex; justify-content: space-between; }}
-        .range-card.active {{ background: #f8fafc; }}
+        .search-wrap {{ position: relative; width: 300px; }}
+        .search-inp {{ width: 100%; padding: 8px 10px 8px 32px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; outline: none; background: #f9fafb; }}
+        .search-inp:focus {{ border-color: var(--primary); background: white; }}
+        .search-icon {{ position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 0.85rem; }}
 
-        /* TABLE WRAPPER & SCROLLING */
-        #table-wrapper {{ display: flex; flex-direction: column; height: 100%; overflow: hidden; }}
+        /* 2. TOOLBAR (Second Row) */
+        .toolbar {{ height: var(--toolbar-h); background: white; border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 20px; gap: 15px; justify-content: space-between; }}
+        .filter-group {{ display: flex; align-items: center; gap: 8px; }}
+        .fg-label {{ font-size: 0.7rem; font-weight: 800; color: #9ca3af; text-transform: uppercase; margin-right: 4px; }}
         
-        .top-deck {{ background: white; padding: 12px 20px; border-bottom: 1px solid #e2e8f0; flex-shrink: 0; }}
-        .kpi-row {{ display: flex; gap: 10px; }}
-        .kpi-box {{ flex: 1; padding: 10px; border-radius: 8px; background: #f8fafc; border: 1px solid transparent; cursor: pointer; }}
-        .kpi-box.active {{ background: white; border-color: #dbeafe; }}
-        .kpi-val {{ font-size: 1.2rem; font-weight: 800; }}
-        .kpi-lbl {{ font-size: 0.6rem; font-weight: 800; text-transform: uppercase; color: #64748b; }}
+        .chip {{ padding: 4px 10px; border: 1px solid var(--border); border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: #4b5563; background: white; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 4px; }}
+        .chip:hover {{ border-color: #d1d5db; color: #111827; }}
+        .chip.active {{ background: #eff6ff; border-color: var(--primary); color: var(--primary); font-weight: 700; }}
+        /* Colores Específicos */
+        .chip.c-red.active {{ background: #fef2f2; border-color: #ef4444; color: #ef4444; }}
+        .chip.c-org.active {{ background: #fff7ed; border-color: #f97316; color: #f97316; }}
+        .chip.c-gry.active {{ background: #f3f4f6; border-color: #6b7280; color: #374151; }}
         
-        .grid-header {{ display: grid; grid-template-columns: var(--grid-layout); gap: 10px; padding: 10px 20px; background: #e2e8f0; font-size: 0.65rem; font-weight: 800; color: #475569; flex-shrink: 0; }}
-        
-        /* THIS IS THE KEY FIX FOR SCROLLING */
-        .list-container {{ flex: 1; overflow-y: auto; padding: 15px 20px; min-height: 0; }}
-        
-        .entity-group {{ background: white; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 12px; overflow: hidden; }}
-        .eg-title-row {{ background: #f8fafc; padding: 8px 15px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }}
-        .row-item {{ display: grid; grid-template-columns: var(--grid-layout); gap: 10px; padding: 10px 15px; border-bottom: 1px solid #f1f5f9; font-size: 0.8rem; align-items: start; }}
-        .ri-title {{ font-weight: 600; color: #1e293b; line-height: 1.2; }}
-        .st-badge {{ font-size: 0.6rem; font-weight: 800; padding: 2px 4px; border-radius: 3px; text-transform: uppercase; }}
-        .st-activo {{ background:#dbeafe; color:#1e40af; }}
-        .st-cerrado {{ background:#fee2e2; color:#991b1b; }}
-        .st-redaccion {{ background:#ffedd5; color:#9a3412; }}
-        .st-suspendido {{ background:#f1f5f9; color:#475569; }}
+        .switch-wrap {{ display: flex; background: #f3f4f6; border-radius: 4px; padding: 2px; border: 1px solid var(--border); }}
+        .sw-opt {{ padding: 3px 8px; font-size: 0.7rem; font-weight: 700; color: #6b7280; cursor: pointer; border-radius: 3px; }}
+        .sw-opt.active {{ background: white; color: #111827; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }}
 
-        /* DASHBOARD */
-        #dashboard-view {{ display: none; height: 100%; padding: 20px; overflow-y: auto; background: #f1f5f9; }}
-        .dash-grid {{ display: grid; grid-template-columns: 1fr 1fr 300px; grid-template-rows: auto 300px 300px; gap: 20px; }}
-        .d-card {{ background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column; }}
-        .top-item {{ display: flex; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.8rem; }}
+        .meta-info {{ font-size: 0.7rem; color: #9ca3af; font-weight: 600; margin-left: auto; }}
+        .action-icon {{ width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 4px; cursor: pointer; color: #4b5563; border: 1px solid transparent; }}
+        .action-icon:hover {{ background: #f3f4f6; border-color: var(--border); }}
+
+        /* 3. MAIN LAYOUT */
+        .app-body {{ display: flex; height: calc(100vh - var(--total-top)); }}
+        .sidebar {{ width: 260px; background: white; border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }}
+        .content {{ flex: 1; display: flex; flex-direction: column; background: #f9fafb; position: relative; overflow: hidden; }}
+
+        /* Sidebar Content */
+        .sb-scroll {{ flex: 1; overflow-y: auto; padding: 10px; }}
+        .sb-head {{ padding: 15px 10px 5px 10px; font-size: 0.7rem; font-weight: 800; color: #9ca3af; text-transform: uppercase; }}
+        .sb-item {{ display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; margin-bottom: 2px; color: #374151; }}
+        .sb-item:hover {{ background: #f3f4f6; }}
+        .sb-item.active {{ background: #eff6ff; color: var(--primary); font-weight: 600; }}
+        .sb-badge {{ background: #e5e7eb; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; color: #4b5563; }}
+        .sb-item.active .sb-badge {{ background: #dbeafe; color: var(--primary); }}
+
+        /* Table Area */
+        .table-stats {{ padding: 10px 20px; display: flex; gap: 15px; background: white; border-bottom: 1px solid var(--border); }}
+        .stat-card {{ flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: #f9fafb; cursor: pointer; }}
+        .stat-card.active {{ background: #eff6ff; border-color: #bfdbfe; }}
+        .stat-val {{ font-size: 1.2rem; font-weight: 800; color: #1f2937; }}
+        .stat-lbl {{ font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: #6b7280; }}
+
+        /* IMPORTANT: SCROLL FIX */
+        .table-container {{ flex: 1; overflow-y: auto; position: relative; }}
+        .grid-head {{ display: grid; grid-template-columns: var(--grid-cols); gap: 15px; padding: 10px 20px; background: #f3f4f6; border-bottom: 1px solid var(--border); font-size: 0.7rem; font-weight: 700; color: #6b7280; position: sticky; top: 0; z-index: 10; }}
+        .grid-row {{ display: grid; grid-template-columns: var(--grid-cols); gap: 15px; padding: 12px 20px; border-bottom: 1px solid var(--border); background: white; align-items: start; font-size: 0.85rem; }}
+        .grid-row:hover {{ background: #f9fafb; }}
+        
+        .row-main {{ display: flex; flex-direction: column; gap: 4px; }}
+        .row-meta {{ font-size: 0.75rem; color: #6b7280; display: flex; align-items: center; gap: 6px; }}
+        .badge {{ padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; }}
+        .bd-act {{ background: #dbeafe; color: #1e40af; }}
+        .bd-cer {{ background: #fee2e2; color: #991b1b; }}
+        .bd-red {{ background: #ffedd5; color: #9a3412; }}
+        .bd-sus {{ background: #f3f4f6; color: #374151; }}
+
+        .row-title {{ font-weight: 600; color: #111827; line-height: 1.4; }}
+        .row-date {{ font-size: 0.8rem; color: #4b5563; }}
+        .row-money {{ font-weight: 700; text-align: right; color: #1f2937; }}
+        .action-link {{ color: var(--primary); display: flex; justify-content: center; font-size: 1rem; }}
+
+        /* Group Headers */
+        .group-header {{ background: #e5e7eb; padding: 8px 20px; font-size: 0.85rem; font-weight: 700; color: #374151; cursor: pointer; display: flex; justify-content: space-between; position: sticky; top: 38px; z-index: 9; border-bottom: 1px solid #d1d5db; }}
+        
+        /* Dashboard */
+        #dashboard-view {{ display: none; padding: 20px; overflow-y: auto; height: 100%; }}
+        .dash-grid {{ display: grid; grid-template-columns: 1fr 1fr 300px; gap: 20px; }}
+        .d-card {{ background: white; padding: 20px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }}
 
         @media (max-width: 1000px) {{
-            .app-header {{ height: auto; flex-wrap: wrap; padding: 10px; }}
-            .search-container {{ order: 10; max-width: none; min-width: 100%; }}
-            .app-container {{ height: auto; flex-direction: column; display: block; overflow: visible; }}
+            .app-header {{ height: auto; flex-direction: column; padding: 10px; align-items: stretch; gap: 10px; }}
+            .search-wrap {{ width: 100%; }}
+            .toolbar {{ height: auto; flex-wrap: wrap; padding: 10px; }}
+            .app-body {{ height: auto; display: block; overflow: visible; }}
             .sidebar {{ display: none; }}
-            .grid-header {{ display: none; }}
-            .row-item {{ display: flex; flex-direction: column; }}
-            .list-container {{ overflow: visible; height: auto; }}
+            .table-container {{ height: auto; overflow: visible; }}
+            .grid-head {{ display: none; }}
+            .grid-row {{ display: flex; flex-direction: column; gap: 8px; }}
+            .group-header {{ top: 0; }}
         }}
     </style>
 </head>
 <body>
+
 <div class="app-header">
-    <div class="app-brand"><i class="fa-solid fa-layer-group"></i> <span>LICITACIONES</span></div>
+    <div class="brand"><i class="fa-solid fa-layer-group"></i> LICITACIONES EUSKADI</div>
     
-    <div class="nav-pills">
-        <div class="nav-item active" onclick="switchDataset('obras', this)">OBRAS</div>
-        <div class="nav-item" onclick="switchDataset('servicios', this)">SERV</div>
-        <div class="nav-item" onclick="switchDataset('ingenieria', this)">ING</div>
-        <div class="nav-item dashboard-tab" onclick="toggleDashboard(this)"><i class="fa-solid fa-chart-pie"></i></div>
-    </div>
-
-    <div class="filters-container">
-        <div class="tiny-chip active" id="f-st-act" onclick="toggleStatus('activo')">ACT</div>
-        <div class="tiny-chip tc-red" id="f-st-cer" onclick="toggleStatus('cerrado')">CER</div>
-        <div class="tiny-chip tc-org" id="f-st-red" onclick="toggleStatus('redaccion')">RED</div>
-        <div class="tiny-chip tc-gry" id="f-st-sus" onclick="toggleStatus('suspendido')">SUS</div>
-        
-        <div class="date-switch">
-            <div class="ds-opt active" id="ts-pub" onclick="setDateRef('primera')">1ª</div>
-            <div class="ds-opt" id="ts-upd" onclick="setDateRef('ultima')">ÚLT</div>
-        </div>
-        
-        <div class="tiny-chip" id="btn-24h" onclick="toggleTimeFilter('24h')">24H</div>
-        <div class="tiny-chip" id="btn-week" onclick="toggleTimeFilter('week')">SEM</div>
-    </div>
-
-    <div class="search-container">
+    <div class="search-wrap">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" class="header-search" id="search" placeholder="Buscar..." onkeyup="renderTable()">
+        <input type="text" class="search-inp" id="search" placeholder="Buscar expediente, objeto..." onkeyup="renderTable()">
     </div>
 
-    <div class="update-time">{fecha_actual_str}</div>
-
-    <div class="header-utils">
-        <div class="util-btn" onclick="location.reload()"><i class="fa-solid fa-rotate"></i></div>
-        <div class="util-btn btn-pdf" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i></div>
+    <div class="main-nav">
+        <div class="nav-btn active" onclick="setCat('obras', this)">OBRAS</div>
+        <div class="nav-btn" onclick="setCat('servicios', this)">SERVICIOS</div>
+        <div class="nav-btn" onclick="setCat('ingenieria', this)">INGENIERÍA</div>
+        <div class="nav-btn dash-btn" onclick="toggleDash(this)"><i class="fa-solid fa-chart-pie"></i></div>
     </div>
 </div>
 
-<div class="app-container">
-    <div class="sidebar">
-        <div id="sidebar-content" class="filter-list"></div>
+<div class="toolbar">
+    <div style="display:flex; gap:15px; flex-wrap:wrap">
+        <div class="filter-group">
+            <div class="fg-label">Estado:</div>
+            <div class="chip active" id="st-act" onclick="toggleSt('activo')">ACTIVOS</div>
+            <div class="chip c-red" id="st-cer" onclick="toggleSt('cerrado')">CERRADOS</div>
+            <div class="chip c-org" id="st-red" onclick="toggleSt('redaccion')">REDACCIÓN</div>
+            <div class="chip c-gry" id="st-sus" onclick="toggleSt('suspendido')">SUSP.</div>
+        </div>
+        
+        <div class="filter-group">
+            <div class="fg-label">Ref. Fecha:</div>
+            <div class="switch-wrap">
+                <div class="sw-opt active" id="d-prim" onclick="setDateRef('primera')">1ª PUB</div>
+                <div class="sw-opt" id="d-ult" onclick="setDateRef('ultima')">ÚLTIMA</div>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <div class="fg-label">Tiempo:</div>
+            <div class="chip" id="t-24h" onclick="toggleTime('24h')">24H</div>
+            <div class="chip" id="t-week" onclick="toggleTime('week')">SEMANA</div>
+        </div>
     </div>
-    <div class="main-content">
-        <div id="table-wrapper">
-            <div class="top-deck">
-                <div class="kpi-row">
-                    <div class="kpi-box k-blue active" onclick="setMode('ads', this)">
-                        <div class="kpi-val" id="k-count">0</div>
-                        <div class="kpi-lbl">Anuncios</div>
-                    </div>
-                    <div class="kpi-box" onclick="setMode('entities', this)">
-                        <div class="kpi-val" id="k-ent">0</div>
-                        <div class="kpi-lbl">Entidades</div>
-                    </div>
-                    <div class="kpi-box" onclick="setMode('money', this)">
-                        <div class="kpi-val" id="k-money">0 €</div>
-                        <div class="kpi-lbl">Importe Total</div>
-                    </div>
+
+    <div style="display:flex; align-items:center; gap:10px">
+        <div class="meta-info">Act: {fecha_actual_str}</div>
+        <div class="action-icon" onclick="location.reload()"><i class="fa-solid fa-rotate"></i></div>
+        <div class="action-icon" onclick="window.print()"><i class="fa-solid fa-print"></i></div>
+    </div>
+</div>
+
+<div class="app-body">
+    <div class="sidebar">
+        <div class="sb-head">Filtros Rápidos</div>
+        <div class="sb-scroll" id="sb-content"></div>
+    </div>
+
+    <div class="content">
+        <div id="table-wrapper" style="display:flex; flex-direction:column; height:100%">
+            <div class="table-stats">
+                <div class="stat-card active" onclick="setSbMode('ads')">
+                    <div class="stat-val" id="k-cnt">0</div>
+                    <div class="stat-lbl">Licitaciones</div>
+                </div>
+                <div class="stat-card" onclick="setSbMode('ent')">
+                    <div class="stat-val" id="k-ent">0</div>
+                    <div class="stat-lbl">Entidades</div>
+                </div>
+                <div class="stat-card" onclick="setSbMode('money')">
+                    <div class="stat-val" id="k-eur">0 €</div>
+                    <div class="stat-lbl">Importe Total</div>
                 </div>
             </div>
-            <div class="grid-header">
-                <div>DESCRIPCIÓN</div>
-                <div>1ª PUB</div>
-                <div>ÚLTIMA</div>
-                <div>LÍMITE</div>
-                <div style="text-align:right">IMPORTE</div>
-                <div style="text-align:center">ESTADO</div>
-                <div style="text-align:center">LINK</div>
-            </div>
-            <div id="list-view" class="list-container">
-                <div id="list-inner"></div>
+
+            <div class="table-container">
+                <div class="grid-head">
+                    <div>DESCRIPCIÓN / EXPEDIENTE</div>
+                    <div>1ª PUBLICACIÓN</div>
+                    <div>ÚLT. ACTUALIZACIÓN</div>
+                    <div>FECHA LÍMITE</div>
+                    <div style="text-align:right">IMPORTE (S/IVA)</div>
+                    <div style="text-align:center">DÍAS</div>
+                    <div style="text-align:center">LINK</div>
+                </div>
+                <div id="list-target"></div>
             </div>
         </div>
 
         <div id="dashboard-view">
             <div class="dash-grid">
-                <div class="d-card" style="grid-column: span 3; flex-direction:row; gap:40px; justify-content:center;">
-                    <div style="text-align:center"><div class="kpi-val" id="dm-vol" style="font-size:2.5rem">0</div><div class="kpi-lbl">Volumen Total</div></div>
-                    <div style="text-align:center"><div class="kpi-val" id="dm-num" style="font-size:2.5rem">0</div><div class="kpi-lbl">Expedientes</div></div>
+                <div class="d-card" style="grid-column: span 2">
+                    <h3>Volumen por Entidad</h3>
+                    <div style="height:250px"><canvas id="c-ent"></canvas></div>
                 </div>
-                <div class="d-card"><h3>Zonas</h3><div style="height:200px"><canvas id="chartZone"></canvas></div></div>
-                <div class="d-card"><h3>Top Entidades</h3><div style="height:200px"><canvas id="chartEnt"></canvas></div></div>
-                <div class="d-card" style="grid-row: span 2;"><h3>Top Importes</h3><div id="top-opps-list"></div></div>
-                <div class="d-card" style="grid-column: span 2;"><h3>Rangos Presupuesto</h3><div style="height:200px"><canvas id="chartRanges"></canvas></div></div>
+                <div class="d-card">
+                    <h3>Por Zonas</h3>
+                    <div style="height:250px"><canvas id="c-zone"></canvas></div>
+                </div>
+                <div class="d-card" style="grid-column: span 3">
+                    <h3>Rangos de Presupuesto</h3>
+                    <div style="height:200px"><canvas id="c-range"></canvas></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    const allData = {datos_json};
-    let currentCategory = 'obras', activeStatuses = ['activo'], dateRef = 'primera', timeFilter = null;
-    let sidebarMode = 'ads', activeFilter = {{ type: 'none', value: null }}, sortField = 'publicado', sortDir = 'desc', chartInstances = [];
+    const RAW_DATA = {datos_json};
+    
+    // STATE
+    let state = {{
+        cat: 'obras',
+        statuses: ['activo'],
+        dateRef: 'primera', // 'primera' | 'ultima'
+        timeFilter: null,   // '24h' | 'week' | null
+        sbMode: 'ads',      // 'ads' | 'ent' | 'money'
+        activeFilter: null  // {{type: 'entity'|'price', value: ...}}
+    }};
 
-    function getData() {{
-        let d = allData.filter(x => x.categoria === currentCategory && activeStatuses.includes(x.estado));
-        if (timeFilter) {{
-            let limit = new Date();
-            limit.setDate(limit.getDate() - (timeFilter === '24h' ? 1 : 7));
-            d = d.filter(x => new Date(dateRef === 'primera' ? x.primera_pub : x.publicado) >= limit);
+    // --- CORE LOGIC ---
+    function getFilteredData() {{
+        // 1. Cat & Status
+        let d = RAW_DATA.filter(x => x.categoria === state.cat && state.statuses.includes(x.estado));
+        
+        // 2. Time Filter
+        if(state.timeFilter) {{
+            let cutoff = new Date();
+            cutoff.setDate(cutoff.getDate() - (state.timeFilter === '24h' ? 1 : 7));
+            d = d.filter(x => {{
+                let targetDate = state.dateRef === 'primera' ? x.primera_pub : x.publicado;
+                return new Date(targetDate) >= cutoff;
+            }});
         }}
+
+        // 3. Search
+        let q = document.getElementById('search').value.toLowerCase();
+        if(q) d = d.filter(x => x.objeto.toLowerCase().includes(q) || x.entidad.toLowerCase().includes(q) || x.expediente.toLowerCase().includes(q));
+
+        // 4. Sidebar Filter
+        if(state.activeFilter) {{
+            if(state.activeFilter.type === 'entity') d = d.filter(x => x.entidad === state.activeFilter.value);
+            if(state.activeFilter.type === 'price') {{
+                let p = x => x.presupuesto_num;
+                let v = state.activeFilter.value;
+                if(v === 'u100') d = d.filter(x => p(x) < 100000);
+                if(v === 'u500') d = d.filter(x => p(x) >= 100000 && p(x) < 500000);
+                if(v === 'o500') d = d.filter(x => p(x) >= 500000);
+            }}
+        }}
+
         return d;
     }}
 
-    function switchDataset(cat, el) {{ 
-        currentCategory = cat; 
-        document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active')); 
-        el.classList.add('active'); 
-        resetView(); 
+    // --- UI ACTIONS ---
+    function setCat(c, el) {{
+        state.cat = c;
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+        setView('table');
+        refresh();
     }}
 
-    function toggleStatus(st) {{
-        const btn = document.getElementById('f-st-'+st.substring(0,3));
-        if(activeStatuses.includes(st)) {{ if(activeStatuses.length > 1) {{ activeStatuses = activeStatuses.filter(x => x !== st); btn.classList.remove('active'); }} }}
-        else {{ activeStatuses.push(st); btn.classList.add('active'); }}
+    function toggleSt(st) {{
+        let idx = state.statuses.indexOf(st);
+        let btn = document.getElementById('st-'+st.substring(0,3));
+        
+        if(idx > -1) {{
+            if(state.statuses.length > 1) {{ state.statuses.splice(idx, 1); btn.classList.remove('active'); }}
+        }} else {{
+            state.statuses.push(st); btn.classList.add('active');
+        }}
         refresh();
     }}
 
     function setDateRef(ref) {{
-        dateRef = ref;
-        document.getElementById('ts-pub').classList.toggle('active', ref === 'primera');
-        document.getElementById('ts-upd').classList.toggle('active', ref === 'ultima');
+        state.dateRef = ref;
+        document.getElementById('d-prim').className = ref==='primera' ? 'sw-opt active' : 'sw-opt';
+        document.getElementById('d-ult').className = ref==='ultima' ? 'sw-opt active' : 'sw-opt';
         refresh();
     }}
 
-    function toggleTimeFilter(tf) {{
-        timeFilter = (timeFilter === tf) ? null : tf;
-        document.getElementById('btn-24h').classList.toggle('active', timeFilter === '24h');
-        document.getElementById('btn-week').classList.toggle('active', timeFilter === 'week');
+    function toggleTime(tf) {{
+        state.timeFilter = (state.timeFilter === tf) ? null : tf;
+        document.getElementById('t-24h').className = state.timeFilter==='24h' ? 'chip active' : 'chip';
+        document.getElementById('t-week').className = state.timeFilter==='week' ? 'chip active' : 'chip';
         refresh();
     }}
 
-    function setMode(m, el) {{ sidebarMode = m; document.querySelectorAll('.kpi-box').forEach(x => x.classList.remove('active')); el.classList.add('active'); refresh(); }}
+    function setSbMode(m) {{ state.sbMode = m; state.activeFilter = null; renderSidebar(); }}
+    
+    function applyFilter(t, v) {{ state.activeFilter = {{type:t, value:v}}; refresh(); }}
 
-    function resetView() {{ document.getElementById('dashboard-view').style.display = 'none'; document.getElementById('table-wrapper').style.display = 'flex'; refresh(); }}
-
-    function toggleDashboard(el) {{
-        document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active')); el.classList.add('active');
-        document.getElementById('table-wrapper').style.display = 'none'; document.getElementById('dashboard-view').style.display = 'block';
-        renderDashboard();
+    function toggleDash(el) {{
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+        setView('dash');
     }}
 
-    function refresh() {{ updateKPIs(); renderSidebar(); renderTable(); }}
+    function setView(v) {{
+        document.getElementById('table-wrapper').style.display = v==='table' ? 'flex' : 'none';
+        document.getElementById('dashboard-view').style.display = v==='dash' ? 'block' : 'none';
+        if(v === 'dash') renderCharts();
+    }}
 
-    function updateKPIs() {{
-        const d = getData();
-        document.getElementById('k-count').innerText = d.length;
-        document.getElementById('k-ent').innerText = [...new Set(d.map(x=>x.entidad))].length;
-        document.getElementById('k-money').innerText = new Intl.NumberFormat('de-DE').format(d.reduce((a,b)=>a+b.presupuesto_num,0)) + ' €';
+    // --- RENDERERS ---
+    function refresh() {{
+        let data = getFilteredData();
+        
+        // KPIs
+        document.getElementById('k-cnt').innerText = data.length;
+        document.getElementById('k-ent').innerText = [...new Set(data.map(x=>x.entidad))].length;
+        document.getElementById('k-eur').innerText = new Intl.NumberFormat('de-DE', {{ maximumFractionDigits: 0 }}).format(data.reduce((a,b)=>a+b.presupuesto_num,0)) + ' €';
+
+        renderSidebar();
+        renderTable(data);
     }}
 
     function renderSidebar() {{
-        const sb = document.getElementById('sidebar-content'); sb.innerHTML = ''; const d = getData();
-        if(sidebarMode === 'entities') {{
-            let ents = {{}}; d.forEach(x => {{ ents[x.entidad] = (ents[x.entidad]||0)+1; }});
-            Object.entries(ents).sort((a,b)=>b[1]-a[1]).forEach(([name, count]) => {{
-                sb.innerHTML += `<div class="ent-card" onclick="applyFilter('entity', '${{name}}')"><div class="ent-name">${{name}}</div><div class="ent-badge">${{count}}</div></div>`;
+        let sb = document.getElementById('sb-content'); sb.innerHTML = '';
+        let data = getFilteredData(); // Use filtered data context? Or global? usually filtered context is better
+        
+        if(state.sbMode === 'ads') {{
+            sb.innerHTML = `<div class="sb-item active" onclick="applyFilter(null,null)"><div>Todos los anuncios</div><div class="sb-badge">${{data.length}}</div></div>`;
+        }}
+        else if(state.sbMode === 'ent') {{
+            let c = {{}}; data.forEach(x => c[x.entidad] = (c[x.entidad]||0)+1);
+            Object.entries(c).sort((a,b)=>b[1]-a[1]).forEach(([k,v]) => {{
+                let cls = state.activeFilter?.value === k ? 'active' : '';
+                sb.innerHTML += `<div class="sb-item ${{cls}}" onclick="applyFilter('entity','${{k}}')"><div>${{k}}</div><div class="sb-badge">${{v}}</div></div>`;
             }});
-        }} else if(sidebarMode === 'money') {{
-            [ ['< 100k', 'u100'], ['100k-500k', 'u500'], ['> 500k', 'o500'] ].forEach(r => {{
-                sb.innerHTML += `<div class="range-card" onclick="applyFilter('price', '${{r[1]}}')">${{r[0]}}</div>`;
-            }});
-        }} else {{ sb.innerHTML = '<div class="sb-title">Filtros activos</div><div class="ent-card active" onclick="applyFilter(null, null)">Todos los anuncios</div>'; }}
+        }}
+        else if(state.sbMode === 'money') {{
+            sb.innerHTML += `<div class="sb-item" onclick="applyFilter('price','u100')"><div>< 100k €</div></div>`;
+            sb.innerHTML += `<div class="sb-item" onclick="applyFilter('price','u500')"><div>100k - 500k €</div></div>`;
+            sb.innerHTML += `<div class="sb-item" onclick="applyFilter('price','o500')"><div>> 500k €</div></div>`;
+        }}
     }}
 
-    function applyFilter(t, v) {{ activeFilter = {{type:t, value:v}}; renderTable(); }}
+    function renderTable(data) {{
+        let tgt = document.getElementById('list-target'); tgt.innerHTML = '';
+        if(data.length === 0) {{ tgt.innerHTML = '<div style="padding:40px; text-align:center; color:#9ca3af">No hay resultados</div>'; return; }}
 
-    function renderTable() {{
-        const container = document.getElementById('list-inner'); 
-        container.innerHTML = ""; // Limpieza crítica
-        const search = document.getElementById('search').value.toLowerCase();
+        // Group by Entity
+        let grp = {{}}; data.forEach(x => {{ if(!grp[x.entidad]) grp[x.entidad]=[]; grp[x.entidad].push(x); }});
         
-        let data = getData().filter(x => x.objeto.toLowerCase().includes(search) || x.entidad.toLowerCase().includes(search));
-        
-        if(activeFilter.type === 'entity') data = data.filter(x => x.entidad === activeFilter.value);
-        if(activeFilter.type === 'price') {{
-             if(activeFilter.value==='u100') data = data.filter(x=>x.presupuesto_num < 100000);
-             else if(activeFilter.value==='u500') data = data.filter(x=>x.presupuesto_num >= 100000 && x.presupuesto_num < 500000);
-             else if(activeFilter.value==='o500') data = data.filter(x=>x.presupuesto_num >= 500000);
-        }}
-        
-        let grouped = {{}}; data.forEach(x => {{ if(!grouped[x.entidad]) grouped[x.entidad]=[]; grouped[x.entidad].push(x); }});
-        
-        if(Object.keys(grouped).length === 0) {{
-            container.innerHTML = '<div style="text-align:center; padding:20px; color:#94a3b8">No hay resultados</div>';
-            return;
-        }}
+        // Sort Groups by total amount
+        let sortedEnts = Object.keys(grp).sort((a,b) => {{
+            let sumA = grp[a].reduce((s,x)=>s+x.presupuesto_num,0);
+            let sumB = grp[b].reduce((s,x)=>s+x.presupuesto_num,0);
+            return sumB - sumA;
+        }});
 
-        Object.entries(grouped).forEach(([ent, rows]) => {{
-            let html = `<div class="entity-group"><div class="eg-title-row" onclick="let gr=this.nextElementSibling; gr.style.display=gr.style.display==='none'?'block':'none'"><strong>${{ent}}</strong> <span>${{rows.length}} licit.</span></div><div style="display:block">`;
+        sortedEnts.forEach(ent => {{
+            let rows = grp[ent];
+            let total = rows.reduce((s,x)=>s+x.presupuesto_num,0);
+            
+            let html = `<div class="group-header" onclick="this.nextElementSibling.hidden = !this.nextElementSibling.hidden">
+                <span>${{ent}}</span> <span>${{rows.length}} exp | ${{new Intl.NumberFormat('de-DE').format(total)}} €</span>
+            </div><div class="group-body">`;
+            
             rows.forEach(r => {{
-                let stCls = 'st-activo';
-                if(r.estado === 'cerrado') stCls = 'st-cerrado';
-                else if(r.estado === 'redaccion') stCls = 'st-redaccion';
-                else if(r.estado === 'suspendido') stCls = 'st-suspendido';
+                let badge = 'bd-act';
+                if(r.estado==='cerrado') badge='bd-cer';
+                if(r.estado==='redaccion') badge='bd-red';
+                if(r.estado==='suspendido') badge='bd-sus';
 
-                html += `<div class="row-item">
-                    <div><div style="margin-bottom:4px"><span class="st-badge ${{stCls}}">${{r.estado}}</span> <small style="color:#94a3b8">${{r.expediente}}</small></div><div class="ri-title">${{r.objeto}}</div></div>
-                    <div>${{r.primera_pub_fmt}}</div><div>${{r.publicado_fmt}}</div><div>${{r.limite_fmt}}</div>
-                    <div style="text-align:right; font-weight:700">${{r.presupuesto_txt}}</div>
-                    <div style="text-align:center">${{r.dias_restantes > -1 ? r.dias_restantes + ' d' : '-'}}</div>
-                    <div style="text-align:center"><a href="${{r.link}}" target="_blank"><i class="fa-solid fa-eye"></i></a></div>
+                html += `<div class="grid-row">
+                    <div class="row-main">
+                        <div class="row-meta"><span class="badge ${{badge}}">${{r.estado}}</span> ${{(r.expediente||'--')}}</div>
+                        <div class="row-title">${{r.objeto}}</div>
+                    </div>
+                    <div class="row-date">${{r.primera_pub_fmt}}</div>
+                    <div class="row-date">${{r.publicado_fmt}}</div>
+                    <div class="row-date" style="font-weight:600">${{r.limite_fmt}}</div>
+                    <div class="row-money">${{r.presupuesto_txt}}</div>
+                    <div style="text-align:center; font-weight:700">${{r.dias_restantes > -1 ? r.dias_restantes : '-'}}</div>
+                    <div class="action-link"><a href="${{r.link}}" target="_blank"><i class="fa-solid fa-eye"></i></a></div>
                 </div>`;
             }});
-            html += '</div></div>'; container.innerHTML += html;
+            html += `</div>`;
+            tgt.innerHTML += html;
         }});
     }}
 
-    function renderDashboard() {{
-        chartInstances.forEach(c => c.destroy()); chartInstances = []; const d = getData();
-        document.getElementById('dm-vol').innerText = new Intl.NumberFormat('de-DE').format(d.reduce((a,b)=>a+b.presupuesto_num,0)) + ' €';
-        document.getElementById('dm-num').innerText = d.length;
+    let charts = [];
+    function renderCharts() {{
+        charts.forEach(c => c.destroy()); charts = [];
+        let data = getFilteredData();
         
-        const zoneD = {{}}; d.forEach(x => zoneD[x.grupo_fav] = (zoneD[x.grupo_fav]||0)+1);
-        chartInstances.push(new Chart(document.getElementById('chartZone'), {{ type:'doughnut', data:{{ labels:Object.keys(zoneD), datasets:[{{data:Object.values(zoneD), backgroundColor:['#3b82f6','#10b981','#f59e0b','#ef4444']}}] }} }}));
+        // Entidades
+        let ec = {{}}; data.forEach(x => ec[x.entidad] = (ec[x.entidad]||0)+x.presupuesto_num);
+        let sorted = Object.entries(ec).sort((a,b)=>b[1]-a[1]).slice(0,10);
         
-        const entD = {{}}; d.forEach(x => entD[x.entidad] = (entD[x.entidad]||0)+x.presupuesto_num);
-        const topEnts = Object.entries(entD).sort((a,b)=>b[1]-a[1]).slice(0,5);
-        chartInstances.push(new Chart(document.getElementById('chartEnt'), {{ type:'bar', data:{{ labels:topEnts.map(x=>x[0].substring(0,10)), datasets:[{{label:'€', data:topEnts.map(x=>x[1]), backgroundColor:'#3b82f6'}}] }}, options:{{indexAxis:'y'}} }}));
+        charts.push(new Chart(document.getElementById('c-ent'), {{
+            type: 'bar',
+            data: {{ labels: sorted.map(x=>x[0].substring(0,15)+'...'), datasets: [{{ label:'Volumen (€)', data: sorted.map(x=>x[1]), backgroundColor:'#3b82f6' }}] }},
+            options: {{ indexAxis: 'y', maintainAspectRatio: false }}
+        }}));
 
-        const list = document.getElementById('top-opps-list'); list.innerHTML = '';
-        [...d].sort((a,b)=>b.presupuesto_num-a.presupuesto_num).slice(0,5).forEach(x=> {{
-            list.innerHTML += `<div class="top-item"><div><strong>${{x.entidad}}</strong><br><small>${{x.objeto.substring(0,40)}}...</small></div><div style="margin-left:auto">${{x.presupuesto_txt}}</div></div>`;
+        // Zonas
+        let zc = {{}}; data.forEach(x => zc[x.grupo_fav] = (zc[x.grupo_fav]||0)+1);
+        charts.push(new Chart(document.getElementById('c-zone'), {{
+            type: 'doughnut',
+            data: {{ labels: Object.keys(zc), datasets: [{{ data: Object.values(zc), backgroundColor: ['#3b82f6','#10b981','#f59e0b','#ef4444','#6b7280'] }}] }},
+            options: {{ maintainAspectRatio: false }}
+        }}));
+        
+        // Rangos
+        let ranges = {{'<100k':0, '100k-1M':0, '>1M':0}};
+        data.forEach(x => {{
+            if(x.presupuesto_num < 100000) ranges['<100k']++;
+            else if(x.presupuesto_num < 1000000) ranges['100k-1M']++;
+            else ranges['>1M']++;
         }});
+        charts.push(new Chart(document.getElementById('c-range'), {{
+            type: 'bar',
+            data: {{ labels: Object.keys(ranges), datasets: [{{ label:'Expedientes', data: Object.values(ranges), backgroundColor:'#8b5cf6' }}] }},
+            options: {{ maintainAspectRatio: false }}
+        }}));
     }}
 
+    // Init
     refresh();
 </script>
 </body>
@@ -562,4 +668,4 @@ html_content = f"""
 """
 
 with open("index.html", "w", encoding="utf-8") as f: f.write(html_content)
-print("✅ Generado V53 con corrección de scroll, fechas y filtros.")
+print("✅ V54 Generada: Interfaz limpia y lógica robusta.")
