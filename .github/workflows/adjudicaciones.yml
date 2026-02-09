@@ -33,7 +33,7 @@ jobs:
           # Añadimos los archivos clave
           git add licitaciones_db.json
           git add backups/
-          git add monitor_licitaciones.html
+          git add analisis.html
           
           # Hacemos commit
           git commit -m "Update: Análisis diario" || exit 0
