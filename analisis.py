@@ -10,7 +10,7 @@ import shutil
 from datetime import datetime, timedelta, timezone
 
 # --- CONFIGURACIÓN ---
-HTML_FILE = "monitor_licitaciones.html"
+HTML_FILE = "analisis.html"
 DB_FILE = "licitaciones_db.json"
 BACKUP_DIR = "backups"
 
