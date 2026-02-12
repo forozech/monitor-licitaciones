@@ -61340,8 +61340,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "ADJUDICADO",
     "objeto": "Servicios de mantenimiento del software de los sistemas de Lurraldebus",
-    "fecha_publicacion": "18/07/2025",
-    "fecha_pub_iso": "2025-07-18",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "17/07/2025",
     "fecha_iso": "2025-07-17",
     "entidad": "Diputación Foral De Gipuzkoa",
@@ -61395,10 +61395,6 @@
       {
         "nombre": "FA-ML-2025-0159.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4820793&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2025056NE100 - Kontratua (platf) .pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=481546&R01HNoPortal=true"
       }
     ]
   },
