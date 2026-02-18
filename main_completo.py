@@ -91,7 +91,7 @@ HEADERS = {
     'Upgrade-Insecure-Requests': '1'
 }
 
-LIMIT_PER_SOURCE = 20 # Mantenemos límite bajo por seguridad de tiempos
+LIMIT_PER_SOURCE = 120 # Mantenemos límite bajo por seguridad de tiempos
 
 # --- FUNCIONES ---
 def detectar_zona(texto):
