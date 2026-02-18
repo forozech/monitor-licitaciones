@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   workflow_dispatch:
   schedule:
+    # Se activa a las en punto, cada hora, desde las 8:00 hasta las 17:00 UTC
     - cron: '0 8-17 * * *'
 
 jobs:
@@ -24,25 +25,45 @@ jobs:
       - name: Instalar librerías
         run: pip install requests beautifulsoup4 lxml
 
-      # AQUÍ ESTÁ EL PRIMER CAMBIO: Ejecutamos los dos scripts
-      - name: Ejecutar Licitaciones
+      - name: Ejecutar Scripts
+        shell: bash
         run: |
+          # -------------------------------------------------------
+          # 1. EJECUCIÓN HORARIA (SIEMPRE)
+          # -------------------------------------------------------
+          echo "✅ Ejecutando main.py (Versión Simple)..."
           python main.py
-          python main_completo.py
+
+          # -------------------------------------------------------
+          # 2. EJECUCIÓN CADA 4 HORAS (CONDICIONAL)
+          # -------------------------------------------------------
+          # Obtenemos la hora actual (formato 0-23)
+          HOUR=$(date +%H)
+          
+          # La lógica es:
+          # - Si es un evento manual o un push (no programado) -> EJECUTA SIEMPRE
+          # - O si la hora actual es divisible por 4 (8, 12, 16...) -> EJECUTA
+          
+          # Nota: "10#$HOUR" fuerza a que el número se lea como decimal y no octal
+          if [[ "${{ github.event_name }}" != "schedule" ]] || (( 10#$HOUR % 4 == 0 )); then
+            echo "🚀 Hora ${{ env.HOUR }}:00 -> Toca actualización COMPLETA."
+            python main_completo.py
+          else
+            echo "⏳ Hora ${{ env.HOUR }}:00 -> Saltando versión completa (se mantiene la anterior)."
+          fi
 
       - name: Guardar cambios
         run: |
           git config --global user.name "Bot Licitaciones"
           git config --global user.email "actions@github.com"
           
-          # AQUÍ ESTÁ EL SEGUNDO CAMBIO: Añadimos ambos archivos HTML
-          git add index.html
-          git add index_completo.html
+          # Añadimos los archivos generados
+          # Si main_completo.py no se ejecutó, index_completo.html no habrá cambiado
+          # y git simplemente lo ignorará, manteniendo la versión vieja.
+          git add index.html index_completo.html
           
-          git commit -m "Update: Licitaciones horarias (Simple y Completa)" || exit 0
+          # Hacemos commit solo si hay cambios reales
+          git commit -m "Update automático: Licitaciones" || echo "Sin cambios nuevos que guardar"
           
-          # --- ANTICONFLICTOS ---
           git pull origin main --no-rebase -s recursive -X ours
-          # ----------------------
-          
           git push
