@@ -1,5 +1,5 @@
 # ==============================================================================
-# LICITACIONES EUSKADI - V52 (ROBUST & SAFE MODE)
+# LICITACIONES EUSKADI - V53 (URLS ORIGINALES LARGAS - STRICT V49 LOGIC)
 # ==============================================================================
 
 import requests
@@ -14,28 +14,28 @@ import urllib3
 # Desactivar advertencias SSL
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-# --- CONFIGURACIÓN DE URLS ---
+# --- CONFIGURACIÓN DE URLS (FORMATO LARGO ORIGINAL) ---
 
-# URLs BASE (En Plazo)
-RSS_OBRAS_PLAZO = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=3&idioma=es&R01HNoPortal=true"
-RSS_SERV_PLAZO  = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=3&idioma=es&R01HNoPortal=true"
+# 1. ESTADO: EN PLAZO (Las que ya funcionaban en la V49)
+RSS_OBRAS_PLAZO = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=3&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_SERV_PLAZO  = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=3&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
 
-# URLs CON FECHA (Copiadas tal cual las enviaste)
-# Nota: p11=01/06/2025
-RSS_OBRAS_ALERTA      = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=2&p11=01/06/2025&idioma=es&R01HNoPortal=true"
-RSS_OBRAS_ANULADO     = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=13&p11=01/06/2025&idioma=es&R01HNoPortal=true"
-RSS_OBRAS_DESIERTO    = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=9&p11=01/01/2025&idioma=es&R01HNoPortal=true"
-RSS_OBRAS_DESIST      = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=6&p11=01/06/2025&idioma=es&R01HNoPortal=true"
-RSS_OBRAS_REDACCION   = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=12&p11=01/06/2025&idioma=es&R01HNoPortal=true"
-RSS_OBRAS_PREVIO      = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=1&p11=01/06/2025&idioma=es&R01HNoPortal=true"
-RSS_OBRAS_FINALIZADO  = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=14&p11=01/06/2025&idioma=es&R01HNoPortal=true"
-RSS_OBRAS_FORMALIZADO = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=8&p11=01/06/2025&idioma=es&R01HNoPortal=true"
-RSS_OBRAS_HISTORICO   = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=7&p11=01/06/2025&idioma=es&R01HNoPortal=true"
-RSS_OBRAS_MODIF       = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=11&p11=01/06/2025&idioma=es&R01HNoPortal=true"
-RSS_OBRAS_CERRADO     = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=4&p11=01/06/2025&idioma=es&R01HNoPortal=true"
-RSS_OBRAS_SUSPENSION  = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=10&p11=01/06/2025&idioma=es&R01HNoPortal=true"
+# 2. NUEVAS URLS (Copiadas EXACTAS de tu mensaje, sin recortar nada)
+# OBRAS (p01=1)
+RSS_OBRAS_ALERTA      = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=2&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/06/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_OBRAS_ANULADO     = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=13&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/06/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_OBRAS_DESIERTO    = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=9&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/01/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_OBRAS_DESIST      = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=6&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/06/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_OBRAS_REDACCION   = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=12&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/06/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_OBRAS_PREVIO      = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=1&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/06/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_OBRAS_FINALIZADO  = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=14&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/06/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_OBRAS_FORMALIZADO = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=8&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/06/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_OBRAS_HISTORICO   = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=7&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/06/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_OBRAS_MODIF       = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=11&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/06/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_OBRAS_CERRADO     = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=4&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/06/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+RSS_OBRAS_SUSPENSION  = "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=10&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11=01/06/2025&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
 
-# SERVICIOS (Generados cambiando p01=1 por p01=2)
+# SERVICIOS (Generados cambiando p01=1 por p01=2 en las URLs LARGAS)
 RSS_SERV_ALERTA      = RSS_OBRAS_ALERTA.replace("p01=1", "p01=2")
 RSS_SERV_ANULADO     = RSS_OBRAS_ANULADO.replace("p01=1", "p01=2")
 RSS_SERV_DESIERTO    = RSS_OBRAS_DESIERTO.replace("p01=1", "p01=2")
@@ -91,7 +91,7 @@ HEADERS = {
     'Upgrade-Insecure-Requests': '1'
 }
 
-LIMIT_PER_SOURCE = 20 # Reducido para evitar timeouts
+LIMIT_PER_SOURCE = 20 # Mantenemos límite bajo por seguridad de tiempos
 
 # --- FUNCIONES ---
 def detectar_zona(texto):
@@ -125,147 +125,126 @@ def es_ingenieria(titulo):
     t = titulo.lower()
     return any(k in t for k in KEYWORDS_ING)
 
-# --- SCRAPING ROBUSTO ---
+# --- SCRAPING (LÓGICA V49 INTACTA) ---
 datos_finales = []
 fecha_actual_str = datetime.now().strftime("%d/%m/%Y %H:%M")
 
-print(f"🚀 INICIANDO V52 ROBUSTA ({fecha_actual_str})")
+print(f"🚀 INICIANDO V53 (CODEBASE V49 + FULL URLS) ({fecha_actual_str})")
 
 for source in SOURCES:
     tipo_origen = source["type"]
     tag_estado = source.get("tag", "")
     
     print(f"   > Procesando {tipo_origen.upper()} - {tag_estado}...")
-    time.sleep(1) 
+    time.sleep(1) # Pequeña pausa
 
     try:
-        # Petición a la RSS
-        response = requests.get(source["url"], headers=HEADERS, timeout=30, verify=False)
+        response = requests.get(source["url"], headers=HEADERS, timeout=45, verify=False)
         
         if response.status_code != 200:
-            print(f"    ⚠️ Error HTTP {response.status_code} en fuente")
+            print(f"    ⚠️ Error HTTP {response.status_code}")
             continue
 
-        # Forzar utf-8 si hace falta
-        response.encoding = 'utf-8' 
-        
         soup_rss = BeautifulSoup(response.content, 'xml')
         items = soup_rss.find_all('item')[:LIMIT_PER_SOURCE]
-        
         print(f"      ✅ {len(items)} items encontrados.")
 
         for i, item in enumerate(items):
-            try:
-                # --- BLOQUE TRY/CATCH INDIVIDUAL POR LICITACIÓN ---
-                # Verificar datos obligatorios
-                if not item.link or not item.title:
-                    continue
-                
-                link = item.link.text.strip()
-                titulo = item.title.text.strip()
-                
-                if tag_estado:
-                    titulo = f"[{tag_estado}] {titulo}"
-
-                categoria = tipo_origen
-                if tipo_origen == "servicios" and es_ingenieria(titulo):
-                    categoria = "ingenieria"
-
-                try:
-                    pub_dt = parsedate_to_datetime(item.pubDate.text)
-                    fecha_pub = pub_dt.strftime("%d/%m/%Y")
-                    fecha_pub_iso = pub_dt.strftime("%Y-%m-%d")
-                except:
-                    fecha_pub = datetime.now().strftime("%d/%m/%Y")
-                    fecha_pub_iso = datetime.now().strftime("%Y-%m-%d")
-
-                # Valores por defecto
-                entidad = "Consultar detalle"
-                presupuesto = 0.0
-                fecha_limite = None
-                expediente = "---"
-                logo_url = "https://cdn-icons-png.flaticon.com/512/4300/4300058.png"
-
-                # Intentar leer el detalle (con timeout corto)
-                try:
-                    r_det = requests.get(link, headers=HEADERS, timeout=10, verify=False)
-                    if r_det.status_code == 200:
-                        s_det = BeautifulSoup(r_det.content, 'html.parser')
-                        
-                        div_titulo = s_det.find('div', class_='barraTitulo')
-                        if div_titulo:
-                            img = div_titulo.find('img')
-                            if img and img.get('src'):
-                                src = img.get('src')
-                                logo_url = "https://www.contratacion.euskadi.eus" + src if src.startswith('/') else src
-
-                        target_fecha = s_det.find(string=re.compile(r"Fecha l.mite de presentaci.n", re.IGNORECASE))
-                        if target_fecha:
-                            parent = target_fecha.parent
-                            next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
-                            if next_el: fecha_limite = next_el.text.strip().split(' ')[0]
-
-                        target_presu = s_det.find(string=re.compile(r"Presupuesto del contrato sin IVA", re.IGNORECASE))
-                        if target_presu:
-                            parent = target_presu.parent
-                            next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
-                            if next_el: presupuesto = limpiar_precio(next_el.text)
-
-                        target_entidad = s_det.find(string=re.compile(r"Poder adjudicador", re.IGNORECASE))
-                        if target_entidad:
-                            parent = target_entidad.parent
-                            next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
-                            if next_el: entidad = next_el.text.strip()
-                            
-                        target_exp = s_det.find(string=re.compile(r"Expediente", re.IGNORECASE))
-                        if target_exp:
-                            parent = target_exp.parent
-                            next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
-                            if next_el: expediente = next_el.text.strip()
-                except Exception as e_det:
-                    # Si falla el detalle, seguimos con los datos básicos del RSS
-                    pass
-
-                if entidad == "Consultar detalle" and " - " in titulo:
-                    entidad = titulo.split(" - ")[0]
-
-                zona = detectar_zona(entidad)
-                
-                if fecha_limite:
-                    dias = calcular_dias_restantes(fecha_limite)
-                    try: limite_iso = datetime.strptime(fecha_limite, "%d/%m/%Y").strftime("%Y-%m-%d")
-                    except: limite_iso = "2999-12-31"; dias=999
-                else:
-                    fecha_limite = "Consultar"; limite_iso = "2999-12-31"; dias = 999
-
-                presu_txt = "{:,.2f} €".format(presupuesto).replace(",", "X").replace(".", ",").replace("X", ".")
-
-                obj = {
-                    "id": len(datos_finales),
-                    "categoria": categoria,
-                    "entidad": entidad,
-                    "objeto": titulo.replace('"', "'"),
-                    "presupuesto_num": presupuesto,
-                    "presupuesto_txt": presu_txt,
-                    "limite": limite_iso,
-                    "limite_fmt": fecha_limite,
-                    "publicado": fecha_pub_iso,
-                    "publicado_fmt": fecha_pub,
-                    "dias_restantes": dias,
-                    "expediente": expediente,
-                    "grupo_fav": zona,
-                    "logo": logo_url,
-                    "link": link
-                }
-                datos_finales.append(obj)
+            link = item.link.text
+            titulo = item.title.text
             
-            except Exception as e_item:
-                print(f"      ⚠️ Saltando item corrupto: {e_item}")
-                continue
+            # Etiqueta visual para distinguir listas
+            if tag_estado:
+                titulo = f"[{tag_estado}] {titulo}"
+
+            categoria = tipo_origen
+            if tipo_origen == "servicios" and es_ingenieria(titulo):
+                categoria = "ingenieria"
+
+            try:
+                pub_dt = parsedate_to_datetime(item.pubDate.text)
+                fecha_pub = pub_dt.strftime("%d/%m/%Y")
+                fecha_pub_iso = pub_dt.strftime("%Y-%m-%d")
+            except:
+                fecha_pub = datetime.now().strftime("%d/%m/%Y")
+                fecha_pub_iso = datetime.now().strftime("%Y-%m-%d")
+
+            entidad = "Consultar detalle"
+            presupuesto = 0.0
+            fecha_limite = None
+            expediente = "---"
+            logo_url = "https://cdn-icons-png.flaticon.com/512/4300/4300058.png"
+
+            try:
+                r_det = requests.get(link, headers=HEADERS, timeout=15, verify=False)
+                if r_det.status_code == 200:
+                    s_det = BeautifulSoup(r_det.content, 'html.parser')
+                    div_titulo = s_det.find('div', class_='barraTitulo')
+                    if div_titulo:
+                        img = div_titulo.find('img')
+                        if img and img.get('src'):
+                            src = img.get('src')
+                            logo_url = "https://www.contratacion.euskadi.eus" + src if src.startswith('/') else src
+
+                    target_fecha = s_det.find(string=re.compile(r"Fecha l.mite de presentaci.n", re.IGNORECASE))
+                    if target_fecha:
+                        parent = target_fecha.parent
+                        next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
+                        if next_el: fecha_limite = next_el.text.strip().split(' ')[0]
+
+                    target_presu = s_det.find(string=re.compile(r"Presupuesto del contrato sin IVA", re.IGNORECASE))
+                    if target_presu:
+                        parent = target_presu.parent
+                        next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
+                        if next_el: presupuesto = limpiar_precio(next_el.text)
+
+                    target_entidad = s_det.find(string=re.compile(r"Poder adjudicador", re.IGNORECASE))
+                    if target_entidad:
+                        parent = target_entidad.parent
+                        next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
+                        if next_el: entidad = next_el.text.strip()
+                        
+                    target_exp = s_det.find(string=re.compile(r"Expediente", re.IGNORECASE))
+                    if target_exp:
+                        parent = target_exp.parent
+                        next_el = parent.find_next_sibling('div') or parent.find_next_sibling('dd')
+                        if next_el: expediente = next_el.text.strip()
+            except: pass
+
+            if entidad == "Consultar detalle" and " - " in titulo:
+                entidad = titulo.split(" - ")[0]
+
+            zona = detectar_zona(entidad)
+            if fecha_limite:
+                dias = calcular_dias_restantes(fecha_limite)
+                try: limite_iso = datetime.strptime(fecha_limite, "%d/%m/%Y").strftime("%Y-%m-%d")
+                except: limite_iso = "2999-12-31"; dias=999
+            else:
+                fecha_limite = "Consultar"; limite_iso = "2999-12-31"; dias = 999
+
+            presu_txt = "{:,.2f} €".format(presupuesto).replace(",", "X").replace(".", ",").replace("X", ".")
+
+            obj = {
+                "id": len(datos_finales),
+                "categoria": categoria,
+                "entidad": entidad,
+                "objeto": titulo.replace('"', "'"),
+                "presupuesto_num": presupuesto,
+                "presupuesto_txt": presu_txt,
+                "limite": limite_iso,
+                "limite_fmt": fecha_limite,
+                "publicado": fecha_pub_iso,
+                "publicado_fmt": fecha_pub,
+                "dias_restantes": dias,
+                "expediente": expediente,
+                "grupo_fav": zona,
+                "logo": logo_url,
+                "link": link
+            }
+            datos_finales.append(obj)
 
     except Exception as e:
-        print(f"❌ Error CRÍTICO en fuente {tipo_origen}: {e}")
-        continue
+        print(f"❌ Error en {tipo_origen}: {e}")
 
 datos_json = json.dumps(datos_finales)
 
@@ -644,4 +623,4 @@ html_content = f"""
 with open("index_completo.html", "w", encoding="utf-8") as file:
     file.write(html_content)
 
-print("✅ Archivo 'index_completo.html' generado con éxito (V52 SAFE).")
+print("✅ Archivo 'index_completo.html' generado con éxito (V53).")
