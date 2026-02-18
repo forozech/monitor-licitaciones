@@ -24,16 +24,22 @@ jobs:
       - name: Instalar librerías
         run: pip install requests beautifulsoup4 lxml
 
+      # AQUÍ ESTÁ EL PRIMER CAMBIO: Ejecutamos los dos scripts
       - name: Ejecutar Licitaciones
-        run: python main.py
+        run: |
+          python main.py
+          python main_completo.py
 
       - name: Guardar cambios
         run: |
           git config --global user.name "Bot Licitaciones"
           git config --global user.email "actions@github.com"
           
+          # AQUÍ ESTÁ EL SEGUNDO CAMBIO: Añadimos ambos archivos HTML
           git add index.html
-          git commit -m "Update: Licitaciones horarias" || exit 0
+          git add index_completo.html
+          
+          git commit -m "Update: Licitaciones horarias (Simple y Completa)" || exit 0
           
           # --- ANTICONFLICTOS ---
           git pull origin main --no-rebase -s recursive -X ours
