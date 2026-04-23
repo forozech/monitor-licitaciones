@@ -91761,8 +91761,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "FORMALIZADO",
     "objeto": "LOTE 2.-Especialidad Formativa: docencia para impartir formación cualificante correspondiente al curso de Certificado de Profesionalidad de nivel 1 “Operaciones Básicas de Cocina” (HOTR0108)",
-    "fecha_publicacion": "08/10/2025",
-    "fecha_pub_iso": "2025-10-08",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "03/10/2025",
     "fecha_iso": "2025-10-03",
     "entidad": "Agencia De Desarrollo Del Bidasoa, S.A.",
@@ -128988,8 +128988,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "FORMALIZADO",
     "objeto": "LOTE 4.-Especialidad Formativa: docencia para impartir formación cualificante correspondiente al curso de Certificado de Profesionalidad de nivel 2 “Cocina” (HOTR0408)",
-    "fecha_publicacion": "03/03/2025",
-    "fecha_pub_iso": "2025-03-03",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "27/02/2025",
     "fecha_iso": "2025-02-27",
     "entidad": "Agencia De Desarrollo Del Bidasoa, S.A.",
@@ -129009,12 +129009,12 @@
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4332986&R01HNoPortal=true"
       },
       {
-        "nombre": "3. 2024CONTR001.4_ COC Informe y Propuesta de Adjudicacion.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4382941&R01HNoPortal=true"
-      },
-      {
         "nombre": "5. 2024CONTR001.4_ COCINA Resolucion-Directora.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4382946&R01HNoPortal=true"
+      },
+      {
+        "nombre": "3. 2024CONTR001.4_ COC Informe y Propuesta de Adjudicacion.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4382941&R01HNoPortal=true"
       },
       {
         "nombre": "6. 2024CONTR001.4_ COCINA Anexo-X_Contrato.pdf",
