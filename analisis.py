@@ -764,21 +764,36 @@ class MonitorEngine:
             # --- PASO 1: REPARAR DATOS ANTIGUOS ---
             self.repair_db()
 
-            # --- PASO 2: CARGA INCREMENTAL (NUEVOS) ---
+           # --- PASO 2: CARGA INCREMENTAL (NUEVOS) ---
             new_items = 0
-            start_date_str = "01/01/2025" # Default
+            hoy = datetime.now()
+            start_date_dt = datetime(2025, 1, 1) # Default
+            
             if self.latest_date:
                 try:
                     last_dt = datetime.strptime(self.latest_date, "%Y-%m-%d")
-                    safe_start = last_dt - timedelta(days=5)
-                    start_date_str = safe_start.strftime("%d/%m/%Y")
-                    print(f"📅 Optimización activada: Buscando solo desde {start_date_str}")
-                except: pass
+                    # 🛡️ SOLAPE DE SEGURIDAD: Restamos 7 días a la última fecha válida
+                    start_date_dt = last_dt - timedelta(days=7)
+                except Exception as e:
+                    print(f"⚠️ Aviso parseando fecha: {e}")
             
+            # Seguro extra: Si la base de datos se corrompió y el inicio calculado supera a hoy
+            if start_date_dt > hoy:
+                start_date_dt = hoy - timedelta(days=7)
+
+            print(f"📅 Iniciando búsqueda optimizada desde: {start_date_dt.strftime('%d/%m/%Y')}")
+
             active_sources = []
+            DIAS_BLOQUE = 5 # 🛡️ PAGINACIÓN: Partimos el tiempo en segmentos de 5 días
+            
             for bs in self.base_sources:
-                url_final = bs['base_url'].format(start_date_str)
-                active_sources.append({**bs, 'url': url_final})
+                current_dt = start_date_dt
+                while current_dt <= hoy:
+                    url_final = bs['base_url'].format(current_dt.strftime("%d/%m/%Y"))
+                    active_sources.append({**bs, 'url': url_final})
+                    current_dt += timedelta(days=DIAS_BLOQUE)
+
+            print(f"📡 Generadas {len(active_sources)} peticiones RSS para cubrir el periodo pendiente.")
 
             for s in active_sources:
                 try:
