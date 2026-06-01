@@ -557,21 +557,46 @@ def normalize_fecha_es(fecha_txt: str):
 
 class MonitorEngine:
     def __init__(self):
-        # NOTA: Las fechas en las URLs (p11=01/01/2025) se sobreescribirán en runtime
-        # si ya existen datos en la DB.
-        self.base_sources = [
-            {"tipo": "OBRA", "estado": "ADJUDICADO", "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=5&p11={}&p26=ES212&idioma=es&R01HNoPortal=true"},
-            {"tipo": "OBRA", "estado": "FORMALIZADO", "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=8&p11={}&p26=ES212&idioma=es&R01HNoPortal=true"},
-            {"tipo": "OBRA", "estado": "CERRADO", "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=14&p11={}&p26=ES212&idioma=es&R01HNoPortal=true"},
-            {"tipo": "SERV", "estado": "ADJUDICADO", "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=5&p11={}&p26=ES212&idioma=es&R01HNoPortal=true"},
-            {"tipo": "SERV", "estado": "FORMALIZADO", "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=8&p11={}&p26=ES212&idioma=es&R01HNoPortal=true"},
-            {"tipo": "SERV", "estado": "CERRADO", "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=14&p11={}&p26=ES212&idioma=es&R01HNoPortal=true"}
-        ]
-        self.session = requests.Session()
-        self.headers = {'User-Agent': 'Mozilla/5.0'}
-        self.processed_ids = set()
-        self.db = []
-        self.latest_date = None
+    # NOTA: Las fechas en las URLs p11={} se sobreescribirán en runtime
+    # si ya existen datos en la DB.
+    self.base_sources = [
+        {
+            "tipo": "OBRA",
+            "estado": "ADJUDICADO",
+            "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=5&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11={}&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+        },
+        {
+            "tipo": "OBRA",
+            "estado": "FORMALIZADO",
+            "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=8&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11={}&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+        },
+        {
+            "tipo": "OBRA",
+            "estado": "CERRADO",
+            "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=1&p02=4&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11={}&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+        },
+        {
+            "tipo": "SERV",
+            "estado": "ADJUDICADO",
+            "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=5&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11={}&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+        },
+        {
+            "tipo": "SERV",
+            "estado": "FORMALIZADO",
+            "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=8&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11={}&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+        },
+        {
+            "tipo": "SERV",
+            "estado": "CERRADO",
+            "base_url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/suscribirAnuncio/suscripcionRss?p01=2&p02=4&p03=&p04=&p05=&p06=&p07=&p08=&p09=&p10=&p11={}&p12=&p13=&p14=&p15=&p16=&p17=FALSE&p18=&p19=&p20=&p21=&p22=&p23=&p24=&p25=FALSE&p26=ES212&p27=&p28=&p29=&p30=&p31=&p32=&p33=&p34=&p35=&p36=&p37=&p38=&p39=&p40=&p41=&p42=&p43=false&p44=FALSE&p45=1&idioma=es&R01HNoPortal=true"
+        }
+    ]
+
+    self.session = requests.Session()
+    self.headers = {'User-Agent': 'Mozilla/5.0'}
+    self.processed_ids = set()
+    self.db = []
+    self.latest_date = None
 
         if os.path.exists(DB_FILE):
             try:
