@@ -580,6 +580,8 @@ class MonitorEngine:
                 
                 # Encontrar la fecha más reciente para optimizar la carga
                 dates = []
+                hoy_str = datetime.now().strftime("%Y-%m-%d") # Capturamos la fecha de hoy
+                
                 for d in self.db:
                     # Normalizar fechas antiguas si es necesario
                     if 'fecha_iso' not in d:
@@ -587,11 +589,13 @@ class MonitorEngine:
                         d['fecha_adjudicacion'] = disp; d['fecha_iso'] = iso
                     
                     if d.get('fecha_pub_iso') and len(d['fecha_pub_iso']) == 10:
-                        dates.append(d['fecha_pub_iso'])
+                        # 🛡️ FILTRO ESTRICTO: Solo aceptamos fechas de hoy o anteriores
+                        if d['fecha_pub_iso'] <= hoy_str:
+                            dates.append(d['fecha_pub_iso'])
 
                 if dates:
                     dates.sort()
-                    self.latest_date = dates[-1] # La fecha más reciente (YYYY-MM-DD)
+                    self.latest_date = dates[-1] # La fecha más reciente VÁLIDA
                 
                 unique_dict = {d['url_ficha']: d for d in self.db}
                 self.db = list(unique_dict.values())
