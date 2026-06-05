@@ -177631,8 +177631,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "ADJUDICADO",
     "objeto": "Servicio de soporte y mantenimiento del software PUMUKIT",
-    "fecha_publicacion": "27/05/2026",
-    "fecha_pub_iso": "2026-05-27",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "26/05/2026",
     "fecha_iso": "2026-05-26",
     "entidad": "Upv/Ehu - Universidad Del País Vasco",
@@ -183214,8 +183214,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "ADJUDICADO",
     "objeto": "Mantenimiento Integral del Equipamiento de Braquiterapia de Alta Tasa del edificio Onkologikoa (OSI Donostialdea)",
-    "fecha_publicacion": "24/03/2026",
-    "fecha_pub_iso": "2026-03-24",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "24/03/2026",
     "fecha_iso": "2026-03-24",
     "entidad": "Osakidetza - Servicio Vasco De Salud",
@@ -183232,47 +183232,43 @@
     "documentos": [
       {
         "nombre": "Resolución de aprobación de expediente-RAE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5876395&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5616590&R01HNoPortal=true"
       },
       {
         "nombre": "Memoria justificativa-MJ.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5876392&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5616596&R01HNoPortal=true"
       },
       {
         "nombre": "Resolución de inicio-RI.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5876393&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5616588&R01HNoPortal=true"
       },
       {
         "nombre": "Propuesta adjudicación y aceptación-AMCA.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5876396&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5616591&R01HNoPortal=true"
       },
       {
         "nombre": "Acta de la mesa (apertura de proposiciones evaluables mediante fórmulas)-AMJTE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5876398&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5616593&R01HNoPortal=true"
       },
       {
         "nombre": "Acta de la mesa (apertura de la documentación administrativa)-AMJTE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5876399&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5616594&R01HNoPortal=true"
       },
       {
         "nombre": "Documento anexo-Anexos + Mesa Contratación.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5876400&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5616595&R01HNoPortal=true"
       },
       {
         "nombre": "Pliego de Prescripciones Técnicas-PPT.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5876394&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5616589&R01HNoPortal=true"
       },
       {
         "nombre": "Pliego de Cláusulas Administrativas Particulares-PCAP.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5876397&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5616592&R01HNoPortal=true"
       },
       {
         "nombre": "Informe técnico definitivo de valoración de ofertas-ITD.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5876401&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Documento de contrato firmado-Contrato Formalizado ECKERT.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=502277&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5616597&R01HNoPortal=true"
       }
     ]
   },
@@ -224418,604 +224414,6 @@
       {
         "nombre": "2025ID170011 kontratua.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=502035&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "a8a0b5c928550f5120731da38ffa30a5",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso715681/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Contratación del servicio de asistencia sanitaria de primeros auxilios en primera instancia en eventos festivos",
-    "fecha_publicacion": "20/05/2026",
-    "fecha_pub_iso": "2026-05-20",
-    "fecha_adjudicacion": "05/06/2026",
-    "fecha_iso": "2026-06-05",
-    "entidad": "Ayuntamiento De Eibar",
-    "expediente": "2026041EI",
-    "presupuesto_base": 24276.12,
-    "importe_adjudicacion": 20430.0,
-    "ganador": "Amberne S A",
-    "es_ute": false,
-    "baja_pct": 15.84,
-    "rivales": [
-      "Amberne S A"
-    ],
-    "num_licitadores": 1,
-    "documentos": [
-      {
-        "nombre": "020 Plegu teknikoa Anbulantziak.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5820920&R01HNoPortal=true"
-      },
-      {
-        "nombre": "090 EBAZPENA-Hasierako onarpen.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5820923&R01HNoPortal=true"
-      },
-      {
-        "nombre": "030 MEMORIA anbulantziak.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5820921&R01HNoPortal=true"
-      },
-      {
-        "nombre": "I ERANSKINA.docx",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5820977&R01HNoPortal=true"
-      },
-      {
-        "nombre": "051 Pliego servicios acelerado.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5820922&R01HNoPortal=true"
-      },
-      {
-        "nombre": "130 EBAZPENA-Adjudikazioa.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5884706&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "c4c89c6b338f29d7f3ea16f0b63e062e",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso361663/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Mantenimiento, desarrollo y soporte de las interfaces comunes de las aplicaciones corporativas",
-    "fecha_publicacion": "16/02/2023",
-    "fecha_pub_iso": "2023-02-16",
-    "fecha_adjudicacion": "15/02/2023",
-    "fecha_iso": "2023-02-15",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2022KOER0082",
-    "presupuesto_base": 214000.0,
-    "importe_adjudicacion": 214000.0,
-    "ganador": "Comunicación Interactiva Adimedia, S.L. Y Arima Software Design, S.L., Unión Temporal De Empresas",
-    "es_ute": true,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Comunicación Interactiva Adimedia, S.L. Y Arima Software Design, S.L., Unión Temporal De Empresas",
-      "Deusto Sistemas, S.A.",
-      "Eurohelp Consulting, S.L.U.",
-      "Everis Spain, S.L.",
-      "Ibermática, S.A.",
-      "Inetum Norte, S.L.U.",
-      "Serikat Consultoría E Informática, S.A.",
-      "Teknei Digital S.A.U., Teknei Information Technology S.L., Sistemas Y Tratamientos Informáticos S.L.U., Mathematics For Life S.L., Merkatu Interactiva S.L."
-    ],
-    "num_licitadores": 8,
-    "documentos": [
-      {
-        "nombre": "2022KOER0082_Resolución de adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2089492&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "1a6c3a5d9b41fb2c6951582540029d48",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso462427/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "ANS para mantenimiento de aplicaciones, asistencia técnica, evolución y desarrollo de nuevas funcionalidades o aplicaciones en área Clientes Ayuntamientos. Plan de Recuperación, Transformación y Resiliencia -Financiado por la Unión Europea- NextGenerationEU",
-    "fecha_publicacion": "21/12/2023",
-    "fecha_pub_iso": "2023-12-21",
-    "fecha_adjudicacion": "21/12/2023",
-    "fecha_iso": "2023-12-21",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2023KOER0059",
-    "presupuesto_base": 214000.0,
-    "importe_adjudicacion": 214000.0,
-    "ganador": "Serikat Consultoría E Informática, S.A.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Deusto Seidor, S.A.",
-      "Ibermática, S.A.",
-      "Indra Soluciones Tecnologias De La Informacion, S.L.U",
-      "Inetum Norte, S.L.U.",
-      "Ntt Data Spain S.L.U. ,Ntt Data Centers S.L.U. , Unión Temporal De Empresas",
-      "Serikat Consultoría E Informática, S.A.",
-      "Teknei Information Technology S.L."
-    ],
-    "num_licitadores": 7,
-    "documentos": [
-      {
-        "nombre": "2023KOER0059_Resolución de adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3037962&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "93b096e30e6279da591970e0db75eea8",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso426412/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "ANS para mantenimiento de aplicaciones, asistencia técnica, evolución y desarrollo de nuevas funcionalidades o aplicaciones en área Clientes Ayuntamientos. Plan de Recuperación, Transformación y Resiliencia -Financiado por la Unión Europea- NextGenerationEU",
-    "fecha_publicacion": "31/08/2023",
-    "fecha_pub_iso": "2023-08-31",
-    "fecha_adjudicacion": "30/08/2023",
-    "fecha_iso": "2023-08-30",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2023KOER0038",
-    "presupuesto_base": 214000.0,
-    "importe_adjudicacion": 214000.0,
-    "ganador": "Serikat Consultoría E Informática, S.A.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Deusto Sistemas, S.A.",
-      "Ibermática, S.A.",
-      "Indra Soluciones Tecnologias De La Informacion, S.L.U",
-      "Inetum Norte, S.L.U.",
-      "Ntt Data Spain S.L.U. ,Ntt Data Centers S.L.U. , Unión Temporal De Empresas",
-      "Serikat Consultoría E Informática, S.A.",
-      "Teknei Information Technology S.L."
-    ],
-    "num_licitadores": 7,
-    "documentos": [
-      {
-        "nombre": "2023KOER0038_Resolución de adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2673514&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "1947094207d3dae40d3b04b9e9e0b82d",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso398011/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "ANS para mantenimiento de aplicaciones, asistencia técnica, evolución y desarrollo de nuevas funcionalidades o aplicaciones en área Clientes Ayuntamientos. Plan de Recuperación, Transformación y Resiliencia -Financiado por la Unión Europea- NextGenerationEU",
-    "fecha_publicacion": "02/05/2023",
-    "fecha_pub_iso": "2023-05-02",
-    "fecha_adjudicacion": "02/05/2023",
-    "fecha_iso": "2023-05-02",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2023KOER0017",
-    "presupuesto_base": 214000.0,
-    "importe_adjudicacion": 214000.0,
-    "ganador": "Serikat Consultoría E Informática, S.A.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Deusto Sistemas, S.A.",
-      "Eurohelp Consulting, S.L.U.",
-      "Ibermática, S.A.",
-      "Indra Soluciones Tecnologias De La Informacion, S.L.U",
-      "Inetum Norte, S.L.U.",
-      "Ntt Data Spain S.L.U. ,Ntt Data Centers S.L.U. , Unión Temporal De Empresas",
-      "Serikat Consultoría E Informática, S.A.",
-      "Teknei Digital S.A.U., Teknei Information Technology S.L., Sistemas Y Tratamientos Informáticos S.L.U., Mathematics For Life S.L., Merkatu Interactiva S.L."
-    ],
-    "num_licitadores": 8,
-    "documentos": [
-      {
-        "nombre": "2023KOER0017_Valoración archivo criterios juicio de valor.xlsx",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2321673&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2023KOER0017_Resolución de adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2346438&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "06d276d6f49e9566e2448c9b91941da5",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso380671/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Contratación de servicios para el desarrollo, mantenimiento y soporte de determinadas aplicaciones para los Servicios de Contabilidad, Intervención, Compromisos Institucionales, Finanzas y Presupuestos, así como para la Secretaría Técnica de Hacienda",
-    "fecha_publicacion": "09/03/2023",
-    "fecha_pub_iso": "2023-03-09",
-    "fecha_adjudicacion": "08/03/2023",
-    "fecha_iso": "2023-03-08",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2023KOER0012",
-    "presupuesto_base": 214000.0,
-    "importe_adjudicacion": 214000.0,
-    "ganador": "Inetum Norte, S.L.U.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Deusto Sistemas, S.A.",
-      "Eurohelp Consulting, S.L.U.",
-      "Ibermática, S.A.",
-      "Indra Soluciones Tecnologias De La Informacion, S.L.U",
-      "Inetum Norte, S.L.U.",
-      "Ntt Data Spain S.L.U. ,Ntt Data Centers S.L.U. , Unión Temporal De Empresas",
-      "Serikat Consultoría E Informática, S.A.",
-      "Teknei Digital S.A.U., Teknei Information Technology S.L., Sistemas Y Tratamientos Informáticos S.L.U., Mathematics For Life S.L., Merkatu Interactiva S.L."
-    ],
-    "num_licitadores": 8,
-    "documentos": [
-      {
-        "nombre": "2023KOER0012_Resolución de adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2197697&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "745bcfd9253b31375ec9a04107d65b66",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso336041/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Contratación de servicios para el desarrollo, mantenimiento y asistencia técnica de aplicaciones implementadas por IZFE para la Subdirección de Estrategia Tecnológica, Atención Ciudadana y Tribunal Económico-Administrativo Foral del dpto de Hacienda",
-    "fecha_publicacion": "14/10/2022",
-    "fecha_pub_iso": "2022-10-14",
-    "fecha_adjudicacion": "14/10/2022",
-    "fecha_iso": "2022-10-14",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2022KOER0064",
-    "presupuesto_base": 214000.0,
-    "importe_adjudicacion": 214000.0,
-    "ganador": "Inetum Norte, S.L.U.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Deusto Sistemas, S.A.",
-      "Eurohelp Consulting, S.L.U.",
-      "Ibermática, S.A.",
-      "Indra Soluciones Tecnologias De La Informacion, S.L.U",
-      "Inetum Norte, S.L.U.",
-      "Ntt Data Spain S.L.U. ,Ntt Data Centers S.L.U. , Unión Temporal De Empresas",
-      "Serikat Consultoría E Informática, S.A.",
-      "Teknei Digital S.A.U., Teknei Information Technology S.L., Sistemas Y Tratamientos Informáticos S.L.U., Mathematics For Life S.L., Merkatu Interactiva S.L."
-    ],
-    "num_licitadores": 8,
-    "documentos": [
-      {
-        "nombre": "2022KOER0064_Resolución de adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=1686797&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "48d157dadc77b5da748ed4d96392e227",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso334838/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Contratación de servicios para el desarrollo, mantenimiento y soporte de determinadas aplicaciones para los Servicios de Contabilidad, Intervención, Compromisos Institucionales, Finanzas y Presupuestos, así como para la Secretaría Técnica de Hacienda",
-    "fecha_publicacion": "10/10/2022",
-    "fecha_pub_iso": "2022-10-10",
-    "fecha_adjudicacion": "09/10/2022",
-    "fecha_iso": "2022-10-09",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2022KOER0063",
-    "presupuesto_base": 214000.0,
-    "importe_adjudicacion": 214000.0,
-    "ganador": "Inetum Norte, S.L.U.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Deusto Sistemas, S.A.",
-      "Eurohelp Consulting, S.L.U.",
-      "Ibermática, S.A.",
-      "Indra Soluciones Tecnologias De La Informacion, S.L.U",
-      "Inetum Norte, S.L.U.",
-      "Ntt Data Spain S.L.U. ,Ntt Data Centers S.L.U. , Unión Temporal De Empresas",
-      "Serikat Consultoría E Informática, S.A.",
-      "Teknei Digital S.A.U., Teknei Information Technology S.L., Sistemas Y Tratamientos Informáticos S.L.U., Mathematics For Life S.L., Merkatu Interactiva S.L."
-    ],
-    "num_licitadores": 8,
-    "documentos": [
-      {
-        "nombre": "2022KOER0063_Resolución adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=1666110&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "77598d8c5f6f5e4631418700b976a497",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso333485/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "ANS para mantenimiento de aplicaciones, asistencia técnica, evolución y desarrollo de nuevas funcionalidades o aplicaciones en área Clientes Ayuntamientos",
-    "fecha_publicacion": "10/10/2022",
-    "fecha_pub_iso": "2022-10-10",
-    "fecha_adjudicacion": "09/10/2022",
-    "fecha_iso": "2022-10-09",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2022KOER0060",
-    "presupuesto_base": 214000.0,
-    "importe_adjudicacion": 214000.0,
-    "ganador": "Serikat Consultoría E Informática, S.A.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Deusto Sistemas, S.A.",
-      "Eurohelp Consulting, S.L.U.",
-      "Ibermática, S.A.",
-      "Indra Soluciones Tecnologias De La Informacion, S.L.U",
-      "Inetum Norte, S.L.U.",
-      "Serikat Consultoría E Informática, S.A.",
-      "Teknei Digital S.A.U., Teknei Information Technology S.L., Sistemas Y Tratamientos Informáticos S.L.U., Mathematics For Life S.L., Merkatu Interactiva S.L."
-    ],
-    "num_licitadores": 7,
-    "documentos": [
-      {
-        "nombre": "2022KOER0060_Resolución adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=1666109&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "89b7954923041ffc6b8dbaf1eb12f0e5",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso328987/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Implantación y mantenimiento del Registro Electrónico de Apoderamientos (REA)",
-    "fecha_publicacion": "13/09/2022",
-    "fecha_pub_iso": "2022-09-13",
-    "fecha_adjudicacion": "13/09/2022",
-    "fecha_iso": "2022-09-13",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2022KOER0053",
-    "presupuesto_base": 120000.0,
-    "importe_adjudicacion": 120000.0,
-    "ganador": "Eurohelp Consulting, S.L.U.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Deusto Sistemas, S.A.",
-      "Eurohelp Consulting, S.L.U.",
-      "Ibermática, S.A.",
-      "Indra Soluciones Tecnologias De La Informacion, S.L.U",
-      "Inetum Norte, S.L.U.",
-      "Ntt Data Spain S.L.U. ,Ntt Data Centers S.L.U. , Unión Temporal De Empresas",
-      "Serikat Consultoría E Informática, S.A.",
-      "Teknei Digital S.A.U., Teknei Information Technology S.L., Sistemas Y Tratamientos Informáticos S.L.U., Mathematics For Life S.L., Merkatu Interactiva S.L."
-    ],
-    "num_licitadores": 8,
-    "documentos": [
-      {
-        "nombre": "2022KOER0053_Resolución de adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=1554226&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "a85f7ec4e9f7ec36684a2551ca3d069a",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso288354/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Contratación de servicios para el desarrollo, mantenimiento y asistencia técnica de aplicaciones implementadas por IZFE para diversas áreas del Departamento de Hacienda",
-    "fecha_publicacion": "12/05/2022",
-    "fecha_pub_iso": "2022-05-12",
-    "fecha_adjudicacion": "12/05/2022",
-    "fecha_iso": "2022-05-12",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2022KOER0004",
-    "presupuesto_base": 214000.0,
-    "importe_adjudicacion": 213999.0,
-    "ganador": "Inetum Norte, S.L.U.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Deusto Sistemas, S.A.",
-      "Eurohelp Consulting, S.L.U.",
-      "Ibermática, S.A.",
-      "Indra Soluciones Tecnologias De La Informacion, S.L.U",
-      "Inetum Norte, S.L.U.",
-      "Ntt Data Spain S.L.U. ,Ntt Data Centers S.L.U. , Unión Temporal De Empresas",
-      "Serikat Consultoría E Informática, S.A.",
-      "Teknei Digital S.A.U., Teknei Information Technology S.L., Sistemas Y Tratamientos Informáticos S.L.U., Mathematics For Life S.L., Merkatu Interactiva S.L."
-    ],
-    "num_licitadores": 8,
-    "documentos": [
-      {
-        "nombre": "2022KOER0004_Resolución de adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=1143340&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "7b0627a617316b329c185c9d12337695",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso288313/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "ANS para mantenimiento, asistencia técnica, evolución y desarrollo de nuevas aplicaciones en el área Clientes Ayuntamientos",
-    "fecha_publicacion": "28/04/2022",
-    "fecha_pub_iso": "2022-04-28",
-    "fecha_adjudicacion": "27/04/2022",
-    "fecha_iso": "2022-04-27",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2022KOER0001",
-    "presupuesto_base": 142666.66,
-    "importe_adjudicacion": 136853.33,
-    "ganador": "Serikat Consultoría E Informática, S.A.",
-    "es_ute": false,
-    "baja_pct": 4.07,
-    "rivales": [
-      "Deusto Sistemas, S.A.",
-      "Eurohelp Consulting, S.L.U.",
-      "Ibermática, S.A.",
-      "Indra Soluciones Tecnologias De La Informacion, S.L.U",
-      "Inetum Norte, S.L.U.",
-      "Ntt Data Spain S.L.U. ,Ntt Data Centers S.L.U. , Unión Temporal De Empresas",
-      "Serikat Consultoría E Informática, S.A.",
-      "Teknei Digital S.A.U., Teknei Information Technology S.L., Sistemas Y Tratamientos Informáticos S.L.U., Mathematics For Life S.L., Merkatu Interactiva S.L."
-    ],
-    "num_licitadores": 8,
-    "documentos": [
-      {
-        "nombre": "2022KOER0001_Resolución de adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=1085351&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2022KOER0001_Resolución de adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=1085355&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "72a719e3dab4af7fe4c13cc12dbc30c1",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/exposakisap2026000719/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Mantenimiento Integral del sistema de imagen robotizado LOOPX (OSI Donostialdea)",
-    "fecha_publicacion": "Pendiente",
-    "fecha_pub_iso": "",
-    "fecha_adjudicacion": "04/06/2026",
-    "fecha_iso": "2026-06-04",
-    "entidad": "Osakidetza - Servicio Vasco De Salud",
-    "expediente": "2026/00719",
-    "presupuesto_base": 443656.3,
-    "importe_adjudicacion": 443656.0,
-    "ganador": "Brainlab Sales Gmbh",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Brainlab Sales Gmbh"
-    ],
-    "num_licitadores": 1,
-    "documentos": [
-      {
-        "nombre": "Resolución de aprobación de expediente-RAE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877479&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Memoria justificativa-MJ.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877478&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Resolución de inicio-RI.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877473&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Documento anexo-Mesa Contratación OSI Donostialdea 2022.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877475&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Propuesta adjudicación y aceptación-AMCA.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877476&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Acta de la mesa (apertura de proposiciones evaluables mediante fórmulas)-AMJTE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877477&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Documento anexo-Anexos.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877480&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Acta de la mesa (apertura de la documentación administrativa)-AMJTE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877481&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Pliego de Prescripciones Técnicas-PPT.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877474&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Pliego de Cláusulas Administrativas Particulares-PCAP.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877482&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Informe técnico definitivo de valoración de ofertas-ITD.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877483&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Resolución de adjudicación-RA.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5877484&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "174229c6c74b4df84cc7c7d8612ab78b",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso407747/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "FORMALIZADO",
-    "objeto": "Servicio de mantenimiento de las instalaciones térmicas de los edificios del Campus de Gipuzkoa de la UPV/EHU",
-    "fecha_publicacion": "05/05/2023",
-    "fecha_pub_iso": "2023-05-05",
-    "fecha_adjudicacion": "10/07/2023",
-    "fecha_iso": "2023-07-10",
-    "entidad": "Upv/Ehu - Universidad Del País Vasco",
-    "expediente": "20/23 PA",
-    "presupuesto_base": 283213.43,
-    "importe_adjudicacion": 31640.56,
-    "ganador": "Giroa S.A.",
-    "es_ute": false,
-    "baja_pct": 88.83,
-    "rivales": [
-      "Comsa Service Facility Management S A",
-      "Elecnor Servicios Y Proyectos S A",
-      "Giroa S.A.",
-      "Ondoan",
-      "Tecman Servicios De Valor Añadido S L"
-    ],
-    "num_licitadores": 5,
-    "documentos": [
-      {
-        "nombre": "RESOLUCIÓN APROBACION 20.23 PA.report.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2346361&R01HNoPortal=true"
-      },
-      {
-        "nombre": "espd-request.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2346406&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Doc. 2 Informe de insuficiencia de medios.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2346380&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Doc.1 Memoria de necesidades.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2346377&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Doc. 3 Justificación adscripción de medios.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2346388&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Ayuda_ Manual DEUC_Licitador_es.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2346393&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Corrección de errores PA 20-23.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2393347&R01HNoPortal=true"
-      },
-      {
-        "nombre": "PPT.report.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2346374&R01HNoPortal=true"
-      },
-      {
-        "nombre": "PCAP 20.23 PA.report.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2346357&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Acta 20.23.report.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2454426&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Acta sobre 2 20.23 PA.report.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2471404&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Informe PA 20-23 sin.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2494595&R01HNoPortal=true"
-      },
-      {
-        "nombre": "20.23 Acta M4 Doc req.report.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2550921&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Corrección de errores PA 20-23.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2392706&R01HNoPortal=true"
-      },
-      {
-        "nombre": "ADJUDICACION 20_23 PA Serv.report.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2566823&R01HNoPortal=true"
       }
     ]
   }
