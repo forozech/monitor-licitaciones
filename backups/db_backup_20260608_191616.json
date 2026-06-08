@@ -156599,8 +156599,8 @@
     "tipo_licitacion": "OBRA",
     "estado_fase": "ADJUDICADO",
     "objeto": "Contratación de las obras de renovacion de la red de abastacimiento de agua del barrio Lizeaga de Hernani, de conformidad con el proyecto redactado por la empresa Salaberria Ingenieritza, S.L.",
-    "fecha_publicacion": "01/06/2026",
-    "fecha_pub_iso": "2026-06-01",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "28/05/2026",
     "fecha_iso": "2026-05-28",
     "entidad": "Ayuntamiento De Hernani",
@@ -225016,106 +225016,6 @@
       {
         "nombre": "ADJUDICACION 20_23 PA Serv.report.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2566823&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "7074127ca44e5a50822a37301269c8e6",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso714036/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Consultoría, puesta en marcha, migración y formación en la aplicación de Archivo",
-    "fecha_publicacion": "Pendiente",
-    "fecha_pub_iso": "",
-    "fecha_adjudicacion": "05/06/2026",
-    "fecha_iso": "2026-06-05",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2026KOES0008",
-    "presupuesto_base": 200000.0,
-    "importe_adjudicacion": 200000.0,
-    "ganador": "Teknei Digital, S.A.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Teknei Digital, S.A."
-    ],
-    "num_licitadores": 1,
-    "documentos": [
-      {
-        "nombre": "Aprobación expediente 2026KOES0008.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5797371&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Informe de necesidad 2026KOES0008 Beharren txostena.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5795754&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Resolución adjudicación 2026KOES0008.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5890427&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "275dc52452be0ce5ba3f03bbf38ba575",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso558274/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "FORMALIZADO",
-    "objeto": "Servicio de transporte adaptado en Bergara",
-    "fecha_publicacion": "29/10/2024",
-    "fecha_pub_iso": "2024-10-29",
-    "fecha_adjudicacion": "31/12/2024",
-    "fecha_iso": "2024-12-31",
-    "entidad": "Fundación Uliazpi",
-    "expediente": "24-19",
-    "presupuesto_base": 95651.19,
-    "importe_adjudicacion": 95016.0,
-    "ganador": "Cuadra Bidean S.L",
-    "es_ute": false,
-    "baja_pct": 0.66,
-    "rivales": [
-      "Cuadra Bidean S.L"
-    ],
-    "num_licitadores": 1,
-    "documentos": [
-      {
-        "nombre": "24-19 00 Beharraren txostena SinTME.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4047618&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-19 Garraioa Bergara.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3998922&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-19 SubrogazioTaulaBerria SinTME.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4043483&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-19  02 Akta kontratazio mahaia sin IEZ.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4109781&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-19 03 3Akta kontratazio mahaia SinTME.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5772475&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-19 01 Garraioa Bergaran premiazko ebazpena.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4047602&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-19 03 GobernuBatzordearenLuzapenakordioarenIdazkariarenZiurtagiria_signed KUG.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5096259&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-19 05 Esleipen proposamena sinatua MPL.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4242281&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-19 05 Esleipen ebazpena sinatua MLP.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4203031&R01HNoPortal=true"
-      },
-      {
-        "nombre": "kontratua sinatua.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=503522&R01HNoPortal=true"
       }
     ]
   }
