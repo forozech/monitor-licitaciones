@@ -224175,8 +224175,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "ADJUDICADO",
     "objeto": "Espectáculo de drones para el 1 de julio",
-    "fecha_publicacion": "03/06/2026",
-    "fecha_pub_iso": "2026-06-03",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "02/06/2026",
     "fecha_iso": "2026-06-02",
     "entidad": "Ayuntamiento De Irun",
@@ -224242,10 +224242,6 @@
       {
         "nombre": "Alkatearen ebazpena 2026-06-02-Resolución de Alcaldía de 02-06-2026.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5872171&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Kontratua - Contrato.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=503930&R01HNoPortal=true"
       }
     ]
   },
@@ -225120,195 +225116,6 @@
       {
         "nombre": "kontratua sinatua.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=503522&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "a473455e67e691709d935cc839f3166f",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso720142/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "FORMALIZADO",
-    "objeto": "Concesión demanial para la explotación del bar de las piscinas descubiertas de Ipurua",
-    "fecha_publicacion": "09/06/2026",
-    "fecha_pub_iso": "2026-06-09",
-    "fecha_adjudicacion": "09/06/2026",
-    "fecha_iso": "2026-06-09",
-    "entidad": "Ayuntamiento De Eibar",
-    "expediente": "2026053EI",
-    "presupuesto_base": 875.0,
-    "importe_adjudicacion": 875.0,
-    "ganador": "Cesar Ayax Pineda Cisnero",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Cesar Ayax Pineda Cisnero"
-    ],
-    "num_licitadores": 1,
-    "documentos": [
-      {
-        "nombre": "100 TXOSTENA.-Adjudikazio proposamena.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5896552&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Proposamen eko.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5896557&R01HNoPortal=true"
-      },
-      {
-        "nombre": "030 PLEGU ADMINISTRATIBOA.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5896549&R01HNoPortal=true"
-      },
-      {
-        "nombre": "110 ESLEIPEN EBAZPENA.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5896669&R01HNoPortal=true"
-      },
-      {
-        "nombre": "KONTRATUA.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=504014&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "4df5d44e28e733f8b06bce97605f5934",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso544783/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "FORMALIZADO",
-    "objeto": "Servicios para la transformación y destrucción de animales muertos en el Territorio Histórico de Gipuzkoa",
-    "fecha_publicacion": "27/09/2024",
-    "fecha_pub_iso": "2024-09-27",
-    "fecha_adjudicacion": "04/12/2024",
-    "fecha_iso": "2024-12-04",
-    "entidad": "Diputación Foral De Gipuzkoa",
-    "expediente": "A10-2024",
-    "presupuesto_base": 241875.0,
-    "importe_adjudicacion": 215.0,
-    "ganador": "Industrias Suescun, S.A.",
-    "es_ute": false,
-    "baja_pct": 99.91,
-    "rivales": [
-      "Industrias Suescun, S.A."
-    ],
-    "num_licitadores": 1,
-    "documentos": [
-      {
-        "nombre": "10-Hildako animaliak eraldatzea_ACG_plataforma_signed.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3888487&R01HNoPortal=true"
-      },
-      {
-        "nombre": "espd-request (3).zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3852713&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2-Hildako animaliak eraldatzea_zerbitzuaren memoria.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3852682&R01HNoPortal=true"
-      },
-      {
-        "nombre": "3-Hildako animaliak eraldatzea_PPT.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3852683&R01HNoPortal=true"
-      },
-      {
-        "nombre": "PCAP.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3888508&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Hildako animaliak_1 eta 2 artxibo elektronikoen irekiera akta signed.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4051852&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Hildako animaliak_3 zkiko artxibo irekiera akta esleipen proposa signed denak.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4099369&R01HNoPortal=true"
-      },
-      {
-        "nombre": "14- Balio judizioa hildako animaliak eraldatu eta suntsitu 2024.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4065378&R01HNoPortal=true"
-      },
-      {
-        "nombre": "3 zkiko artxiboen irekiera deialdia.docx",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4065373&R01HNoPortal=true"
-      },
-      {
-        "nombre": "16- Hildako animaliak eraldatzea_FA Esleipena_SIGNED.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4121686&R01HNoPortal=true"
-      },
-      {
-        "nombre": "18- Hildako animaliak eraldatzea_CTO firmado_argitaratzeko.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=423343&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "1a31faffd547d2c105b990ea024a27bd",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso545642/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "FORMALIZADO",
-    "objeto": "Servicio de limpieza y otros servicios complementarios en el centro Ategorrieta.",
-    "fecha_publicacion": "27/09/2024",
-    "fecha_pub_iso": "2024-09-27",
-    "fecha_adjudicacion": "04/12/2024",
-    "fecha_iso": "2024-12-04",
-    "entidad": "Fundación Uliazpi",
-    "expediente": "24-17",
-    "presupuesto_base": 341701.73,
-    "importe_adjudicacion": 338462.49,
-    "ganador": "Limpieza Y Mantenimiento Impacto, S.L.",
-    "es_ute": false,
-    "baja_pct": 0.95,
-    "rivales": [
-      "Brócoli, S.L",
-      "Limpieza Y Mantenimiento Impacto, S.L."
-    ],
-    "num_licitadores": 2,
-    "documentos": [
-      {
-        "nombre": "24-17 01 GobernuBatzordearen HasieraErabakia IdazkariarenZiurtagiria SinKUG.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3886467&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-17 00 Beharraren eta egokitasunaren txostena SinKUG.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3872992&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-17 Garbiketa.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3886469&R01HNoPortal=true"
-      },
-      {
-        "nombre": "BAPA EzaugarriTaula 25 Subrogazioa SinTME.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3910890&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-17 03 20241023 InformazioEskaera.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3977812&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-17 02 1 Akta kontratazio mahaia sin.IEZ.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4016150&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-17 05 Akta kontratazio mahaia sin IEZ.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4036970&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-17 06  Akta Kontratazio mahaia sin.IEZ.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4064013&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-17 12 Esleipen Ziurtagiria SinTME.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4120206&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-17 02 1 Akta kontratazio mahaia SinIEZ.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4031198&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-17 06  Akta Kontratazio mahaia sin.IEZ.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5785839&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-17 XX Balorazioa Teknikoa eta Dena.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5785894&R01HNoPortal=true"
-      },
-      {
-        "nombre": "24-17 09 Esleipen proposamena sin MPLpdf.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4116097&R01HNoPortal=true"
       }
     ]
   }
