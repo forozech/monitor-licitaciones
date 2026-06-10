@@ -180125,8 +180125,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "ADJUDICADO",
     "objeto": "Mantenimiento integral del equipamiento dosimétrico del edificio Onkologikoa (OSI Donostialdea)",
-    "fecha_publicacion": "11/05/2026",
-    "fecha_pub_iso": "2026-05-11",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "11/05/2026",
     "fecha_iso": "2026-05-11",
     "entidad": "Osakidetza - Servicio Vasco De Salud",
@@ -180143,51 +180143,47 @@
     "documentos": [
       {
         "nombre": "Resolución de aprobación de expediente-RAE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899183&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5779999&R01HNoPortal=true"
       },
       {
         "nombre": "Memoria justificativa-MJ.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899181&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5779997&R01HNoPortal=true"
       },
       {
         "nombre": "Acta de la mesa (apertura de proposiciones evaluables mediante fórmulas)-AMJTE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899178&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5779994&R01HNoPortal=true"
       },
       {
         "nombre": "Documento anexo-Anexos.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899179&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5779995&R01HNoPortal=true"
       },
       {
         "nombre": "Documento anexo-Mesa Contratación OSI Donostialdea 2022.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899182&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Propuesta adjudicación y aceptación-AMCA.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899184&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5779998&R01HNoPortal=true"
       },
       {
         "nombre": "Acta de la mesa (apertura de la documentación administrativa)-AMJTE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899185&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5780000&R01HNoPortal=true"
       },
       {
         "nombre": "Resolución de inicio-RI.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899186&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5780001&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Propuesta adjudicación y aceptación-AMCA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5780003&R01HNoPortal=true"
       },
       {
         "nombre": "Pliego de Prescripciones Técnicas-PPT.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899180&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5779996&R01HNoPortal=true"
       },
       {
         "nombre": "Pliego de Cláusulas Administrativas Particulares-PCAP.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899187&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5780002&R01HNoPortal=true"
       },
       {
         "nombre": "Resolución de adjudicación-RA.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899188&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Documento de contrato firmado-Contrato.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=504073&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5780004&R01HNoPortal=true"
       }
     ]
   },
@@ -225313,140 +225309,6 @@
       {
         "nombre": "24-17 09 Esleipen proposamena sin MPLpdf.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4116097&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "4d06e84a6ebefd169bc69d55e091638e",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso711861/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "ANS proyectos transversales, secretaría técnica, sistema de apoyo residencial, planificación, concertación y sistemas de Kabia, Uliazpi y Adinberri",
-    "fecha_publicacion": "Pendiente",
-    "fecha_pub_iso": "",
-    "fecha_adjudicacion": "09/06/2026",
-    "fecha_iso": "2026-06-09",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2026SIDI0003",
-    "presupuesto_base": 540000.0,
-    "importe_adjudicacion": 540000.0,
-    "ganador": "Inetum Norte, S.L.U.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [],
-    "num_licitadores": 0,
-    "documentos": [
-      {
-        "nombre": "2026SIDI0003_Informe necesidad y justificación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5764424&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026SIDI0003_Invitación y documento de licitación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5763638&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026SIDI0003_Resolución adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5896721&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "42fbe5982290bab9ccd26e1c6fc04280",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso279776/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "FINALIZADO",
-    "objeto": "Servicio de Ayuda a Domicilio",
-    "fecha_publicacion": "04/03/2022",
-    "fecha_pub_iso": "2022-03-04",
-    "fecha_adjudicacion": "16/05/2022",
-    "fecha_iso": "2022-05-16",
-    "entidad": "Ayuntamiento De Eibar",
-    "expediente": "2022007EI",
-    "presupuesto_base": 3334053.85,
-    "importe_adjudicacion": 26.24,
-    "ganador": "Sacyr Social, S.L.",
-    "es_ute": false,
-    "baja_pct": 100.0,
-    "rivales": [
-      "Azvase S L",
-      "Eulen Servicios Sociosanitarios, S.A.",
-      "Goxara, S.L.U.",
-      "Osventos Innovacion En Servizos Sl",
-      "People Plus Innovation S.L.",
-      "Protección Geriátrica 2005, S.L.",
-      "Sacyr Social, S.L.",
-      "Servisar Servicios Sociales S L",
-      "Zaintzen, S.A."
-    ],
-    "num_licitadores": 9,
-    "documentos": [
-      {
-        "nombre": "065 Aprobación Expediente PlenoZiurtagiria SAD.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=877497&R01HNoPortal=true"
-      },
-      {
-        "nombre": "000 Mahaia-Mesa.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=866509&R01HNoPortal=true"
-      },
-      {
-        "nombre": "DEUC.7z",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=866505&R01HNoPortal=true"
-      },
-      {
-        "nombre": "040 Memoria.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=866498&R01HNoPortal=true"
-      },
-      {
-        "nombre": "000 Proposamena-Propuesta.docx",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=866511&R01HNoPortal=true"
-      },
-      {
-        "nombre": "000 Convenio Colectivo Ayuda a Domicilio SACYR EIBAR.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=866518&R01HNoPortal=true"
-      },
-      {
-        "nombre": "000 datos personal a subrogar.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=866521&R01HNoPortal=true"
-      },
-      {
-        "nombre": "000 Horas facturadas año 2021.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=870055&R01HNoPortal=true"
-      },
-      {
-        "nombre": "030 Pleu teknikoa- Pliego técnico.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=866497&R01HNoPortal=true"
-      },
-      {
-        "nombre": "051 Plegu administratiboa - Pliego administrativo.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=870028&R01HNoPortal=true"
-      },
-      {
-        "nombre": "ACTA SERVICIO AYUDA A DOMICILIO.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=1024132&R01HNoPortal=true"
-      },
-      {
-        "nombre": "130 Acta propuesta adjudicacióon SAD.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=1112033&R01HNoPortal=true"
-      },
-      {
-        "nombre": "128 Informe técnico justificación baja desproporcionada.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=1112038&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Consultas.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=914337&R01HNoPortal=true"
-      },
-      {
-        "nombre": "CONSULTA 2.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=924647&R01HNoPortal=true"
-      },
-      {
-        "nombre": "CONSULTA 3.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=942530&R01HNoPortal=true"
-      },
-      {
-        "nombre": "160 RESOLUCIÓN ADJUDICACIÓN RECURSO ESPECIAL.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=1154456&R01HNoPortal=true"
       }
     ]
   }
