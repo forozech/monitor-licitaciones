@@ -118374,33 +118374,33 @@
     "tipo_licitacion": "ING",
     "estado_fase": "FORMALIZADO",
     "objeto": "Contratación de un servicio de consultoría especializada en el ámbito de la financiación de proyectos europeos para la Agencia de desarrollo del Bidasoa, S.A. (Bidasoa activa)",
-    "fecha_publicacion": "09/05/2025",
-    "fecha_pub_iso": "2025-05-09",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "09/04/2025",
     "fecha_iso": "2025-04-09",
     "entidad": "Agencia De Desarrollo Del Bidasoa, S.A.",
     "expediente": "2025proneg001",
     "presupuesto_base": 198000.0,
-    "importe_adjudicacion": 36000.0,
+    "importe_adjudicacion": 48000.0,
     "ganador": "Zabala Innovation Consulting, S.A.",
     "es_ute": false,
-    "baja_pct": 81.82,
+    "baja_pct": 75.76,
     "rivales": [
       "Zabala Innovation Consulting, S.A."
     ],
     "num_licitadores": 1,
     "documentos": [
       {
-        "nombre": "0. CERTIFICADO acuerdo Consejo 2025proneg001 aprobación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4336382&R01HNoPortal=true"
+        "nombre": "1. 2025proneg001 Pliego condiciones eco-admi Proyectos europeos.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4336380&R01HNoPortal=true"
       },
       {
         "nombre": "2. 2025proneg001 Pliego condiciones técnicas Proyectos europeos.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4336381&R01HNoPortal=true"
       },
       {
-        "nombre": "1. 2025proneg001 Pliego condiciones eco-admi Proyectos europeos.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4336380&R01HNoPortal=true"
+        "nombre": "0. CERTIFICADO acuerdo Consejo 2025proneg001 aprobación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4336382&R01HNoPortal=true"
       },
       {
         "nombre": "3.- Acta Archivo A 2025proneg001.pdf",
@@ -225913,59 +225913,6 @@
       {
         "nombre": "2. Administrazio baldintza orria.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=72170&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "55ea942c97141da387dee4dde04d212a",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso719991/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "FORMALIZADO",
-    "objeto": "Segundo contrato derivado del Acuerdo Marco para servicios de secretaría técnica.",
-    "fecha_publicacion": "Pendiente",
-    "fecha_pub_iso": "",
-    "fecha_adjudicacion": "12/06/2026",
-    "fecha_iso": "2026-06-12",
-    "entidad": "Fundación Donostia International Physics Center",
-    "expediente": "AD2026/05/02",
-    "presupuesto_base": 17520.66,
-    "importe_adjudicacion": 19091.73,
-    "ganador": "En Clave De Sol Comunicacion Y Eventos",
-    "es_ute": false,
-    "baja_pct": -8.97,
-    "rivales": [
-      "Azafatan Alkartea Lankor, S.L.",
-      "Emiral Congress Bureau Sl",
-      "En Clave De Sol Comunicacion Y Eventos",
-      "Estudio Tazueco, S.L.",
-      "Eternum Events Sl",
-      "Eventokia, S.L.",
-      "Innevento Comunicaciones En Vivo, S.A.",
-      "Kultur Atelier S.L.",
-      "Proyecto Stendhal Sl",
-      "Traductores E Intérpretes, S.A.L."
-    ],
-    "num_licitadores": 10,
-    "documentos": [
-      {
-        "nombre": "Petición oferta_02.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5885165&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Acta Sobre 1_02_fdo.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5910159&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Acta Sobre 2_02.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5911427&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Informe Sobre 1_02.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5910143&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Resolución de adjudicación_02.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5911717&R01HNoPortal=true"
       }
     ]
   }
