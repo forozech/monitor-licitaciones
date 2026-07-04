@@ -181714,8 +181714,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "ADJUDICADO",
     "objeto": "Mantenimiento de Grupos Electrógenos para la OSI Donostialdea",
-    "fecha_publicacion": "23/04/2026",
-    "fecha_pub_iso": "2026-04-23",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "23/04/2026",
     "fecha_iso": "2026-04-23",
     "entidad": "Osakidetza - Servicio Vasco De Salud",
@@ -181732,51 +181732,47 @@
     "documentos": [
       {
         "nombre": "Resolución de aprobación de expediente-RAE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6002082&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5720909&R01HNoPortal=true"
       },
       {
         "nombre": "Memoria justificativa-MJ.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6002081&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5720908&R01HNoPortal=true"
       },
       {
         "nombre": "Propuesta adjudicación y aceptación-AMCA.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6002078&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5720906&R01HNoPortal=true"
       },
       {
         "nombre": "Resolución de inicio-RI.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6002079&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Acta de la mesa (apertura de la documentación administrativa)-AMJTE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6002080&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Acta de la mesa (apertura de proposiciones evaluables mediante fórmulas)-AMJTE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6002084&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5720907&R01HNoPortal=true"
       },
       {
         "nombre": "Documento anexo-Anexos + Mesa Contratación OSID.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6002085&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5720911&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta de la mesa (apertura de la documentación administrativa)-AMJTE.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5720913&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta de la mesa (apertura de proposiciones evaluables mediante fórmulas)-AMJTE.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5720914&R01HNoPortal=true"
       },
       {
         "nombre": "Pliego de Prescripciones Técnicas-PPT.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6002083&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5720910&R01HNoPortal=true"
       },
       {
         "nombre": "Pliego de Cláusulas Administrativas Particulares-PCAP.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6002086&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5720912&R01HNoPortal=true"
       },
       {
         "nombre": "Informe técnico definitivo de valoración de ofertas-ITD.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6002088&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5720916&R01HNoPortal=true"
       },
       {
         "nombre": "Resolución de adjudicación-RA.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6002087&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Documento de contrato firmado-35.5 Contrato Formalizado SDMO.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=510054&R01HNoPortal=true"
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5720915&R01HNoPortal=true"
       }
     ]
   },
