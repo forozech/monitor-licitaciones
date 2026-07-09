@@ -178165,8 +178165,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "ADJUDICADO",
     "objeto": "Licencias de Iberdok, mantenimiento y soporte",
-    "fecha_publicacion": "25/05/2026",
-    "fecha_pub_iso": "2026-05-25",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "25/05/2026",
     "fecha_iso": "2026-05-25",
     "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
@@ -233235,55 +233235,6 @@
       {
         "nombre": "gaztelekuaesleip.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=577190&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "718835a88ddedc4eb0a509336df5809f",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso713765/es_doc/index.html",
-    "tipo_licitacion": "OBRA",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Renovación de gradas del transpatio de la Elizalde Eskola (2ª fase)",
-    "fecha_publicacion": "12/05/2026",
-    "fecha_pub_iso": "2026-05-12",
-    "fecha_adjudicacion": "22/06/2026",
-    "fecha_iso": "2026-06-22",
-    "entidad": "Ayuntamiento De Oiartzun",
-    "expediente": "2026KO100001",
-    "presupuesto_base": 293709.63,
-    "importe_adjudicacion": 270000.0,
-    "ganador": "Sasoi Eraikuntzak, S.L.",
-    "es_ute": false,
-    "baja_pct": 8.07,
-    "rivales": [
-      "Construcciones Echaide, S.A.",
-      "Sasoi Eraikuntzak, S.L."
-    ],
-    "num_licitadores": 2,
-    "documentos": [
-      {
-        "nombre": "Dekretua_hasierakoa_transpatioa.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5784924&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Justifikazio txostena.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5784909&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Exekuzio_proiektua.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5784913&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Plegu_adm_eus.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5784904&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Plegu_adm_gazt.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5784907&R01HNoPortal=true"
-      },
-      {
-        "nombre": "260709_Kontratua.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=511590&R01HNoPortal=true"
       }
     ]
   }
