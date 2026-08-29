@@ -246830,39 +246830,5 @@
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=491243&R01HNoPortal=true"
       }
     ]
-  },
-  {
-    "id": "23bf2395fd23468394a5d43c1d543c64",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso728346/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "ANS para determinados registros implementados por Izfe para los Servicios de Montes y Gestión de Hábitat, de Ayudas y Registros y de Desarrollo Rural y Equilibrio Territorial del Departamento de Equilibrio Territorial Verde de la GFA-DFG",
-    "fecha_publicacion": "Pendiente",
-    "fecha_pub_iso": "",
-    "fecha_adjudicacion": "28/08/2026",
-    "fecha_iso": "2026-08-28",
-    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
-    "expediente": "2026SIDI0014",
-    "presupuesto_base": 290000.0,
-    "importe_adjudicacion": 290000.0,
-    "ganador": "Ayesa Ibermática, S.A.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [],
-    "num_licitadores": 0,
-    "documentos": [
-      {
-        "nombre": "2026SIDI0014_Invitación y documento de licitación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6038229&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026SIDI0014 Informe de necesidad y justificación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6038225&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026SIDI0014_Resolución adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6174770&R01HNoPortal=true"
-      }
-    ]
   }
 ]
