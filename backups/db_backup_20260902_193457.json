@@ -247775,46 +247775,5 @@
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6180063&R01HNoPortal=true"
       }
     ]
-  },
-  {
-    "id": "5768f4d5297ec1d03b64d6c167fec30f",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso717374/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "FORMALIZADO",
-    "objeto": "Servicio de mantenimiento de las zonas ajardinadas y de plantas de interior (reservado a centros especiales de empleo de iniciativa social)",
-    "fecha_publicacion": "08/06/2026",
-    "fecha_pub_iso": "2026-06-08",
-    "fecha_adjudicacion": "02/09/2026",
-    "fecha_iso": "2026-09-02",
-    "entidad": "Ayuntamiento De Astigarraga",
-    "expediente": "2026IKTZ0008",
-    "presupuesto_base": 533424.88,
-    "importe_adjudicacion": 253684.01,
-    "ganador": "Gureak Berdea, S.L.U.",
-    "es_ute": false,
-    "baja_pct": 52.44,
-    "rivales": [
-      "Grupo Sifu Euskadi, S.L.",
-      "Gureak Berdea, S.L.U."
-    ],
-    "num_licitadores": 2,
-    "documentos": [
-      {
-        "nombre": "Baldintza Teknikoak.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5834050&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Baldintza Administratiboak.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5834048&R01HNoPortal=true"
-      },
-      {
-        "nombre": "02gaia B kartazala.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6076680&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Akta.odt",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6076688&R01HNoPortal=true"
-      }
-    ]
   }
 ]
