@@ -235435,8 +235435,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "FORMALIZADO",
     "objeto": "servicio de gestión de las barras de bar que, con motivo de la edición 61 de Donostiako Jazzaldia-Festival de Jazz de San Sebastián",
-    "fecha_publicacion": "16/07/2026",
-    "fecha_pub_iso": "2026-07-16",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "13/07/2026",
     "fecha_iso": "2026-07-13",
     "entidad": "Donostia Kultura",
@@ -235458,10 +235458,6 @@
       {
         "nombre": "DEUC.zip",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5935307&R01HNoPortal=true"
-      },
-      {
-        "nombre": "JAZZTABNG - TXOSTENA sin.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6224826&R01HNoPortal=true"
       },
       {
         "nombre": "Anexo V $.docx",
@@ -249609,8 +249605,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "ADJUDICADO",
     "objeto": "El objeto del presente contrato es la renovación del equipamiento embarcado en los autobuses del servicio de Transporte Urbano de Eibar para su conexión a la plataforma tecnológica del Sistema Tarifario Integrado de Gipuzkoa y la validación de las tarjetas Lurraldebus – Mugi al entrar en el autobús.",
-    "fecha_publicacion": "10/09/2026",
-    "fecha_pub_iso": "2026-09-10",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
     "fecha_adjudicacion": "10/09/2026",
     "fecha_iso": "2026-09-10",
     "entidad": "Ayuntamiento De Eibar",
@@ -249640,10 +249636,6 @@
       {
         "nombre": "110 EbAZPENA-Adjudikazioa.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6213282&R01HNoPortal=true"
-      },
-      {
-        "nombre": "120 CONTRATO.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=526195&R01HNoPortal=true"
       }
     ]
   },
@@ -250428,240 +250420,6 @@
       {
         "nombre": "Propuesta de adjud.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=78689&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "d8686cf26f18819afac55b3568bc8be7",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso717820/es_doc/index.html",
-    "tipo_licitacion": "OBRA",
-    "estado_fase": "FORMALIZADO",
-    "objeto": "Obras de reparación de caminos rurales 2026.",
-    "fecha_publicacion": "26/05/2026",
-    "fecha_pub_iso": "2026-05-26",
-    "fecha_adjudicacion": "01/09/2026",
-    "fecha_iso": "2026-09-01",
-    "entidad": "Ayuntamiento De Azkoitia",
-    "expediente": "2026OBRA0003",
-    "presupuesto_base": 65397.39,
-    "importe_adjudicacion": 56056.46,
-    "ganador": "Asfaltos Urretxu, S.A.",
-    "es_ute": false,
-    "baja_pct": 14.28,
-    "rivales": [
-      "Asfaltos Urretxu, S.A.",
-      "Firmes Alaveses, S.A.",
-      "Probisa Vias Y Obras, S.L."
-    ],
-    "num_licitadores": 3,
-    "documentos": [
-      {
-        "nombre": "Hasiera.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5843777&R01HNoPortal=true"
-      },
-      {
-        "nombre": "DEUC.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5843812&R01HNoPortal=true"
-      },
-      {
-        "nombre": "DEUC.xml",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5843813&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Justifikazio txostena.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5843814&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Proposamen ekonomikoa.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5843816&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Proiektu_osoa_sinatuta.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5843817&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Plegu teknikoak.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5843818&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Plegu administratiboak - Caminos rurales 2026.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5846446&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026-06-25 Akta (2).pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6086211&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026-07-27 Akta.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6102418&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026-07-30 Akta.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6127945&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026-08-06 Akta (3).pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6134113&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "ea72d2bd0e2a57141a1d5479f27f2010",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso733210/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Prestación de servicios de gestión administrativa y contable para San Sebastián Turismo- Donostia Turismoa",
-    "fecha_publicacion": "30/07/2026",
-    "fecha_pub_iso": "2026-07-30",
-    "fecha_adjudicacion": "14/09/2026",
-    "fecha_iso": "2026-09-14",
-    "entidad": "San Sebastián Turismo-Donostia Turismoa S.A.",
-    "expediente": "DT_004_26_ ASESORIA CONTABLE",
-    "presupuesto_base": 17825.0,
-    "importe_adjudicacion": 17520.0,
-    "ganador": "Deloitte Bps, S.L.",
-    "es_ute": false,
-    "baja_pct": 1.71,
-    "rivales": [
-      "Deloitte Bps, S.L."
-    ],
-    "num_licitadores": 1,
-    "documentos": [
-      {
-        "nombre": "20260720-DTURISMO - Caratula- Lic. gestión adm_contable_def.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6097300&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Anexo III DEUC DT_004_26.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6097487&R01HNoPortal=true"
-      },
-      {
-        "nombre": "20260720_DTURISMO Lic. gestión adm. y contable  PPT_def.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6097322&R01HNoPortal=true"
-      },
-      {
-        "nombre": "20260720- DTURISMO - PCAP- Lic. gestión adm. y contable_def.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6097309&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026 08 28 Propuesta de adjudicación licitación asesoría contable.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6174688&R01HNoPortal=true"
-      },
-      {
-        "nombre": "DT_004_26_ ASESORIA CONTABLE_Capacidad y Solvencia.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6155261&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026 08 25 Acta Apertura sobre 2.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6168405&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026 08 Acta Apertura sobre 3 Asesoría Contable.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6174642&R01HNoPortal=true"
-      },
-      {
-        "nombre": "2026 09 14 Resolución de adjudicación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6224886&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "3be4a190909086288d81221d5b70b169",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso739395/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "ADJUDICADO",
-    "objeto": "Contrato derivado del acuerdo marco relativo al servicio de mantenimiento de aparatos elevadores, a través de la Central de Contratación Foral de Gipuzkoa.",
-    "fecha_publicacion": "Pendiente",
-    "fecha_pub_iso": "",
-    "fecha_adjudicacion": "03/09/2026",
-    "fecha_iso": "2026-09-03",
-    "entidad": "Agencia De Desarrollo Del Bidasoa, S.A.",
-    "expediente": "X25012",
-    "presupuesto_base": 2382.96,
-    "importe_adjudicacion": 2382.96,
-    "ganador": "Orona, S. Coop.",
-    "es_ute": false,
-    "baja_pct": 0.0,
-    "rivales": [
-      "Orona, S. Coop."
-    ],
-    "num_licitadores": 1,
-    "documentos": [
-      {
-        "nombre": "6 RESOLUCION CONTRATO DERIVADO ascensores X25012.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6189722&R01HNoPortal=true"
-      }
-    ]
-  },
-  {
-    "id": "327dbafebf8991006b4c23a776e3f628",
-    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso506594/es_doc/index.html",
-    "tipo_licitacion": "SERV",
-    "estado_fase": "FORMALIZADO",
-    "objeto": "Contratación de los servicios de mantenimiento básico de las dependencias de RECINTO FERIAL DE BIDASOA-BIDASOA ERAKUSTAZOKA, S.A. y la adecuación y reparación de espacios (incluido montaje y desmontaje de stands e instalación y retirada de moqueta) para eventos de FUNDACIÓN FICOBA.",
-    "fecha_publicacion": "16/04/2024",
-    "fecha_pub_iso": "2024-04-16",
-    "fecha_adjudicacion": "14/06/2024",
-    "fecha_iso": "2024-06-14",
-    "entidad": "Fundación Ficoba",
-    "expediente": "2024-FF-004",
-    "presupuesto_base": 523762.0,
-    "importe_adjudicacion": 261881.0,
-    "ganador": "Montajes Mendibil, S.L.",
-    "es_ute": false,
-    "baja_pct": 50.0,
-    "rivales": [
-      "Montajes Mendibil, S.L."
-    ],
-    "num_licitadores": 1,
-    "documentos": [
-      {
-        "nombre": "Resolución aprobación expediente_mantenimiento y montaje.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3405293&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Carátula servicios de mantenimiento y montaje_def.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3405587&R01HNoPortal=true"
-      },
-      {
-        "nombre": "DEUC.zip",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3405295&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Informe inicial contratación.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3405297&R01HNoPortal=true"
-      },
-      {
-        "nombre": "PPT_montaje y mantenimiento_def.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3405314&R01HNoPortal=true"
-      },
-      {
-        "nombre": "PCAP mantenimiento y montaje_def.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3405317&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Acta de calificación de documentación sobre n_1_firmada.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3543340&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Acta apertura Sobre 2_mantenimiento y montaje_firmada.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3573379&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Informe tecnico sobre 2_MONTAJE.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3573390&R01HNoPortal=true"
-      },
-      {
-        "nombre": "Acta_SOBRE_3_Mantenimiento y montaje_firmada.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3573393&R01HNoPortal=true"
-      },
-      {
-        "nombre": "RESOLUCIÓN DE ADJUDICACIÓN_montaje_RECINTO FERIAL_2024_firmado.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3625076&R01HNoPortal=true"
-      },
-      {
-        "nombre": "RESOLUCIÓN DE ADJUDICACIÓN_montaje_FICOBA_2024_firmado.pdf",
-        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3625078&R01HNoPortal=true"
       }
     ]
   }
