@@ -270469,5 +270469,488 @@
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6360326&R01HNoPortal=true"
       }
     ]
+  },
+  {
+    "id": "b2180c2392115d022e98e7457217de53",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/exposakisap2026001586/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Mantenimiento de las Instalaciones Térmicas del Hospital Universitario Donostia de la OSI Donostialdea",
+    "fecha_publicacion": "12/08/2026",
+    "fecha_pub_iso": "2026-08-12",
+    "fecha_adjudicacion": "16/10/2026",
+    "fecha_iso": "2026-10-16",
+    "entidad": "Osakidetza - Servicio Vasco De Salud",
+    "expediente": "2026/01586",
+    "presupuesto_base": 1365000.0,
+    "importe_adjudicacion": 820761.0,
+    "ganador": "Hemen Klima, S.L.",
+    "es_ute": false,
+    "baja_pct": 39.87,
+    "rivales": [
+      "Elecnor Servicios Y Proyectos, S.A.",
+      "Giroa, S.A.",
+      "Hemen Klima, S.L."
+    ],
+    "num_licitadores": 3,
+    "documentos": [
+      {
+        "nombre": "Resolución de aprobación de expediente-RAE.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374082&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Memoria justificativa-MJ.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374081&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Propuesta adjudicación y aceptación-AMCA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374072&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Documento anexo-Anexos + Mesa Contratación.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374073&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Documento anexo-Visita Instalaciones.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374075&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta de la mesa (apertura de la documentación administrativa)-AMJ.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374076&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta de la mesa (apertura de proposiciones evaluables mediante fórmulas)-AME.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374077&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta de la mesa (apertura de proposiciones sujetas a juicio de valor)-AMT.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374079&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Resolución de inicio-RI.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374080&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Pliego de Prescripciones Técnicas-PPT.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374078&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Pliego de Cláusulas Administrativas Particulares-PCAP.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374074&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Nota Aclaratoria.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6165701&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Anexo III.1 - Oferta Económica CORREGIDO.xlsx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6165706&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Informe técnico de valoración de ofertas-IT.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374084&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Informe técnico definitivo de valoración de ofertas-IE.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374083&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Resolución de adjudicación-RAE.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6374085&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "c01c494cd9b54eb3bbe7ae921494b382",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso717657/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Contratación de los servicios de diseño creativo y producción, montaje e instalación de “KREA BIDASOA” para la Agencia de Desarrollo del Bidasoa, S.A. (Bidasoa activa)",
+    "fecha_publicacion": "25/06/2026",
+    "fecha_pub_iso": "2026-06-25",
+    "fecha_adjudicacion": "16/10/2026",
+    "fecha_iso": "2026-10-16",
+    "entidad": "Agencia De Desarrollo Del Bidasoa, S.A.",
+    "expediente": "2026CONTR002",
+    "presupuesto_base": 44000.0,
+    "importe_adjudicacion": 37200.0,
+    "ganador": "Theniu Komunikazioa & Estrategia S.L.",
+    "es_ute": false,
+    "baja_pct": 15.45,
+    "rivales": [
+      "Theniu Komunikazioa & Estrategia S.L."
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "1.- CERTIFICADO aprobación contratación exp y pliegos 2026CONTR002.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5874026&R01HNoPortal=true"
+      },
+      {
+        "nombre": "EKAB DEUC EUS.CAS 2026CONTR002.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5840314&R01HNoPortal=true"
+      },
+      {
+        "nombre": "0.- Informe de necesidad EXP2026CONTR002.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5872139&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2. - PLIEGOS CONDICIONES ECO ADMI GEN KREA 2026CONTR002.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5840318&R01HNoPortal=true"
+      },
+      {
+        "nombre": "CONSULTA Nº1.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6059397&R01HNoPortal=true"
+      },
+      {
+        "nombre": "KreaBidasoa26 .mp4",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6061448&R01HNoPortal=true"
+      },
+      {
+        "nombre": "4 - Acta apertura y valoración archivo B_ 2026CONTR002.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6166863&R01HNoPortal=true"
+      },
+      {
+        "nombre": "4 - Acta apertura y valoración archivo B_ 2026CONTR002.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6166864&R01HNoPortal=true"
+      },
+      {
+        "nombre": "5.-Acta apertura y valoración archivo C y propuesta de  adjudicación 2026CONTR002.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6373371&R01HNoPortal=true"
+      },
+      {
+        "nombre": "7.- Ebazpena- Resolución 2026CONTR002.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6373391&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "5c023f1abbd52fa8f0860c63d7da0fef",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso743785/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Creación e interpretación artística en la Nueva Pasante del Topo de Donostia-San Sebastián",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "15/10/2026",
+    "fecha_iso": "2026-10-15",
+    "entidad": "Euskal Trenbide Sarea",
+    "expediente": "P20027783",
+    "presupuesto_base": 299550.0,
+    "importe_adjudicacion": 299550.0,
+    "ganador": "Victoriano Goicoechea Aguirre",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [
+      "Victoriano Goicoechea Aguirre"
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "11_27783_RESOLUCIÓN APROBACIÓN EXPEDIENTE.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6294478&R01HNoPortal=true"
+      },
+      {
+        "nombre": "03_27783_CARÁTULA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6294475&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DEUC.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6294482&R01HNoPortal=true"
+      },
+      {
+        "nombre": "02_27783_INFORME INSUFICIENCIA MEDIOS.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6294474&R01HNoPortal=true"
+      },
+      {
+        "nombre": "01_27783_MEMORIA JUSTIFICATIVA fdo.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6294473&R01HNoPortal=true"
+      },
+      {
+        "nombre": "12_27783_INVITACIÓN.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6294479&R01HNoPortal=true"
+      },
+      {
+        "nombre": "05_27783_PPTP.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6294477&R01HNoPortal=true"
+      },
+      {
+        "nombre": "04_27783_PCAP.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6294476&R01HNoPortal=true"
+      },
+      {
+        "nombre": "27_27783_RESOLUCIÓN_ADJUDICACIÓN.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6373340&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "4f7977bc9538b9623016457f49d3dfe4",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso710101/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Servicios de dirección facultativa de las obras, de coordinación de seguridad y salud de las mismas y de la ejecución del control de calidad de las obras del nuevo polideportivo de Iturripe (en 3 lotes)",
+    "fecha_publicacion": "10/05/2026",
+    "fecha_pub_iso": "2026-05-10",
+    "fecha_adjudicacion": "15/10/2026",
+    "fecha_iso": "2026-10-15",
+    "entidad": "Ayuntamiento De Arrasate/Mondragón",
+    "expediente": "2026CHOZ0002",
+    "presupuesto_base": 903564.5,
+    "importe_adjudicacion": 645000.0,
+    "ganador": "Sestra Ingeniería Y Arquitectura, S.L.",
+    "es_ute": false,
+    "baja_pct": 28.62,
+    "rivales": [
+      "Gike, S.A.",
+      "Sestra Ingeniería Y Arquitectura, S.L.",
+      "Sgs Tecnos, S.A."
+    ],
+    "num_licitadores": 3,
+    "documentos": [
+      {
+        "nombre": "Onespen akordioa.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5773514&R01HNoPortal=true"
+      },
+      {
+        "nombre": "espd-request.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5773494&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Memoria justifikagarria.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5746785&R01HNoPortal=true"
+      },
+      {
+        "nombre": "I eranskina-I sorta.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5771387&R01HNoPortal=true"
+      },
+      {
+        "nombre": "I eranskina-II sorta.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5771388&R01HNoPortal=true"
+      },
+      {
+        "nombre": "I eranskina-III sorta.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5771389&R01HNoPortal=true"
+      },
+      {
+        "nombre": "II eranskina-I sorta.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5771393&R01HNoPortal=true"
+      },
+      {
+        "nombre": "II eranskina-II sorta.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5771450&R01HNoPortal=true"
+      },
+      {
+        "nombre": "II eranskina-III sorta.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5771457&R01HNoPortal=true"
+      },
+      {
+        "nombre": "III eranskina-DACI.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5771460&R01HNoPortal=true"
+      },
+      {
+        "nombre": "espd-request.xml",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5773495&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Proiektua.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5779844&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Plegu teknikoa.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5746799&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Plegu administratiboa.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5773068&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Akta (A,B).pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5943628&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Akta (C).pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6217956&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Balorazio txostena-I sorta.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6201019&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Balorazio txostena-II sorta.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6201022&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Adjudikazioa I sorta-Sestra.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6373162&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Adjudikazioa II sorta-SGS Tecnos.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6373177&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Adjudikazioa III sorta-Gikesa.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6373178&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "3c893e800c6fbdba4af2fe8ada2a4382",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso739226/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "ANS sistemas de Autorización e Inspección, Registro Foral de Servicios Sociales y sistemas comunes",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "16/10/2026",
+    "fecha_iso": "2026-10-16",
+    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
+    "expediente": "2026SIDI0012",
+    "presupuesto_base": 240000.0,
+    "importe_adjudicacion": 240000.0,
+    "ganador": "Teknei Information Technology S.L.",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "2026SIDI0012_Invitación y documento de licitación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6176050&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026SIDI0012 Informe de necesidad y justificación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6176049&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026SIDI0012_Resolución adjudicación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6371806&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "10abe5f07ce81fa53b997951dc2ed735",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso728352/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FORMALIZADO",
+    "objeto": "Contratación de seguros privados para la promoción y construcción del nuevo polideportivo iturripe.",
+    "fecha_publicacion": "20/07/2026",
+    "fecha_pub_iso": "2026-07-20",
+    "fecha_adjudicacion": "15/10/2026",
+    "fecha_iso": "2026-10-15",
+    "entidad": "Ayuntamiento De Arrasate/Mondragón",
+    "expediente": "2026CHOZ0022",
+    "presupuesto_base": 51193.0,
+    "importe_adjudicacion": 31680.81,
+    "ganador": "Asefa Sma Sa Sucursal En España",
+    "es_ute": false,
+    "baja_pct": 38.11,
+    "rivales": [
+      "Asefa Sma Sa Sucursal En España",
+      "Axa Seguros Generales Sociedad Anonima De Seguros Y Reaseguros"
+    ],
+    "num_licitadores": 2,
+    "documentos": [
+      {
+        "nombre": "Onespen akordioa.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6057835&R01HNoPortal=true"
+      },
+      {
+        "nombre": "espd-request.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6058339&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Memoria justifikagarria.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6038793&R01HNoPortal=true"
+      },
+      {
+        "nombre": "I eranskina-I sorta.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6038836&R01HNoPortal=true"
+      },
+      {
+        "nombre": "I eranskina-II sorta.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6038837&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Plegu teknikoa-GAZ.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6057864&R01HNoPortal=true"
+      },
+      {
+        "nombre": "espd-request.xml",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6058342&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Plegu teknikoa-EUS.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6057862&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Plegu administratiboa.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6057832&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Akta (A).pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6206576&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "13d848fed6f7284dbc1096f78767c6a7",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso382739/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de Secretaría Técnica del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "24/02/2023",
+    "fecha_pub_iso": "2023-02-24",
+    "fecha_adjudicacion": "08/02/2023",
+    "fecha_iso": "2023-02-08",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "122333",
+    "presupuesto_base": 228000.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "OF 2023-0067 Desarrollo ST_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119191&R01HNoPortal=true"
+      },
+      {
+        "nombre": "OF 2023-0067 Desarrollo ST_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119197&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "dc764b8277e389c935c5bce58f099ae0",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso382742/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Subdirección General de la Estrategia Tecnológica del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "24/02/2023",
+    "fecha_pub_iso": "2023-02-24",
+    "fecha_adjudicacion": "13/02/2023",
+    "fecha_iso": "2023-02-13",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "122329",
+    "presupuesto_base": 248200.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "OF 2023-0073 SET.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119401&R01HNoPortal=true"
+      },
+      {
+        "nombre": "OF 2023-0073 SET.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119393&R01HNoPortal=true"
+      }
+    ]
   }
 ]
