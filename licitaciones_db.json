@@ -207186,8 +207186,8 @@
     "tipo_licitacion": "SERV",
     "estado_fase": "FORMALIZADO",
     "objeto": "Acuerdo marco para la contratación de un sistema informático para habilitar canales internos de denuncia anónima a través de la Central de Contratación Foral (X23013).",
-    "fecha_publicacion": "Pendiente",
-    "fecha_pub_iso": "",
+    "fecha_publicacion": "11/02/2026",
+    "fecha_pub_iso": "2026-02-11",
     "fecha_adjudicacion": "12/09/2024",
     "fecha_iso": "2024-09-12",
     "entidad": "Ayuntamiento De Arrasate/Mondragón",
@@ -271566,6 +271566,1603 @@
       {
         "nombre": "Akta_2_sinatuta.pdf",
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6219762&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "a0cbfcff071e7a33e1ce082feb547759",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso727529/es_doc/index.html",
+    "tipo_licitacion": "OBRA",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Ejecución de las obras incluidas en el “Proyecto Refundido de cambio del césped natural por césped artificial del campo de fútbol de ASTI en Zarautz”.",
+    "fecha_publicacion": "20/07/2026",
+    "fecha_pub_iso": "2026-07-20",
+    "fecha_adjudicacion": "19/10/2026",
+    "fecha_iso": "2026-10-19",
+    "entidad": "Ayuntamiento De Zarautz",
+    "expediente": "2026IK200018",
+    "presupuesto_base": 2458027.05,
+    "importe_adjudicacion": 1907428.99,
+    "ganador": "Construcciones Moyua, S.L.",
+    "es_ute": false,
+    "baja_pct": 22.4,
+    "rivales": [
+      "Campezo Obras Y Servicios, S.A.",
+      "Construcciones Mariezcurrena, S.L.",
+      "Construcciones Moyua, S.L.",
+      "Obras De Construccion E Instalaciones S A"
+    ],
+    "num_licitadores": 4,
+    "documentos": [
+      {
+        "nombre": "Asti zelaia  kt.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6022462&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Astu zelaia DEUC.xml",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6022461&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Ayuda_DEUC_Licitador_es Gidaliburua.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6022466&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Ayuda_DEUC_Licitador_eu Gidaliburua.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6022467&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Proiektua-ASTI belarra.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6022497&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Aurrekontua-ASTI belarra.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6022499&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Asti zelaia PT.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6022464&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Asti zelaia AK.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6047760&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Astiko belarra aldatu-A+B artx ireki-AKTA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6185881&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Astiko belarra aldatu-B artx balorazioa+ C artx ireki-AKTA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6304333&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Txosten Teknikoa-B artxiboak.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6304364&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Astiko belarra aldatu-obra-C artx balorazioa+Akordio Proposamena-AKTA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6317700&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Txosten Teknikoa-C artxiboak.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6317725&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Dudak.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6105619&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Adjudikazioa-TGB-2026-10-19ko bilera..pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6389064&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "94f29d5f9bdb9979543e52b8c7cba619",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso713463/es_doc/index.html",
+    "tipo_licitacion": "OBRA",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Obras correspondientes al proyecto de ejecución de las obras de una cubierta en la plaza Santiago en Riberas de Loiola.",
+    "fecha_publicacion": "14/05/2026",
+    "fecha_pub_iso": "2026-05-14",
+    "fecha_adjudicacion": "20/10/2026",
+    "fecha_iso": "2026-10-20",
+    "entidad": "Ayuntamiento De Donostia/San Sebastián",
+    "expediente": "2026/038",
+    "presupuesto_base": 320652.75,
+    "importe_adjudicacion": 303978.38,
+    "ganador": "Unebide Obras Y Contratas, S.L.",
+    "es_ute": false,
+    "baja_pct": 5.2,
+    "rivales": [
+      "Campezo Obras Y Servicios, S.A.",
+      "Unebide Obras Y Contratas, S.L."
+    ],
+    "num_licitadores": 2,
+    "documentos": [
+      {
+        "nombre": "DIL_INT_2026-038_TGB_ONARPEN_AKORDIOA.pdf.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5785466&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026-038 espd-request.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5779919&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DIL_Arrazoizko txostena Cubierta PZA SANTIAGO(1).pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5785467&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026-038 Eranskinak.odt",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5780227&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DIL_PROIEKTUA.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5785520&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026-038.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5795071&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DIL_2026_38_Santiago_estalkia_BAZA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5785468&R01HNoPortal=true"
+      },
+      {
+        "nombre": "21irekiaakta1artxiboaakatsikgabe.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5963862&R01HNoPortal=true"
+      },
+      {
+        "nombre": "21irekiaakta2artxiboajudiziobalorekoirizpideak.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5963863&R01HNoPortal=true"
+      },
+      {
+        "nombre": "22026038irekiaakta3artxiboairizpideautomatikoak.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6097979&R01HNoPortal=true"
+      },
+      {
+        "nombre": "4-2026-038_CUBIERTA SANTIAGO Informe Valoracion.signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6071710&R01HNoPortal=true"
+      },
+      {
+        "nombre": "7-2026-038_CUBIERTA SANTIAGO informe propuesta ADJUDICACI¿N SINATUTA def.signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6285939&R01HNoPortal=true"
+      },
+      {
+        "nombre": "k0502026eskaintzen_hurrenkera_esped_2026038.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6286870&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DIL_INT_2026_038-TGB-ESLEIPEN_AKORDIOA.pdf.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6384756&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "0ae19400daafedd9be2ccc058d9eccfd",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso736337/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Prestación de servicios especializados para la promoción, gestión y organización de la feria promovida por el Ayuntamiento de Tolosa y de las ferias especiales asociadas, así como para la realización de visitas guiadas relacionadas con la historia, cultura y el patrimonio del municipio.",
+    "fecha_publicacion": "11/09/2026",
+    "fecha_pub_iso": "2026-09-11",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Ayuntamiento De Tolosa",
+    "expediente": "2026SABI0010",
+    "presupuesto_base": 294370.0,
+    "importe_adjudicacion": 258148.0,
+    "ganador": "Chroma Branding, S.L.",
+    "es_ute": false,
+    "baja_pct": 12.3,
+    "rivales": [
+      "Chroma Branding, S.L."
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "9 - Akordioa.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6207017&R01HNoPortal=true"
+      },
+      {
+        "nombre": "espd-request.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6147291&R01HNoPortal=true"
+      },
+      {
+        "nombre": "4-TXOSTEN JURIDIKOA - PROCEDIMIENTO URGENCIA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6139468&R01HNoPortal=true"
+      },
+      {
+        "nombre": "5-TXOSTEN JURIDIKOA - PRESAZKO IZAPIDEA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6139469&R01HNoPortal=true"
+      },
+      {
+        "nombre": "7-TXOSTEN JURIDIKOA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6139474&R01HNoPortal=true"
+      },
+      {
+        "nombre": "3-PLEGU TEKNIKOAK.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6139467&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PLEGU ADMINISTRATIBOAK.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6212662&R01HNoPortal=true"
+      },
+      {
+        "nombre": "13-acta sobre B.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6314674&R01HNoPortal=true"
+      },
+      {
+        "nombre": "16-acta sobre C.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6332639&R01HNoPortal=true"
+      },
+      {
+        "nombre": "19.-Acta propuesta adj..pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6358912&R01HNoPortal=true"
+      },
+      {
+        "nombre": "21-Akordioa TGB.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6387762&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "16485e4a1b6ce01f31733e46d7f0d837",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso735165/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Arrendamiento, instalación, conservación, mantenimiento y limpieza de cabinas de aseos públicos en Irun, 2027-2030.",
+    "fecha_publicacion": "07/08/2026",
+    "fecha_pub_iso": "2026-08-07",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Ayuntamiento De Irun",
+    "expediente": "2026ZAUN0025",
+    "presupuesto_base": 928000.0,
+    "importe_adjudicacion": 231021.13,
+    "ganador": "Proyectos E Instalacion De Material Urbano S A",
+    "es_ute": false,
+    "baja_pct": 75.11,
+    "rivales": [
+      "Proyectos E Instalacion De Material Urbano S A"
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "Tokiko Gobernu Batzordearen akordioa 2026-08-05 - Acuerdo de la Junta de Gobierno Local de 05-08-2026.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6124145&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DEUC.xml",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6121791&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Memoria.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6121797&R01HNoPortal=true"
+      },
+      {
+        "nombre": "I Eranskina Proposamen eredua- Anexo I Modelo de proposición.doc",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6121795&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Preskripzio Teknikoen Plegua-Pliego de Prescripciones Técnicas.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6121798&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Klausula Administratibo Berezien Plegua-Pliego de Cláusulas Administrativas Particulares.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6121796&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026ZAUN0025_2026-09-17_10-03-27-comprimido-convertir-pdf.com.mp4",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6244608&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Kontratazio Mahaiaren ziurtagiria 2026-09-17- Certificado de Mesa de Contratación de 17-09-2026.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6386996&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Kontratazio Mahaiaren ziurtagiria 2026-09-11- Certificado de Mesa de Contratación de 11-09-2026.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6387006&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Tokiko Gobernu Batzordearen akordioa 2026-10-21 - Acuerdo de la Junta de Gobierno Local de 21-10-2026.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6387215&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "73a486e3395b5c1dd4a3013fef5d8a09",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso736330/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Contratación del servicio de consultoría y asistencia técnica para la redacción del proyecto de ejecución, dirección de obra y coordinación de seguridad y salud de la reforma del campo de fútbol y pista de atletismo del estadio de Berazubi y nuevo edificio de gimnasios.",
+    "fecha_publicacion": "17/08/2026",
+    "fecha_pub_iso": "2026-08-17",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Ayuntamiento De Tolosa",
+    "expediente": "2025SASI0008",
+    "presupuesto_base": 96600.0,
+    "importe_adjudicacion": 74400.0,
+    "ganador": "Cm10 Gestion De Proyectos Deportivos, S.C.",
+    "es_ute": false,
+    "baja_pct": 22.98,
+    "rivales": [
+      "Cm10 Gestion De Proyectos Deportivos, S.C."
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "7-DEKRETUA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6138124&R01HNoPortal=true"
+      },
+      {
+        "nombre": "espd-request .zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6138379&R01HNoPortal=true"
+      },
+      {
+        "nombre": "5-TXOSTEN JURIDIKOA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6138033&R01HNoPortal=true"
+      },
+      {
+        "nombre": "14 BERAZUBI-KONDEANEKO ALDAPAM (BIKOITIAK).pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6153060&R01HNoPortal=true"
+      },
+      {
+        "nombre": "01_DOK_IDATZIA_EUS.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6153063&R01HNoPortal=true"
+      },
+      {
+        "nombre": "02_DOC_ESCRITA_ES.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6153064&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Esteka.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6153065&R01HNoPortal=true"
+      },
+      {
+        "nombre": "25_047 T.dwg",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6153066&R01HNoPortal=true"
+      },
+      {
+        "nombre": "01 AURREPROIEKTUA eus.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6153067&R01HNoPortal=true"
+      },
+      {
+        "nombre": "02 AURREPROIEKTUA. es.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6153068&R01HNoPortal=true"
+      },
+      {
+        "nombre": "AZTERKETA GEOTEKNIKOA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6153070&R01HNoPortal=true"
+      },
+      {
+        "nombre": "3-PLEGU TEKNIKOAK.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6138030&R01HNoPortal=true"
+      },
+      {
+        "nombre": "4-PLEGU ADMINISTRATIBOAK.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6138031&R01HNoPortal=true"
+      },
+      {
+        "nombre": "8-acta sobre A.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6295448&R01HNoPortal=true"
+      },
+      {
+        "nombre": "12-acta sobre C.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6310461&R01HNoPortal=true"
+      },
+      {
+        "nombre": "16-propuesta adjudicación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6383707&R01HNoPortal=true"
+      },
+      {
+        "nombre": "17-Decreto_adjudicacion.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6386109&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "e3f5587ebf141cc124ed89ee3b2d4932",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso741032/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Infraestructura de servicios DDI",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
+    "expediente": "2026KOES0027",
+    "presupuesto_base": 418000.0,
+    "importe_adjudicacion": 411578.95,
+    "ganador": "Thales S 21 Sec España, S.A.U.",
+    "es_ute": false,
+    "baja_pct": 1.54,
+    "rivales": [
+      "S2 Grupo Soluciones De Seguridad, S.L.",
+      "Sistemas Avanzados De Tecnología, S.A.",
+      "Telefónica Soluciones De Informática Y Comunicaciones De España, S.A.",
+      "Thales S 21 Sec España, S.A.U."
+    ],
+    "num_licitadores": 4,
+    "documentos": [
+      {
+        "nombre": "Aprobación expediente 2026KOES0027.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6226492&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Informe de necesidad 2026KOES0027 Beharren txostena.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6226489&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Resolución adjudicación 2026KOES0027.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6384696&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "d9850cd81cd84bf4d7682ae5f678e186",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso731916/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Mantenimiento hardware de plataformas de entorno distribuido",
+    "fecha_publicacion": "28/07/2026",
+    "fecha_pub_iso": "2026-07-28",
+    "fecha_adjudicacion": "20/10/2026",
+    "fecha_iso": "2026-10-20",
+    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
+    "expediente": "2026KOES0012",
+    "presupuesto_base": 205000.0,
+    "importe_adjudicacion": 199244.48,
+    "ganador": "Versia Infraestructuras Ti, S.L.",
+    "es_ute": false,
+    "baja_pct": 2.81,
+    "rivales": [
+      "Versia Infraestructuras Ti, S.L."
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "Aprobación expediente 2026KOES0012.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6088060&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DEUC 2026KOES0012.xml",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6090016&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DEUC 2026KOES0012.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6090017&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Informe de necesidad 2026KOES0012 Beharren txostena.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6082451&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026KOES0012 Acceso documentación confidencial.doc",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6082456&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Pliego técnico 2026KOES0012 Baldintza teknikoak.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6087603&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Pliego administrativo 2026KOES0012 Baldintza administratiboak.doc",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6087598&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026KOES0012 Acta de apertura y calificación archivo UNO y apertura archivo DOS.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6206710&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta calificación archivo DOS 2026KOES0012.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6228575&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Valoración archivo DOS 2026KOES0012.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6228584&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta apertura y calificación archivo TRES 2026KOES0012.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6243881&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Resolución adjudicación 2026KOES0012.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6384585&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "a01e5a082ad22a5ccd8dbea8e371ff20",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso550538/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Servicios de intervención fisioterapéutica que establezca el Servicio de Prevención Propio de la COMPAÑÍA DEL TRANVÍA DE SAN SEBASTIÁN, SAU",
+    "fecha_publicacion": "11/10/2024",
+    "fecha_pub_iso": "2024-10-11",
+    "fecha_adjudicacion": "05/12/2024",
+    "fecha_iso": "2024-12-05",
+    "entidad": "Compañía Del Tranvía De San Sebastián, S.A.U.",
+    "expediente": "21/24",
+    "presupuesto_base": 25000.0,
+    "importe_adjudicacion": 10000.0,
+    "ganador": "Aitziber Garcia Arregui",
+    "es_ute": false,
+    "baja_pct": 60.0,
+    "rivales": [
+      "Aitziber Garcia Arregui",
+      "Guna Salud Y Bienestar S.L"
+    ],
+    "num_licitadores": 2,
+    "documentos": [
+      {
+        "nombre": "CTSS-Informe inicial servicios fisio.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3937897&R01HNoPortal=true"
+      },
+      {
+        "nombre": "CTSS-Carátula servicios fisio.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3937902&R01HNoPortal=true"
+      },
+      {
+        "nombre": "CTSS-DEUC servicios fisio.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3937900&R01HNoPortal=true"
+      },
+      {
+        "nombre": "CTSS-Informe inicial servicios fisio.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3937896&R01HNoPortal=true"
+      },
+      {
+        "nombre": "CTSS-PCAP servicios fisio.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3937935&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta sobre 1 FISIO.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4123747&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta sobre 2 FISIO + VALORACIÓN TÉCNICA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4123766&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta sobre 3 FISIO.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4123764&R01HNoPortal=true"
+      },
+      {
+        "nombre": "RESOLUCIÓN adjudicación Aitziber FISIO.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4123741&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Contrato servicio fisioterapéutico AITZIBER GARCÍA_es_eu ok-firmado.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=423893&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "7c67f6668d183824430cd815db3d1362",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso739287/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Contratación de servicios para desarrollo, mantenimiento y soporte de la plataforma de zergabidea",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "20/10/2026",
+    "fecha_iso": "2026-10-20",
+    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
+    "expediente": "2026SIDI0016",
+    "presupuesto_base": 550000.0,
+    "importe_adjudicacion": 550000.0,
+    "ganador": "Teknei Information Technology S.L.",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "2026SIDI0016_Invitación y documento de licitación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6188037&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026SIDI0016 Informe de necesidad y justificación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6181148&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026SIDI0016_Resolución adjudicación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6384172&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "34878be067dccc2c402a61e512b1d0d8",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso722484/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FORMALIZADO",
+    "objeto": "gestión del servicio polivalente (información, orientación, acompañamiento, ocio-educativo, canales para expresión y participación, así como apoyo para la creación y producción) para la adolescencia de Astigarraga, desde la transversalidad de la perspectiva de género, y que conlleva el diseñar, planificar, organizar, prestar y evaluar el servicio.",
+    "fecha_publicacion": "01/07/2026",
+    "fecha_pub_iso": "2026-07-01",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Ayuntamiento De Astigarraga",
+    "expediente": "2026IKTZ0011",
+    "presupuesto_base": 201264.7,
+    "importe_adjudicacion": 200300.0,
+    "ganador": "Asociación De Intervención Socioeducativa Kalexka",
+    "es_ute": false,
+    "baja_pct": 0.48,
+    "rivales": [
+      "Asociacion Vasca De Mediacion-Eusko Bitartekaritza Elkartea",
+      "Asociación De Intervención Socioeducativa Kalexka"
+    ],
+    "num_licitadores": 2,
+    "documentos": [
+      {
+        "nombre": "subrogazioaren dokumentazioa.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5940801&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Baldintza_teknikoak.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5940802&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Baldintza administratiboak.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5940804&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "bfa6ba8e7956670d89f75a218d3f80ed",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso521728/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Encargo “Tramitador II del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "30/05/2024",
+    "fecha_pub_iso": "2024-05-30",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "2024OGA15",
+    "presupuesto_base": 184678.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "OF 2024-0201 Tramitador II_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3582005&R01HNoPortal=true"
+      },
+      {
+        "nombre": "OF 2024-0201 Tramitador II_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3582139&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "11f3eacbc64bf87f5faf692f67d3c44d",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso38644/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Subdirección General de la Estrategia Tecnológica del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "11/05/2021",
+    "fecha_pub_iso": "2021-05-11",
+    "fecha_adjudicacion": "20/04/2021",
+    "fecha_iso": "2021-04-20",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "108486",
+    "presupuesto_base": 355600.0,
+    "importe_adjudicacion": 355600.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG 108486 SET.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=192111&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "54e74691cd0a2273891b8ffd4fff7d76",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso38915/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de Campañas tributarias del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "19/05/2021",
+    "fecha_pub_iso": "2021-05-19",
+    "fecha_adjudicacion": "13/04/2021",
+    "fecha_iso": "2021-04-13",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "106777",
+    "presupuesto_base": 710160.0,
+    "importe_adjudicacion": 710160.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG Encargo 106777 Campañas.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=192495&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "9856a39d7aa8605d434823bef0fa7f97",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso38918/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Dirección General de Finanzas y Presupuestos",
+    "fecha_publicacion": "19/05/2021",
+    "fecha_pub_iso": "2021-05-19",
+    "fecha_adjudicacion": "20/04/2021",
+    "fecha_iso": "2021-04-20",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "106773",
+    "presupuesto_base": 569680.0,
+    "importe_adjudicacion": 569680.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG Encargo 106773 Fin y Pres.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=192496&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "307becd0a4ea40a28b87ae166c734c1c",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso38919/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Subdirección General de Recaudación del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "19/05/2021",
+    "fecha_pub_iso": "2021-05-19",
+    "fecha_adjudicacion": "13/04/2021",
+    "fecha_iso": "2021-04-13",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "107500",
+    "presupuesto_base": 422400.0,
+    "importe_adjudicacion": 422400.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG Encargo 107500 Recaudación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=192497&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "c1f42f153d25725d7cf4e107c17a38ab",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso38924/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Subdirección General de Gestión del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "20/05/2021",
+    "fecha_pub_iso": "2021-05-20",
+    "fecha_adjudicacion": "20/04/2021",
+    "fecha_iso": "2021-04-20",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "106775",
+    "presupuesto_base": 424300.0,
+    "importe_adjudicacion": 424300.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG Encargo 106775 Gestión.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=192003&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "bc07401c8fca644deaac7c824290e574",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso38925/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Mantenimiento y soporte de las aplicaciones del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "20/05/2021",
+    "fecha_pub_iso": "2021-05-20",
+    "fecha_adjudicacion": "13/04/2021",
+    "fecha_iso": "2021-04-13",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "106776",
+    "presupuesto_base": 2551160.0,
+    "importe_adjudicacion": 2551160.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG Encargo 106776 Mantenimiento.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=192004&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "480d1a3636445e0f8646b546ee704fc5",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso38987/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Dirección Política Fiscal y Financiera",
+    "fecha_publicacion": "21/05/2021",
+    "fecha_pub_iso": "2021-05-21",
+    "fecha_adjudicacion": "28/04/2021",
+    "fecha_iso": "2021-04-28",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "106772",
+    "presupuesto_base": 137280.0,
+    "importe_adjudicacion": 137280.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "OF 223_2021 Encargo 106772 desarrollos DPFyF.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=192976&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "2543fa1b5f53919c7cae003580574405",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso38989/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de Secretaría Técnica del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "21/05/2021",
+    "fecha_pub_iso": "2021-05-21",
+    "fecha_adjudicacion": "22/04/2021",
+    "fecha_iso": "2021-04-22",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "106774",
+    "presupuesto_base": 237600.0,
+    "importe_adjudicacion": 237600.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "OF 2021-0208 Encargo 106774 Desarrollos.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=192977&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "1a75ff0a69a77eb8a77d010b3d89b3bc",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso38994/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Renovaciones de mantenimientos y suscripciones periódicas del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "21/05/2021",
+    "fecha_pub_iso": "2021-05-21",
+    "fecha_adjudicacion": "23/04/2021",
+    "fecha_iso": "2021-04-23",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "109491",
+    "presupuesto_base": 243118.0,
+    "importe_adjudicacion": 243118.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "17.0._OF 2021-0216 Renov. mant y susc. signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=604086&R01HNoPortal=true"
+      },
+      {
+        "nombre": "17.1.2. OF 2021-0616 Disminución Renov. mantenimiento y suscrip.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=603704&R01HNoPortal=true"
+      },
+      {
+        "nombre": "OF 2021-0216 Encargo 109491 Renov. mant y susc..pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=192979&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "ac5972a9943b26ac6feb1a54e3875077",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso39100/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Big Data del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "26/05/2021",
+    "fecha_pub_iso": "2021-05-26",
+    "fecha_adjudicacion": "04/05/2021",
+    "fecha_iso": "2021-05-04",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "106782",
+    "presupuesto_base": 900000.0,
+    "importe_adjudicacion": 900000.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG 106782 BIG DATA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976211&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG 106782 BIG DATA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976200&R01HNoPortal=true"
+      },
+      {
+        "nombre": "8 Certificado ACG definitivo Big Data.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2101970&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG encargo 106782 BIG DATA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=191823&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "c583e2e7b4a07e92ce09633bd53b1142",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso39102/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Plataforma de certificados del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "26/05/2021",
+    "fecha_pub_iso": "2021-05-26",
+    "fecha_adjudicacion": "04/05/2021",
+    "fecha_iso": "2021-05-04",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "108172",
+    "presupuesto_base": 792000.0,
+    "importe_adjudicacion": 792000.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG 108172 plataforma de certifcados.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976278&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG 108172 Plataforma certificados.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976272&R01HNoPortal=true"
+      },
+      {
+        "nombre": "8 Certificado ACG definitivo Plataforma.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2101944&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG encargo 108172 plataforma de certifcados.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=191824&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "2482768e95b1c32b3d9f7fe56ffe1f03",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso39108/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Plataforma de Devoluciones del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "27/05/2021",
+    "fecha_pub_iso": "2021-05-27",
+    "fecha_adjudicacion": "04/05/2021",
+    "fecha_iso": "2021-05-04",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "107648",
+    "presupuesto_base": 792000.0,
+    "importe_adjudicacion": 792000.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG 107648 plataforma de devoluciones.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976248&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG 107648 Plataforma devoluciones.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976240&R01HNoPortal=true"
+      },
+      {
+        "nombre": "8 Certificado ACG definitivo Plataforma dev.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2101757&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG encargo 107648 plataforma de devoluciones.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=191695&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "bd5f827a92c087a1b3de1ab9da1c782d",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso39133/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "SII-Silicie del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "27/05/2021",
+    "fecha_pub_iso": "2021-05-27",
+    "fecha_adjudicacion": "27/04/2021",
+    "fecha_iso": "2021-04-27",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "106781",
+    "presupuesto_base": 1200000.0,
+    "importe_adjudicacion": 1200000.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG 106781 SII-SILICE.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976197&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG 106781 SII+SILICIE.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976187&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG encargo 106781 SII-SILICE.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=192220&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "c15d76df39b4a6fd3b07ebc70724c3b6",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso39136/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "TicketBai del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "27/05/2021",
+    "fecha_pub_iso": "2021-05-27",
+    "fecha_adjudicacion": "27/04/2021",
+    "fecha_iso": "2021-04-27",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "106780",
+    "presupuesto_base": 1800000.0,
+    "importe_adjudicacion": 1800000.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG 106780 TICKET BAI.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976181&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG 106780 TICKET BAI.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976142&R01HNoPortal=true"
+      },
+      {
+        "nombre": "7 Certificado ACG definitivo_TicketBai.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2188193&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG encargo 106780 TicketBAI.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=192023&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "7714ce9f07c6b0cd0c8782675cf5f883",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso228802/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Tramitador del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "09/07/2021",
+    "fecha_pub_iso": "2021-07-09",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "106779",
+    "presupuesto_base": 800000.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG devinitivo_encargoIZFE_Tramitador.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=257082&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG 106779 TRAMITADOR.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976119&R01HNoPortal=true"
+      },
+      {
+        "nombre": "7 Certificado ACG definitivo_tramitador.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2188175&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG devinitivo_encargoIZFE_Tramitador.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=237310&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "4caf13389be991fa139591900a0cadd4",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso242745/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Modernización, digitalización y  renovación de plataformas tecnológicas del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "03/09/2021",
+    "fecha_pub_iso": "2021-09-03",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "108850",
+    "presupuesto_base": 3721362.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG definitivo_Aprobación encargo a IZFE Renovación plataformas tecnológicas.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=358069&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG 108850 Modernizacion.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=976320&R01HNoPortal=true"
+      },
+      {
+        "nombre": "8 Certificado ACG definitivo Modernización.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2101946&R01HNoPortal=true"
+      },
+      {
+        "nombre": "5 Certificado ACG definitivo Modernización.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3458303&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG definitivo_Aprobación encargo a IZFE Renovación plataformas tecnológicas.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=357541&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "476f2cac7d2dade4a6970676db731765",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso288658/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollos Dirección Política Fiscal y Financiera",
+    "fecha_publicacion": "28/03/2022",
+    "fecha_pub_iso": "2022-03-28",
+    "fecha_adjudicacion": "04/03/2022",
+    "fecha_iso": "2022-03-04",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "115164",
+    "presupuesto_base": 102600.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "OF 2023-0073 SET.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2118990&R01HNoPortal=true"
+      },
+      {
+        "nombre": "OF 2023-0073 SET.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2118989&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "2695ec1fc6056ba091e362f6b6a7af3a",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso288688/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Dirección General de Finanzas y Presupuestos",
+    "fecha_publicacion": "29/03/2022",
+    "fecha_pub_iso": "2022-03-29",
+    "fecha_adjudicacion": "08/03/2022",
+    "fecha_iso": "2022-03-08",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "115165",
+    "presupuesto_base": 733900.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "115165 Desarrollo Finanzas y Presupuestos.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=943576&R01HNoPortal=true"
+      },
+      {
+        "nombre": "115165 Desarrollo Finanzas y Presupuestos.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=953482&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "7f05684df14d5d39c956a38a42a8f946",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso292185/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de Secretaría Técnica del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "29/03/2022",
+    "fecha_pub_iso": "2022-03-29",
+    "fecha_adjudicacion": "04/03/2022",
+    "fecha_iso": "2022-03-04",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "115166",
+    "presupuesto_base": 216600.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "115166 Desarrollos Secretaria Tecnica.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=953880&R01HNoPortal=true"
+      },
+      {
+        "nombre": "115166 Desarrollos Secretaria Tecnica.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=953937&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "c24ba8b5d8888af283c47d67b4903bfb",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso292244/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Subdirección General de Gestión Tributaria del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "30/03/2022",
+    "fecha_pub_iso": "2022-03-30",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "115167",
+    "presupuesto_base": 967950.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "115167 Desarrollos Gestion Tributaria.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=960775&R01HNoPortal=true"
+      },
+      {
+        "nombre": "115167 Desarrollos Gestion Tributaria.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=960889&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "497ce82bacbae5e89b17497822e7d28e",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso292258/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Mantenimiento y soporte de las aplicaciones del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "30/03/2022",
+    "fecha_pub_iso": "2022-03-30",
+    "fecha_adjudicacion": "22/02/2022",
+    "fecha_iso": "2022-02-22",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "115168",
+    "presupuesto_base": 886700.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "115168 Mantenimiento Aplicaciones.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=961069&R01HNoPortal=true"
+      },
+      {
+        "nombre": "115168 Mantenimiento Aplicaciones.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=961222&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "46ce5961fe0ed65ec4dcfd311aafb9b8",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso292260/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Subdirección General de Recaudación del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "30/03/2022",
+    "fecha_pub_iso": "2022-03-30",
+    "fecha_adjudicacion": "22/02/2022",
+    "fecha_iso": "2022-02-22",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "115169",
+    "presupuesto_base": 761015.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "115169 Desarrollo Recaudacion.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=961352&R01HNoPortal=true"
+      },
+      {
+        "nombre": "115169 Desarrollo Recaudacion.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=961396&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "d91a36271425af43fe97d05bab12d522",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso292266/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Subdirección General de la Estrategia Tecnológica del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "30/03/2022",
+    "fecha_pub_iso": "2022-03-30",
+    "fecha_adjudicacion": "04/03/2022",
+    "fecha_iso": "2022-03-04",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "115170",
+    "presupuesto_base": 151200.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "115170 SET.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=961620&R01HNoPortal=true"
+      },
+      {
+        "nombre": "115170 SET.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=961700&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "83ff3fd3f42935de4749794c97fee7a0",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso292272/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Renovaciones de mantenimientos y suscripciones periódicas del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "30/03/2022",
+    "fecha_pub_iso": "2022-03-30",
+    "fecha_adjudicacion": "08/03/2022",
+    "fecha_iso": "2022-03-08",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "116331",
+    "presupuesto_base": 370927.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "116331 Renovaciones.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=962228&R01HNoPortal=true"
+      },
+      {
+        "nombre": "116331 Renovaciones.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=962259&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "7cbf20e406fca75b85371f8e62be9ed0",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso380373/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Dirección General de Finanzas y Presupuestos",
+    "fecha_publicacion": "20/02/2023",
+    "fecha_pub_iso": "2023-02-20",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "122334",
+    "presupuesto_base": 671200.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG definitivo_Finanzas y presup.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119201&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG definitivo_Finanzas y presup.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119206&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "85a4a506651287e0f36b2f7d1602ae8b",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso380384/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Subdirección General de Gestión Tributaria del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "20/02/2023",
+    "fecha_pub_iso": "2023-02-20",
+    "fecha_adjudicacion": "24/01/2023",
+    "fecha_iso": "2023-01-24",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "122332",
+    "presupuesto_base": 1280150.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG definitiva_Gestion Trib.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119214&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG definitiva_Gestion Trib.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119219&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "d6439cb9ffac6d43710dbb3a758231d1",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso380395/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Mantenimiento y soporte de las aplicaciones del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "20/02/2023",
+    "fecha_pub_iso": "2023-02-20",
+    "fecha_adjudicacion": "24/01/2023",
+    "fecha_iso": "2023-01-24",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "122718",
+    "presupuesto_base": 2230700.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG definitivo_Mantenim.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119107&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG definitivo_Mantenim.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119144&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "8f9bb6d69d8352430440546789365e8e",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso380397/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Subdirección General de Recaudación del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "20/02/2023",
+    "fecha_pub_iso": "2023-02-20",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "122330",
+    "presupuesto_base": 768800.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG definitivo_Recaudacion.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119227&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG definitivo_Recaudacion.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119246&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "208ca07435605743c861d57a572aed21",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso380399/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Renovaciones de mantenimientos y suscripciones periódicas del Departamento de Hacienda y Finanzas",
+    "fecha_publicacion": "20/02/2023",
+    "fecha_pub_iso": "2023-02-20",
+    "fecha_adjudicacion": "24/01/2023",
+    "fecha_iso": "2023-01-24",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "122777",
+    "presupuesto_base": 620000.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "ACG definitivo_Ren.mant y suscr.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119258&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACG definitivo_Ren.mant y suscr.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119259&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "4e8928faa41d6de43142416bbea3dffe",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso382732/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FINALIZADO",
+    "objeto": "Desarrollo de aplicaciones de la Dirección Política Fiscal y Financiera",
+    "fecha_publicacion": "24/02/2023",
+    "fecha_pub_iso": "2023-02-24",
+    "fecha_adjudicacion": "21/10/2026",
+    "fecha_iso": "2026-10-21",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "122335",
+    "presupuesto_base": 136800.0,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "OF 2023-0085 Politica FyF.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119150&R01HNoPortal=true"
+      },
+      {
+        "nombre": "OF 2023-0085 Politica FyF.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=2119157&R01HNoPortal=true"
       }
     ]
   }
