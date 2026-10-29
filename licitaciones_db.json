@@ -275264,5 +275264,606 @@
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=540061&R01HNoPortal=true"
       }
     ]
+  },
+  {
+    "id": "a774dff3efe04a8da7c64f915e680b05",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso724037/es_doc/index.html",
+    "tipo_licitacion": "OBRA",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Reforma de escuela infantil sita en Kalezar auzoa de Usurbil",
+    "fecha_publicacion": "01/07/2026",
+    "fecha_pub_iso": "2026-07-01",
+    "fecha_adjudicacion": "27/10/2026",
+    "fecha_iso": "2026-10-27",
+    "entidad": "Ayuntamiento De Usurbil",
+    "expediente": "2026LIRO0003",
+    "presupuesto_base": 825433.77,
+    "importe_adjudicacion": 825186.13,
+    "ganador": "4 Badia Mantentze Serbitzuak, S.L.U.",
+    "es_ute": false,
+    "baja_pct": 0.03,
+    "rivales": [
+      "4 Badia Mantentze Serbitzuak, S.L.U."
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "UEX000149590000003400000000TGB_ziurtagiria_sinatuta.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5986043&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Karatula 2026LIRO0003.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5983011&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DEUC 2026LIRO0003.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5983013&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Justifikazio memoria.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5983031&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Eranskinak.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5986055&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Dekretua_KM_ordezkoak.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6121240&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Proiektua.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5983022&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Pl_adm_.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5983029&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Akta_20260730_sinatuta.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6112159&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Akta_C_sinatuta.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6149345&R01HNoPortal=true"
+      },
+      {
+        "nombre": "TGB_esleipena.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6419308&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "6abf9d1f114d63045902bb2dbfcb4cb4",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso733143/es_doc/index.html",
+    "tipo_licitacion": "OBRA",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Contratación de las obras del Proyecto de construcción de vía ciclista-peatonal entre el Polígono industrial Gabiria y Jaizubia, parte del tramo 01 003F del itinerario  Nº1 del PTSVCG",
+    "fecha_publicacion": "30/07/2026",
+    "fecha_pub_iso": "2026-07-30",
+    "fecha_adjudicacion": "28/10/2026",
+    "fecha_iso": "2026-10-28",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "2026/26-BI-LI",
+    "presupuesto_base": 1221906.29,
+    "importe_adjudicacion": 1130000.0,
+    "ganador": "Sasoi Eraikuntzak, S.L.",
+    "es_ute": false,
+    "baja_pct": 7.52,
+    "rivales": [
+      "Construcciones Moyua, S.L.",
+      "Construcciones Urdinberri, S.L.",
+      "Sasoi Eraikuntzak, S.L.",
+      "Urbycolan, S.L.",
+      "Ute Campezo-Ansareo"
+    ],
+    "num_licitadores": 5,
+    "documentos": [
+      {
+        "nombre": "4 Akordioaren Helarazpena_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6104825&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DEUC.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6101312&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Propuesta Contratación PCAP Gabiria-Jaizubia - v4.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6101346&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2 Eranskinak-Anexos.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6104824&R01HNoPortal=true"
+      },
+      {
+        "nombre": "5 Saio informatiboa -Sesión informativa.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6105513&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Documento nº 2 Planos.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6104869&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Proiektua.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6104871&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2 PCAP (cas)v2_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6104813&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2 PCAP (eus)v2_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6104814&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta nº1-1 artxiboa ireki_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6317156&R01HNoPortal=true"
+      },
+      {
+        "nombre": "acta 2-1 eta 2 artxibo irekiera (errek. ond.)_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6317169&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Informe_JV_OBRA_GABIRIA_T7 r4.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6317698&R01HNoPortal=true"
+      },
+      {
+        "nombre": "3. Acta apertura archivo 3_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6333701&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Informe Ev. Automática y Prop. Adjudicación OBRA TRAMO 7.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6333706&R01HNoPortal=true"
+      },
+      {
+        "nombre": "5 Saio informatiboa -Sesión informativa.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6105912&R01HNoPortal=true"
+      },
+      {
+        "nombre": "FA-JA-2026-0246.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6418227&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "cdae7de5d8cf7e155f25c8c76cf99116",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso747619/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Acuerdo Marco para el suministro y mantenimiento de equipos de impresión , incoado por la Central de Contratación Foral de Gipuzkoa en los términos y condiciones establecidas en el convenio de adhesión aprobado por acuerdo plenario de fecha 15. de abril de 2011,y en las normas reguladoras recogidas en el decreto foral 3/2011 de 22 de Febrero de 2011",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "06/10/2026",
+    "fecha_iso": "2026-10-06",
+    "entidad": "Ayuntamiento De Eibar",
+    "expediente": "2026089EICD",
+    "presupuesto_base": 33057.85,
+    "importe_adjudicacion": 33057.85,
+    "ganador": "Sistemas De Oficina De Gipuzkoa, S.L.",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [
+      "Sistemas De Oficina De Gipuzkoa, S.L."
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "080 RESOLUCION ADJUDICACION .pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6421457&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "131d67ab6722b56ef5f77672869bae57",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso731465/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Contratación, por lotes, de los servicios de diseño y desarrollo de actividades para el desarrollo de capacidades personales vinculadas a la innovación",
+    "fecha_publicacion": "17/08/2026",
+    "fecha_pub_iso": "2026-08-17",
+    "fecha_adjudicacion": "15/10/2026",
+    "fecha_iso": "2026-10-15",
+    "entidad": "Sociedad Fomento De San Sebastián, S.A.",
+    "expediente": "047/26",
+    "presupuesto_base": 62242.15,
+    "importe_adjudicacion": 37227.27,
+    "ganador": "Fondo Formación Euskadi, S.L.L.",
+    "es_ute": false,
+    "baja_pct": 40.19,
+    "rivales": [
+      "Fondo Formación Euskadi, S.L.L.",
+      "Lucía Martínez Sagüés",
+      "Sacodejuegos, S.L.",
+      "Sara Alonso Barandiaran"
+    ],
+    "num_licitadores": 4,
+    "documentos": [
+      {
+        "nombre": "Informe Resolución Aprobación Expte Donostia Innovation Campus_Rev7.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6152603&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Caratula Desarrollo capacidades Innovacion Rev7.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6152599&R01HNoPortal=true"
+      },
+      {
+        "nombre": "espd-request.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6152600&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Info Exp Contr Donostia Innovation Campus_Rev7.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6152602&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PPT Desarrollo de capacidades Innovacion Rev7.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6152605&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PCAP Desarrollo de capacidades Innovacion Rev7.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6152604&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta de apertura Sobre 1_047-26.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6226348&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta de apertura Sobre 2_047-26.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6226349&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta de apertura Sobre 3_047-26.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6319599&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Informe técnico 047_26 Rev1.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6319597&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Resolución Adjudicación-Ebazpena_047-26_Lote 1.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6368128&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Resolución Adjudicación-Ebazpena_047-26_Lote 2.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6368129&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Resolución Adjudicación-Ebazpena_047-26_Lote 3.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6383103&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Resolución Adjudicación-Ebazpena_047-26_Lote 4.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6419837&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Contrato-Kontratua_047-26-Lote 1 y 2.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=539055&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Contrato-Kontratua_047-26-Lote 1 y 2.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=539056&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "3d144c0c8882bbebc5f98620ad9be8bb",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso743771/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Contratación de los servicios de instalación, montaje, mantenimiento y desmontaje de elementos de iluminación, propiedad de Fomento de San Sebastián en el exterior del emblemático edificio Hotel María Cristina para la Campaña de Navidad 2026-2027",
+    "fecha_publicacion": "24/09/2026",
+    "fecha_pub_iso": "2026-09-24",
+    "fecha_adjudicacion": "29/10/2026",
+    "fecha_iso": "2026-10-29",
+    "entidad": "Sociedad Fomento De San Sebastián, S.A.",
+    "expediente": "066/26",
+    "presupuesto_base": 80621.05,
+    "importe_adjudicacion": 73030.87,
+    "ganador": "Teusa Técnicas De Restauración, S.A.",
+    "es_ute": false,
+    "baja_pct": 9.41,
+    "rivales": [
+      "Teusa Técnicas De Restauración, S.A."
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "Informe Resolución Aprobación Expte Hotel Maria Cristina Rev3.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6293458&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Caratula Hotel Maria Cristina Rev3.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6293457&R01HNoPortal=true"
+      },
+      {
+        "nombre": "espd-request.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6293419&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Info Exp Contr Hotel Maria Cristina Rev3.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6293568&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Anexo VIII.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6293418&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PPT Hotel Maria Cristina Rev3.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6293461&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PCAP Hotel Maria Cristina Rev3.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6293460&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta de apertura Sobre 1_066-26.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6351105&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta de apertura Sobre 2_066-26.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6351111&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Acta de apertura Sobre 3_066-26.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6358625&R01HNoPortal=true"
+      },
+      {
+        "nombre": "InformeValoraciónTécnica_066-26.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6358624&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Resolución Adjudicación-Ebazpena_066-26.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6419464&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "05409f88c2c06b57969170abadb8ffc5",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso733338/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Servicios de Dirección de Obra y Coordinación de Seguridad y Salud de la ejecución de las obras contenidas en el Proyecto de construcción de Vía ciclista-peatonal entre el Polígono industrial Gabiria y Jaizubia, parte del tramo 01 003F del itinerario Nº1 DEL PTSVCG.",
+    "fecha_publicacion": "04/08/2026",
+    "fecha_pub_iso": "2026-08-04",
+    "fecha_adjudicacion": "28/10/2026",
+    "fecha_iso": "2026-10-28",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "2026/27-BI-ZI",
+    "presupuesto_base": 72560.25,
+    "importe_adjudicacion": 60000.0,
+    "ganador": "Injelan, S.L.",
+    "es_ute": false,
+    "baja_pct": 17.31,
+    "rivales": [
+      "Girder Ingenieros, S.L.",
+      "Injelan, S.L."
+    ],
+    "num_licitadores": 2,
+    "documentos": [
+      {
+        "nombre": "4 FA-JA-2026-0188.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6104565&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DEUC.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6101364&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DO_KontratazioProposamenTxostenaPCAP_Gabiria-Jaizubia - v2.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6101365&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2 Anexos-Eranskinak.docx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6104608&R01HNoPortal=true"
+      },
+      {
+        "nombre": "3 DO_PliegoTécnico_Bidegorri Gabiria-Jaizubia - v2.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6156890&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2. PCAP (Cas.)_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6104573&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2. PCAP (Eus)_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6104576&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Akta. 1. eta 2. artxiboak_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6317561&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Informe JV DOCSS TRAMO 7.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6317569&R01HNoPortal=true"
+      },
+      {
+        "nombre": "3. Acta apertura archivo 3_signed.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6340559&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Informe Ev. Automática y Prop. Adjudicación DO+CSS TRAMO 7.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6340596&R01HNoPortal=true"
+      },
+      {
+        "nombre": "FA-JA-2026-0245.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6418058&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "9006a338fc57eef750ea5e67342168f4",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso562507/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Servicios de mantenimiento preventivo y correctivo de los equipos de aire comprimido de las instalaciones de la COMPAÑÍA DEL TRANVÍA DE SAN SEBASTIÁN, SOCIEDAD ANÓNIMA UNIPERSONAL",
+    "fecha_publicacion": "07/11/2024",
+    "fecha_pub_iso": "2024-11-07",
+    "fecha_adjudicacion": "09/12/2024",
+    "fecha_iso": "2024-12-09",
+    "entidad": "Compañía Del Tranvía De San Sebastián, S.A.U.",
+    "expediente": "25/24",
+    "presupuesto_base": 17538.0,
+    "importe_adjudicacion": 5110.0,
+    "ganador": "Compresores Lor, S.L.",
+    "es_ute": false,
+    "baja_pct": 70.86,
+    "rivales": [
+      "Compresores Lor, S.L."
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "Resolución aprobación expediente mantenimiento aire comprimido.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4034021&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Carátula_mantenimiento equipos aire comprimido.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4034022&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DEUC mantenimiento aire comprimido.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4034019&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Informe inicial. Mantenimiento aire comprimido.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4034020&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PPT_mto aire comprimido.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4034024&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PCAP_mto aire comprimido.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4034023&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Anuncio de rectificación de errores (IVA).pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=4078381&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Contrato MTO COMPRESORES LOR_es_eu_firmado.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=423446&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "88bd7d044e0520c9c3718eb07cde6008",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso743484/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Evolución de la infraestructura de Expediente Electrónico",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "28/10/2026",
+    "fecha_iso": "2026-10-28",
+    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
+    "expediente": "2026SIDI0020",
+    "presupuesto_base": 80000.0,
+    "importe_adjudicacion": 80000.0,
+    "ganador": "Indra Soluciones Tecnologias De La Informacion, S.L.U",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "2026SIDI0020_Invitación y documento de licitación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6285875&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026SIDI0020_Informe de necesidad y justificación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6285860&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026SIDI0020_Resolución adjudicación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6417586&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "58552048899bb84cf6819585177107df",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso740973/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Mantenimiento y evolución del sistema de gestión de ingresos en entidades municipales (Dirubil)",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "28/10/2026",
+    "fecha_iso": "2026-10-28",
+    "entidad": "Izfe - Sociedad Foral De Servicios Informáticos",
+    "expediente": "2026SIDI0006",
+    "presupuesto_base": 270000.0,
+    "importe_adjudicacion": 270000.0,
+    "ganador": "Deusto Seidor, S.A.",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "2026SIDI0006_Invitación y documento de licitación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6223536&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026SIDI0006 Informe de necesidad y justificación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6223535&R01HNoPortal=true"
+      },
+      {
+        "nombre": "2026SIDI0006_Resolución adjudicación.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6417560&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "154a972b44456d3af8d674850c96064c",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso751697/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FORMALIZADO",
+    "objeto": "Apartado \"general\" del capítulo II-2",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "20/10/2026",
+    "fecha_iso": "2026-10-20",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "2026KORGO11-2",
+    "presupuesto_base": 4131132.5,
+    "importe_adjudicacion": 0.0,
+    "ganador": "Desconocido",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [],
+    "num_licitadores": 0,
+    "documentos": [
+      {
+        "nombre": "Ziurtagiria_2026-0608.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6421941&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Ziurtagiria_2026-0608.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6421913&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "2006c01bb95bfdc1b02c18ec2f785bc2",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso754607/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FORMALIZADO",
+    "objeto": "Contrato basado lote 8 del acuerdo marco para contratar los servicios de mantenimiento de sistemas de seguridad y de protección contra incendios a través de la Central de Contratación Foral de Gipuzkoa.",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "23/10/2026",
+    "fecha_iso": "2026-10-23",
+    "entidad": "Kabia (Organismo Autónomo De La Diputación Foral De Gipuzkoa)",
+    "expediente": "GE847/2026",
+    "presupuesto_base": 16240.02,
+    "importe_adjudicacion": 16240.02,
+    "ganador": "Area 7, S.L.",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [
+      "Area 7, S.L."
+    ],
+    "num_licitadores": 1,
+    "documentos": []
   }
 ]
