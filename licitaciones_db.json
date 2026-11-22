@@ -288675,5 +288675,185 @@
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=3388553&R01HNoPortal=true"
       }
     ]
+  },
+  {
+    "id": "6e630fa5ae489821692ab8fc03434b0f",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso729833/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FORMALIZADO",
+    "objeto": "Servicio de ejecución de los trabajos en la prueba piloto de extensión del servicio ferroviario Irún - Hendaia del proyecto europeo Transfermugi en el marco de la convocatoria Interreg POCTEFA 2021-2027",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "24/09/2026",
+    "fecha_iso": "2026-09-24",
+    "entidad": "Euskal Trenbide Sarea",
+    "expediente": "P20027926",
+    "presupuesto_base": 1095726.47,
+    "importe_adjudicacion": 1078075.43,
+    "ganador": "Renfe Viajeros, S.M.E., S.A.",
+    "es_ute": false,
+    "baja_pct": 1.61,
+    "rivales": [
+      "Renfe Viajeros, S.M.E., S.A."
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "11_27926_RESOLUCIÓN APROBACIÓN EXPEDIENTE.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6048446&R01HNoPortal=true"
+      },
+      {
+        "nombre": "03_27926_CARÁTULA_V2.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6062462&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DEUC.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6048448&R01HNoPortal=true"
+      },
+      {
+        "nombre": "02_27926_INFORME INSUFICIENCIA MEDIOS.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6048432&R01HNoPortal=true"
+      },
+      {
+        "nombre": "01_27926_MEMORIA JUSTIFICATIVA_V2.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6062460&R01HNoPortal=true"
+      },
+      {
+        "nombre": "07_27926_ANEXO.xlsx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6048443&R01HNoPortal=true"
+      },
+      {
+        "nombre": "05_27926_PPTP_V2.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6062465&R01HNoPortal=true"
+      },
+      {
+        "nombre": "04_27926_PCAP.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6048437&R01HNoPortal=true"
+      },
+      {
+        "nombre": "19_27926_ACTA DE APERTURA A.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6165453&R01HNoPortal=true"
+      },
+      {
+        "nombre": "20_27926_ACTA DE APERTURA B.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6181734&R01HNoPortal=true"
+      },
+      {
+        "nombre": "25_27926_RESOLUCIÓN_MEJOR OFERTA (PROPUESTA DE ADJUDICACIÓN).pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6192367&R01HNoPortal=true"
+      },
+      {
+        "nombre": "27_27926_RESOLUCIÓN_ADJUDICACIÓN.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6296671&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "3a2ff7e2dd7349de2dd5c8fcb4cfbbb9",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso720193/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FORMALIZADO",
+    "objeto": "Servicio de limpieza de estaciones e instalaciones de Bentaberri, Centro - Concha y Amara de Euskal Trenbide Sarea",
+    "fecha_publicacion": "12/06/2026",
+    "fecha_pub_iso": "2026-06-12",
+    "fecha_adjudicacion": "08/10/2026",
+    "fecha_iso": "2026-10-08",
+    "entidad": "Euskal Trenbide Sarea",
+    "expediente": "P20028015",
+    "presupuesto_base": 411128.0,
+    "importe_adjudicacion": 368440.48,
+    "ganador": "Gureak Garbitasuna, S.L.U.",
+    "es_ute": false,
+    "baja_pct": 10.38,
+    "rivales": [
+      "Gureak Garbitasuna, S.L.U."
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "11_28015_RESOLUCIÓN APROBACIÓN EXPEDIENTE.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5907509&R01HNoPortal=true"
+      },
+      {
+        "nombre": "03_28015_CARÁTULA_v3.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6028771&R01HNoPortal=true"
+      },
+      {
+        "nombre": "DEUC.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5898340&R01HNoPortal=true"
+      },
+      {
+        "nombre": "02_28015_INFORME INSUFICIENCIA MEDIOS_sin.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5898317&R01HNoPortal=true"
+      },
+      {
+        "nombre": "01_28015_MEMORIA JUSTIFICATIVA_sin.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5899555&R01HNoPortal=true"
+      },
+      {
+        "nombre": "07_28015_ANEXO_1.xlsx",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5898335&R01HNoPortal=true"
+      },
+      {
+        "nombre": "07_28015_ANEXO_2.XLS",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5898338&R01HNoPortal=true"
+      },
+      {
+        "nombre": "05_28015_PPTP.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5898332&R01HNoPortal=true"
+      },
+      {
+        "nombre": "04_28015_PCAP.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5898329&R01HNoPortal=true"
+      },
+      {
+        "nombre": "19_28015_ACTA APERTURA SOBRE A.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6164526&R01HNoPortal=true"
+      },
+      {
+        "nombre": "20_28015_ACTA APERTURA SOBRE C.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6177798&R01HNoPortal=true"
+      },
+      {
+        "nombre": "23-8_28015_RESOLUCIÓN_ANÁLISIS OFERTA ANORMALMENTE BAJA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6222649&R01HNoPortal=true"
+      },
+      {
+        "nombre": "25_28015_RESOLUCIÓN_MEJOR OFERTA (PROPUESTA DE ADJUDICACIÓN).pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6222652&R01HNoPortal=true"
+      },
+      {
+        "nombre": "22_28015_ACTA APERTURA SOBRE B.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6549193&R01HNoPortal=true"
+      },
+      {
+        "nombre": "14_28015_ACLARACIONES AL PLIEGO 1.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5966207&R01HNoPortal=true"
+      },
+      {
+        "nombre": "14_28015_ACLARACIONES AL PLIEGO 2.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=5997466&R01HNoPortal=true"
+      },
+      {
+        "nombre": "14_28015_ACLARACIONES AL PLIEGO 3.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6021023&R01HNoPortal=true"
+      },
+      {
+        "nombre": "14_28015_ACLARACIONES AL PLIEGO 4.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6028772&R01HNoPortal=true"
+      },
+      {
+        "nombre": "14_28015_ACLARACIONES AL PLIEGO 5.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6035054&R01HNoPortal=true"
+      },
+      {
+        "nombre": "21_28015_INFORME VALORACIÓN TÉCNICA.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6185503&R01HNoPortal=true"
+      },
+      {
+        "nombre": "27_28015_RESOLUCIÓN_ADJUDICACIÓN.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6549239&R01HNoPortal=true"
+      }
+    ]
   }
 ]
