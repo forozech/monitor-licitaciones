@@ -290062,5 +290062,175 @@
         "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroContratoPorIdFichero?idFichero=388021&R01HNoPortal=true"
       }
     ]
+  },
+  {
+    "id": "3cc08fd3f041a17d19150bcd795582f2",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso758938/es_doc/index.html",
+    "tipo_licitacion": "OBRA",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Reparación del socavón en escalera del RCNSS del puerto de Donostia",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "25/11/2026",
+    "fecha_iso": "2026-11-25",
+    "entidad": "Gobierno Vasco",
+    "expediente": "DER-CIV-GIP-07-2026",
+    "presupuesto_base": 39360.0,
+    "importe_adjudicacion": 34579.98,
+    "ganador": "Urbycolan, S.L.",
+    "es_ute": false,
+    "baja_pct": 12.14,
+    "rivales": [
+      "Construcciones Moyua, S.L.",
+      "Egiguren Eraikuntza, S.L.",
+      "Ekin Eraiketak, S.L .",
+      "Estudios Y Obras Rekalde, S.L.",
+      "Gaimaz Infraestructuras Y Servicios, S. A.",
+      "Harri, Construcciones Y Mampostería, S.L.",
+      "Urbycolan, S.L."
+    ],
+    "num_licitadores": 7,
+    "documentos": [
+      {
+        "nombre": "01.Memoria técnica_DER-CIV-GIP-07-2026.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6452536&R01HNoPortal=true"
+      },
+      {
+        "nombre": "nota.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6452534&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ESKAINTZA ESKAERA_CIV-GIP-07.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6471652&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ADJUDICACION F.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6564747&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "e42ea15443bd01550c89bd3cc2c858dd",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso747617/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "ADJUDICADO",
+    "objeto": "Servicios de mantenimiento del canal de la Central Hidroeléctrica Añarbe II",
+    "fecha_publicacion": "07/10/2026",
+    "fecha_pub_iso": "2026-10-07",
+    "fecha_adjudicacion": "24/11/2026",
+    "fecha_iso": "2026-11-24",
+    "entidad": "Gestión De Centrales Del Añarbe, S.A.",
+    "expediente": "SE.26.02GE",
+    "presupuesto_base": 33448.55,
+    "importe_adjudicacion": 31836.05,
+    "ganador": "Apecechea, S.L.",
+    "es_ute": false,
+    "baja_pct": 4.82,
+    "rivales": [
+      "Apecechea, S.L."
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "Certificado Secretario GECASA (Acuerdo 3 CAG021026) 26.10.02.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6333996&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PCAP servicios mantenimiento canal CH Añarbe II (Carátula) 26.10.02.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6339326&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PCAP servicios mantenimiento canal CH Añarbe II (Carátula) 26.10.02_EU.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6339330&R01HNoPortal=true"
+      },
+      {
+        "nombre": "espd-request (Serv mantenimiento canal CH Añarbe II).zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6334018&R01HNoPortal=true"
+      },
+      {
+        "nombre": "CAG-261002.03  Inf. expte.LCSP  (Servicio mantenimiento canal CH Añarbe II).pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6334013&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PPT Mantenimiento canal CH Añarbe II 26.10.02.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6339334&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PPT Mantenimiento canal CH Añarbe II 26.10.02_EU.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6339336&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PCAP servicios mantenimiento canal CH Añarbe II 26.10.02.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6339332&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PCAP servicios mantenimiento canal CH Añarbe II 26.10.02_EU.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6339333&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACTA APERTURA SOBRE 1 (Servicio mant canal CHII) 26.10.26f.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6407909&R01HNoPortal=true"
+      },
+      {
+        "nombre": "ACTA APERTURA SOBRE 2 (Serv mant canal CHII) 26.10.27.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6410422&R01HNoPortal=true"
+      },
+      {
+        "nombre": "26.10.30 IPA Seleccion mejor oferta CE (servicio mantenimiento canal CH Añarbe II).pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6566143&R01HNoPortal=true"
+      },
+      {
+        "nombre": "26.11.24 REAP (Adjudicación servicio mantenimiento canal CH Añarbe II).pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6566181&R01HNoPortal=true"
+      }
+    ]
+  },
+  {
+    "id": "5c6b4468a30d31d0ce2dfd928463d142",
+    "url_ficha": "https://www.contratacion.euskadi.eus:443/webkpe00-kpeperfi/es/contenidos/anuncio_contratacion/expjaso765956/es_doc/index.html",
+    "tipo_licitacion": "SERV",
+    "estado_fase": "FORMALIZADO",
+    "objeto": "Servicios de organización del Premio Anton Abadia 2026.",
+    "fecha_publicacion": "Pendiente",
+    "fecha_pub_iso": "",
+    "fecha_adjudicacion": "24/11/2026",
+    "fecha_iso": "2026-11-24",
+    "entidad": "Diputación Foral De Gipuzkoa",
+    "expediente": "2026007NE500",
+    "presupuesto_base": 29160.02,
+    "importe_adjudicacion": 29160.02,
+    "ganador": "Ficoba Fundazioa",
+    "es_ute": false,
+    "baja_pct": 0.0,
+    "rivales": [
+      "Ficoba Fundazioa"
+    ],
+    "num_licitadores": 1,
+    "documentos": [
+      {
+        "nombre": "EB-DN-HB-2026-0049.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6559730&R01HNoPortal=true"
+      },
+      {
+        "nombre": "espd-request.xml",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6550038&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Zerbitzu-memoria_p.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6559732&R01HNoPortal=true"
+      },
+      {
+        "nombre": "Plegu teknikoa_p.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6559731&R01HNoPortal=true"
+      },
+      {
+        "nombre": "PCAP.zip",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6553100&R01HNoPortal=true"
+      },
+      {
+        "nombre": "EB-DN-HB-2026-0053 adjudikazioa.pdf",
+        "url": "https://www.contratacion.euskadi.eus/ac70cPublicidadWar/downloadDokusiREST/descargaFicheroPorIdFichero?idFichero=6564260&R01HNoPortal=true"
+      }
+    ]
   }
 ]
